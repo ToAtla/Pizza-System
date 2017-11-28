@@ -7,7 +7,13 @@
 //
 
 #include "Topping.hpp"
+//using namespace std;
+#include <iostream>
 
+Topping::Topping(){
+    price = 0;
+    name = "";
+}
 string Topping::getName(){
     return name;
 }
@@ -20,4 +26,9 @@ int Topping::getPrice(){
 }
 void Topping::setPrice(int inPrice){
     price = inPrice;
+}
+istream& operator >> (istream& in, Topping& topping){
+    in >> topping.name;
+    in >> topping.price;
+    return in;
 }

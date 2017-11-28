@@ -27,6 +27,7 @@ private:
     Pizza* pizzaList;
     int linesInOrder;
     bool verbose;
+    int totalPrice;
 };
 
 #endif /* Order_hpp */

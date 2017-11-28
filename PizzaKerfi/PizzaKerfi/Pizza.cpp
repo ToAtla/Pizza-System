@@ -58,9 +58,13 @@ istream& operator >> (istream& in, Pizza& pizza){
     if(pizza.verbose){
         cout << "Enter Size: ";
         in >> pizza.size;
-        
-        cout << "Enter Topping: ";
-        in >> pizza.name;
+        int numOfToppings = 0;
+        in >> numOfToppings;
+        for (int i = 0; i < numOfToppings; i++) {
+            Topping tempTopping;
+            in >> tempTopping;
+            pizza.toppings.push_back(tempTopping);
+        }
     }else{
         in >> pizza.size;
         in >> pizza.name;

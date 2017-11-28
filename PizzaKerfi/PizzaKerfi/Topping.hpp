@@ -18,10 +18,12 @@ using namespace std;
 
 class Topping {
 public:
+    Topping();
     int getPrice();
     void setPrice(int inPrice);
     string getName();
     void setName(string inName);
+    friend istream& operator >> (istream& in, Topping& topping);
 private:
     string name;
     int price;
