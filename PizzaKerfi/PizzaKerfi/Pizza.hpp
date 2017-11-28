@@ -10,15 +10,22 @@
 #define Pizza_hpp
 
 #include <stdio.h>
+#include <string>
 
-class Pizza(
+using namespace std;
+
+class Pizza{
 
 public:
+    
+    Pizza();
+    string getName();
+    void setName(string inName);
 
-
+    int getPrice();
+    void setPrice(int inPrice);
 private:
-    int i;
-    double f;
-
-);
+    string name;
+    int price;
+};
 #endif /* Pizza_hpp */

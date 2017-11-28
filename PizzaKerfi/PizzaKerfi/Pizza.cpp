@@ -7,3 +7,21 @@
 //
 
 #include "Pizza.hpp"
+
+Pizza::Pizza(){
+    name = "Margarita";
+    price = 1000;
+}
+string Pizza::getName(){
+    return name;
+}
+void Pizza::setName(string inName){
+    name = inName;
+}
+
+int Pizza::getPrice(){
+    return price;
+}
+void Pizza::setPrice(int inPrice){
+    price = inPrice;
+}

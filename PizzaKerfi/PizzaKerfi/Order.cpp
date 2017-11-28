@@ -7,3 +7,9 @@
 //
 
 #include "Order.hpp"
+
+Order::Order(){
+    linesInOrder = 0;
+    //TODO að gera þennan gæja tóman
+    //pizzaList =
+}

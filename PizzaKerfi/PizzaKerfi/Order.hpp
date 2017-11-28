@@ -10,5 +10,18 @@
 #define Order_hpp
 
 #include <stdio.h>
+#include <string>
+#include "Pizza.hpp"
+
+using namespace std;
+
+class Order {
+public:
+    Order();
+private:
+    //Þetta er dýnamískt því fjöldi pizza í einni pöntun er breytilegur
+    Pizza* pizzaList;
+    int linesInOrder;
+};
 
 #endif /* Order_hpp */

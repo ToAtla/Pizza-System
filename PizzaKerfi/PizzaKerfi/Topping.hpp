@@ -10,5 +10,19 @@
 #define Topping_hpp
 
 #include <stdio.h>
+#include <string>
+
+using namespace std;
+
+class Topping {
+public:
+    int getPrice();
+    void setPrice(int inPrice);
+    string getName();
+    void setName(string inName);
+private:
+    string name;
+    int price;
+};
 
 #endif /* Topping_hpp */

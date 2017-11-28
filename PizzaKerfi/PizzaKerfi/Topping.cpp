@@ -7,3 +7,17 @@
 //
 
 #include "Topping.hpp"
+
+string Topping::getName(){
+    return name;
+}
+void Topping::setName(string inName){
+    name = inName;
+}
+
+int Topping::getPrice(){
+    return price;
+}
+void Topping::setPrice(int inPrice){
+    price = inPrice;
+}
