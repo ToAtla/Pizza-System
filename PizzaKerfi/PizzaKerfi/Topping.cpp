@@ -1,27 +1,23 @@
 //
-//  Pizza.cpp
+//  Topping.cpp
 //  PizzaKerfi
 //
 //  Created by Þórður Atlason on 28/11/2017.
 //  Copyright © 2017 Þórður Atlason. All rights reserved.
 //
 
-#include "Pizza.hpp"
+#include "Topping.hpp"
 
-Pizza::Pizza(){
-    name = "Margarita";
-    price = 1000;
-}
-string Pizza::getName(){
+string Topping::getName(){
     return name;
 }
-void Pizza::setName(string inName){
+void Topping::setName(string inName){
     name = inName;
 }
 
-int Pizza::getPrice(){
+int Topping::getPrice(){
     return price;
 }
-void Pizza::setPrice(int inPrice){
+void Topping::setPrice(int inPrice){
     price = inPrice;
 }
