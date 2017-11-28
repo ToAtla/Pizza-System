@@ -37,7 +37,7 @@ int main(){
 
         case 2 :
             cout << "1: Register an ordered pizza" << endl;
-
+            
         break;
 
         case 3 :
@@ -53,10 +53,14 @@ int main(){
         break;
 
 
-
     }
 
-    toppings();
+    Order temp = Order();
+    temp.setVerbose(true);
+    cin >> temp;
+     cout << temp;
+    
+    //toppings();
 
     return 0;
 }

@@ -18,10 +18,15 @@ using namespace std;
 class Order {
 public:
     Order();
+    void setVerbose(bool v);
+    bool getVerbose();
+    friend ostream& operator << (ostream& out, const Order&);
+    friend istream& operator >> (istream& in, Order&);
 private:
     //Þetta er dýnamískt því fjöldi pizza í einni pöntun er breytilegur
     Pizza* pizzaList;
     int linesInOrder;
+    bool verbose;
 };
 
 #endif /* Order_hpp */

@@ -56,7 +56,14 @@ ostream& operator << (ostream& out, const Pizza& pizza){
 
 istream& operator >> (istream& in, Pizza& pizza){
     if(pizza.verbose){
+        cout << "Enter Size: ";
+        in >> pizza.size;
         
+        cout << "Enter Topping: ";
+        in >> pizza.name;
+    }else{
+        in >> pizza.size;
+        in >> pizza.name;
     }
     return in;
 }

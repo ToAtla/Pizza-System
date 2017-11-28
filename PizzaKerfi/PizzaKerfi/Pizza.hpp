@@ -22,12 +22,16 @@ public:
     
     Pizza();
     Pizza(string inSize, vector<Topping> inToppings);
+    
+    bool getVerbose();
+    void setVerbose(bool v);
+    /*
     string getName();
     void setName(string inName);
 
     int getPrice();
     void setPrice(int inPrice);
-    
+    */
     friend ostream& operator << (ostream& out, const Pizza&);
     friend istream& operator >> (istream& in, Pizza&);
 private:
