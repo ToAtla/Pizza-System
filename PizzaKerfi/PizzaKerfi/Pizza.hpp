@@ -11,4 +11,14 @@
 
 #include <stdio.h>
 
+class Pizza(
+
+public:
+
+
+private:
+    int i;
+    double f;
+
+);
 #endif /* Pizza_hpp */
