@@ -12,6 +12,8 @@
 #include <stdio.h>
 #include <string>
 
+const int MAXTOPPINGS = 16;
+
 using namespace std;
 
 class Topping {

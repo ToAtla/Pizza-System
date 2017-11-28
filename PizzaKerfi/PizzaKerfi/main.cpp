@@ -9,13 +9,13 @@
 #include <iostream>
 #include <string>
 #include <fstream>
+#include "Order.hpp"
 
 using namespace std;
 
 void toppings();
 
 int main(){
-
     int val1;
     cout << "Please choose department: "<< endl << endl;
     cout << "1: Management  "<< endl;
