@@ -18,7 +18,7 @@ using namespace std;
 class ToppingRepo{
 public:
     ToppingRepo();
-    void storeTopping(const Topping& topping);
+    void storeTopping(Topping& topping);
     Topping retrieveTopping();
     void displayToppings();
     vector<Topping> getVectorOfToppings();

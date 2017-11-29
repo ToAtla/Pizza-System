@@ -22,12 +22,14 @@ using namespace std;
 ToppingRepo::ToppingRepo(){
     
 }
-void ToppingRepo::storeTopping(const Topping& topping){
+void ToppingRepo::storeTopping(Topping& topping){
     
     ofstream fout;
     fout.open("toppings.txt", ios::app);
+    topping.setVerbose(false);
     fout << topping;
     fout.close();
+    topping.setVerbose(true);
     
 }
 

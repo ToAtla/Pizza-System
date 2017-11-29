@@ -21,6 +21,7 @@ public:
     Topping();
     int getPrice();
     void setPrice(int inPrice);
+    void setVerbose(bool v);
     string getName();
     void setName(string inName);
     friend istream& operator >> (istream& in, Topping& topping);
@@ -28,6 +29,7 @@ public:
 private:
     string name;
     int price;
+    bool verbose = true;
 };
 
 #endif /* Topping_hpp */

@@ -28,11 +28,20 @@ void Topping::setPrice(int inPrice){
     price = inPrice;
 }
 
+void Topping::setVerbose(bool v){
+    verbose = v;
+}
+
 ostream& operator << (ostream& out, const Topping& topping){
-    out << "Topping: ";
+    if(topping.verbose)
+        out << "Topping: ";
     out << topping.name << endl;
-    out << "Price: ";
+    
+    if(topping.verbose)
+        out << "Price: ";
     out << topping.price << endl;
+    
+    
     return out;
 }
 istream& operator >> (istream& in, Topping& topping){
