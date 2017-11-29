@@ -11,8 +11,8 @@
 
 
 void MainUI::startUI(){
-    
-    char input = 0;
+
+    char input = '\0';
     while(input != 'q')
     {
         cout << "1: Admin" << endl;
@@ -21,18 +21,27 @@ void MainUI::startUI(){
         cout << "4: Delivery" << endl;
         cout << "q: quit" << endl;
         cin >> input;
-        
+
         if(input == '1'){
             AdminUI adminUI;
             adminUI.startAdminUI();
         }
         else if(input == '2'){
-            
+            branchLocation();
+
         }
         else if(input == '3'){
-            
+            branchLocation();
         }
         else if(input == '4'){
+            branchLocation();
         }
     }
+}
+
+void MainUI::branchLocation(){
+
+//A EFTIR AD KLARA!!
+cout << "Choose your location: " << endl;
+
 }
