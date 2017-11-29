@@ -10,12 +10,19 @@
 #include <string>
 #include <fstream>
 #include "Order.hpp"
+#include "MainUI.hpp"
 
 using namespace std;
 
-void toppings();
+//void toppings();
 
 int main(){
+    
+    MainUI mainUI;
+    
+    mainUI.startUI();
+    
+    /*
     int val1;
     cout << "Please choose department: "<< endl << endl;
     cout << "1: Management  "<< endl;
@@ -63,11 +70,11 @@ int main(){
     //toppings();
 
     //test - AMH
-
+*/
     return 0;
 }
 
-
+/*
 void toppings(){
     ofstream fout;
 
@@ -78,3 +85,4 @@ void toppings(){
 
 
 }
+*/

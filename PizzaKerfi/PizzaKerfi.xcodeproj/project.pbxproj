@@ -11,6 +11,8 @@
 		7BECD2B21FCDCC1600A0384A /* Pizza.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7BECD2B01FCDCC1600A0384A /* Pizza.cpp */; };
 		7BECD2B51FCDCE6400A0384A /* Topping.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7BECD2B31FCDCE6400A0384A /* Topping.cpp */; };
 		7BECD2B81FCDCE8100A0384A /* Order.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7BECD2B61FCDCE8100A0384A /* Order.cpp */; };
+		E9C456D21FCEF1D700A93407 /* AdminUI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E9C456D01FCEF1D700A93407 /* AdminUI.cpp */; };
+		E9C456D51FCEF6BC00A93407 /* MainUI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E9C456D31FCEF6BC00A93407 /* MainUI.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -34,6 +36,10 @@
 		7BECD2B41FCDCE6400A0384A /* Topping.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Topping.hpp; sourceTree = "<group>"; };
 		7BECD2B61FCDCE8100A0384A /* Order.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Order.cpp; sourceTree = "<group>"; };
 		7BECD2B71FCDCE8100A0384A /* Order.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Order.hpp; sourceTree = "<group>"; };
+		E9C456D01FCEF1D700A93407 /* AdminUI.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = AdminUI.cpp; sourceTree = "<group>"; };
+		E9C456D11FCEF1D700A93407 /* AdminUI.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = AdminUI.hpp; sourceTree = "<group>"; };
+		E9C456D31FCEF6BC00A93407 /* MainUI.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = MainUI.cpp; sourceTree = "<group>"; };
+		E9C456D41FCEF6BC00A93407 /* MainUI.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = MainUI.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -52,6 +58,11 @@
 			children = (
 				7BDA6A5C1FCDC2F200247376 /* PizzaKerfi */,
 				7BDA6A5B1FCDC2F200247376 /* Products */,
+				7BECD2B41FCDCE6400A0384A /* Topping.hpp */,
+				7BECD2B71FCDCE8100A0384A /* Order.hpp */,
+				7BECD2B11FCDCC1600A0384A /* Pizza.hpp */,
+				E9C456D41FCEF6BC00A93407 /* MainUI.hpp */,
+				E9C456D11FCEF1D700A93407 /* AdminUI.hpp */,
 			);
 			sourceTree = "<group>";
 		};
@@ -68,11 +79,10 @@
 			children = (
 				7BDA6A5D1FCDC2F200247376 /* main.cpp */,
 				7BECD2B31FCDCE6400A0384A /* Topping.cpp */,
-				7BECD2B41FCDCE6400A0384A /* Topping.hpp */,
 				7BECD2B61FCDCE8100A0384A /* Order.cpp */,
-				7BECD2B71FCDCE8100A0384A /* Order.hpp */,
 				7BECD2B01FCDCC1600A0384A /* Pizza.cpp */,
-				7BECD2B11FCDCC1600A0384A /* Pizza.hpp */,
+				E9C456D31FCEF6BC00A93407 /* MainUI.cpp */,
+				E9C456D01FCEF1D700A93407 /* AdminUI.cpp */,
 			);
 			path = PizzaKerfi;
 			sourceTree = "<group>";
@@ -134,9 +144,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E9C456D21FCEF1D700A93407 /* AdminUI.cpp in Sources */,
 				7BECD2B51FCDCE6400A0384A /* Topping.cpp in Sources */,
 				7BECD2B21FCDCC1600A0384A /* Pizza.cpp in Sources */,
 				7BECD2B81FCDCE8100A0384A /* Order.cpp in Sources */,
+				E9C456D51FCEF6BC00A93407 /* MainUI.cpp in Sources */,
 				7BDA6A5E1FCDC2F200247376 /* main.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
