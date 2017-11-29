@@ -16,6 +16,7 @@
 		E974CD001FCF1EBF0005D0F9 /* SalesUI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E974CCFE1FCF1EBF0005D0F9 /* SalesUI.cpp */; };
 		E974CD031FCF1EF50005D0F9 /* DeliveryUI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E974CD011FCF1EF50005D0F9 /* DeliveryUI.cpp */; };
 		E974CD061FCF1F0D0005D0F9 /* PrepUI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E974CD041FCF1F0D0005D0F9 /* PrepUI.cpp */; };
+		E974CD091FCF28520005D0F9 /* OrderRepo.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E974CD071FCF28520005D0F9 /* OrderRepo.cpp */; };
 		E9C456D21FCEF1D700A93407 /* AdminUI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E9C456D01FCEF1D700A93407 /* AdminUI.cpp */; };
 		E9C456D51FCEF6BC00A93407 /* MainUI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E9C456D31FCEF6BC00A93407 /* MainUI.cpp */; };
 /* End PBXBuildFile section */
@@ -51,6 +52,8 @@
 		E974CD021FCF1EF50005D0F9 /* DeliveryUI.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = DeliveryUI.hpp; sourceTree = "<group>"; };
 		E974CD041FCF1F0D0005D0F9 /* PrepUI.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = PrepUI.cpp; sourceTree = "<group>"; };
 		E974CD051FCF1F0D0005D0F9 /* PrepUI.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = PrepUI.hpp; sourceTree = "<group>"; };
+		E974CD071FCF28520005D0F9 /* OrderRepo.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = OrderRepo.cpp; sourceTree = "<group>"; };
+		E974CD081FCF28520005D0F9 /* OrderRepo.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = OrderRepo.hpp; sourceTree = "<group>"; };
 		E9C456D01FCEF1D700A93407 /* AdminUI.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = AdminUI.cpp; sourceTree = "<group>"; };
 		E9C456D11FCEF1D700A93407 /* AdminUI.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = AdminUI.hpp; sourceTree = "<group>"; };
 		E9C456D31FCEF6BC00A93407 /* MainUI.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = MainUI.cpp; sourceTree = "<group>"; };
@@ -74,8 +77,9 @@
 				7BDA6A5C1FCDC2F200247376 /* PizzaKerfi */,
 				7BDA6A5B1FCDC2F200247376 /* Products */,
 				7B9F681E1FCF0079006C9167 /* PizzaRepo.hpp */,
-				7B2CCE1F1FCF0FB10076A5EB /* ToppingRepo.hpp */,
 				7BECD2B41FCDCE6400A0384A /* Topping.hpp */,
+				7B2CCE1F1FCF0FB10076A5EB /* ToppingRepo.hpp */,
+				E974CD081FCF28520005D0F9 /* OrderRepo.hpp */,
 				7BECD2B71FCDCE8100A0384A /* Order.hpp */,
 				7BECD2B11FCDCC1600A0384A /* Pizza.hpp */,
 				E9C456D41FCEF6BC00A93407 /* MainUI.hpp */,
@@ -100,6 +104,7 @@
 				7BDA6A5D1FCDC2F200247376 /* main.cpp */,
 				7BECD2B31FCDCE6400A0384A /* Topping.cpp */,
 				7B9F681A1FCEFC06006C9167 /* ToppingRepo.cpp */,
+				E974CD071FCF28520005D0F9 /* OrderRepo.cpp */,
 				7B9F681D1FCF0079006C9167 /* PizzaRepo.cpp */,
 				7BECD2B61FCDCE8100A0384A /* Order.cpp */,
 				7BECD2B01FCDCC1600A0384A /* Pizza.cpp */,
@@ -169,6 +174,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E974CD091FCF28520005D0F9 /* OrderRepo.cpp in Sources */,
 				E974CD061FCF1F0D0005D0F9 /* PrepUI.cpp in Sources */,
 				E9C456D21FCEF1D700A93407 /* AdminUI.cpp in Sources */,
 				7B9F681C1FCEFC06006C9167 /* ToppingRepo.cpp in Sources */,
