@@ -10,6 +10,8 @@
 #include "Topping.hpp"
 #include <fstream>
 #include <iostream>
+#include <vector>
+#include <string>
 
 using namespace std;
 
@@ -26,6 +28,8 @@ void ToppingRepo::storeTopping(const Topping& topping){
     fout.open("toppings.txt", ios::app);
     fout << topping;
     fout.close();
+    
+    
 }
 
 Topping ToppingRepo::retrieveTopping(){
@@ -38,13 +42,15 @@ Topping ToppingRepo::retrieveTopping(){
     return temp;
 }
 
-//Vandinn við þetta er að við erum að blanda saman UI og Vinnslulagi
-void ToppingRepo::displayToppings(){
+vector<Topping> ToppingRepo::getVectorOfToppings(){
+    vector<Topping> toppings;
     ifstream fin;
     fin.open("toppings.txt");
     while(!fin.eof()){
-        Topping temp = retrieveTopping();
-        cout << "A topping:" << endl;
-        cout << temp;
+        Topping temp;
+        fin >> temp;
+        toppings.push_back(temp);
     }
+    toppings.pop_back();
+    return toppings;
 }
