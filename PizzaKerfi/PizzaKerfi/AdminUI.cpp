@@ -38,6 +38,7 @@ void AdminUI::displayToppingMenu(){
         cin >> input;
         
         if(input == '1'){
+            cout << endl << "-----List of all topings-----" << endl;
             displayAllToppings();
         }
         else if(input == '2'){
