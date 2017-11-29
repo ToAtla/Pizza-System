@@ -24,6 +24,7 @@ public:
     string getName();
     void setName(string inName);
     friend istream& operator >> (istream& in, Topping& topping);
+    friend ostream& operator << (ostream& out, const Topping& topping);
 private:
     string name;
     int price;

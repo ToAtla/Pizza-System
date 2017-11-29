@@ -7,3 +7,31 @@
 //
 
 #include "ToppingRepo.hpp"
+#include "Topping.hpp"
+#include <fstream>
+#include <iostream>
+
+using namespace std;
+
+/*
+ Skjalid toppings.txt er hardkodad.
+ Viljum vid breyta tvi?
+ */
+
+void ToppingRepo::storeTopping(const Topping& topping){
+    
+    ofstream fout;
+    fout.open("toppings.txt");
+    fout << topping;
+    fout.close();
+}
+
+Topping ToppingRepo::retrieveTopping(){
+    
+    ifstream fin;
+    Topping temp;
+    fin.open("toppings.txt");
+    fin >> temp;
+    fin.close();
+    return temp;
+}

@@ -27,6 +27,11 @@ int Topping::getPrice(){
 void Topping::setPrice(int inPrice){
     price = inPrice;
 }
+
+ostream& operator << (ostream& out, const Topping& topping){
+    out << topping.name << endl << topping.price;
+    return out;
+}
 istream& operator >> (istream& in, Topping& topping){
     in >> topping.name;
     in >> topping.price;

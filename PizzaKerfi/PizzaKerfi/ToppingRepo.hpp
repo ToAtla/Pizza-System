@@ -10,10 +10,12 @@
 #define ToppingRepo_hpp
 
 #include <stdio.h>
+#include "Topping.hpp"
 
 class ToppingRepo{
 public:
-    
+    void storeTopping(const Topping& topping);
+    Topping retrieveTopping();
 private:
     
 };
