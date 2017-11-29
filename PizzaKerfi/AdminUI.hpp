@@ -11,19 +11,25 @@
 
 #include <stdio.h>
 #include <iostream>
+#include "ToppingRepo.hpp"
+#include "Topping.hpp"
+
 using namespace std;
 
 class AdminUI{
 
 public:
     void startAdminUI();
-    void displayToppingMenu();
+   
     
     
     
 private:
+    void displayToppingMenu();
     //Sub menu undir Topping
     void displayAllToppings();
+    void addToppingVirkni();
+    
     
 };
 

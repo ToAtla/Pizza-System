@@ -30,8 +30,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		7B2CCE1F1FCF0FB10076A5EB /* ToppingRepo.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ToppingRepo.hpp; sourceTree = "<group>"; };
 		7B9F681A1FCEFC06006C9167 /* ToppingRepo.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ToppingRepo.cpp; sourceTree = "<group>"; };
-		7B9F681B1FCEFC06006C9167 /* ToppingRepo.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; name = ToppingRepo.hpp; path = PizzaKerfi/ToppingRepo.hpp; sourceTree = "<group>"; };
 		7B9F681D1FCF0079006C9167 /* PizzaRepo.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = PizzaRepo.cpp; sourceTree = "<group>"; };
 		7B9F681E1FCF0079006C9167 /* PizzaRepo.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = PizzaRepo.hpp; sourceTree = "<group>"; };
 		7BDA6A5A1FCDC2F200247376 /* PizzaKerfi */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = PizzaKerfi; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -65,7 +65,7 @@
 				7BDA6A5C1FCDC2F200247376 /* PizzaKerfi */,
 				7BDA6A5B1FCDC2F200247376 /* Products */,
 				7B9F681E1FCF0079006C9167 /* PizzaRepo.hpp */,
-				7B9F681B1FCEFC06006C9167 /* ToppingRepo.hpp */,
+				7B2CCE1F1FCF0FB10076A5EB /* ToppingRepo.hpp */,
 				7BECD2B41FCDCE6400A0384A /* Topping.hpp */,
 				7BECD2B71FCDCE8100A0384A /* Order.hpp */,
 				7BECD2B11FCDCC1600A0384A /* Pizza.hpp */,

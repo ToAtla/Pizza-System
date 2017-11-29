@@ -29,10 +29,11 @@ void Topping::setPrice(int inPrice){
 }
 
 ostream& operator << (ostream& out, const Topping& topping){
-    out << topping.name << endl << topping.price;
+    out << topping.name << endl << topping.price << endl;
     return out;
 }
 istream& operator >> (istream& in, Topping& topping){
+    
     in >> topping.name;
     in >> topping.price;
     return in;

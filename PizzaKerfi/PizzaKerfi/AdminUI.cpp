@@ -7,6 +7,11 @@
 //
 
 #include "AdminUI.hpp"
+#include "ToppingRepo.hpp"
+#include <fstream>
+#include <iostream>
+
+using namespace std;
 
 void AdminUI::startAdminUI(){
     
@@ -33,13 +38,17 @@ void AdminUI::displayToppingMenu(){
         cin >> input;
         
         if(input == '1'){
-            displayAllToppings();
+            ToppingRepo tR;
+            tR.displayToppings();
+            //displayAllToppings();
         }
         else if(input == '2'){
             
         }
         else if(input == '3'){
             
+            //BREYTA ÞESSU ASAP ÞETTA ER BRÁÐABIRGÐA
+            addToppingVirkni();
         }
         else if(input == '4'){
         }
@@ -47,5 +56,19 @@ void AdminUI::displayToppingMenu(){
 }
 
 void AdminUI::displayAllToppings(){
-    cout << "Here are all the toppings BROKEN" << endl;
+    
+    
+    ToppingRepo toppingRepo;
+    
+    
+    Topping temp = toppingRepo.retrieveTopping();
+    cout << temp << endl;
+}
+
+void AdminUI::addToppingVirkni(){
+    ToppingRepo toppingRepo;
+    Topping temp;
+    cin >> temp;
+    toppingRepo.storeTopping(temp);
+    
 }
