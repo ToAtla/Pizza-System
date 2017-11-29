@@ -8,7 +8,6 @@
 
 #include "Pizza.hpp"
 #include <iostream>
-
 const int BASICCOST = 1000;
 
 using namespace std;
