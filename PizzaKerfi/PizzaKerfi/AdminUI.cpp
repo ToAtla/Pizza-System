@@ -57,7 +57,6 @@ void AdminUI::displayAllToppings(){
     ToppingRepo toppingRepo;
     vector<Topping> toppings = toppingRepo.getVectorOfToppings();
     for (int i = 0; i < toppings.size(); i++) {
-        cout << "Hér er ég eftir debug" << endl;
         Topping temp = toppings.at(i);
         cout << temp << endl;
     }
