@@ -14,11 +14,16 @@
 using namespace std;
 
 class AdminUI{
+
+public:
+    void startAdminUI();
+    void displayToppingMenu();
     
-    public:
-        void startAdminUI();
-    private:
     
+    
+private:
+    //Sub menu undir Topping
+    void displayAllToppings();
     
 };
 
