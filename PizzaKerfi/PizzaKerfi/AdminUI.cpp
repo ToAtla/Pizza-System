@@ -10,6 +10,18 @@
 
 void AdminUI::startAdminUI(){
     
+    char input = 0;
+    while(input != 'q')
+    {
+        cout << "1: fikta i toppings" << endl;
+        cout << "q: quit" << endl;
+        cin >> input;
+        
+        if(input == '1')
+        {
+            
+        }
+    }
     
     
 }
