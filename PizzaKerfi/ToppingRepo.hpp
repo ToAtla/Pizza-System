@@ -10,7 +10,10 @@
 #define ToppingRepo_hpp
 
 #include <stdio.h>
+#include <vector>
 #include "Topping.hpp"
+
+using namespace std;
 
 class ToppingRepo{
 public:
@@ -18,6 +21,7 @@ public:
     void storeTopping(const Topping& topping);
     Topping retrieveTopping();
     void displayToppings();
+    vector<Topping> getVectorOfToppings();
 private:
 };
 

@@ -38,9 +38,7 @@ void AdminUI::displayToppingMenu(){
         cin >> input;
         
         if(input == '1'){
-            ToppingRepo tR;
-            tR.displayToppings();
-            //displayAllToppings();
+            displayAllToppings();
         }
         else if(input == '2'){
             
@@ -56,13 +54,13 @@ void AdminUI::displayToppingMenu(){
 }
 
 void AdminUI::displayAllToppings(){
-    
-    
     ToppingRepo toppingRepo;
-    
-    
-    Topping temp = toppingRepo.retrieveTopping();
-    cout << temp << endl;
+    vector<Topping> toppings = toppingRepo.getVectorOfToppings();
+    for (int i = 0; i < toppings.size(); i++) {
+        cout << "Hér er ég eftir debug" << endl;
+        Topping temp = toppings.at(i);
+        cout << temp << endl;
+    }
 }
 
 void AdminUI::addToppingVirkni(){
