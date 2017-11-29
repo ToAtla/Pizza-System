@@ -46,7 +46,7 @@ void AdminUI::displayToppingMenu(){
         else if(input == '3'){
             
             //BREYTA ÞESSU ASAP ÞETTA ER BRÁÐABIRGÐA
-            addToppingVirkni();
+            addTopping();
         }
         else if(input == '4'){
         }
@@ -62,7 +62,7 @@ void AdminUI::displayAllToppings(){
     }
 }
 
-void AdminUI::addToppingVirkni(){
+void AdminUI::addTopping(){
     ToppingRepo toppingRepo;
     Topping temp;
     cin >> temp;

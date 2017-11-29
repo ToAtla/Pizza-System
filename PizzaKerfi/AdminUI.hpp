@@ -28,7 +28,7 @@ private:
     void displayToppingMenu();
     //Sub menu undir Topping
     void displayAllToppings();
-    void addToppingVirkni();
+    void addTopping();
     
     
 };

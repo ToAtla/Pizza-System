@@ -13,7 +13,10 @@ OrderRepo::OrderRepo(){
 }
 
 void OrderRepo::storeOrder(const Order& order){
-    
+    ofstream fout;
+    fout.open("toppings.txt", ios::app);
+    fout << order;
+    fout.close();
 }
 
 Order OrderRepo::retrieveOrder(){

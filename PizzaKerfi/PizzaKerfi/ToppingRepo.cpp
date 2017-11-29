@@ -29,7 +29,6 @@ void ToppingRepo::storeTopping(const Topping& topping){
     fout << topping;
     fout.close();
     
-    
 }
 
 Topping ToppingRepo::retrieveTopping(){
