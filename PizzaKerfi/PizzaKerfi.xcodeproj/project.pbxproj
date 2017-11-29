@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7B9F681C1FCEFC06006C9167 /* ToppingRepo.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7B9F681A1FCEFC06006C9167 /* ToppingRepo.cpp */; };
 		7BDA6A5E1FCDC2F200247376 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7BDA6A5D1FCDC2F200247376 /* main.cpp */; };
 		7BECD2B21FCDCC1600A0384A /* Pizza.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7BECD2B01FCDCC1600A0384A /* Pizza.cpp */; };
 		7BECD2B51FCDCE6400A0384A /* Topping.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7BECD2B31FCDCE6400A0384A /* Topping.cpp */; };
@@ -28,6 +29,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		7B9F681A1FCEFC06006C9167 /* ToppingRepo.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ToppingRepo.cpp; sourceTree = "<group>"; };
+		7B9F681B1FCEFC06006C9167 /* ToppingRepo.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; name = ToppingRepo.hpp; path = PizzaKerfi/ToppingRepo.hpp; sourceTree = "<group>"; };
 		7BDA6A5A1FCDC2F200247376 /* PizzaKerfi */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = PizzaKerfi; sourceTree = BUILT_PRODUCTS_DIR; };
 		7BDA6A5D1FCDC2F200247376 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		7BECD2B01FCDCC1600A0384A /* Pizza.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Pizza.cpp; sourceTree = "<group>"; };
@@ -58,6 +61,7 @@
 			children = (
 				7BDA6A5C1FCDC2F200247376 /* PizzaKerfi */,
 				7BDA6A5B1FCDC2F200247376 /* Products */,
+				7B9F681B1FCEFC06006C9167 /* ToppingRepo.hpp */,
 				7BECD2B41FCDCE6400A0384A /* Topping.hpp */,
 				7BECD2B71FCDCE8100A0384A /* Order.hpp */,
 				7BECD2B11FCDCC1600A0384A /* Pizza.hpp */,
@@ -79,6 +83,7 @@
 			children = (
 				7BDA6A5D1FCDC2F200247376 /* main.cpp */,
 				7BECD2B31FCDCE6400A0384A /* Topping.cpp */,
+				7B9F681A1FCEFC06006C9167 /* ToppingRepo.cpp */,
 				7BECD2B61FCDCE8100A0384A /* Order.cpp */,
 				7BECD2B01FCDCC1600A0384A /* Pizza.cpp */,
 				E9C456D31FCEF6BC00A93407 /* MainUI.cpp */,
@@ -145,6 +150,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E9C456D21FCEF1D700A93407 /* AdminUI.cpp in Sources */,
+				7B9F681C1FCEFC06006C9167 /* ToppingRepo.cpp in Sources */,
 				7BECD2B51FCDCE6400A0384A /* Topping.cpp in Sources */,
 				7BECD2B21FCDCC1600A0384A /* Pizza.cpp in Sources */,
 				7BECD2B81FCDCE8100A0384A /* Order.cpp in Sources */,
