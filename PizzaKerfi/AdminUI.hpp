@@ -42,7 +42,7 @@ private:
     void displayAllLocations();
     void addLocation();
     void changeLocation();
-    void remoceLocation();
+    void removeLocation();
 
 
 

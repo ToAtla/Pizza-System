@@ -42,7 +42,7 @@ vector<Location> LocationRepo::getVectorOfLocations(){
 }
 
 void LocationRepo::storeVectorOfLocations(vector<Location> locations){
- clearLocations();
+    clearLocations();
 
     ofstream fout;
     fout.open("Branches.txt");
