@@ -17,8 +17,13 @@ using namespace std;
 class Location{
 public:
 
-    Location();
+     Location();
+        Location (string name);
+        virtual ~Location();
 
+        void setLocation();
+        void writeToFile();
+        void displayLocations();
 
 private:
     string name;
