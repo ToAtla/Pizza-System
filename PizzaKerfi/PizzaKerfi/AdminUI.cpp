@@ -14,9 +14,10 @@
 
 using namespace std;
 
+
+//Prentar út valmynd sem býður notandanum að velja það sem hann vill fikta í.
 void AdminUI::startAdminUI(){
 
-    //Prentar út valmynd sem býður notandanum að velja það sem hann vill fikta í.
     char input = 0;
     while(input != 'b'){
         cout << "1: Add/change the topping list" << endl;
@@ -31,9 +32,8 @@ void AdminUI::startAdminUI(){
     }
 }
 
+//Prentar út valmynd sem býður notandanum uppá að velja það sem hann vill gera með topping listann.
 void AdminUI::displayToppingMenu(){
-    //Prentar út valmynd sem býður notandanum uppá að velja það sem hann vill gera með topping listann.
-
     char input = '\0';
     while(input != 'b'){
         cout << "1: List toppings" << endl;
@@ -61,8 +61,9 @@ void AdminUI::displayToppingMenu(){
     }
 }
 
+//Prentar út lista yfir öll álegg sem eru í toppings.txt
 void AdminUI::displayAllToppings(){
-    //Prentar út lista yfir öll álegg.
+    
     ToppingRepo toppingRepo;
     vector<Topping> toppings = toppingRepo.getVectorOfToppings();
     for (int i = 0; i < toppings.size(); i++) {
@@ -71,9 +72,8 @@ void AdminUI::displayAllToppings(){
     }
 }
 
+//Bætir við áleggi í textaskránna toppings.txt
 void AdminUI::addTopping(){
-
-    //Bætir við áleggi á listann.
     char input = 'y';
 
     while(input == 'y'){
@@ -91,9 +91,9 @@ void AdminUI::addTopping(){
     }
 }
 
+//Tekur á móti vector af öllum áleggjum úr toppings.txt skránni og birtir það sem lista.
+//Gerir notandanum kleift að velja álegg af listanum og breyta nafninu og verðinu á því.
 void AdminUI::changeTopping(){
-
-    //Gerir notandanum kleift að velja alegg af listanum og nafninu og verðinu á því.
 
     ToppingRepo toppingRepo;
     vector<Topping> toppings = toppingRepo.getVectorOfToppings();
@@ -131,10 +131,10 @@ void AdminUI::changeTopping(){
 
 }
 
+//Tekur á móti vector af af öllum áleggjum úr toppings.txt skránni og birtir það sem lista.
+//Gerir notandanum kleift að velja álegg af listanum og eyða því.
 void AdminUI::removeTopping()
 {
-
-    //Gerir notandanum kleift að velja álegg af listanum og eyða því.
     ToppingRepo toppingRepo;
     vector<Topping> toppings = toppingRepo.getVectorOfToppings();
     cout << endl;
