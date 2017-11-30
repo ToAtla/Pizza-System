@@ -14,9 +14,11 @@ Topping::Topping(){
     price = 0;
     name[0] = '\0';
 }
-string Topping::getName(){
+
+char* Topping::getName(){
     return name;
 }
+
 void Topping::setName(char inName[MAXCHARINTOP]){
     for(int i = 0; i < MAXCHARINTOP; i++){
     name[i] = inName[i];
@@ -26,6 +28,7 @@ void Topping::setName(char inName[MAXCHARINTOP]){
 int Topping::getPrice(){
     return price;
 }
+
 void Topping::setPrice(int inPrice){
     price = inPrice;
 }
@@ -46,6 +49,7 @@ ostream& operator << (ostream& out, const Topping& topping){
     
     return out;
 }
+
 istream& operator >> (istream& in, Topping& topping){
     if(topping.verbose)
         cout << "Enter topping name: ";
