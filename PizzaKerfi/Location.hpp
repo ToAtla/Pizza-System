@@ -16,7 +16,10 @@ using namespace std;
 
 class Location{
 public:
-    
+
+    Location();
+
+
 private:
     string name;
 };

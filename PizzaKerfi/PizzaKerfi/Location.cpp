@@ -7,3 +7,8 @@
 //
 
 #include "Location.hpp"
+
+Location::Location(){
+    name = "";
+}
+
