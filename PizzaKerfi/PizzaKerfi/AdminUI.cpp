@@ -189,7 +189,7 @@ char input = '\0';
         cout << endl;
 
         if(input == '1'){
-            cout << endl << "-----List of all locations-----" << endl;
+            cout << endl << "-----List of all locations-----" << endl << endl;
             displayAllLocations();
             cout << endl;
         }
