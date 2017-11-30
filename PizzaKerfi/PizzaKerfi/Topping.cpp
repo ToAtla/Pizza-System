@@ -45,7 +45,12 @@ ostream& operator << (ostream& out, const Topping& topping){
     return out;
 }
 istream& operator >> (istream& in, Topping& topping){
+    if(topping.verbose)
+        cout << "Enter topping name: ";
     in >> topping.name;
+    
+    if(topping.verbose)
+        cout << "Enter topping price: ";
     in >> topping.price;
     return in;
 }

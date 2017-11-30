@@ -16,9 +16,9 @@ using namespace std;
 void AdminUI::startAdminUI(){
     
     char input = 0;
-    while(input != 'q'){
+    while(input != 'b'){
         cout << "1: fikta i toppings" << endl;
-        cout << "q: quit" << endl;
+        cout << "b: back" << endl;
         cin >> input;
         
         if(input == '1'){
@@ -29,17 +29,18 @@ void AdminUI::startAdminUI(){
 
 void AdminUI::displayToppingMenu(){
     char input = '\0';
-    while(input != 'q'){
+    while(input != 'b'){
         cout << "1: List toppings" << endl;
         cout << "2: Change a topping BROKEN" << endl;
         cout << "3: Add a topping" << endl;
         cout << "4: Delete a topping BROKEN" << endl;
-        cout << "q: quit" << endl;
+        cout << "b: back" << endl;
         cin >> input;
         
         if(input == '1'){
             cout << endl << "-----List of all topings-----" << endl;
             displayAllToppings();
+            cout << endl;
         }
         else if(input == '2'){
             
@@ -62,9 +63,19 @@ void AdminUI::displayAllToppings(){
 }
 
 void AdminUI::addTopping(){
-    ToppingRepo toppingRepo;
-    Topping temp;
-    cin >> temp;
-    toppingRepo.storeTopping(temp);
+    char input = 'y';
     
+    while(input == 'y'){
+        ToppingRepo toppingRepo;
+        Topping temp;
+        cin >> temp;
+        toppingRepo.storeTopping(temp);
+        cout << endl << "Do you want to add another topping? y/n" << endl;
+        cin >> input;
+        while(input != 'y' && input != 'n'){
+            cout << endl << "Please enter either 'y' or 'n'" << endl;
+            cin >> input;
+        }
+        cout << endl;
+    }
 }

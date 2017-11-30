@@ -36,6 +36,9 @@ void MainUI::startUI(){
         else if(input == '4'){
             branchLocation();
         }
+        else if(input == 'q'){
+            break;
+        }
     }
 }
 

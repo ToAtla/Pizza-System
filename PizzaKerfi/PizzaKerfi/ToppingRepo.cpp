@@ -38,8 +38,10 @@ Topping ToppingRepo::retrieveTopping(){
     ifstream fin;
     Topping temp;
     fin.open("toppings.txt");
+    temp.setVerbose(false);
     fin >> temp;
     fin.close();
+    temp.setVerbose(true);
     return temp;
 }
 
@@ -49,7 +51,9 @@ vector<Topping> ToppingRepo::getVectorOfToppings(){
     fin.open("toppings.txt");
     while(!fin.eof()){
         Topping temp;
+        temp.setVerbose(false);
         fin >> temp;
+        temp.setVerbose(true);
         toppings.push_back(temp);
     }
     toppings.pop_back();
