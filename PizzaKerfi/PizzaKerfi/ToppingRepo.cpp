@@ -21,7 +21,7 @@ ToppingRepo::ToppingRepo(){
 }
 
 //Bætir breytu af taginu topping inní textaskránna "toppings.txt"
-void ToppingRepo::storeTopping(Topping& topping){
+void ToppingRepo::addTopping(Topping& topping){
     ofstream fout;
     fout.open("toppings.txt", ios::app);
     topping.setVerbose(false);

@@ -80,7 +80,7 @@ void AdminUI::addTopping(){
         ToppingRepo toppingRepo;
         Topping temp;
         cin >> temp;
-        toppingRepo.storeTopping(temp);
+        toppingRepo.addTopping(temp);
         cout << endl << "Do you want to add another topping? y/n" << endl;
         cin >> input;
         while(input != 'y' && input != 'n'){
