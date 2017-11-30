@@ -13,6 +13,8 @@
 #include <string>
 #include "Pizza.hpp"
 
+const int MAXPIZZASINORDER = 50;
+
 using namespace std;
 
 class Order {
@@ -24,8 +26,8 @@ public:
     friend istream& operator >> (istream& in, Order&);
 private:
     //Þetta er dýnamískt því fjöldi pizza í einni pöntun er breytilegur
-    Pizza* pizzaList;
-    int linesInOrder;
+    Pizza pizzaList[MAXPIZZASINORDER];
+    int numberOfPizzas;
     bool verbose;
     int totalPrice;
 };

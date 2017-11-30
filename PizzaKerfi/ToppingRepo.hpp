@@ -24,6 +24,7 @@ class ToppingRepo{
         vector<Topping> getVectorOfToppings();
         void storeVectorOfToppings(vector<Topping> toppings);
     private:
+        void clearToppings();
 };
 
 #endif /* ToppingRepo_hpp */

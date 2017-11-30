@@ -63,11 +63,9 @@ vector<Topping> ToppingRepo::getVectorOfToppings(){
 
 void ToppingRepo::storeVectorOfToppings(vector<Topping> toppings){
     
+    clearToppings();
+
     ofstream fout;
-    
-    fout.open("toppings.txt");
-    fout.close();
-    
     fout.open("toppings.txt");
     for(int i = 0; i < toppings.size(); i++){
         toppings[i].setVerbose(false);
@@ -75,4 +73,11 @@ void ToppingRepo::storeVectorOfToppings(vector<Topping> toppings){
     }
     fout.close();
     
+}
+
+void ToppingRepo::clearToppings()
+{
+    ofstream fout;
+    fout.open("toppings.txt");
+    fout.close();
 }
