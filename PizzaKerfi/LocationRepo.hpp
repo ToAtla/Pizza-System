@@ -13,6 +13,7 @@
 #include <iostream>
 #include <string>
 #include <vector>
+#include "Location.hpp"
 
 using namespace std;
 
@@ -20,11 +21,13 @@ class LocationRepo{
 
 public:
     LocationRepo();
-
-    vector<string> displayLocations();
+    void displayLocations();
+    vector<Location>getVectorOfLocations();
+    void storeVectorOfLocations(vector<Location> locations);
+    void storeLocation(Location& location);
 
 private:
-    string name;
+    void clearLocations();
 
 
 };
