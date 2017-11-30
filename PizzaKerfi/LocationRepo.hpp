@@ -29,4 +29,4 @@ private:
 
 };
 
-#endif LocationRepo_hpp
+#endif  /* LocationRepo_hpp */
