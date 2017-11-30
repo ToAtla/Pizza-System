@@ -12,7 +12,16 @@
 #include <stdio.h>
 
 class LocationRepo{
-    
+
+public:
+    Location();
+
+    vector<Location> readFromFile();
+
+private:
+    string name;
+
+
 };
 
 #endif /* LocationRepo_hpp */
