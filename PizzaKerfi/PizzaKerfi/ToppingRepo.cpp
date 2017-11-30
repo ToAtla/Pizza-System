@@ -59,3 +59,19 @@ vector<Topping> ToppingRepo::getVectorOfToppings(){
     toppings.pop_back();
     return toppings;
 }
+
+void ToppingRepo::storeVectorOfToppings(vector<Topping> toppings){
+    
+    ofstream fout;
+    
+    fout.open("toppings.txt");
+    fout.close();
+    
+    fout.open("toppings.txt");
+    for(int i = 0; i < toppings.size(); i++){
+        toppings[i].setVerbose(false);
+        fout << toppings[i];
+    }
+    fout.close();
+    
+}

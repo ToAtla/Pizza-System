@@ -22,6 +22,7 @@ public:
     Topping retrieveTopping();
     void displayToppings();
     vector<Topping> getVectorOfToppings();
+    void storeVectorOfToppings(vector<Topping> toppings);
 private:
 };
 

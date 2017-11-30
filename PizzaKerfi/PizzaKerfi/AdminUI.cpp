@@ -31,7 +31,7 @@ void AdminUI::displayToppingMenu(){
     char input = '\0';
     while(input != 'b'){
         cout << "1: List toppings" << endl;
-        cout << "2: Change a topping BROKEN" << endl;
+        cout << "2: Change a topping" << endl;
         cout << "3: Add a topping" << endl;
         cout << "4: Delete a topping BROKEN" << endl;
         cout << "b: back" << endl;
@@ -43,7 +43,7 @@ void AdminUI::displayToppingMenu(){
             cout << endl;
         }
         else if(input == '2'){
-            
+            removeTopping();
         }
         else if(input == '3'){
             addTopping();
@@ -78,4 +78,27 @@ void AdminUI::addTopping(){
         }
         cout << endl;
     }
+}
+
+void AdminUI::removeTopping(){
+    ToppingRepo toppingRepo;
+    vector<Topping> toppings = toppingRepo.getVectorOfToppings();
+    cout << endl;
+    for(int i = 0; i < toppings.size(); i++){
+        Topping temp = toppings.at(i);
+        cout << "Topping number: " << i+1 << endl;
+        cout <<  temp << endl;
+    }
+    int input = 0;
+    cout << "Choose a topping to change: ";
+    cin >> input;
+    
+    for(int i = 0; i < toppings.size(); i++){
+        if(input == i+1){
+            cin >> toppings[i];
+        }
+    }
+    toppingRepo.storeVectorOfToppings(toppings);
+    cout << endl << "Topping removed" << endl << endl;
+        
 }
