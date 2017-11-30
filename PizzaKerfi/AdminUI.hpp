@@ -38,6 +38,7 @@ private:
     void removeTopping();
     //Gerir notandanum kleift að velja álegg af listanum og eyða því.
 
+    void displayLocationMenu();
     void displayAllLocations();
     void addLocation();
     void changeLocation();

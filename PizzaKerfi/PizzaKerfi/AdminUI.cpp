@@ -170,6 +170,41 @@ void AdminUI::removeTopping()
     }
 }
 
+/*
+void displayLocationMenu(){
+char input = '\0';
+    while(input != 'b'){
+        cout << "1: List locations" << endl;
+        cout << "2: Change a location" << endl;
+        cout << "3: Add a location" << endl;
+        cout << "4: Remove a location" << endl;
+        cout << "b: back" << endl;
+        cin >> input;
+        cout << endl;
+
+        if(input == '1'){
+            cout << endl << "-----List of all locations-----" << endl;
+            displayAllLocations();
+            cout << endl;
+        }
+        else if(input == '2'){
+            changeLocation();
+        }
+        else if(input == '3'){
+            addLocation();
+        }
+        else if(input == '4'){
+            removeLocation();
+        }
+    }
+}
+
+}
+*/
 void displayAllLocations(){
 
 }
+void displayAllLocations(); // á eftir að útfæra
+void addLocation(); // á eftir að útfæra
+void changeLocation(); // á eftir að útfæra
+void remoceLocation(); // á eftir að útfæra
