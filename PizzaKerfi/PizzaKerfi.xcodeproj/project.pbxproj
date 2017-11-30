@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7B22C0A61FD012330055EE3D /* LocationRepo.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7B22C0A41FD012330055EE3D /* LocationRepo.cpp */; };
 		7B97BCF21FCF368D00A24411 /* Location.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7B97BCF01FCF368D00A24411 /* Location.cpp */; };
 		7B9F681C1FCEFC06006C9167 /* ToppingRepo.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7B9F681A1FCEFC06006C9167 /* ToppingRepo.cpp */; };
 		7B9F681F1FCF0079006C9167 /* PizzaRepo.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7B9F681D1FCF0079006C9167 /* PizzaRepo.cpp */; };
@@ -35,6 +36,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		7B22C0A41FD012330055EE3D /* LocationRepo.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = LocationRepo.cpp; sourceTree = "<group>"; };
+		7B22C0A51FD012330055EE3D /* LocationRepo.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = LocationRepo.hpp; sourceTree = "<group>"; };
 		7B2CCE1F1FCF0FB10076A5EB /* ToppingRepo.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ToppingRepo.hpp; sourceTree = "<group>"; };
 		7B97BCF01FCF368D00A24411 /* Location.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Location.cpp; sourceTree = "<group>"; };
 		7B97BCF11FCF368D00A24411 /* Location.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Location.hpp; sourceTree = "<group>"; };
@@ -108,6 +111,8 @@
 				7B97BCF01FCF368D00A24411 /* Location.cpp */,
 				7BDA6A5D1FCDC2F200247376 /* main.cpp */,
 				7BECD2B31FCDCE6400A0384A /* Topping.cpp */,
+				7B22C0A41FD012330055EE3D /* LocationRepo.cpp */,
+				7B22C0A51FD012330055EE3D /* LocationRepo.hpp */,
 				7B9F681A1FCEFC06006C9167 /* ToppingRepo.cpp */,
 				E974CD071FCF28520005D0F9 /* OrderRepo.cpp */,
 				7B9F681D1FCF0079006C9167 /* PizzaRepo.cpp */,
@@ -185,6 +190,7 @@
 				7B9F681C1FCEFC06006C9167 /* ToppingRepo.cpp in Sources */,
 				E974CD001FCF1EBF0005D0F9 /* SalesUI.cpp in Sources */,
 				7B9F681F1FCF0079006C9167 /* PizzaRepo.cpp in Sources */,
+				7B22C0A61FD012330055EE3D /* LocationRepo.cpp in Sources */,
 				7BECD2B51FCDCE6400A0384A /* Topping.cpp in Sources */,
 				7B97BCF21FCF368D00A24411 /* Location.cpp in Sources */,
 				7BECD2B21FCDCC1600A0384A /* Pizza.cpp in Sources */,
