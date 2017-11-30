@@ -43,7 +43,7 @@ void AdminUI::displayToppingMenu(){
             cout << endl;
         }
         else if(input == '2'){
-            removeTopping();
+            changeTopping();
         }
         else if(input == '3'){
             addTopping();
@@ -73,32 +73,45 @@ void AdminUI::addTopping(){
         cout << endl << "Do you want to add another topping? y/n" << endl;
         cin >> input;
         while(input != 'y' && input != 'n'){
-            cout << endl << "Please enter either 'y' or 'n'" << endl;
+            cout << endl << "Please enter either 'y' or 'n' " << endl;
             cin >> input;
         }
         cout << endl;
     }
 }
 
-void AdminUI::removeTopping(){
+void AdminUI::changeTopping(){
     ToppingRepo toppingRepo;
     vector<Topping> toppings = toppingRepo.getVectorOfToppings();
     cout << endl;
-    for(int i = 0; i < toppings.size(); i++){
-        Topping temp = toppings.at(i);
-        cout << "Topping number: " << i+1 << endl;
-        cout <<  temp << endl;
-    }
-    int input = 0;
-    cout << "Choose a topping to change: ";
-    cin >> input;
     
-    for(int i = 0; i < toppings.size(); i++){
-        if(input == i+1){
-            cin >> toppings[i];
+    char choice = 'y';
+    
+    while(choice == 'y')
+    {
+        for(int i = 0; i < toppings.size(); i++){
+            Topping temp = toppings.at(i);
+            cout << "Topping number: " << i+1 << endl;
+            cout <<  temp << endl;
+        }
+        int input = 0;
+        cout << "Choose a topping to change: ";
+        cin >> input;
+        
+        for(int i = 0; i < toppings.size(); i++){
+            if(input == i+1){
+                cin >> toppings[i];
+            }
+        }
+        toppingRepo.storeVectorOfToppings(toppings);
+        cout << endl << "Topping removed" << endl << endl;
+        cout << "do you want to change another topping: y/n ";
+        cin >> choice;
+        cout << endl;
+        while(choice != 'y' && choice != 'n'){
+            cout << "Please enter either 'y' or 'n' ";
+            cin >> choice;
+            cout << endl;
         }
     }
-    toppingRepo.storeVectorOfToppings(toppings);
-    cout << endl << "Topping removed" << endl << endl;
-        
 }

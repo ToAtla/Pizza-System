@@ -29,7 +29,7 @@ private:
     //Sub menu undir Topping
     void displayAllToppings();
     void addTopping();
-    void removeTopping();
+    void changeTopping();
     
     
 };
