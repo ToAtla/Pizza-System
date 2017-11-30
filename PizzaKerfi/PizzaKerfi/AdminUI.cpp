@@ -45,8 +45,6 @@ void AdminUI::displayToppingMenu(){
             
         }
         else if(input == '3'){
-            
-            //BREYTA ÞESSU ASAP ÞETTA ER BRÁÐABIRGÐA
             addTopping();
         }
         else if(input == '4'){
