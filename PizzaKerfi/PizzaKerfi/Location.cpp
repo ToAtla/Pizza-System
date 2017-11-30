@@ -8,19 +8,40 @@
 
 #include <iostream>
 #include <vector>
+#include <string>
 #include "Location.hpp"
 #include "LocationRepo.hpp"
 using namespace std;
 
 
 Location::Location(){
-    name = " ";
+    name[0] = '\0';
 }
 
-void Location::displayLocations(){
-
+void Location::setVerbose(bool v){
+    verbose = v;
+}
+string Location::getLocation(){
+    return name;
+}
+void Location::setName(char inName[MAXCHARINLOC]){
+    for(int i = 0; i < MAXCHARINLOC; i++){
+    name[i] = inName[i];
+    }
 }
 
-void Location::setLocation(){
+istream& operator >> (istream& in, Location& location){
+    if(location.verbose)
+        cout << "Enter the location name: ";
+    in >> location.name;
+
+return in;
 }
 
+ostream& operator << (ostream& out, const Location& location){
+    if(location.verbose)
+        out <<  "Location: ";
+    out << location.name << endl;
+
+return out;
+}
