@@ -17,7 +17,6 @@ const int MAXCHARINLOC = 20;
 
 class Location{
 public:
-
         Location();
         void setVerbose(bool v);
         string getLocation();
