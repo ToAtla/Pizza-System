@@ -16,14 +16,14 @@
 using namespace std;
 
 class ToppingRepo{
-public:
-    ToppingRepo();
-    void storeTopping(Topping& topping);
-    Topping retrieveTopping();
-    void displayToppings();
-    vector<Topping> getVectorOfToppings();
-    void storeVectorOfToppings(vector<Topping> toppings);
-private:
+    public:
+        ToppingRepo();
+        void storeTopping(Topping& topping);
+        Topping retrieveTopping();
+        void displayToppings();
+        vector<Topping> getVectorOfToppings();
+        void storeVectorOfToppings(vector<Topping> toppings);
+    private:
 };
 
 #endif /* ToppingRepo_hpp */

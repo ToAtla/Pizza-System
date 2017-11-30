@@ -20,10 +20,6 @@ class AdminUI{
 
 public:
     void startAdminUI();
-   
-    
-    
-    
 private:
     void displayToppingMenu();
     //Sub menu undir Topping
