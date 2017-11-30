@@ -15,9 +15,11 @@ using namespace std;
 
 void AdminUI::startAdminUI(){
     
+    //Prentar út valmynd sem býður notandanum að velja það sem hann vill fikta í.
     char input = 0;
     while(input != 'b'){
-        cout << "1: fikta i toppings" << endl;
+        cout << "1: Add/change the topping list" << endl;
+        cout << "2: Add/change the location list" << endl;
         cout << "b: back" << endl;
         cin >> input;
         cout << endl;
@@ -29,6 +31,7 @@ void AdminUI::startAdminUI(){
 }
 
 void AdminUI::displayToppingMenu(){
+    //Prentar út valmynd sem býður notandanum uppá að velja það sem hann vill gera með topping listann.
     
     char input = '\0';
     while(input != 'b'){
@@ -58,7 +61,7 @@ void AdminUI::displayToppingMenu(){
 }
 
 void AdminUI::displayAllToppings(){
-    
+    //Prentar út lista yfir öll álegg.
     ToppingRepo toppingRepo;
     vector<Topping> toppings = toppingRepo.getVectorOfToppings();
     for (int i = 0; i < toppings.size(); i++) {
@@ -69,6 +72,7 @@ void AdminUI::displayAllToppings(){
 
 void AdminUI::addTopping(){
     
+    //Bætir við áleggi á listann.
     char input = 'y';
     
     while(input == 'y'){
@@ -87,6 +91,8 @@ void AdminUI::addTopping(){
 }
 
 void AdminUI::changeTopping(){
+    
+    //Gerir notandanum kleift að velja alegg af listanum og nafninu og verðinu á því.
     
     ToppingRepo toppingRepo;
     vector<Topping> toppings = toppingRepo.getVectorOfToppings();
@@ -126,6 +132,8 @@ void AdminUI::changeTopping(){
 
 void AdminUI::removeTopping()
 {
+    
+    //Gerir notandanum kleift að velja álegg af listanum og eyða því.
     ToppingRepo toppingRepo;
     vector<Topping> toppings = toppingRepo.getVectorOfToppings();
     cout << endl;

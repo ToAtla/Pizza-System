@@ -20,10 +20,10 @@ using namespace std;
  Viljum vid breyta tvi?
  */
 ToppingRepo::ToppingRepo(){
-    
+    //Færibreytulaus smiður.
 }
 void ToppingRepo::storeTopping(Topping& topping){
-    
+    //Bætir breytu af taginu topping inní textaskránna "toppings.txt"
     ofstream fout;
     fout.open("toppings.txt", ios::app);
     topping.setVerbose(false);
@@ -45,6 +45,8 @@ Topping ToppingRepo::retrieveTopping(){
 }
 
 vector<Topping> ToppingRepo::getVectorOfToppings(){
+    
+    //
     vector<Topping> toppings;
     ifstream fin;
     fin.open("toppings.txt");
