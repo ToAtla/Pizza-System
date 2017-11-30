@@ -19,9 +19,9 @@
 		E974CD031FCF1EF50005D0F9 /* DeliveryUI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E974CD011FCF1EF50005D0F9 /* DeliveryUI.cpp */; };
 		E974CD061FCF1F0D0005D0F9 /* PrepUI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E974CD041FCF1F0D0005D0F9 /* PrepUI.cpp */; };
 		E974CD091FCF28520005D0F9 /* OrderRepo.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E974CD071FCF28520005D0F9 /* OrderRepo.cpp */; };
-		E974CD1F1FD086370005D0F9 /* SidesRepo.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E974CD1D1FD086370005D0F9 /* SidesRepo.cpp */; };
 		E974CD221FD087B40005D0F9 /* Side.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E974CD201FD087B40005D0F9 /* Side.cpp */; };
 		E974CD281FD097560005D0F9 /* Drink.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E974CD261FD097560005D0F9 /* Drink.cpp */; };
+		E974CD2B1FD09A110005D0F9 /* SideRepo.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E974CD291FD09A110005D0F9 /* SideRepo.cpp */; };
 		E9C456D21FCEF1D700A93407 /* AdminUI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E9C456D01FCEF1D700A93407 /* AdminUI.cpp */; };
 		E9C456D51FCEF6BC00A93407 /* MainUI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E9C456D31FCEF6BC00A93407 /* MainUI.cpp */; };
 /* End PBXBuildFile section */
@@ -63,12 +63,12 @@
 		E974CD051FCF1F0D0005D0F9 /* PrepUI.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = PrepUI.hpp; sourceTree = "<group>"; };
 		E974CD071FCF28520005D0F9 /* OrderRepo.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = OrderRepo.cpp; sourceTree = "<group>"; };
 		E974CD081FCF28520005D0F9 /* OrderRepo.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = OrderRepo.hpp; sourceTree = "<group>"; };
-		E974CD1D1FD086370005D0F9 /* SidesRepo.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = SidesRepo.cpp; sourceTree = "<group>"; };
-		E974CD1E1FD086370005D0F9 /* SidesRepo.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = SidesRepo.hpp; sourceTree = "<group>"; };
 		E974CD201FD087B40005D0F9 /* Side.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Side.cpp; sourceTree = "<group>"; };
 		E974CD211FD087B40005D0F9 /* Side.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Side.hpp; sourceTree = "<group>"; };
 		E974CD261FD097560005D0F9 /* Drink.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Drink.cpp; sourceTree = "<group>"; };
 		E974CD271FD097560005D0F9 /* Drink.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Drink.hpp; sourceTree = "<group>"; };
+		E974CD291FD09A110005D0F9 /* SideRepo.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = SideRepo.cpp; sourceTree = "<group>"; };
+		E974CD2A1FD09A110005D0F9 /* SideRepo.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = SideRepo.hpp; sourceTree = "<group>"; };
 		E9C456D01FCEF1D700A93407 /* AdminUI.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = AdminUI.cpp; sourceTree = "<group>"; };
 		E9C456D11FCEF1D700A93407 /* AdminUI.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = AdminUI.hpp; sourceTree = "<group>"; };
 		E9C456D31FCEF6BC00A93407 /* MainUI.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = MainUI.cpp; sourceTree = "<group>"; };
@@ -96,7 +96,7 @@
 				E974CD081FCF28520005D0F9 /* OrderRepo.hpp */,
 				7B22C0A51FD012330055EE3D /* LocationRepo.hpp */,
 				7B2CCE1F1FCF0FB10076A5EB /* ToppingRepo.hpp */,
-				E974CD1E1FD086370005D0F9 /* SidesRepo.hpp */,
+				E974CD2A1FD09A110005D0F9 /* SideRepo.hpp */,
 				E974CD211FD087B40005D0F9 /* Side.hpp */,
 				E974CD271FD097560005D0F9 /* Drink.hpp */,
 				7BECD2B41FCDCE6400A0384A /* Topping.hpp */,
@@ -126,8 +126,8 @@
 				E974CD071FCF28520005D0F9 /* OrderRepo.cpp */,
 				7B22C0A41FD012330055EE3D /* LocationRepo.cpp */,
 				7B9F681A1FCEFC06006C9167 /* ToppingRepo.cpp */,
-				E974CD1D1FD086370005D0F9 /* SidesRepo.cpp */,
 				7B9F681D1FCF0079006C9167 /* PizzaRepo.cpp */,
+				E974CD291FD09A110005D0F9 /* SideRepo.cpp */,
 				E974CD201FD087B40005D0F9 /* Side.cpp */,
 				E974CD261FD097560005D0F9 /* Drink.cpp */,
 				7BECD2B31FCDCE6400A0384A /* Topping.cpp */,
@@ -206,12 +206,12 @@
 				7B9F681C1FCEFC06006C9167 /* ToppingRepo.cpp in Sources */,
 				E974CD001FCF1EBF0005D0F9 /* SalesUI.cpp in Sources */,
 				7B9F681F1FCF0079006C9167 /* PizzaRepo.cpp in Sources */,
+				E974CD2B1FD09A110005D0F9 /* SideRepo.cpp in Sources */,
 				7B22C0A61FD012330055EE3D /* LocationRepo.cpp in Sources */,
 				7BECD2B51FCDCE6400A0384A /* Topping.cpp in Sources */,
 				7B97BCF21FCF368D00A24411 /* Location.cpp in Sources */,
 				7BECD2B21FCDCC1600A0384A /* Pizza.cpp in Sources */,
 				7BECD2B81FCDCE8100A0384A /* Order.cpp in Sources */,
-				E974CD1F1FD086370005D0F9 /* SidesRepo.cpp in Sources */,
 				E9C456D51FCEF6BC00A93407 /* MainUI.cpp in Sources */,
 				7BDA6A5E1FCDC2F200247376 /* main.cpp in Sources */,
 				E974CD221FD087B40005D0F9 /* Side.cpp in Sources */,
