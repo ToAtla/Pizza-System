@@ -30,7 +30,6 @@ void ToppingRepo::storeTopping(Topping& topping){
     fout << topping;
     fout.close();
     topping.setVerbose(true);
-    
 }
 
 Topping ToppingRepo::retrieveTopping(){

@@ -8,20 +8,21 @@
 
 #include "MainUI.hpp"
 #include "AdminUI.hpp"
-
+#include <stdlib.h>
 
 void MainUI::startUI(){
 
     char input = '\0';
     while(input != 'q')
     {
-        cout << "1: Admin" << endl;
+        cout << "1: Manager" << endl;
         cout << "2: Sales" << endl;
         cout << "3: Prep" << endl;
         cout << "4: Delivery" << endl;
         cout << "q: quit" << endl;
         cin >> input;
-
+        cout << endl;
+        
         if(input == '1'){
             AdminUI adminUI;
             adminUI.startAdminUI();

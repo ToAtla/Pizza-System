@@ -12,13 +12,15 @@
 
 Topping::Topping(){
     price = 0;
-    name = "";
+    name[0] = '\0';
 }
 string Topping::getName(){
     return name;
 }
-void Topping::setName(string inName){
-    name = inName;
+void Topping::setName(char inName[MAXCHARINTOP]){
+    for(int i = 0; i < MAXCHARINTOP; i++){
+    name[i] = inName[i];
+    }
 }
 
 int Topping::getPrice(){

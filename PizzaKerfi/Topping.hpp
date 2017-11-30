@@ -13,6 +13,7 @@
 #include <string>
 
 const int MAXTOPPINGS = 16;
+const int MAXCHARINTOP = 20;
 
 using namespace std;
 
@@ -23,11 +24,11 @@ public:
     void setPrice(int inPrice);
     void setVerbose(bool v);
     string getName();
-    void setName(string inName);
+    void setName(char inName[]);
     friend istream& operator >> (istream& in, Topping& topping);
     friend ostream& operator << (ostream& out, const Topping& topping);
 private:
-    string name;
+    char name[MAXCHARINTOP];
     int price;
     bool verbose = true;
 };

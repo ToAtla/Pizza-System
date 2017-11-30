@@ -30,6 +30,7 @@ private:
     void displayAllToppings();
     void addTopping();
     void changeTopping();
+    void removeTopping();
     
     
 };

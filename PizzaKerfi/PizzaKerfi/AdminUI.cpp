@@ -20,6 +20,7 @@ void AdminUI::startAdminUI(){
         cout << "1: fikta i toppings" << endl;
         cout << "b: back" << endl;
         cin >> input;
+        cout << endl;
         
         if(input == '1'){
             displayToppingMenu();
@@ -28,14 +29,16 @@ void AdminUI::startAdminUI(){
 }
 
 void AdminUI::displayToppingMenu(){
+    
     char input = '\0';
     while(input != 'b'){
         cout << "1: List toppings" << endl;
         cout << "2: Change a topping" << endl;
         cout << "3: Add a topping" << endl;
-        cout << "4: Delete a topping BROKEN" << endl;
+        cout << "4: Remove a topping" << endl;
         cout << "b: back" << endl;
         cin >> input;
+        cout << endl;
         
         if(input == '1'){
             cout << endl << "-----List of all topings-----" << endl;
@@ -54,6 +57,7 @@ void AdminUI::displayToppingMenu(){
 }
 
 void AdminUI::displayAllToppings(){
+    
     ToppingRepo toppingRepo;
     vector<Topping> toppings = toppingRepo.getVectorOfToppings();
     for (int i = 0; i < toppings.size(); i++) {
@@ -63,6 +67,7 @@ void AdminUI::displayAllToppings(){
 }
 
 void AdminUI::addTopping(){
+    
     char input = 'y';
     
     while(input == 'y'){
@@ -81,6 +86,7 @@ void AdminUI::addTopping(){
 }
 
 void AdminUI::changeTopping(){
+    
     ToppingRepo toppingRepo;
     vector<Topping> toppings = toppingRepo.getVectorOfToppings();
     cout << endl;
@@ -100,7 +106,7 @@ void AdminUI::changeTopping(){
         
         for(int i = 0; i < toppings.size(); i++){
             if(input == i+1){
-                cin >> toppings[i];
+                cin >> toppings.at(i);
             }
         }
         toppingRepo.storeVectorOfToppings(toppings);
@@ -114,4 +120,39 @@ void AdminUI::changeTopping(){
             cout << endl;
         }
     }
+    
+}
+
+void AdminUI::removeTopping()
+{
+    ToppingRepo toppingRepo;
+    vector<Topping> toppings = toppingRepo.getVectorOfToppings();
+    cout << endl;
+    
+    char choice = 'y';
+    
+    while(choice == 'y'){
+        for(int i = 0; i < toppings.size(); i++){
+            Topping temp = toppings.at(i);
+            cout << "Topping number: " << i+1 << endl;
+            cout <<  temp << endl;
+        }
+        
+        int input = 0;
+        cout << "Chose a topping to remove" << endl;
+        cin >> input;
+        
+        for(int i = 0; i < toppings.size(); i++){
+            if(input == i+1){
+                toppings.erase(toppings.begin() + i);
+            }
+        }
+            
+            
+            
+            
+            
+            
+            
+        }
 }
