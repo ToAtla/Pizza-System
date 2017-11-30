@@ -9,6 +9,7 @@
 #include "AdminUI.hpp"
 #include "ToppingRepo.hpp"
 #include "LocationRepo.hpp"
+#include "Location.hpp"
 #include <fstream>
 #include <iostream>
 
@@ -28,6 +29,10 @@ void AdminUI::startAdminUI(){
 
         if(input == '1'){
             displayToppingMenu();
+
+        }
+        if(input == '2'){
+            displayLocationMenu();
         }
     }
 }
@@ -46,6 +51,7 @@ void AdminUI::displayToppingMenu(){
 
         if(input == '1'){
             cout << endl << "-----List of all topings-----" << endl;
+            cout << endl << endl;
             displayAllToppings();
             cout << endl;
         }
@@ -63,7 +69,7 @@ void AdminUI::displayToppingMenu(){
 
 //Prentar út lista yfir öll álegg sem eru í toppings.txt
 void AdminUI::displayAllToppings(){
-    
+
     ToppingRepo toppingRepo;
     vector<Topping> toppings = toppingRepo.getVectorOfToppings();
     for (int i = 0; i < toppings.size(); i++) {
@@ -170,8 +176,8 @@ void AdminUI::removeTopping()
     }
 }
 
-/*
-void displayLocationMenu(){
+
+void AdminUI::displayLocationMenu(){
 char input = '\0';
     while(input != 'b'){
         cout << "1: List locations" << endl;
@@ -183,7 +189,7 @@ char input = '\0';
         cout << endl;
 
         if(input == '1'){
-            cout << endl << "-----List of all locations-----" << endl;
+            cout << endl << "-----List of all locations-----" << endl << endl;
             displayAllLocations();
             cout << endl;
         }
@@ -199,30 +205,25 @@ char input = '\0';
     }
 }
 
-}
-*/
-void displayAllLocations(){
-
-}
-/*
-void displayAllLocations(){
+void AdminUI::displayAllLocations(){
        //Prentar út lista yfir öll álegg.
-    ToppingRepo toppingRepo;
-    vector<Topping> toppings = toppingRepo.getVectorOfToppings();
-    for (int i = 0; i < toppings.size(); i++) {
-        Topping temp = toppings.at(i);
+    LocationRepo locationRepo;
+    vector<Location> locations = locationRepo.getVectorOfLocations();
+    for (int i = 0; i < locations.size(); i++) {
+        Location temp = locations.at(i);
         cout << temp << endl;
     }
+}
 
-void addLocation(){
+void AdminUI::addLocation(){
  char input = 'y';
 
     while(input == 'y'){
         LocationRepo LocationRepo;
         Location temp;
         cin >> temp;
-        LocationRepo.storeTopping(temp);
-        cout << endl << "Do you want to add another topping? y/n" << endl;
+        LocationRepo.storeLocation(temp);
+        cout << endl << "Do you want to add another location? y/n" << endl;
         cin >> input;
         while(input != 'y' && input != 'n'){
             cout << endl << "Please enter either 'y' or 'n' " << endl;
@@ -231,6 +232,75 @@ void addLocation(){
         cout << endl;
     }
 }
-*/
-void changeLocation(); // á eftir að útfæra
-void remoceLocation(); // á eftir að útfæra
+void AdminUI::changeLocation(){
+    LocationRepo locationRepo;
+    vector<Location> locations = locationRepo.getVectorOfLocations();
+    cout << endl;
+
+    char choice = 'y';
+
+    while(choice == 'y')
+    {
+        for(int i = 0; i < locations.size(); i++){
+            Location temp = locations.at(i);
+            cout << "Location number: " << i+1 << endl;
+            cout <<  temp << endl;
+        }
+        int input = 0;
+        cout << "Choose a location to change: ";
+        cin >> input;
+
+        for(int i = 0; i < locations.size(); i++){
+            if(input == i+1){
+                cin >> locations.at(i);
+            }
+        }
+        locationRepo.storeVectorOfLocations(locations);
+        cout << endl << "Location changed" << endl << endl;
+        cout << "do you want to change another location: y/n ";
+        cin >> choice;
+        cout << endl;
+        while(choice != 'y' && choice != 'n'){
+            cout << "Please enter either 'y' or 'n' ";
+            cin >> choice;
+            cout << endl;
+        }
+    }
+}
+
+void AdminUI::removeLocation(){
+    LocationRepo locationRepo;
+    vector<Location> locations = locationRepo.getVectorOfLocations();
+    cout << endl;
+
+    char choice = 'y';
+
+    while(choice == 'y'){
+    for(int i = 0; i < locations.size(); i++){
+        Location temp = locations.at(i);
+        cout << "Location number: " << i+1 << endl;
+        cout <<  temp << endl;
+    }
+
+    int input = 0;
+    cout << "Choose a location to remove: ";
+    cin >> input;
+
+    for(int i = 0; i < locations.size(); i++){
+        if(input == i+1){
+            locations.erase(locations.begin() + i);
+        }
+    }
+    locationRepo.storeVectorOfLocations(locations);
+    cout << endl << "Location removed" << endl << endl;
+    cout << "do you want to change another Location: y/n ";
+    cin >> choice;
+    cout << endl;
+    while(choice != 'y' && choice != 'n'){
+        cout << "Please enter either 'y' or 'n' ";
+        cin >> choice;
+        cout << endl;
+    }
+    }
+
+}
