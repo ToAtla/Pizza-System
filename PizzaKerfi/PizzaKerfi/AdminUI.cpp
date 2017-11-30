@@ -23,6 +23,7 @@ void AdminUI::startAdminUI(){
     while(input != 'b'){
         cout << "1: Add/change the topping list" << endl;
         cout << "2: Add/change the location list" << endl;
+        cout << "3: Add/change the drink or side list" << endl;
         cout << "b: back" << endl;
         cin >> input;
         cout << endl;
@@ -33,6 +34,9 @@ void AdminUI::startAdminUI(){
         }
         if(input == '2'){
             displayLocationMenu();
+        }
+        if(input == '3'){
+            
         }
     }
 }

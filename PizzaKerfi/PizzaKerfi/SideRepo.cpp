@@ -42,7 +42,7 @@ vector<Side> SideRepo::getVectorOfSides(){
 
 //Byrjar á því að tæma textaskránna "sides.txt"
 //Tekur inn vector af sides og setur það inn í textaskránna.
-void SideRepo::storeVectorOfToppings(vector<Side> sides){
+void SideRepo::storeVectorOfSides(vector<Side> sides){
     
     clearSides();
     

@@ -22,7 +22,7 @@ public:
     void addSide(Side& Side);
     void displaySides();
     vector<Side> getVectorOfSides();
-    void storeVectorOfToppings(vector<Side> sides);
+    void storeVectorOfSides(vector<Side> sides);
 private:
     void clearSides();
 };
