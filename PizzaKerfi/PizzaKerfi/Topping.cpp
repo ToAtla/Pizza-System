@@ -10,6 +10,7 @@
 //using namespace std;
 #include <iostream>
 
+//Defult constructor.
 Topping::Topping(){
     price = 0;
     name[0] = '\0';

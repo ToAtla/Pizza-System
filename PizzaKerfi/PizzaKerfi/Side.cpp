@@ -8,7 +8,7 @@
 
 #include "Side.hpp"
 
-//Færibreytulaus smiður
+//Defult constructor.
 Side::Side(){
     price = 0;
     name[0] = '\0';
@@ -49,7 +49,7 @@ void Side::setName(char inName[]){
 ostream& operator << (ostream& out, const Side& side){
     
     if(side.verbose)
-        out << "Topping: ";
+        out << "Side: ";
     out << side.name << endl;
     
     if(side.verbose)
@@ -64,11 +64,11 @@ ostream& operator << (ostream& out, const Side& side){
 istream& operator >> (istream& in, Side& side){
     
     if(side.verbose)
-        cout << "Enter topping name: ";
+        cout << "Enter side name: ";
     in >> side.name;
     
     if(side.verbose)
-        cout << "Enter topping price: ";
+        cout << "Enter side price: ";
     in >> side.price;
     
     return in;

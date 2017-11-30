@@ -21,6 +21,7 @@
 		E974CD091FCF28520005D0F9 /* OrderRepo.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E974CD071FCF28520005D0F9 /* OrderRepo.cpp */; };
 		E974CD1F1FD086370005D0F9 /* SidesRepo.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E974CD1D1FD086370005D0F9 /* SidesRepo.cpp */; };
 		E974CD221FD087B40005D0F9 /* Side.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E974CD201FD087B40005D0F9 /* Side.cpp */; };
+		E974CD281FD097560005D0F9 /* Drink.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E974CD261FD097560005D0F9 /* Drink.cpp */; };
 		E9C456D21FCEF1D700A93407 /* AdminUI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E9C456D01FCEF1D700A93407 /* AdminUI.cpp */; };
 		E9C456D51FCEF6BC00A93407 /* MainUI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E9C456D31FCEF6BC00A93407 /* MainUI.cpp */; };
 /* End PBXBuildFile section */
@@ -66,6 +67,8 @@
 		E974CD1E1FD086370005D0F9 /* SidesRepo.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = SidesRepo.hpp; sourceTree = "<group>"; };
 		E974CD201FD087B40005D0F9 /* Side.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Side.cpp; sourceTree = "<group>"; };
 		E974CD211FD087B40005D0F9 /* Side.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Side.hpp; sourceTree = "<group>"; };
+		E974CD261FD097560005D0F9 /* Drink.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Drink.cpp; sourceTree = "<group>"; };
+		E974CD271FD097560005D0F9 /* Drink.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Drink.hpp; sourceTree = "<group>"; };
 		E9C456D01FCEF1D700A93407 /* AdminUI.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = AdminUI.cpp; sourceTree = "<group>"; };
 		E9C456D11FCEF1D700A93407 /* AdminUI.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = AdminUI.hpp; sourceTree = "<group>"; };
 		E9C456D31FCEF6BC00A93407 /* MainUI.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = MainUI.cpp; sourceTree = "<group>"; };
@@ -95,6 +98,7 @@
 				7B2CCE1F1FCF0FB10076A5EB /* ToppingRepo.hpp */,
 				E974CD1E1FD086370005D0F9 /* SidesRepo.hpp */,
 				E974CD211FD087B40005D0F9 /* Side.hpp */,
+				E974CD271FD097560005D0F9 /* Drink.hpp */,
 				7BECD2B41FCDCE6400A0384A /* Topping.hpp */,
 				7BECD2B71FCDCE8100A0384A /* Order.hpp */,
 				7BECD2B11FCDCC1600A0384A /* Pizza.hpp */,
@@ -125,6 +129,7 @@
 				E974CD1D1FD086370005D0F9 /* SidesRepo.cpp */,
 				7B9F681D1FCF0079006C9167 /* PizzaRepo.cpp */,
 				E974CD201FD087B40005D0F9 /* Side.cpp */,
+				E974CD261FD097560005D0F9 /* Drink.cpp */,
 				7BECD2B31FCDCE6400A0384A /* Topping.cpp */,
 				7BECD2B61FCDCE8100A0384A /* Order.cpp */,
 				7BECD2B01FCDCC1600A0384A /* Pizza.cpp */,
@@ -194,6 +199,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E974CD281FD097560005D0F9 /* Drink.cpp in Sources */,
 				E974CD091FCF28520005D0F9 /* OrderRepo.cpp in Sources */,
 				E974CD061FCF1F0D0005D0F9 /* PrepUI.cpp in Sources */,
 				E9C456D21FCEF1D700A93407 /* AdminUI.cpp in Sources */,
