@@ -13,6 +13,8 @@
 #include <iostream>
 #include "ToppingRepo.hpp"
 #include "Topping.hpp"
+#include "Location.hpp"
+#include "LocationRepo.hpp"
 
 using namespace std;
 
@@ -20,12 +22,12 @@ class AdminUI{
 
 public:
     void startAdminUI();
-    
+
 private:
     void displayToppingMenu();
     //Prentar út valmynd sem býður notandanum uppá að velja það sem hann vill gera með topping listann.
-    
-    
+
+
     //Sub menu undir Topping
     void displayAllToppings();
     //Prentar út lista yfir öll álegg.
@@ -36,8 +38,13 @@ private:
     void removeTopping();
     //Gerir notandanum kleift að velja álegg af listanum og eyða því.
 
-    
-    
+    void displayAllLocations();
+    void addLocation();
+    void changeLocation();
+    void remoceLocation();
+
+
+
 };
 
 #endif /* AdminUI_hpp */
