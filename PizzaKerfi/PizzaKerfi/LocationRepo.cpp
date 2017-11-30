@@ -26,15 +26,39 @@ void LocationRepo::storeLocation(Location& location){
     location.setVerbose(true);
 }
 
-void LocationRepo::displayLocations(){
-}
-
 vector<Location> LocationRepo::getVectorOfLocations(){
+     vector<Location> locations;
+    ifstream fin;
+    fin.open("Branches.txt");
+    while(!fin.eof()){
+        Location temp;
+        temp.setVerbose(false);
+        fin >> temp;
+        temp.setVerbose(true);
+        locations.push_back(temp);
+    }
+    locations.pop_back();
+    return locations;
 }
 
 void LocationRepo::storeVectorOfLocations(vector<Location> locations){
+ clearLocations();
+
+    ofstream fout;
+    fout.open("Branches.txt");
+    for(int i = 0; i < locations.size(); i++){
+        locations[i].setVerbose(false);
+        fout << locations[i];
+    }
+    fout.close();
+
 }
 
+void LocationRepo::clearLocations(){
+    ofstream fout;
+    fout.open("Branches.txt");
+    fout.close();
+}
 
 
 
