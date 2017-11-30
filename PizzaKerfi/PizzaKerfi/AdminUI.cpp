@@ -213,7 +213,24 @@ void displayAllLocations(){
         Topping temp = toppings.at(i);
         cout << temp << endl;
     }
-    */
-void addLocation(); // á eftir að útfæra
+
+void addLocation(){
+ char input = 'y';
+
+    while(input == 'y'){
+        LocationRepo LocationRepo;
+        Location temp;
+        cin >> temp;
+        LocationRepo.storeTopping(temp);
+        cout << endl << "Do you want to add another topping? y/n" << endl;
+        cin >> input;
+        while(input != 'y' && input != 'n'){
+            cout << endl << "Please enter either 'y' or 'n' " << endl;
+            cin >> input;
+        }
+        cout << endl;
+    }
+}
+*/
 void changeLocation(); // á eftir að útfæra
 void remoceLocation(); // á eftir að útfæra

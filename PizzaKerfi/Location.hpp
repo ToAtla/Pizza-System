@@ -13,19 +13,21 @@
 #include <string>
 
 using namespace std;
+const int MAXCHARINLOC = 20;
 
 class Location{
 public:
 
         Location();
-        Location (string name);
-
-        void setLocation();
-        void writeToFile();
-        void displayLocations();
+        void setVerbose(bool v);
+        string getLocation();
+        void setName(char inName[]);
+        friend istream& operator >> (istream& in, Location& Location);
+        friend ostream& operator << (ostream& out, const Location& Location);
 
 private:
-    string name;
+    char name[MAXCHARINLOC];
+    bool verbose = true;
 };
 
 #endif /* Location_hpp */
