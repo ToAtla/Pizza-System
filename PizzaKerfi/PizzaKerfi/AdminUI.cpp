@@ -204,7 +204,16 @@ char input = '\0';
 void displayAllLocations(){
 
 }
-void displayAllLocations(); // á eftir að útfæra
+/*
+void displayAllLocations(){
+       //Prentar út lista yfir öll álegg.
+    ToppingRepo toppingRepo;
+    vector<Topping> toppings = toppingRepo.getVectorOfToppings();
+    for (int i = 0; i < toppings.size(); i++) {
+        Topping temp = toppings.at(i);
+        cout << temp << endl;
+    }
+    */
 void addLocation(); // á eftir að útfæra
 void changeLocation(); // á eftir að útfæra
 void remoceLocation(); // á eftir að útfæra
