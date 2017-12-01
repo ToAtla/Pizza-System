@@ -335,10 +335,10 @@ void AdminUI::displaySideMenu(){
             changeSide();
         }
         else if(input == '3'){
-            addLocation();
+            addSide();
         }
         else if(input == '4'){
-            removeLocation();
+            removeSide();
         }
     }
 }
