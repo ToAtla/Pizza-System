@@ -7,6 +7,7 @@
 //
 
 #include "SalesUI.hpp"
+#include "Order.hpp"
 
 void SalesUI::startSalesUI(){
     
@@ -38,5 +39,6 @@ void SalesUI::startSalesUI(){
 }
 
 void SalesUI::createOrder(){
-    
+    Order order;
+    cin >> order;
 }

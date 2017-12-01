@@ -34,6 +34,8 @@ void MainUI::startUI(){
             adminUI.startAdminUI();
         }
         else if(input == '2'){
+            SalesUI salesUI;
+            salesUI.startSalesUI();
         }
         else if(input == '3'){
             branchLocation();

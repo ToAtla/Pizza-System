@@ -25,15 +25,14 @@ bool Order::getVerbose(){
     return verbose;
 }
 istream& operator >> (istream& in, Order& order){
+    
     if(order.verbose){
         cout << "Enter number of pizzas to add to order: ";
-        
     }
     in >> order.numberOfPizzas;
     
     for (int i = 0; i < order.numberOfPizzas; i++) {
-        //order.pizzaList[i] = Pizza();
-        //order.pizzaList[i].setVerbose(order.verbose);
+        order.pizzaList[i] = Pizza();
         in >> order.pizzaList[i];
     }
     if(order.verbose){

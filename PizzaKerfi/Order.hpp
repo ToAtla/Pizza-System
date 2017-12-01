@@ -12,8 +12,10 @@
 #include <stdio.h>
 #include <string>
 #include "Pizza.hpp"
+#include "Side.hpp"
+#include "Drink.hpp"
 
-const int MAXPIZZASINORDER = 50;
+const int MAXSTUFFSINORDER = 20;
 const int MAXCHARINLOCATION = 30;
 
 using namespace std;
@@ -26,8 +28,9 @@ public:
     friend ostream& operator << (ostream& out, const Order&);
     friend istream& operator >> (istream& in, Order&);
 private:
-    //Þetta er dýnamískt því fjöldi pizza í einni pöntun er breytilegur
-    Pizza pizzaList[MAXPIZZASINORDER];
+    Pizza pizzaList[MAXSTUFFSINORDER];
+    Side sideList[MAXSTUFFSINORDER];
+    Drink drinkList[MAXSTUFFSINORDER];
     char location[MAXCHARINLOCATION];
     int numberOfPizzas;
     int totalPrice;

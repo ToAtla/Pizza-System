@@ -13,6 +13,8 @@
 #include <string>
 #include <vector>
 #include "Topping.hpp"
+#include "Size.hpp"
+#include "Base.hpp"
 
 using namespace std;
 
@@ -39,11 +41,14 @@ public:
     friend ostream& operator << (ostream& out, const Pizza&);
     friend istream& operator >> (istream& in, Pizza&);
 private:
-    char name[MAXCHARSINPIZZANAME];
-    int price;
-    char size[MAXCHARSINPIZZASIZE];
     Topping toppings[MAXTOPPINGSONPIZZA];
+    Size sizeOfPizza;
+    Base baseOfPizza;
+    char name[MAXCHARSINPIZZANAME];
+    char size[MAXCHARSINPIZZASIZE];
+    int price;
     int toppingCount;
     bool verbose = true;
+    
 };
 #endif /* Pizza_hpp */

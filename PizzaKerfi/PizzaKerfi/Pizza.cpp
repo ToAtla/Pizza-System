@@ -8,6 +8,9 @@
 
 #include <stdio.h>
 #include "Pizza.hpp"
+#include "ToppingRepo.hpp"
+#include "DrinkRepo.hpp"
+#include "SideRepo.hpp"
 #include <iostream>
 #include <cstring>
 #include <string>
@@ -64,22 +67,9 @@ ostream& operator << (ostream& out, const Pizza& pizza){
 }
 
 istream& operator >> (istream& in, Pizza& pizza){
-    /*
-    if(pizza.verbose){
-        cout << "Enter Size: ";
-        in >> pizza.size;
-        int numOfToppings = 0;
-        in >> numOfToppings;
-        for (int i = 0; i < numOfToppings; i++) {
-            Topping tempTopping;
-            in >> tempTopping;
-            pizza.toppings.push_back(tempTopping);
-        }
-    }else{
-        in >> pizza.size;
-        in >> pizza.name;
-    }
-     */
+    
+    
+    
     
     return in;
 }
