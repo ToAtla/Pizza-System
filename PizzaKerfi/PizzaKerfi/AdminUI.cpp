@@ -20,6 +20,7 @@ void AdminUI::startAdminUI(){
         cout << "3: Add/change the side list" << endl;
         cout << "4: Add/change the drink list" << endl;
         cout << "5: Add/change the size list" << endl;
+        cout << "6: Add/change the base list" << endl;
         cout << "b: back" << endl;
         cin >> input;
         cout << endl;
@@ -39,6 +40,9 @@ void AdminUI::startAdminUI(){
         }
         else if(input == '5'){
             displaySizeMenu();
+        }
+        else if(input == '6'){
+            displayBaseMenu();
         }
     }
 }
@@ -691,6 +695,135 @@ void AdminUI::removeSize(){
             }
         }
         sizeRepo.storeVectorOfSizes(sizes);
+        cout << endl << "Size removed" << endl << endl;
+        cout << "do you want to change another size: y/n ";
+        cin >> choice;
+        cout << endl;
+        while(choice != 'y' && choice != 'n'){
+            cout << "Please enter either 'y' or 'n' ";
+            cin >> choice;
+            cout << endl;
+        }
+    }
+}
+
+
+void AdminUI::displayBaseMenu(){
+    char input = '\0';
+    while(input != 'b'){
+        cout << "1: List bases" << endl;
+        cout << "2: Change a base" << endl;
+        cout << "3: Add a base" << endl;
+        cout << "4: Remove a base" << endl;
+        cout << "b: back" << endl;
+        cin >> input;
+        cout << endl;
+        
+        if(input == '1'){
+            cout << endl << "-----List of all bases-----" << endl << endl;
+            displayAllBases();
+            cout << endl;
+        }
+        else if(input == '2'){
+            changeBase();
+        }
+        else if(input == '3'){
+            addBase();
+        }
+        else if(input == '4'){
+            removeBase();
+        }
+    }
+}
+void AdminUI::displayAllBases(){
+    BaseRepo baseRepo;
+    vector<Base> bases = baseRepo.getVectorOfBases();
+    for (int i = 0; i < bases.size(); i++) {
+        Base temp = bases.at(i);
+        cout << temp << endl;
+    }
+}
+
+void AdminUI::changeBase(){
+    BaseRepo baseRepo;
+    vector<Base> bases = baseRepo.getVectorOfBases();
+    cout << endl;
+    
+    char choice = 'y';
+    
+    while(choice == 'y')
+    {
+        for(int i = 0; i < bases.size(); i++){
+            Base temp = bases.at(i);
+            cout << "Base number: " << i+1 << endl;
+            cout <<  temp << endl;
+        }
+        int input = 0;
+        cout << "Choose a base to change: ";
+        cin >> input;
+        
+        for(int i = 0; i < bases.size(); i++){
+            if(input == i+1){
+                cin >> bases.at(i);
+            }
+        }
+        baseRepo.storeVectorOfBases(bases);
+        cout << endl << "Base changed" << endl << endl;
+        cout << "Do you want to change another base: y/n ";
+        cin >> choice;
+        cout << endl;
+        while(choice != 'y' && choice != 'n'){
+            cout << "Please enter either 'y' or 'n' ";
+            cin >> choice;
+            cout << endl;
+        }
+    }
+}
+
+void AdminUI::addBase(){
+    char input = 'y';
+    
+    while(input == 'y'){
+        BaseRepo baseRepo;
+        Base temp;
+        cin >> temp;
+        baseRepo.addBase(temp);
+        cout << endl << "Do you want to add another base? y/n" << endl;
+        cin >> input;
+        while(input != 'y' && input != 'n'){
+            cout << endl << "Please enter either 'y' or 'n' " << endl;
+            cin >> input;
+        }
+        cout << endl;
+    }
+
+}
+
+
+void AdminUI::removeBase(){
+    BaseRepo baseRepo;
+    vector<Base> bases = baseRepo.getVectorOfBases();
+    cout << endl;
+    
+    char choice = 'y';
+    
+    while(choice == 'y'){
+        for(int i = 0; i < bases.size(); i++){
+            Base temp = bases.at(i);
+            cout << "Size number: " << i+1 << endl;
+            cout <<  temp << endl;
+        }
+        
+        int input = 0;
+        cout << "Choose a drink to remove: ";
+        cin >> input;
+        
+        for(int i = 0; i < bases.size(); i++){
+            if(input == i+1){
+                bases.erase(bases.begin() + i);
+            }
+        }
+        baseRepo.storeVectorOfBases(bases);
         cout << endl << "Size removed" << endl << endl;
         cout << "do you want to change another sizeb: y/n ";
         cin >> choice;

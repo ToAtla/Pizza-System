@@ -12,8 +12,9 @@ using namespace std;
 
 Order::Order(){
     numberOfPizzas = 0;
-    //TODO að gera þennan gæja tóman
-    //pizzaList =
+    location[0] = '\0';
+    totalPrice = 0;
+    verbose = true;
 }
 
 void Order::setVerbose(bool v){

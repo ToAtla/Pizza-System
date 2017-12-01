@@ -17,6 +17,7 @@
 #include "SideRepo.hpp"
 #include "DrinkRepo.hpp"
 #include "SizeRepo.hpp"
+#include "BaseRepo.hpp"
 #include <fstream>
 #include <iostream>
 
@@ -67,6 +68,12 @@ private:
     void addSize();
     void changeSize();
     void removeSize();
+    
+    void displayBaseMenu();
+    void displayAllBases();
+    void addBase();
+    void changeBase();
+    void removeBase();
 };
 
 #endif /* AdminUI_hpp */
