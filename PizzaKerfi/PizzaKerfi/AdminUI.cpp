@@ -10,6 +10,8 @@
 #include "ToppingRepo.hpp"
 #include "LocationRepo.hpp"
 #include "Location.hpp"
+#include "SideRepo.hpp"
+#include "DrinkRepo.hpp"
 #include <fstream>
 #include <iostream>
 
@@ -23,7 +25,8 @@ void AdminUI::startAdminUI(){
     while(input != 'b'){
         cout << "1: Add/change the topping list" << endl;
         cout << "2: Add/change the location list" << endl;
-        cout << "3: Add/change the drink or side list" << endl;
+        cout << "3: Add/change the side list" << endl;
+        cout << "4: Add/change the drink list" << endl;
         cout << "b: back" << endl;
         cin >> input;
         cout << endl;
@@ -32,10 +35,13 @@ void AdminUI::startAdminUI(){
             displayToppingMenu();
 
         }
-        if(input == '2'){
+        else if(input == '2'){
             displayLocationMenu();
         }
-        if(input == '3'){
+        else if(input == '3'){
+            displaySideMenu();
+        }
+        else if(input == '4'){
             
         }
     }
@@ -209,8 +215,8 @@ char input = '\0';
     }
 }
 
+//Prentar út lista yfir alla afhendingarstaði.
 void AdminUI::displayAllLocations(){
-       //Prentar út lista yfir öll álegg.
     LocationRepo locationRepo;
     vector<Location> locations = locationRepo.getVectorOfLocations();
     for (int i = 0; i < locations.size(); i++) {
@@ -307,4 +313,131 @@ void AdminUI::removeLocation(){
     }
     }
 
+}
+
+void AdminUI::displaySideMenu(){
+    char input = '\0';
+    while(input != 'b'){
+        cout << "1: List sides" << endl;
+        cout << "2: Change a side" << endl;
+        cout << "3: Add a side" << endl;
+        cout << "4: Remove a side" << endl;
+        cout << "b: back" << endl;
+        cin >> input;
+        cout << endl;
+        
+        if(input == '1'){
+            cout << endl << "-----List of all sides-----" << endl << endl;
+            displayAllSides();
+            cout << endl;
+        }
+        else if(input == '2'){
+            changeSide();
+        }
+        else if(input == '3'){
+            addLocation();
+        }
+        else if(input == '4'){
+            removeLocation();
+        }
+    }
+}
+
+void AdminUI::displayAllSides(){
+    SideRepo sideRepo;
+    vector<Side> sides = sideRepo.getVectorOfSides();
+    for (int i = 0; i < sides.size(); i++) {
+        Side temp = sides.at(i);
+        cout << temp << endl;
+    }
+}
+
+void AdminUI::addSide(){
+    char input = 'y';
+    
+    while(input == 'y'){
+        SideRepo sideRepo;
+        Side temp;
+        cin >> temp;
+        sideRepo.addSide(temp);
+        cout << endl << "Do you want to add another side? y/n" << endl;
+        cin >> input;
+        while(input != 'y' && input != 'n'){
+            cout << endl << "Please enter either 'y' or 'n' " << endl;
+            cin >> input;
+        }
+        cout << endl;
+    }
+}
+
+void AdminUI::changeSide(){
+    SideRepo sideRepo;
+    vector<Side> sides = sideRepo.getVectorOfSides();
+    cout << endl;
+    
+    char choice = 'y';
+    
+    while(choice == 'y')
+    {
+        for(int i = 0; i < sides.size(); i++){
+            Side temp = sides.at(i);
+            cout << "Side number: " << i+1 << endl;
+            cout <<  temp << endl;
+        }
+        int input = 0;
+        cout << "Choose a side to change: ";
+        cin >> input;
+        
+        for(int i = 0; i < sides.size(); i++){
+            if(input == i+1){
+                cin >> sides.at(i);
+            }
+        }
+        sideRepo.storeVectorOfSides(sides);
+        cout << endl << "Side changed" << endl << endl;
+        cout << "do you want to change another side: y/n ";
+        cin >> choice;
+        cout << endl;
+        while(choice != 'y' && choice != 'n'){
+            cout << "Please enter either 'y' or 'n' ";
+            cin >> choice;
+            cout << endl;
+        }
+    }
+}
+
+void AdminUI::removeSide(){
+    SideRepo sideRepo;
+    vector<Side> sides = sideRepo.getVectorOfSides();
+    cout << endl;
+    
+    char choice = 'y';
+    
+    while(choice == 'y'){
+        for(int i = 0; i < sides.size(); i++){
+            Side temp = sides.at(i);
+            cout << "Side number: " << i+1 << endl;
+            cout <<  temp << endl;
+        }
+        
+        int input = 0;
+        cout << "Choose a location to remove: ";
+        cin >> input;
+        
+        for(int i = 0; i < sides.size(); i++){
+            if(input == i+1){
+                sides.erase(sides.begin() + i);
+            }
+        }
+        sideRepo.storeVectorOfSides(sides);
+        cout << endl << "Side removed" << endl << endl;
+        cout << "do you want to change another Side: y/n ";
+        cin >> choice;
+        cout << endl;
+        while(choice != 'y' && choice != 'n'){
+            cout << "Please enter either 'y' or 'n' ";
+            cin >> choice;
+            cout << endl;
+        }
+    }
 }

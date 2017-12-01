@@ -25,7 +25,6 @@ void SideRepo::addSide(Side& side){
 
 //Skilar vector af öllum meðlætum sem eru í "sides.txt"
 vector<Side> SideRepo::getVectorOfSides(){
-    
     vector<Side> sides;
     ifstream fin;
     fin.open("sides.txt");

@@ -28,7 +28,7 @@ vector<Drink> DrinkRepo::getVectorOfDrinks(){
     
     vector<Drink> drinks;
     ifstream fin;
-    fin.open("sides.txt");
+    fin.open("drinks.txt");
     while(!fin.eof()){
         Drink temp;
         temp.setVerbose(false);

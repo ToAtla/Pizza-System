@@ -24,9 +24,9 @@ public:
     void startAdminUI();
 
 private:
-    void displayToppingMenu();
     //Prentar út valmynd sem býður notandanum uppá að velja það sem hann vill gera með topping listann.
-
+    void displayToppingMenu();
+    
 
     //Sub menu undir Topping
     void displayAllToppings();
@@ -44,7 +44,12 @@ private:
     void changeLocation();
     void removeLocation();
 
-
+    
+    void displaySideMenu();
+    void displayAllSides();
+    void addSide();
+    void changeSide();
+    void removeSide();
 
 };
 
