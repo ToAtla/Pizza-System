@@ -8,6 +8,7 @@
 
 #include "MainUI.hpp"
 #include "AdminUI.hpp"
+#include "SalesUI.hpp"
 #include "LocationRepo.hpp"
 #include "Location.hpp"
 #include <stdlib.h>
@@ -33,8 +34,6 @@ void MainUI::startUI(){
             adminUI.startAdminUI();
         }
         else if(input == '2'){
-            branchLocation();
-
         }
         else if(input == '3'){
             branchLocation();
@@ -51,7 +50,7 @@ void MainUI::startUI(){
 void MainUI::branchLocation(){
 
     //A EFTIR AD KLARA!!
-    cout << endl <<  "-----Choose your location-----" << endl;
+    cout << endl <<  "-----Locations-----" << endl;
     LocationRepo locationRepo;
     vector<Location> locations = locationRepo.getVectorOfLocations();
     cout << endl;
@@ -62,7 +61,7 @@ void MainUI::branchLocation(){
             cout <<  temp << endl;
         }
         int input = 0;
-        cout << "Choose a location to change: ";
+        cout << "Choose a location: ";
         cin >> input;
         
         for(int i = 0; i < locations.size(); i++){
