@@ -30,8 +30,8 @@ private:
     Pizza pizzaList[MAXPIZZASINORDER];
     char location[MAXCHARINLOCATION];
     int numberOfPizzas;
-    bool verbose;
     int totalPrice;
+    bool verbose = false;
 };
 
 #endif /* Order_hpp */

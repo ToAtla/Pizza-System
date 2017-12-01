@@ -7,15 +7,7 @@
 //
 
 #include "AdminUI.hpp"
-#include "ToppingRepo.hpp"
-#include "LocationRepo.hpp"
-#include "Location.hpp"
-#include "SideRepo.hpp"
-#include "DrinkRepo.hpp"
-#include <fstream>
-#include <iostream>
 
-using namespace std;
 
 
 //Prentar út valmynd sem býður notandanum að velja það sem hann vill fikta í.

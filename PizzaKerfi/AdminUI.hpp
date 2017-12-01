@@ -12,9 +12,12 @@
 #include <stdio.h>
 #include <iostream>
 #include "ToppingRepo.hpp"
-#include "Topping.hpp"
-#include "Location.hpp"
 #include "LocationRepo.hpp"
+#include "Location.hpp"
+#include "SideRepo.hpp"
+#include "DrinkRepo.hpp"
+#include <fstream>
+#include <iostream>
 
 using namespace std;
 
