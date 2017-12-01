@@ -26,7 +26,7 @@ void AdminUI::startAdminUI(){
         cout << "1: Add/change the topping list" << endl;
         cout << "2: Add/change the location list" << endl;
         cout << "3: Add/change the side list" << endl;
-        cout << "4: Add/change the drink list" << endl;
+        cout << "4: Add/change the drink list BROKEN" << endl;
         cout << "b: back" << endl;
         cin >> input;
         cout << endl;
@@ -42,7 +42,7 @@ void AdminUI::startAdminUI(){
             displaySideMenu();
         }
         else if(input == '4'){
-            
+            displayDrinkMenu();
         }
     }
 }
@@ -303,7 +303,7 @@ void AdminUI::removeLocation(){
     }
     locationRepo.storeVectorOfLocations(locations);
     cout << endl << "Location removed" << endl << endl;
-    cout << "do you want to change another Location: y/n ";
+    cout << "do you want to change another location: y/n ";
     cin >> choice;
     cout << endl;
     while(choice != 'y' && choice != 'n'){
@@ -343,6 +343,7 @@ void AdminUI::displaySideMenu(){
     }
 }
 
+
 void AdminUI::displayAllSides(){
     SideRepo sideRepo;
     vector<Side> sides = sideRepo.getVectorOfSides();
@@ -351,6 +352,7 @@ void AdminUI::displayAllSides(){
         cout << temp << endl;
     }
 }
+
 
 void AdminUI::addSide(){
     char input = 'y';
@@ -369,6 +371,7 @@ void AdminUI::addSide(){
         cout << endl;
     }
 }
+
 
 void AdminUI::changeSide(){
     SideRepo sideRepo;
@@ -406,6 +409,7 @@ void AdminUI::changeSide(){
     }
 }
 
+
 void AdminUI::removeSide(){
     SideRepo sideRepo;
     vector<Side> sides = sideRepo.getVectorOfSides();
@@ -421,7 +425,7 @@ void AdminUI::removeSide(){
         }
         
         int input = 0;
-        cout << "Choose a location to remove: ";
+        cout << "Choose a side to remove: ";
         cin >> input;
         
         for(int i = 0; i < sides.size(); i++){
@@ -431,7 +435,136 @@ void AdminUI::removeSide(){
         }
         sideRepo.storeVectorOfSides(sides);
         cout << endl << "Side removed" << endl << endl;
-        cout << "do you want to change another Side: y/n ";
+        cout << "Do you want to change another side: y/n ";
+        cin >> choice;
+        cout << endl;
+        while(choice != 'y' && choice != 'n'){
+            cout << "Please enter either 'y' or 'n' ";
+            cin >> choice;
+            cout << endl;
+        }
+    }
+}
+
+
+void AdminUI::displayDrinkMenu(){
+    char input = '\0';
+    while(input != 'b'){
+        cout << "1: List drinks" << endl;
+        cout << "2: Change a drink" << endl;
+        cout << "3: Add a drink" << endl;
+        cout << "4: Remove a drink" << endl;
+        cout << "b: back" << endl;
+        cin >> input;
+        cout << endl;
+        
+        if(input == '1'){
+            cout << endl << "-----List of all drinks-----" << endl << endl;
+            displayAllDrinks();
+            cout << endl;
+        }
+        else if(input == '2'){
+            changeDrink();
+        }
+        else if(input == '3'){
+            addDrink();
+        }
+        else if(input == '4'){
+            removeDrink();
+        }
+    }
+}
+
+void AdminUI::displayAllDrinks(){
+    DrinkRepo drinkRepo;
+    vector<Drink> drinks = drinkRepo.getVectorOfDrinks();
+    for (int i = 0; i < drinks.size(); i++) {
+        Drink temp = drinks.at(i);
+        cout << temp << endl;
+    }
+}
+
+void AdminUI::changeDrink(){
+    DrinkRepo drinkRepo;
+    vector<Drink> drinks = drinkRepo.getVectorOfDrinks();
+    cout << endl;
+    
+    char choice = 'y';
+    
+    while(choice == 'y')
+    {
+        for(int i = 0; i < drinks.size(); i++){
+            Drink temp = drinks.at(i);
+            cout << "Drink number: " << i+1 << endl;
+            cout <<  temp << endl;
+        }
+        int input = 0;
+        cout << "Choose a drink to change: ";
+        cin >> input;
+        
+        for(int i = 0; i < drinks.size(); i++){
+            if(input == i+1){
+                cin >> drinks.at(i);
+            }
+        }
+        drinkRepo.storeVectorOfDrinks(drinks);
+        cout << endl << "Drink changed" << endl << endl;
+        cout << "Do you want to change another drink: y/n ";
+        cin >> choice;
+        cout << endl;
+        while(choice != 'y' && choice != 'n'){
+            cout << "Please enter either 'y' or 'n' ";
+            cin >> choice;
+            cout << endl;
+        }
+    }
+}
+
+void AdminUI::addDrink(){
+    char input = 'y';
+    
+    while(input == 'y'){
+        DrinkRepo drinkRepo;
+        Drink temp;
+        cin >> temp;
+        drinkRepo.addDrink(temp);
+        cout << endl << "Do you want to add another drink? y/n" << endl;
+        cin >> input;
+        while(input != 'y' && input != 'n'){
+            cout << endl << "Please enter either 'y' or 'n' " << endl;
+            cin >> input;
+        }
+        cout << endl;
+    }
+}
+
+
+void AdminUI::removeDrink(){
+    DrinkRepo drinkRepo;
+    vector<Drink> drinks = drinkRepo.getVectorOfDrinks();
+    cout << endl;
+    
+    char choice = 'y';
+    
+    while(choice == 'y'){
+        for(int i = 0; i < drinks.size(); i++){
+            Drink temp = drinks.at(i);
+            cout << "Drink number: " << i+1 << endl;
+            cout <<  temp << endl;
+        }
+        
+        int input = 0;
+        cout << "Choose a drink to remove: ";
+        cin >> input;
+        
+        for(int i = 0; i < drinks.size(); i++){
+            if(input == i+1){
+                drinks.erase(drinks.begin() + i);
+            }
+        }
+        drinkRepo.storeVectorOfDrinks(drinks);
+        cout << endl << "Drink removed" << endl << endl;
+        cout << "do you want to change another drink: y/n ";
         cin >> choice;
         cout << endl;
         while(choice != 'y' && choice != 'n'){

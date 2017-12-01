@@ -51,6 +51,12 @@ private:
     void changeSide();
     void removeSide();
 
+    
+    void displayDrinkMenu();
+    void displayAllDrinks();
+    void addDrink();
+    void changeDrink();
+    void removeDrink();
 };
 
 #endif /* AdminUI_hpp */
