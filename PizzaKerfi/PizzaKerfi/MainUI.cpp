@@ -8,6 +8,8 @@
 
 #include "MainUI.hpp"
 #include "AdminUI.hpp"
+#include "LocationRepo.hpp"
+#include "Location.hpp"
 #include <stdlib.h>
 
 void MainUI::startUI(){
@@ -48,7 +50,25 @@ void MainUI::startUI(){
 
 void MainUI::branchLocation(){
 
-//A EFTIR AD KLARA!!
-cout << "Choose your location: " << endl;
-
+    //A EFTIR AD KLARA!!
+    cout << endl <<  "-----Choose your location-----" << endl;
+    LocationRepo locationRepo;
+    vector<Location> locations = locationRepo.getVectorOfLocations();
+    cout << endl;
+    
+        for(int i = 0; i < locations.size(); i++){
+            Location temp = locations.at(i);
+            cout << "Location number: " << i+1 << endl;
+            cout <<  temp << endl;
+        }
+        int input = 0;
+        cout << "Choose a location to change: ";
+        cin >> input;
+        
+        for(int i = 0; i < locations.size(); i++){
+            if(input == i+1){
+                
+            }
+        }
+    
 }
