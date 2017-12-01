@@ -14,6 +14,7 @@
 #include "Pizza.hpp"
 
 const int MAXPIZZASINORDER = 50;
+const int MAXCHARINLOCATION = 30;
 
 using namespace std;
 
@@ -27,6 +28,7 @@ public:
 private:
     //Þetta er dýnamískt því fjöldi pizza í einni pöntun er breytilegur
     Pizza pizzaList[MAXPIZZASINORDER];
+    char location[MAXCHARINLOCATION];
     int numberOfPizzas;
     bool verbose;
     int totalPrice;
