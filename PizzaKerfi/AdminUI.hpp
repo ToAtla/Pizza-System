@@ -16,6 +16,7 @@
 #include "Location.hpp"
 #include "SideRepo.hpp"
 #include "DrinkRepo.hpp"
+#include "SizeRepo.hpp"
 #include <fstream>
 #include <iostream>
 
@@ -60,6 +61,12 @@ private:
     void addDrink();
     void changeDrink();
     void removeDrink();
+    
+    void displaySizeMenu();
+    void displayAllSizes();
+    void addSize();
+    void changeSize();
+    void removeSize();
 };
 
 #endif /* AdminUI_hpp */

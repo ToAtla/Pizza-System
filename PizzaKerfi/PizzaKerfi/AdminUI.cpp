@@ -18,7 +18,8 @@ void AdminUI::startAdminUI(){
         cout << "1: Add/change the topping list" << endl;
         cout << "2: Add/change the location list" << endl;
         cout << "3: Add/change the side list" << endl;
-        cout << "4: Add/change the drink list BROKEN" << endl;
+        cout << "4: Add/change the drink list" << endl;
+        cout << "5: Add/change the size list" << endl;
         cout << "b: back" << endl;
         cin >> input;
         cout << endl;
@@ -35,6 +36,9 @@ void AdminUI::startAdminUI(){
         }
         else if(input == '4'){
             displayDrinkMenu();
+        }
+        else if(input == '5'){
+            displaySizeMenu();
         }
     }
 }
@@ -557,6 +561,138 @@ void AdminUI::removeDrink(){
         drinkRepo.storeVectorOfDrinks(drinks);
         cout << endl << "Drink removed" << endl << endl;
         cout << "do you want to change another drink: y/n ";
+        cin >> choice;
+        cout << endl;
+        while(choice != 'y' && choice != 'n'){
+            cout << "Please enter either 'y' or 'n' ";
+            cin >> choice;
+            cout << endl;
+        }
+    }
+}
+
+
+
+void AdminUI::displaySizeMenu(){
+    char input = '\0';
+    while(input != 'b'){
+        cout << "1: List sizes" << endl;
+        cout << "2: Change a size" << endl;
+        cout << "3: Add a size" << endl;
+        cout << "4: Remove a size" << endl;
+        cout << "b: back" << endl;
+        cin >> input;
+        cout << endl;
+        
+        if(input == '1'){
+            cout << endl << "-----List of all sizes-----" << endl << endl;
+            displayAllSizes();
+            cout << endl;
+        }
+        else if(input == '2'){
+            changeSize();
+        }
+        else if(input == '3'){
+            addSize();
+        }
+        else if(input == '4'){
+            removeSize();
+        }
+    }
+}
+
+void AdminUI::displayAllSizes(){
+    SizeRepo sizeRepo;
+    vector<Size> sizes = sizeRepo.getVectorOfSizes();
+    for (int i = 0; i < sizes.size(); i++) {
+        Size temp = sizes.at(i);
+        cout << temp << endl;
+    }
+}
+
+
+void AdminUI::changeSize(){
+    SizeRepo sizeRepo;
+    vector<Size> sizes = sizeRepo.getVectorOfSizes();
+    cout << endl;
+    
+    char choice = 'y';
+    
+    while(choice == 'y')
+    {
+        for(int i = 0; i < sizes.size(); i++){
+            Size temp = sizes.at(i);
+            cout << "Size number: " << i+1 << endl;
+            cout <<  temp << endl;
+        }
+        int input = 0;
+        cout << "Choose a size to change: ";
+        cin >> input;
+        
+        for(int i = 0; i < sizes.size(); i++){
+            if(input == i+1){
+                cin >> sizes.at(i);
+            }
+        }
+        sizeRepo.storeVectorOfSizes(sizes);
+        cout << endl << "Size changed" << endl << endl;
+        cout << "Do you want to change another size: y/n ";
+        cin >> choice;
+        cout << endl;
+        while(choice != 'y' && choice != 'n'){
+            cout << "Please enter either 'y' or 'n' ";
+            cin >> choice;
+            cout << endl;
+        }
+    }
+}
+
+
+void AdminUI::addSize(){
+    char input = 'y';
+    
+    while(input == 'y'){
+        SizeRepo sizeRepo;
+        Size temp;
+        cin >> temp;
+        sizeRepo.addSize(temp);
+        cout << endl << "Do you want to add another size? y/n" << endl;
+        cin >> input;
+        while(input != 'y' && input != 'n'){
+            cout << endl << "Please enter either 'y' or 'n' " << endl;
+            cin >> input;
+        }
+        cout << endl;
+    }
+}
+
+
+void AdminUI::removeSize(){
+    SizeRepo sizeRepo;
+    vector<Size> sizes = sizeRepo.getVectorOfSizes();
+    cout << endl;
+    
+    char choice = 'y';
+    
+    while(choice == 'y'){
+        for(int i = 0; i < sizes.size(); i++){
+            Size temp = sizes.at(i);
+            cout << "Size number: " << i+1 << endl;
+            cout <<  temp << endl;
+        }
+        
+        int input = 0;
+        cout << "Choose a drink to remove: ";
+        cin >> input;
+        
+        for(int i = 0; i < sizes.size(); i++){
+            if(input == i+1){
+                sizes.erase(sizes.begin() + i);
+            }
+        }
+        sizeRepo.storeVectorOfSizes(sizes);
+        cout << endl << "Size removed" << endl << endl;
+        cout << "do you want to change another sizeb: y/n ";
         cin >> choice;
         cout << endl;
         while(choice != 'y' && choice != 'n'){

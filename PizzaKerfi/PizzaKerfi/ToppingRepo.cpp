@@ -45,7 +45,6 @@ Topping ToppingRepo::retrieveTopping(){
 //Skilar vector af öllum toppings sem eru í "toppings.txt"
 vector<Topping> ToppingRepo::getVectorOfToppings(){
     
-    //
     vector<Topping> toppings;
     ifstream fin;
     fin.open("toppings.txt");

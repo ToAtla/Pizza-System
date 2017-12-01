@@ -16,7 +16,7 @@ using namespace std;
 const int MAXCHARINLOC = 20;
 
 class Location{
-public:
+    public:
         Location();
         void setVerbose(bool v);
         string getLocation();
