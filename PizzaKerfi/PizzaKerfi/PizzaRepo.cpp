@@ -15,8 +15,9 @@ void PizzaRepo::storePizza(const Pizza& pizza){
     
     ofstream fout;
     
-    fout.open("pizzas.txt");
-    fout << pizza;
+    fout.open("pizzas.dat", ios::binary|ios::app);
+    
+    fout.write((char*)(&pizza), sizeof(Pizza));
     fout.close();
 }
 
@@ -25,9 +26,9 @@ using namespace std;
 Pizza PizzaRepo::retrievePizza(){
     
     ifstream fin;
-    Pizza temp;
-    fin.open("pizzas.txt");
-    fin >> temp;
+    Pizza returnPizza;
+    fin.open("pizzas.dat");
+    fin.read((char*)(&returnPizza), sizeof(Pizza));
     fin.close();
-    return temp;
+    return returnPizza;
 }

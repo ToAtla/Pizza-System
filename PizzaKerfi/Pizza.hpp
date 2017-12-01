@@ -16,12 +16,16 @@
 
 using namespace std;
 
+const int MAXTOPPINGSONPIZZA = 16;
+const int MAXCHARSINPIZZANAME = 100;
+const int MAXCHARSINPIZZASIZE = 3;
+
 class Pizza{
 
 public:
     
     Pizza();
-    Pizza(string inSize, vector<Topping> inToppings);
+    Pizza(char inSize[MAXCHARSINPIZZASIZE], Topping inToppings[], int toppingsToAdd);
     
     bool getVerbose();
     void setVerbose(bool v);
@@ -35,10 +39,11 @@ public:
     friend ostream& operator << (ostream& out, const Pizza&);
     friend istream& operator >> (istream& in, Pizza&);
 private:
-    string name;
+    char name[MAXCHARSINPIZZANAME];
     int price;
-    string size;
-    vector<Topping> toppings;
+    char size[MAXCHARSINPIZZASIZE];
+    Topping toppings[MAXTOPPINGSONPIZZA];
+    int toppingCount;
     bool verbose = true;
 };
 #endif /* Pizza_hpp */

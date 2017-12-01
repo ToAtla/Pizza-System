@@ -6,25 +6,34 @@
 //  Copyright © 2017 Þórður Atlason. All rights reserved.
 //
 
+#include <stdio.h>
 #include "Pizza.hpp"
 #include <iostream>
+#include <cstring>
+#include <string>
+
+using namespace std;
 const int BASICCOST = 1000;
 
 using namespace std;
 
 Pizza::Pizza(){
-    name = "Margarita";
+    
+    strcpy(name, "Margarita");
     price = BASICCOST;
 }
 
-Pizza::Pizza(string inSize, vector<Topping> inToppings){
-    name = inSize;
-    price = BASICCOST;
-    for (int i = 0; i < inToppings.size(); i++) {
-        name = name + inToppings.at(i).getName() + " ";
-        price += inToppings.at(i).getPrice();
+Pizza::Pizza(char inSize[MAXCHARSINPIZZASIZE], Topping inToppings[], int toppingsToAdd){
+    strcpy(size, inSize);
+    price = 9999;
+    if(toppingsToAdd > MAXTOPPINGSONPIZZA){
+        cout << "Error: Topping amount exceeds max allowed number of toppings" << endl;
+    }else{
+        for (int i = 0; i < toppingsToAdd; i++) {
+            inToppings[i] = toppings[i];
+        }
+        toppingCount = toppingsToAdd;
     }
-    size = inSize;
 }
 
 /*
@@ -55,6 +64,7 @@ ostream& operator << (ostream& out, const Pizza& pizza){
 }
 
 istream& operator >> (istream& in, Pizza& pizza){
+    /*
     if(pizza.verbose){
         cout << "Enter Size: ";
         in >> pizza.size;
@@ -69,5 +79,7 @@ istream& operator >> (istream& in, Pizza& pizza){
         in >> pizza.size;
         in >> pizza.name;
     }
+     */
+    
     return in;
 }
