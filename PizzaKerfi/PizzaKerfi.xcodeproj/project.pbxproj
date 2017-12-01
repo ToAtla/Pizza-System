@@ -94,7 +94,6 @@
 			children = (
 				7BDA6A5C1FCDC2F200247376 /* PizzaKerfi */,
 				7BDA6A5B1FCDC2F200247376 /* Products */,
-				7B97BCF11FCF368D00A24411 /* Location.hpp */,
 				7B9F681E1FCF0079006C9167 /* PizzaRepo.hpp */,
 				E974CD081FCF28520005D0F9 /* OrderRepo.hpp */,
 				7B22C0A51FD012330055EE3D /* LocationRepo.hpp */,
@@ -103,6 +102,7 @@
 				E974CD2D1FD0B2390005D0F9 /* DrinkRepo.hpp */,
 				E974CD211FD087B40005D0F9 /* Side.hpp */,
 				E974CD271FD097560005D0F9 /* Drink.hpp */,
+				7B97BCF11FCF368D00A24411 /* Location.hpp */,
 				7BECD2B41FCDCE6400A0384A /* Topping.hpp */,
 				7BECD2B71FCDCE8100A0384A /* Order.hpp */,
 				7BECD2B11FCDCC1600A0384A /* Pizza.hpp */,

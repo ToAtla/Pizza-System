@@ -30,7 +30,7 @@ void AdminUI::startAdminUI(){
         cout << "b: back" << endl;
         cin >> input;
         cout << endl;
-
+        
         if(input == '1'){
             displayToppingMenu();
 
