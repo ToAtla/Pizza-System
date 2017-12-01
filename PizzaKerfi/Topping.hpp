@@ -23,7 +23,7 @@ public:
     int getPrice();
     void setPrice(int inPrice);
     void setVerbose(bool v);
-    string getName();
+    char* getName();
     void setName(char inName[]);
     friend istream& operator >> (istream& in, Topping& topping);
     friend ostream& operator << (ostream& out, const Topping& topping);

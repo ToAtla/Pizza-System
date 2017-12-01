@@ -26,6 +26,7 @@ Pizza::Pizza(string inSize, vector<Topping> inToppings){
     }
     size = inSize;
 }
+
 /*
 string Pizza::getName(){
     return name;

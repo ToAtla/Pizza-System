@@ -15,15 +15,13 @@
 
 using namespace std;
 
-/*
- Skjalid toppings.txt er hardkodad.
- Viljum vid breyta tvi?
- */
+//Færibreytulaus smiður.
 ToppingRepo::ToppingRepo(){
     
 }
-void ToppingRepo::storeTopping(Topping& topping){
-    
+
+//Bætir breytu af taginu topping inní textaskránna "toppings.txt"
+void ToppingRepo::addTopping(Topping& topping){
     ofstream fout;
     fout.open("toppings.txt", ios::app);
     topping.setVerbose(false);
@@ -32,8 +30,8 @@ void ToppingRepo::storeTopping(Topping& topping){
     topping.setVerbose(true);
 }
 
+//Skilar fyrsta alegginu út textaskránni.
 Topping ToppingRepo::retrieveTopping(){
-    
     ifstream fin;
     Topping temp;
     fin.open("toppings.txt");
@@ -44,7 +42,10 @@ Topping ToppingRepo::retrieveTopping(){
     return temp;
 }
 
+//Skilar vector af öllum toppings sem eru í "toppings.txt"
 vector<Topping> ToppingRepo::getVectorOfToppings(){
+    
+    //
     vector<Topping> toppings;
     ifstream fin;
     fin.open("toppings.txt");
@@ -59,18 +60,26 @@ vector<Topping> ToppingRepo::getVectorOfToppings(){
     return toppings;
 }
 
+//Byrjar á því að tæma textaskránna "toppings.txt"
+//Tekur inn vector af toppings og setur það inn í textaskránna.
 void ToppingRepo::storeVectorOfToppings(vector<Topping> toppings){
     
+    clearToppings();
+
     ofstream fout;
-    
-    fout.open("toppings.txt");
-    fout.close();
-    
     fout.open("toppings.txt");
     for(int i = 0; i < toppings.size(); i++){
         toppings[i].setVerbose(false);
         fout << toppings[i];
     }
     fout.close();
-    
+}
+
+
+//Tæmir textaskránna "toppings.txt"
+void ToppingRepo::clearToppings()
+{
+    ofstream fout;
+    fout.open("toppings.txt");
+    fout.close();
 }

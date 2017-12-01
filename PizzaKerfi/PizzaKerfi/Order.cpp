@@ -11,7 +11,7 @@
 using namespace std;
 
 Order::Order(){
-    linesInOrder = 0;
+    numberOfPizzas = 0;
     //TODO að gera þennan gæja tóman
     //pizzaList =
 }
@@ -28,9 +28,9 @@ istream& operator >> (istream& in, Order& order){
         cout << "Enter number of pizzas to add to order: ";
         
     }
-    in >> order.linesInOrder;
-    order.pizzaList = new Pizza[order.linesInOrder];
-    for (int i = 0; i < order.linesInOrder; i++) {
+    in >> order.numberOfPizzas;
+    
+    for (int i = 0; i < order.numberOfPizzas; i++) {
         //order.pizzaList[i] = Pizza();
         //order.pizzaList[i].setVerbose(order.verbose);
         in >> order.pizzaList[i];
@@ -43,10 +43,10 @@ istream& operator >> (istream& in, Order& order){
 
 ostream& operator << (ostream& out, const Order& order){
     if(order.verbose){
-        cout << "Number of pizzas in order: " << order.linesInOrder << endl;
+        cout << "Number of pizzas in order: " << order.numberOfPizzas << endl;
         
     }
-    for (int i = 0; i < order.linesInOrder; i++) {
+    for (int i = 0; i < order.numberOfPizzas; i++) {
         //order.pizzaList[i] = Pizza();
         //order.pizzaList[i].setVerbose(order.verbose);
         out << order.pizzaList[i];
