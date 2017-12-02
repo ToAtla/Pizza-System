@@ -57,20 +57,8 @@ void Pizza::setPrice(int inPrice){
 }
 */
 
-ostream& operator << (ostream& out, const Pizza& pizza){
-    if(pizza.verbose){
-        out << "Name: " << pizza.name << endl;
-        out << "Price: " << pizza.price << endl;
-    }else{
-        out << pizza.name << endl;
-        out << pizza.price << endl;
-    }
-    return out;
-}
-
-//Það á eftir að bæta meira við!
-//Leyfir notandanum að velja af lista botn pizzunar og stærð hennar.
-istream& operator >> (istream& in, Pizza& pizza){
+//Fall sem gefur notandanum kleift á því að velja botn fyrir pizzu tilvik.
+void Pizza::chooseBase(){
     Base baseForPizza;
     Size sizaForPizza;
     
@@ -91,8 +79,27 @@ istream& operator >> (istream& in, Pizza& pizza){
         }
     }
     
-    pizza.baseOfPizza.setName(baseForPizza.getName());
-    pizza.baseOfPizza.setPrice(baseForPizza.getPrice());
+    baseOfPizza.setName(baseForPizza.getName());
+    baseOfPizza.setPrice(baseForPizza.getPrice());
+}
+
+
+ostream& operator << (ostream& out, const Pizza& pizza){
+    if(pizza.verbose){
+        out << "Name: " << pizza.name << endl;
+        out << "Price: " << pizza.price << endl;
+    }else{
+        out << pizza.name << endl;
+        out << pizza.price << endl;
+    }
+    return out;
+}
+
+//Það á eftir að bæta meira við!
+//Leyfir notandanum að velja af lista botn pizzunar og stærð hennar.
+istream& operator >> (istream& in, Pizza& pizza){
+    
+    pizza.chooseBase();
     
     
     return in;

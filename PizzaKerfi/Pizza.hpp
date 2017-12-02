@@ -38,6 +38,7 @@ public:
     int getPrice();
     void setPrice(int inPrice);
     */
+    void chooseBase();
     friend ostream& operator << (ostream& out, const Pizza&);
     friend istream& operator >> (istream& in, Pizza&);
 private:
