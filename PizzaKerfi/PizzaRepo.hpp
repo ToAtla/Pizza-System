@@ -16,6 +16,7 @@ class PizzaRepo {
     public:
         void storePizza(const Pizza& pizza);
         Pizza retrievePizza();
+        Pizza* retrievePizzaArray();
     private:
 };
 

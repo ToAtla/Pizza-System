@@ -17,10 +17,11 @@
 #include "Base.hpp"
 
 using namespace std;
-
+//MUNA AÐ SKILJA EFTIR PLÁSS FYRIR NULLCHARACTER Í LOKIN 
 const int MAXTOPPINGSONPIZZA = 16;
 const int MAXCHARSINPIZZANAME = 100;
-const int MAXCHARSINPIZZASIZE = 3;
+const int MAXCHARSINPIZZASIZE = 4;
+const int MAXPIZZASINPIZZAFILE = 20;
 
 class Pizza{
 
@@ -31,13 +32,13 @@ class Pizza{
         
         bool getVerbose();
         void setVerbose(bool v);
-        /*
+        
         string getName();
         void setName(string inName);
 
         int getPrice();
         void setPrice(int inPrice);
-        */
+        
         void chooseBase();
         void chooseSize();
         friend ostream& operator << (ostream& out, const Pizza&);

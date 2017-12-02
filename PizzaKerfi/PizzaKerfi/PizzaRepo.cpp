@@ -16,7 +16,6 @@ void PizzaRepo::storePizza(const Pizza& pizza){
     ofstream fout;
     
     fout.open("pizzas.dat", ios::binary|ios::app);
-    
     fout.write((char*)(&pizza), sizeof(Pizza));
     fout.close();
 }
@@ -32,3 +31,16 @@ Pizza PizzaRepo::retrievePizza(){
     fin.close();
     return returnPizza;
 }
+
+Pizza* PizzaRepo::retrievePizzaArray(){
+    Pizza pizzas[MAXPIZZASINPIZZAFILE];
+    ifstream fin;
+    fin.open("pizzas.dat");
+    fin.seekg(0, fin.end);
+    int pizzaCount = fin.tellg()/sizeof(Pizza);
+    fin.seekg(0, fin.beg);
+    fin.read((char*)(pizzas), sizeof(Pizza)*pizzaCount);
+    fin.close();
+    return pizzas;
+};
+

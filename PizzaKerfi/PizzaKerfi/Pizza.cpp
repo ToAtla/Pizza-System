@@ -41,12 +41,12 @@ Pizza::Pizza(char inSize[MAXCHARSINPIZZASIZE], Topping inToppings[], int topping
     }
 }
 
-/*
+
 string Pizza::getName(){
     return name;
 }
 void Pizza::setName(string inName){
-    name = inName;
+    strcpy(name, inName);
 }
 
 int Pizza::getPrice(){
@@ -55,7 +55,7 @@ int Pizza::getPrice(){
 void Pizza::setPrice(int inPrice){
     price = inPrice;
 }
-*/
+
 
 //Fall sem gefur notandanum kleift á því að velja botn fyrir pizzu tilvik.
 void Pizza::chooseBase(){
@@ -112,6 +112,7 @@ void Pizza::chooseSize(){
 
 
 ostream& operator << (ostream& out, const Pizza& pizza){
+    
     if(pizza.verbose){
         out << "Name: " << pizza.name << endl;
         out << "Price: " << pizza.price << endl;
@@ -126,8 +127,24 @@ ostream& operator << (ostream& out, const Pizza& pizza){
 //Leyfir notandanum að velja af lista botn pizzunar og stærð hennar.
 istream& operator >> (istream& in, Pizza& pizza){
     
-    pizza.chooseSize();
-    pizza.chooseBase();
+    //pizza.chooseSize();
+    //pizza.chooseBase();
     
+    
+    /*
+     Bráðabirgða kóði til að sjá hvort það virki að lesa pizzur í og úr skrám
+     
+    */
+    
+    Topping topping;
+    cin >> topping;
+    Topping toppings[1];
+    toppings[0] = topping;
+    char size[MAXCHARINSIZE] = "ST0";
+    pizza = Pizza(size, toppings, 1);
+    string str;
+    strcpy(strcpy, topping.getName());
+    pizza.setName("Pizza with: " + str);
     return in;
 }
+
