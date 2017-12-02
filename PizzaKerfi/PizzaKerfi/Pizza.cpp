@@ -60,7 +60,6 @@ void Pizza::setPrice(int inPrice){
 //Fall sem gefur notandanum kleift á því að velja botn fyrir pizzu tilvik.
 void Pizza::chooseBase(){
     Base baseForPizza;
-    Size sizaForPizza;
     
     cout << endl << "-----List of available bases-----" << endl;
     BaseRepo baseRepo;
@@ -71,7 +70,7 @@ void Pizza::chooseBase(){
         cout << temp << endl;
     }
     int input = 0;
-    cout << "Please choose a base for you pizza:" << endl;
+    cout << "Please choose a base for you pizza:";
     cin >> input;
     for(int i = 0; i < bases.size(); i++){
         if(input == i+1){
@@ -81,6 +80,34 @@ void Pizza::chooseBase(){
     
     baseOfPizza.setName(baseForPizza.getName());
     baseOfPizza.setPrice(baseForPizza.getPrice());
+    price += baseForPizza.getPrice();
+}
+
+
+//Fall sem gefur notandanum kleift á því að velja botn fyrir pizzu tilvik.
+void Pizza::chooseSize(){
+    Size sizeForPizza;
+    
+    cout << endl << "-----List of available sizes-----" << endl;
+    SizeRepo sizeRepo;
+    vector<Size> sizes = sizeRepo.getVectorOfSizes();
+    for(int i = 0; i < sizes.size(); i++){
+        Size temp = sizes.at(i);
+        cout << "Base number " << i+1 << endl;
+        cout << temp << endl;
+    }
+    int input = 0;
+    cout << "Please choose a size for you pizza:";
+    cin >> input;
+    for(int i = 0; i < sizes.size(); i++){
+        if(input == i+1){
+            sizeForPizza = sizes.at(i);
+        }
+    }
+    
+    sizeOfPizza.setName(sizeForPizza.getName());
+    sizeOfPizza.setPrice(sizeForPizza.getPrice());
+    price += sizeForPizza.getPrice();
 }
 
 
@@ -99,8 +126,8 @@ ostream& operator << (ostream& out, const Pizza& pizza){
 //Leyfir notandanum að velja af lista botn pizzunar og stærð hennar.
 istream& operator >> (istream& in, Pizza& pizza){
     
+    pizza.chooseSize();
     pizza.chooseBase();
-    
     
     return in;
 }

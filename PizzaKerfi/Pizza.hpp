@@ -39,6 +39,7 @@ class Pizza{
         void setPrice(int inPrice);
         */
         void chooseBase();
+        void chooseSize();
         friend ostream& operator << (ostream& out, const Pizza&);
         friend istream& operator >> (istream& in, Pizza&);
     private:

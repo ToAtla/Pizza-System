@@ -19,11 +19,11 @@ void MainUI::startUI(){
     
     char input = '\0';
     while(input != 'q')
-    {   cout << " ---------------" << endl;
-        cout << "|1: Manager     |" << endl;
-        cout << "|2: Sales       |" << endl;
-        cout << "|3: Prep        |" << endl;
-        cout << "|4: Delivery    |" << endl;
+    {   cout << " -------------------------------" << endl;
+        cout << "|1: Manager     |2: Sales       |" << endl;
+        cout << " -------------------------------" << endl;
+        cout << "|3: Prep        |4: Delivery    |" << endl;
+        cout << " -------------------------------" << endl;
         cout << "|q: quit        |" << endl;
         cout << " ---------------" << endl;
         cin >> input;
