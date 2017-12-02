@@ -23,10 +23,9 @@ class Location{
         void setName(char inName[]);
         friend istream& operator >> (istream& in, Location& Location);
         friend ostream& operator << (ostream& out, const Location& Location);
-
-private:
-    char name[MAXCHARINLOC];
-    bool verbose = true;
+    private:
+        char name[MAXCHARINLOC];
+        bool verbose = true;
 };
 
 #endif /* Location_hpp */

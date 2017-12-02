@@ -25,55 +25,55 @@ using namespace std;
 
 class AdminUI{
 
-public:
-    void startAdminUI();
+    public:
+        void startAdminUI();
 
-private:
-    //Prentar út valmynd sem býður notandanum uppá að velja það sem hann vill gera með topping listann.
-    void displayToppingMenu();
-    
+    private:
+        //Prentar út valmynd sem býður notandanum uppá að velja það sem hann vill gera með topping listann.
+        void displayToppingMenu();
+        
 
-    //Sub menu undir Topping
-    void displayAllToppings();
-    //Prentar út lista yfir öll álegg.
-    void addTopping();
-    //Bætir við áleggi á listann.
-    void changeTopping();
-    //Gerir notandanum kleift að velja alegg af listanum og nafninu og verðinu á því.
-    void removeTopping();
-    //Gerir notandanum kleift að velja álegg af listanum og eyða því.
+        //Sub menu undir Topping
+        void displayAllToppings();
+        //Prentar út lista yfir öll álegg.
+        void addTopping();
+        //Bætir við áleggi á listann.
+        void changeTopping();
+        //Gerir notandanum kleift að velja alegg af listanum og nafninu og verðinu á því.
+        void removeTopping();
+        //Gerir notandanum kleift að velja álegg af listanum og eyða því.
 
-    void displayLocationMenu();
-    void displayAllLocations();
-    void addLocation();
-    void changeLocation();
-    void removeLocation();
+        void displayLocationMenu();
+        void displayAllLocations();
+        void addLocation();
+        void changeLocation();
+        void removeLocation();
 
-    
-    void displaySideMenu();
-    void displayAllSides();
-    void addSide();
-    void changeSide();
-    void removeSide();
+        
+        void displaySideMenu();
+        void displayAllSides();
+        void addSide();
+        void changeSide();
+        void removeSide();
 
-    
-    void displayDrinkMenu();
-    void displayAllDrinks();
-    void addDrink();
-    void changeDrink();
-    void removeDrink();
-    
-    void displaySizeMenu();
-    void displayAllSizes();
-    void addSize();
-    void changeSize();
-    void removeSize();
-    
-    void displayBaseMenu();
-    void displayAllBases();
-    void addBase();
-    void changeBase();
-    void removeBase();
+        
+        void displayDrinkMenu();
+        void displayAllDrinks();
+        void addDrink();
+        void changeDrink();
+        void removeDrink();
+        
+        void displaySizeMenu();
+        void displayAllSizes();
+        void addSize();
+        void changeSize();
+        void removeSize();
+        
+        void displayBaseMenu();
+        void displayAllBases();
+        void addBase();
+        void changeBase();
+        void removeBase();
 };
 
 #endif /* AdminUI_hpp */

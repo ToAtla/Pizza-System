@@ -19,15 +19,15 @@ using namespace std;
 
 class LocationRepo{
 
-public:
-    LocationRepo();
-    void displayLocations();
-    vector<Location>getVectorOfLocations();
-    void storeVectorOfLocations(vector<Location> locations);
-    void storeLocation(Location& location);
+    public:
+        LocationRepo();
+        void displayLocations();
+        vector<Location>getVectorOfLocations();
+        void storeVectorOfLocations(vector<Location> locations);
+        void storeLocation(Location& location);
 
-private:
-    void clearLocations();
+    private:
+        void clearLocations();
 
 
 };

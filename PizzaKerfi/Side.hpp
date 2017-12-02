@@ -19,19 +19,19 @@ const int MAXCHARINSIDE = 30;
 
 class Side{
 
-public:
-    Side();
-    int getPrice();
-    void setPrice(int inPrice);
-    void setVerbose(bool v);
-    char* getName();
-    void setName(char inName[]);
-    friend istream& operator >> (istream& in, Side& side);
-    friend ostream& operator << (ostream& out, const Side& side);
-private:
-    char name[MAXCHARINSIDE];
-    int price;
-    bool verbose = true;
+    public:
+        Side();
+        int getPrice();
+        void setPrice(int inPrice);
+        void setVerbose(bool v);
+        char* getName();
+        void setName(char inName[]);
+        friend istream& operator >> (istream& in, Side& side);
+        friend ostream& operator << (ostream& out, const Side& side);
+    private:
+        char name[MAXCHARINSIDE];
+        int price;
+        bool verbose = true;
     
 };
 

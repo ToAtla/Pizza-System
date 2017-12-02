@@ -25,10 +25,10 @@ using namespace std;
 
 class SalesUI{
     
-public:
-   void startSalesUI();
-private:
-    void createOrder();
+    public:
+       void startSalesUI();
+    private:
+        void createOrder();
 };
 
 

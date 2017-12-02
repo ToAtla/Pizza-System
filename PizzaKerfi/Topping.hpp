@@ -18,19 +18,19 @@ const int MAXCHARINTOP = 20;
 using namespace std;
 
 class Topping {
-public:
-    Topping();
-    int getPrice();
-    void setPrice(int inPrice);
-    void setVerbose(bool v);
-    char* getName();
-    void setName(char inName[]);
-    friend istream& operator >> (istream& in, Topping& topping);
-    friend ostream& operator << (ostream& out, const Topping& topping);
-private:
-    char name[MAXCHARINTOP];
-    int price;
-    bool verbose = true;
+    public:
+        Topping();
+        int getPrice();
+        void setPrice(int inPrice);
+        void setVerbose(bool v);
+        char* getName();
+        void setName(char inName[]);
+        friend istream& operator >> (istream& in, Topping& topping);
+        friend ostream& operator << (ostream& out, const Topping& topping);
+    private:
+        char name[MAXCHARINTOP];
+        int price;
+        bool verbose = true;
 };
 
 #endif /* Topping_hpp */

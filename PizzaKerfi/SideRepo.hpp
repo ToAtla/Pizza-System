@@ -17,14 +17,14 @@
 using namespace std;
 
 class SideRepo{
-public:
-    SideRepo();
-    void addSide(Side& Side);
-    void displaySides();
-    vector<Side> getVectorOfSides();
-    void storeVectorOfSides(vector<Side> sides);
-private:
-    void clearSides();
+    public:
+        SideRepo();
+        void addSide(Side& Side);
+        void displaySides();
+        vector<Side> getVectorOfSides();
+        void storeVectorOfSides(vector<Side> sides);
+    private:
+        void clearSides();
 };
 
 #endif /* SideRepo_hpp */

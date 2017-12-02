@@ -16,13 +16,13 @@
 using namespace std;
 
 class BaseRepo{
-public:
-    BaseRepo();
-    void addBase(Base& base);
-    void displayBase();
-    vector<Base> getVectorOfBases();
-    void storeVectorOfBases(vector<Base> bases);
-private:
-    void clearBases();
+    public:
+        BaseRepo();
+        void addBase(Base& base);
+        void displayBase();
+        vector<Base> getVectorOfBases();
+        void storeVectorOfBases(vector<Base> bases);
+    private:
+        void clearBases();
 };
 #endif /* BaseRepo_hpp */

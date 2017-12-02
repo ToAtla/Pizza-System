@@ -15,12 +15,12 @@
 
 class OrderRepo{
   
-public:
-    OrderRepo();
-    void storeOrder(const Order& order);
-    Order retrieveOrder();
-    void displayOrder();
-private:
+    public:
+        OrderRepo();
+        void storeOrder(const Order& order);
+        Order retrieveOrder();
+        void displayOrder();
+    private:
     
 };
 

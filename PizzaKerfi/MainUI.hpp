@@ -13,11 +13,11 @@
 
 class MainUI{
 
-public:
-    void startUI();
-    void branchLocation();
+    public:
+        void startUI();
+        void branchLocation();
 
-private:
+    private:
 
 
 };

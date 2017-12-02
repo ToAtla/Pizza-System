@@ -17,14 +17,14 @@
 using namespace std;
 
 class SizeRepo{
-public:
-    SizeRepo();
-    void addSize(Size& size);
-    void displaySizes();
-    vector<Size> getVectorOfSizes();
-    void storeVectorOfSizes(vector<Size> sizes);
-private:
-    void clearSizes();
+    public:
+        SizeRepo();
+        void addSize(Size& size);
+        void displaySizes();
+        vector<Size> getVectorOfSizes();
+        void storeVectorOfSizes(vector<Size> sizes);
+    private:
+        void clearSizes();
 };
 
 #endif /* SizeRepo_hpp */

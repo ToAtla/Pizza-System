@@ -13,10 +13,10 @@
 #include "Pizza.hpp"
 
 class PizzaRepo {
-public:
-    void storePizza(const Pizza& pizza);
-    Pizza retrievePizza();
-private:
+    public:
+        void storePizza(const Pizza& pizza);
+        Pizza retrievePizza();
+    private:
 };
 
 #endif /* PizzaRepo_hpp */
