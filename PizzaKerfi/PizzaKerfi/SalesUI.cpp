@@ -18,6 +18,7 @@ void SalesUI::startSalesUI(){
         cout << "2: View all orders BROKEN" << endl;
         cout << "3: Change a order BROKEN" << endl;
         cout << "3: delete a order BROKEN" << endl;
+        cout << "b: back" << endl;
         cin >> input;
         if(input == '1')
         {

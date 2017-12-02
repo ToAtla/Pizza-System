@@ -32,6 +32,7 @@ istream& operator >> (istream& in, Order& order){
     in >> order.numberOfPizzas;
     
     for (int i = 0; i < order.numberOfPizzas; i++) {
+        cout << "Pizza number: " << i+1;
         order.pizzaList[i] = Pizza();
         in >> order.pizzaList[i];
     }
@@ -46,7 +47,7 @@ ostream& operator << (ostream& out, const Order& order){
         cout << "Number of pizzas in order: " << order.numberOfPizzas << endl;
         
     }
-    for (int i = 0; i < order.numberOfPizzas; i++) {
+   for (int i = 0; i < order.numberOfPizzas; i++) {
         //order.pizzaList[i] = Pizza();
         //order.pizzaList[i].setVerbose(order.verbose);
         out << order.pizzaList[i];

@@ -9,8 +9,10 @@
 #include <stdio.h>
 #include "Pizza.hpp"
 #include "ToppingRepo.hpp"
-#include "DrinkRepo.hpp"
-#include "SideRepo.hpp"
+#include "BaseRepo.hpp"
+#include "SizeRepo.hpp"
+#include "Base.hpp"
+#include "Size.hpp"
 #include <iostream>
 #include <cstring>
 #include <string>
@@ -66,9 +68,31 @@ ostream& operator << (ostream& out, const Pizza& pizza){
     return out;
 }
 
+//Það á eftir að bæta meira við!
+//Leyfir notandanum að velja af lista botn pizzunar og stærð hennar.
 istream& operator >> (istream& in, Pizza& pizza){
+    Base baseForPizza;
+    Size sizaForPizza;
     
+    cout << endl << "-----List of available bases-----" << endl;
+    BaseRepo baseRepo;
+    vector<Base> bases = baseRepo.getVectorOfBases();
+    for(int i = 0; i < bases.size(); i++){
+        Base temp = bases.at(i);
+        cout << "Base number " << i+1 << endl;
+        cout << temp << endl;
+    }
+    int input = 0;
+    cout << "Please choose a base for you pizza:" << endl;
+    cin >> input;
+    for(int i = 0; i < bases.size(); i++){
+        if(input == i+1){
+            baseForPizza = bases.at(i);
+        }
+    }
     
+    pizza.baseOfPizza.setName(baseForPizza.getName());
+    pizza.baseOfPizza.setPrice(baseForPizza.getPrice());
     
     
     return in;
