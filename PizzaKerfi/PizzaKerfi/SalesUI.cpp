@@ -20,8 +20,8 @@ void SalesUI::startSalesUI(){
         cout << "2: View all orders" << endl;
         cout << "3: Change a order BROKEN" << endl;
         cout << "4: delete a order BROKEN" << endl;
-        cout << "5: add one pizza to pizzas.dat" << endl;
-        cout << "6: display all pizzas in pizzas.dat" << endl;
+        cout << "5: (temporary)add one pizza directly to waiting.dat" << endl;
+        cout << "6: (temporary)display all pizzas in waiting.dat" << endl;
         cout << "b: back" << endl;
         cin >> input;
         if(input == '1')

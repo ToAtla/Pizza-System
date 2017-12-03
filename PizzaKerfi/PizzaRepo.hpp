@@ -13,12 +13,13 @@
 #include "Pizza.hpp"
 
 class PizzaRepo {
-    public:
-        void storePizza(const Pizza& pizza, string fileName);
-        Pizza retrievePizza();
-        Pizza* retrievePizzaArray(string fileName, int& tellMeHowMany);
-        void moveBetween(string sourceFile, string destFile, int index);
-    private:
+public:
+    void storePizza(const Pizza& pizza, string fileName);
+    Pizza retrievePizza(string fileName, int index);
+    Pizza* retrievePizzaArray(string fileName, int& tellMeHowMany);
+    void moveBetween(string sourceFile, string destFile, int index);
+    void clearPizzaFile(string fileName);
+private:
 };
 
 #endif /* PizzaRepo_hpp */

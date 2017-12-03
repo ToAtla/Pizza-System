@@ -12,21 +12,20 @@
 using namespace std;
 
 void PizzaRepo::storePizza(const Pizza& pizza, string fileName){
-    
     ofstream fout;
-    
     fout.open(fileName, ios::binary|ios::app);
     fout.write((char*)(&pizza), sizeof(Pizza));
     fout.close();
 }
 
-Pizza PizzaRepo::retrievePizza(){
-    
-    ifstream fin;
+Pizza PizzaRepo::retrievePizza(string fileName, int index){
     Pizza returnPizza;
-    fin.open("pizzas.dat", ios::binary);
-    fin.read((char*)(&returnPizza), sizeof(Pizza));
-    fin.close();
+    int size;
+    Pizza* pizzaList = retrievePizzaArray(fileName, size);
+    //Þetta er gert til að koma í veg fyrir out of bounds villu
+    if(index < size){
+        returnPizza = pizzaList[index];
+    }
     return returnPizza;
 }
 
@@ -45,9 +44,30 @@ Pizza* PizzaRepo::retrievePizzaArray(string fileName, int& tellMeHowMany){
 
 void PizzaRepo::moveBetween(string sourceFile, string destFile, int index){
     //retrieve from source
-    
+    Pizza tempPizza = retrievePizza(sourceFile, index);
     //remove from source
     
-    //append to dest
+    //sækja allar pizzur
+    int sizeOfSourceFile;
+    Pizza* pizzaList = retrievePizzaArray(sourceFile, sizeOfSourceFile);
     
+    //eyða öllu í skjalinu
+    clearPizzaFile(sourceFile);
+    //Bæta öllu við fram að index
+    //Og halda áfram eftir index í i+1
+    for (int i = 0; i < sizeOfSourceFile-1; i++) {
+        if(i < index){
+            storePizza(pizzaList[i], sourceFile);
+        }else{
+            storePizza(pizzaList[i+1], sourceFile);
+        }
+    }
+    //append to dest
+    storePizza(tempPizza, destFile);
+}
+
+void PizzaRepo::clearPizzaFile(string fileName){
+    ofstream fout;
+    fout.open(fileName, ios::binary);
+    fout.close();
 }
