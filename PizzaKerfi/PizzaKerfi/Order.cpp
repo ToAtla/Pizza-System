@@ -16,6 +16,13 @@ Order::Order(){
     
 }
 
+Pizza* Order::getPizzasInOrder(int &disManyPizzas){
+    Pizza* pizzaList;
+    
+    return pizzaList;
+    
+}
+
 istream& operator >> (istream& in, Order& order){
     
     cout << "Enter number of pizzas to add to order: ";

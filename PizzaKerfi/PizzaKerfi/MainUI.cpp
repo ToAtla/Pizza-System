@@ -8,6 +8,7 @@
 
 #include "MainUI.hpp"
 #include "AdminUI.hpp"
+#include "PrepUI.hpp"
 #include "SalesUI.hpp"
 #include "LocationRepo.hpp"
 #include "Location.hpp"
@@ -18,8 +19,8 @@ void MainUI::startUI(){
    
     
     char input = '\0';
-    while(input != 'q')
-    {   cout << " -------------------------------" << endl;
+    while(input != 'q'){
+        cout << " -------------------------------" << endl;
         cout << "|1: Manager     |2: Sales       |" << endl;
         cout << " -------------------------------" << endl;
         cout << "|3: Prep        |4: Delivery    |" << endl;
@@ -38,7 +39,9 @@ void MainUI::startUI(){
             salesUI.startSalesUI();
         }
         else if(input == '3'){
-            branchLocation();
+            PrepUI prepUI;
+            prepUI.startPrepUI();
+            //branchLocation();
         }
         else if(input == '4'){
             branchLocation();
@@ -46,6 +49,7 @@ void MainUI::startUI(){
         else if(input == 'q'){
             break;
         }
+        //clearScreen();
     }
 }
 

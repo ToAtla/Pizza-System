@@ -10,6 +10,7 @@
 
 
 
+
 //Prentar út valmynd sem býður notandanum að velja það sem hann vill fikta í.
 void AdminUI::startAdminUI(){
 
@@ -188,7 +189,7 @@ void AdminUI::removeTopping()
 
 
 void AdminUI::displayLocationMenu(){
-char input = '\0';
+    char input = '\0';
     while(input != 'b'){
         cout << "1: List locations" << endl;
         cout << "2: Change a location" << endl;

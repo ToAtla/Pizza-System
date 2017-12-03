@@ -20,17 +20,17 @@ const int MAXSTUFFSINORDER = 20;
 using namespace std;
 
 class Order {
-    public:
-        Order();
-        friend ostream& operator << (ostream& out, const Order&);
-        friend istream& operator >> (istream& in, Order&);
-    private:
-        Pizza pizzaList[MAXSTUFFSINORDER];
-        Side sideList[MAXSTUFFSINORDER];
-        Drink drinkList[MAXSTUFFSINORDER];
-    
-        int numberOfPizzas;
-        int totalPrice;
+public:
+    Order();
+    Pizza* getPizzasInOrder(int& disManyPizzas);
+    friend ostream& operator << (ostream& out, const Order&);
+    friend istream& operator >> (istream& in, Order&);
+private:
+    Pizza pizzaList[MAXSTUFFSINORDER];
+    Side sideList[MAXSTUFFSINORDER];
+    Drink drinkList[MAXSTUFFSINORDER];
+    int numberOfPizzas;
+    int totalPrice;
 };
 
 #endif /* Order_hpp */

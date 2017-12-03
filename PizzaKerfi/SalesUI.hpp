@@ -20,6 +20,7 @@
 #include "Side.hpp"
 #include "DrinkRepo.hpp"
 #include "Drink.hpp"
+#include "ConsoleMagic.hpp"
 
 using namespace std;
 

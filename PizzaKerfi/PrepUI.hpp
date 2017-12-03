@@ -11,4 +11,12 @@
 
 #include <stdio.h>
 
+class PrepUI{
+public:
+    void startPrepUI();
+private:
+    void waitingOverview();
+    void preppingOverview();
+    void readyOverview();
+};
 #endif /* PrepUI_hpp */

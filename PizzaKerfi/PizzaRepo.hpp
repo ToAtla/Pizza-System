@@ -14,9 +14,10 @@
 
 class PizzaRepo {
     public:
-        void storePizza(const Pizza& pizza);
+        void storePizza(const Pizza& pizza, string fileName);
         Pizza retrievePizza();
-        Pizza* retrievePizzaArray(int& tellMeHowMany);
+        Pizza* retrievePizzaArray(string fileName, int& tellMeHowMany);
+        void moveBetween(string sourceFile, string destFile, int index);
     private:
 };
 

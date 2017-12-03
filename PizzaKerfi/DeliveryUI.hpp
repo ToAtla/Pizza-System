@@ -9,6 +9,15 @@
 #ifndef DeliveryUI_hpp
 #define DeliveryUI_hpp
 
+
 #include <stdio.h>
+#include "ConsoleMagic.hpp"
+
+class DeliveryUI{
+public:
+    void startDeliveryUI();
+private:
+    
+};
 
 #endif /* DeliveryUI_hpp */

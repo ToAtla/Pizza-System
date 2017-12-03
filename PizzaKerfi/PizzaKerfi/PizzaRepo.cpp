@@ -11,17 +11,14 @@
 
 using namespace std;
 
-void PizzaRepo::storePizza(const Pizza& pizza){
+void PizzaRepo::storePizza(const Pizza& pizza, string fileName){
     
     ofstream fout;
     
-    fout.open("pizzas.dat", ios::binary|ios::app);
+    fout.open(fileName, ios::binary|ios::app);
     fout.write((char*)(&pizza), sizeof(Pizza));
     fout.close();
 }
-
-using namespace std;
-
 
 Pizza PizzaRepo::retrievePizza(){
     
@@ -34,10 +31,10 @@ Pizza PizzaRepo::retrievePizza(){
 }
 
 
-Pizza* PizzaRepo::retrievePizzaArray(int& tellMeHowMany){
+Pizza* PizzaRepo::retrievePizzaArray(string fileName, int& tellMeHowMany){
     Pizza pizzas[MAXPIZZASINPIZZAFILE];
     ifstream fin;
-    fin.open("pizzas.dat", ios::binary);
+    fin.open(fileName, ios::binary);
     fin.seekg(0, fin.end);
     tellMeHowMany = fin.tellg()/sizeof(Pizza);
     fin.seekg(0, fin.beg);
@@ -46,3 +43,11 @@ Pizza* PizzaRepo::retrievePizzaArray(int& tellMeHowMany){
     return pizzas;
 };
 
+void PizzaRepo::moveBetween(string sourceFile, string destFile, int index){
+    //retrieve from source
+    
+    //remove from source
+    
+    //append to dest
+    
+}

@@ -10,6 +10,7 @@
 #define MainUI_hpp
 
 #include <stdio.h>
+#include "ConsoleMagic.hpp"
 
 class MainUI{
 

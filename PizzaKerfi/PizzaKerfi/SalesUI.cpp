@@ -54,6 +54,7 @@ void SalesUI::createOrder(){
     cin >> order;
     OrderRepo ordRep;
     ordRep.storeOrder(order);
+    //sendPizzasToRightPlace();
 }
 
 void SalesUI::displayOrders(){
@@ -108,14 +109,15 @@ void SalesUI::createASinglePizzaToTest(){
     Pizza pizza;
     cin >> pizza;
     PizzaRepo pr;
-    pr.storePizza(pizza);
+    pr.storePizza(pizza, "waiting.dat");
 }
 
 void SalesUI::displayPizzas(){
+    
     Pizza pizza;
     PizzaRepo pr;
     int size = 0;
-    Pizza* pizzas = pr.retrievePizzaArray(size);
+    Pizza* pizzas = pr.retrievePizzaArray("waiting.dat", size);
     for (int i = 0; i < size; i++) {
         cout << pizzas[i] << endl;
     }
