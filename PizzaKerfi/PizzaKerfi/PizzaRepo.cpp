@@ -71,3 +71,11 @@ void PizzaRepo::clearPizzaFile(string fileName){
     fout.open(fileName, ios::binary);
     fout.close();
 }
+
+bool PizzaRepo::fileExists(string fileName){
+    ifstream fin;
+    fin.open(fileName);
+    bool returnValue = fin.is_open();
+    fin.close();
+    return returnValue;
+}

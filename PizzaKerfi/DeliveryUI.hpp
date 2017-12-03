@@ -16,6 +16,7 @@
 class DeliveryUI{
 public:
     void startDeliveryUI();
+    void displayOrders();
 private:
     
 };

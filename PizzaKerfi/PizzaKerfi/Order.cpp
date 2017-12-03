@@ -13,14 +13,17 @@ using namespace std;
 Order::Order(){
     numberOfPizzas = 0;
     totalPrice = 0;
-    
 }
 
-Pizza* Order::getPizzasInOrder(int &disManyPizzas){
-    Pizza* pizzaList;
-    
+Pizza* Order::getPizzasInOrder(){
     return pizzaList;
-    
+}
+int Order::getNumberOfPizzas(){
+    return numberOfPizzas;
+}
+
+bool Order::isPaid(){
+    return paid;
 }
 
 istream& operator >> (istream& in, Order& order){
@@ -37,9 +40,10 @@ istream& operator >> (istream& in, Order& order){
 }
 
 ostream& operator << (ostream& out, const Order& order){
-    cout << "Number of pizzas in order: " << order.numberOfPizzas << endl;
+    cout << " - - - - " << endl;
     for(int i = 0; i < order.numberOfPizzas; i++) {
         out << order.pizzaList[i];
     }
+    cout << " - - - - " << endl;
     return out;
 }

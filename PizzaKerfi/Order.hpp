@@ -22,7 +22,9 @@ using namespace std;
 class Order {
 public:
     Order();
-    Pizza* getPizzasInOrder(int& disManyPizzas);
+    Pizza* getPizzasInOrder();
+    int getNumberOfPizzas();
+    bool isPaid();
     friend ostream& operator << (ostream& out, const Order&);
     friend istream& operator >> (istream& in, Order&);
 private:
@@ -31,6 +33,9 @@ private:
     Drink drinkList[MAXSTUFFSINORDER];
     int numberOfPizzas;
     int totalPrice;
+    bool paid = false;
+    bool ready = false;
+    bool delievered = false;
 };
 
 #endif /* Order_hpp */

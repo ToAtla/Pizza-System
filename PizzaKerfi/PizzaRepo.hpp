@@ -19,6 +19,7 @@ public:
     Pizza* retrievePizzaArray(string fileName, int& tellMeHowMany);
     void moveBetween(string sourceFile, string destFile, int index);
     void clearPizzaFile(string fileName);
+    bool fileExists(string fileName);
 private:
 };
 

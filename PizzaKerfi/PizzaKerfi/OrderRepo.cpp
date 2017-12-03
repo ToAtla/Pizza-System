@@ -32,10 +32,10 @@ Order OrderRepo::retrieveOrder(){
 
 
 
-Order* OrderRepo::retrieveOrderArray(int& tellMeHowManyOrders){
+Order* OrderRepo::retrieveOrderArray(string fileName, int& tellMeHowManyOrders){
     Order orderList[MAXSTUFFSINORDER];
     ifstream fin;
-    fin.open("orders.dat", ios::binary);
+    fin.open(fileName, ios::binary);
     fin.seekg(0, fin.end);
     tellMeHowManyOrders = fin.tellg() / sizeof(Order);
     fin.seekg(0, fin.beg);
@@ -43,4 +43,13 @@ Order* OrderRepo::retrieveOrderArray(int& tellMeHowManyOrders){
     fin.close();
     return orderList;
 }
+
+bool OrderRepo::fileExists(string fileName){
+    ifstream fin;
+    fin.open(fileName);
+    bool returnValue = fin.is_open();
+    fin.close();
+    return returnValue;
+}
+
 

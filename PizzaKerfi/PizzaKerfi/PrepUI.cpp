@@ -41,22 +41,31 @@ void PrepUI::waitingOverview(){
     
     int sizeOfWaitingPizzaList;
     Pizza* waitPizzas = pr.retrievePizzaArray(waitFile, sizeOfWaitingPizzaList);
-    for (int i = 0; i < sizeOfWaitingPizzaList; i++) {
-        cout << "[" << i+1 << "] " << waitPizzas[i] << endl;
-    }
-    cout << endl;
-    int input = '\0';
-    while(input != '0'){
-        cout << "Pick a number to mark for prep or 0 to exit: ";
-        cin >> input;
-        if(input != 0){
-            if(input <= sizeOfWaitingPizzaList && input > 0){
-                pr.moveBetween(waitFile, prepFile, input-1);
-                cout << "Pizza number " << input << " marked prepared" << endl;
-            }
-        }else{
-            break;
+    
+    cout << " - - - - Pizzas not yet started - - - - " << endl;
+    
+    if(pr.fileExists(waitFile) && sizeOfWaitingPizzaList != 0){
+        for (int i = 0; i < sizeOfWaitingPizzaList; i++) {
+            cout << "[" << i+1 << "] " << waitPizzas[i] << endl;
         }
+        cout << endl;
+        int input = '\0';
+        while(input != '0'){
+            cout << "Pick a number to mark for prep or 0 to exit: ";
+            cin >> input;
+            if(input != 0){
+                if(input <= sizeOfWaitingPizzaList && input > 0){
+                    pr.moveBetween(waitFile, prepFile, input-1);
+                    cout << "Pizza number " << input << " marked prepared" << endl;
+                }
+            }else{
+                break;
+            }
+        }
+    }else{
+        cout << endl;
+        cout << "List is empty" << endl;
+        cout << endl;
     }
 }
 
@@ -65,28 +74,52 @@ void PrepUI::preppingOverview(){
     string prepFile = "prepping.dat";
     string readyFile = "ready.dat";
     PizzaRepo pr;
-    
     int sizeOfPreppingList;
     Pizza* prepPizzas = pr.retrievePizzaArray(prepFile, sizeOfPreppingList);
-    for (int i = 0; i < sizeOfPreppingList; i++) {
-        cout << "[" << i+1 << "] " << prepPizzas[i] << endl;
-    }
-    cout << endl;
-    int input = '\0';
-    while(input != '0'){
-        cout << "Pick a number to mark ready or 0 to exit: ";
-        cin >> input;
-        if(input != 0){
-            if(input <= sizeOfPreppingList && input > 0){
-                pr.moveBetween(prepFile, readyFile, input-1);
-                cout << "Pizza number " << input << " marked ready" << endl;
-            }
-        }else{
-            break;
+    
+    cout << " - - - - Pizzas being prepared - - - - " << endl;
+    if(pr.fileExists(prepFile) && sizeOfPreppingList != 0){
+        for (int i = 0; i < sizeOfPreppingList; i++) {
+            cout << "[" << i+1 << "] " << prepPizzas[i] << endl;
         }
+        cout << endl;
+        int input = '\0';
+        while(input != '0'){
+            cout << "Pick a number to mark ready or 0 to exit: ";
+            cin >> input;
+            if(input != 0){
+                if(input <= sizeOfPreppingList && input > 0){
+                    pr.moveBetween(prepFile, readyFile, input-1);
+                    cout << "Pizza number " << input << " marked ready" << endl;
+                }
+            }else{
+                break;
+            }
+        }
+    }else{
+        cout << endl;
+        cout << "List is empty" << endl;
+        cout << endl;
     }
 }
 
+
 void PrepUI::readyOverview(){
-    
+    string readyFile = "ready.dat";
+    PizzaRepo pr;
+    int sizeOfReadyList;
+    Pizza* readyPizzas = pr.retrievePizzaArray(readyFile, sizeOfReadyList);
+    cout << " - - - - Ready pizzas - - - - " << endl;
+    if(pr.fileExists(readyFile) && sizeOfReadyList != 0){
+        for (int i = 0; i < sizeOfReadyList; i++) {
+            cout << "[" << i+1 << "] " << readyPizzas[i] << endl;
+        }
+        cout << endl;
+    }else{
+        cout << endl;
+        cout << "List is empty" << endl;
+        cout << endl;
+    }
 }
+
+

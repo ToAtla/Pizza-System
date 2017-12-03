@@ -49,18 +49,28 @@ void SalesUI::startSalesUI(){
     }
 }
 
+//Býr til pöntun og vistar hana
+//vistar svo pizzurnar sérstaklega í pizzuskjal
 void SalesUI::createOrder(){
     Order order;
     cin >> order;
     OrderRepo ordRep;
     ordRep.storeOrder(order);
-    //sendPizzasToRightPlace();
+    
+    
+    //Save Pizzas to pizzafile
+    string pizzaFile = "waiting.dat";
+    Pizza* pizzasInOrder = order.getPizzasInOrder();
+    PizzaRepo pr;
+    for (int i = 0; i < order.getNumberOfPizzas(); i++) {
+        pr.storePizza( pizzasInOrder[i], pizzaFile);
+    }
 }
 
 void SalesUI::displayOrders(){
     int orderCnt = 0;
     OrderRepo ordRep;
-    Order* orderList = ordRep.retrieveOrderArray(orderCnt);
+    Order* orderList = ordRep.retrieveOrderArray("orders.dat", orderCnt);
     for (int i = 0; i < orderCnt; i++) {
         cout << orderList[i];
     }

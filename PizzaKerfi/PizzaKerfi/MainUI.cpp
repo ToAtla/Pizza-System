@@ -10,6 +10,7 @@
 #include "AdminUI.hpp"
 #include "PrepUI.hpp"
 #include "SalesUI.hpp"
+#include "DeliveryUI.hpp"
 #include "LocationRepo.hpp"
 #include "Location.hpp"
 #include <stdlib.h>
@@ -44,7 +45,9 @@ void MainUI::startUI(){
             //branchLocation();
         }
         else if(input == '4'){
-            branchLocation();
+            DeliveryUI deliveryUI;
+            deliveryUI.startDeliveryUI();
+            //branchLocation();
         }
         else if(input == 'q'){
             break;
