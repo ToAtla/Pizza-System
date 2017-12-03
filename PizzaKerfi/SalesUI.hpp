@@ -24,13 +24,16 @@
 using namespace std;
 
 class SalesUI{
+public:
+   void startSalesUI();
+private:
+    void createOrder();
+    void displayOrders();
     
-    public:
-       void startSalesUI();
-    private:
-        void createOrder();
-        void createASinglePizzaToTest();
-        void displayPizzas();
+    
+    //Bráðabirgða
+    void createASinglePizzaToTest();
+    void displayPizzas();
 };
 
 

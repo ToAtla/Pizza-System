@@ -9,14 +9,15 @@
 #include "SalesUI.hpp"
 #include "Order.hpp"
 #include "PizzaRepo.hpp"
+#include "OrderRepo.hpp"
 
 void SalesUI::startSalesUI(){
     
     char input = 0;
     while(input != 'b')
     {
-        cout << "1: Create a orders BROKEN" << endl;
-        cout << "2: View all orders BROKEN" << endl;
+        cout << "1: New order" << endl;
+        cout << "2: View all orders" << endl;
         cout << "3: Change a order BROKEN" << endl;
         cout << "4: delete a order BROKEN" << endl;
         cout << "5: add one pizza to pizzas.dat" << endl;
@@ -29,7 +30,7 @@ void SalesUI::startSalesUI(){
         }
         else if(input == '2')
         {
-            
+            displayOrders();
         }
         else if(input == '3')
         {
@@ -51,7 +52,20 @@ void SalesUI::startSalesUI(){
 void SalesUI::createOrder(){
     Order order;
     cin >> order;
+    OrderRepo ordRep;
+    ordRep.storeOrder(order);
 }
+
+void SalesUI::displayOrders(){
+    int orderCnt = 0;
+    OrderRepo ordRep;
+    Order* orderList = ordRep.retrieveOrderArray(orderCnt);
+    for (int i = 0; i < orderCnt; i++) {
+        cout << orderList[i];
+    }
+}
+
+
 
 
 

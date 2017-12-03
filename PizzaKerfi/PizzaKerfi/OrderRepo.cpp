@@ -14,8 +14,8 @@ OrderRepo::OrderRepo(){
 
 void OrderRepo::storeOrder(const Order& order){
     ofstream fout;
-    fout.open("toppings.txt", ios::app);
-    fout << order;
+    fout.open("orders.dat", ios::binary|ios::app);
+    fout.write((char*)(&order), sizeof(Order));
     fout.close();
 }
 
@@ -25,6 +25,19 @@ Order OrderRepo::retrieveOrder(){
     return order;
 }
 
-void OrderRepo::displayOrder(){
+Order* OrderRepo::retrieveOrderArray(int& tellMeHowManyOrders){
+    Order orderList[MAXSTUFFSINORDER];
     
+    ifstream fin;
+    fin.open("orders.dat", ios::binary);
+    
+    fin.seekg(0, fin.end);
+    tellMeHowManyOrders = fin.tellg() / sizeof(Order);
+    fin.seekg(0, fin.beg);
+    
+    fin.read((char*)(orderList), sizeof(Order));
+    fin.close();
+    
+    return orderList;
 }
+

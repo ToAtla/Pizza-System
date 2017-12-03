@@ -12,23 +12,13 @@ using namespace std;
 
 Order::Order(){
     numberOfPizzas = 0;
-    location[0] = '\0';
     totalPrice = 0;
-    verbose = true;
+    
 }
 
-void Order::setVerbose(bool v){
-    verbose = v;
-}
-
-bool Order::getVerbose(){
-    return verbose;
-}
 istream& operator >> (istream& in, Order& order){
     
-    if(order.verbose){
-        cout << "Enter number of pizzas to add to order: ";
-    }
+    cout << "Enter number of pizzas to add to order: ";
     in >> order.numberOfPizzas;
     
     for (int i = 0; i < order.numberOfPizzas; i++) {
@@ -36,25 +26,13 @@ istream& operator >> (istream& in, Order& order){
         order.pizzaList[i] = Pizza();
         in >> order.pizzaList[i];
     }
-    if(order.verbose){
-        
-    }
     return in;
 }
 
 ostream& operator << (ostream& out, const Order& order){
-    if(order.verbose){
-        cout << "Number of pizzas in order: " << order.numberOfPizzas << endl;
-        
-    }
-   for (int i = 0; i < order.numberOfPizzas; i++) {
-        //order.pizzaList[i] = Pizza();
-        //order.pizzaList[i].setVerbose(order.verbose);
+    cout << "Number of pizzas in order: " << order.numberOfPizzas << endl;
+    for(int i = 0; i < order.numberOfPizzas; i++) {
         out << order.pizzaList[i];
-    }
-    if(order.verbose){
-        
     }
     return out;
 }
-
