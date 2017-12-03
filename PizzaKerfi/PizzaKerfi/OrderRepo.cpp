@@ -25,19 +25,22 @@ Order OrderRepo::retrieveOrder(){
     return order;
 }
 
+
+
+
+
+
+
+
 Order* OrderRepo::retrieveOrderArray(int& tellMeHowManyOrders){
     Order orderList[MAXSTUFFSINORDER];
-    
     ifstream fin;
     fin.open("orders.dat", ios::binary);
-    
     fin.seekg(0, fin.end);
     tellMeHowManyOrders = fin.tellg() / sizeof(Order);
     fin.seekg(0, fin.beg);
-    
-    fin.read((char*)(orderList), sizeof(Order));
+    fin.read((char*)(orderList), sizeof(Order)*tellMeHowManyOrders);
     fin.close();
-    
     return orderList;
 }
 

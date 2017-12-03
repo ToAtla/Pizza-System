@@ -22,20 +22,22 @@ void PizzaRepo::storePizza(const Pizza& pizza){
 
 using namespace std;
 
+
 Pizza PizzaRepo::retrievePizza(){
     
     ifstream fin;
     Pizza returnPizza;
-    fin.open("pizzas.dat");
+    fin.open("pizzas.dat", ios::binary);
     fin.read((char*)(&returnPizza), sizeof(Pizza));
     fin.close();
     return returnPizza;
 }
 
+
 Pizza* PizzaRepo::retrievePizzaArray(int& tellMeHowMany){
     Pizza pizzas[MAXPIZZASINPIZZAFILE];
     ifstream fin;
-    fin.open("pizzas.dat");
+    fin.open("pizzas.dat", ios::binary);
     fin.seekg(0, fin.end);
     tellMeHowMany = fin.tellg()/sizeof(Pizza);
     fin.seekg(0, fin.beg);
