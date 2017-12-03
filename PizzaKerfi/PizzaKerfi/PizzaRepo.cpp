@@ -32,14 +32,14 @@ Pizza PizzaRepo::retrievePizza(){
     return returnPizza;
 }
 
-Pizza* PizzaRepo::retrievePizzaArray(){
+Pizza* PizzaRepo::retrievePizzaArray(int& tellMeHowMany){
     Pizza pizzas[MAXPIZZASINPIZZAFILE];
     ifstream fin;
     fin.open("pizzas.dat");
     fin.seekg(0, fin.end);
-    int pizzaCount = fin.tellg()/sizeof(Pizza);
+    tellMeHowMany = fin.tellg()/sizeof(Pizza);
     fin.seekg(0, fin.beg);
-    fin.read((char*)(pizzas), sizeof(Pizza)*pizzaCount);
+    fin.read((char*)(pizzas), sizeof(Pizza)*tellMeHowMany);
     fin.close();
     return pizzas;
 };

@@ -25,33 +25,37 @@ const int MAXPIZZASINPIZZAFILE = 20;
 
 class Pizza{
 
-    public:
+public:
         
-        Pizza();
-        Pizza(char inSize[MAXCHARSINPIZZASIZE], Topping inToppings[], int toppingsToAdd);
-        
-        bool getVerbose();
-        void setVerbose(bool v);
-        
-        string getName();
-        void setName(string inName);
+    Pizza();
+    Pizza(char inSize[MAXCHARSINPIZZASIZE], Topping inToppings[], int toppingsToAdd);
+    void createPizza();
+    
+    bool getVerbose();
+    void setVerbose(bool v);
+    
+    string getName();
+    void setName(char inName[MAXCHARSINPIZZANAME]);
 
-        int getPrice();
-        void setPrice(int inPrice);
-        
-        void chooseBase();
-        void chooseSize();
-        friend ostream& operator << (ostream& out, const Pizza&);
-        friend istream& operator >> (istream& in, Pizza&);
-    private:
-        Topping toppings[MAXTOPPINGSONPIZZA];
-        Size sizeOfPizza;
-        Base baseOfPizza;
-        char name[MAXCHARSINPIZZANAME];
-        char size[MAXCHARSINPIZZASIZE];
-        int price;
-        int toppingCount;
-        bool verbose = true;
+    int getPrice();
+    void setPrice(int inPrice);
+    
+    void chooseBase();
+    void chooseSize();
+    void chooseToppings();
+    void fixName();
+    friend ostream& operator << (ostream& out, const Pizza&);
+    friend istream& operator >> (istream& in, Pizza&);
+private:
+    Topping toppings[MAXTOPPINGSONPIZZA];
+    Size sizeOfPizza;
+    Base baseOfPizza;
+    char name[MAXCHARSINPIZZANAME];
+    //má fjarlæga þennan?
+    char size[MAXCHARSINPIZZASIZE];
+    int price;
+    int toppingCount;
+    bool verbose = true;
     
 };
 #endif /* Pizza_hpp */

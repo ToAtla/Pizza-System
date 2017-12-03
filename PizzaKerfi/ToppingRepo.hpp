@@ -23,6 +23,7 @@ class ToppingRepo{
         void displayToppings();
         vector<Topping> getVectorOfToppings();
         void storeVectorOfToppings(vector<Topping> toppings);
+        Topping selectTopping();
     private:
         void clearToppings();
 };
