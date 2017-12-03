@@ -13,7 +13,7 @@
 #include <string>
 
 const int MAXTOPPINGS = 16;
-const int MAXCHARINTOP = 20;
+const int MAXCHARSINTOPPINGNAME = 20;
 
 using namespace std;
 
@@ -28,7 +28,7 @@ class Topping {
         friend istream& operator >> (istream& in, Topping& topping);
         friend ostream& operator << (ostream& out, const Topping& topping);
     private:
-        char name[MAXCHARINTOP];
+        char name[MAXCHARSINTOPPINGNAME];
         int price;
         bool verbose = true;
 };

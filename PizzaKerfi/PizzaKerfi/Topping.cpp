@@ -22,8 +22,8 @@ char* Topping::getName(){
 }
 
 //Take in a character array as a paramaeter and puts it into the private variable name.
-void Topping::setName(char inName[MAXCHARINTOP]){
-    for(int i = 0; i < MAXCHARINTOP; i++){
+void Topping::setName(char inName[MAXCHARSINTOPPINGNAME]){
+    for(int i = 0; i < MAXCHARSINTOPPINGNAME; i++){
     name[i] = inName[i];
     }
 }

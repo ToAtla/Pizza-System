@@ -75,6 +75,8 @@ void ToppingRepo::storeVectorOfToppings(vector<Topping> toppings){
 }
 
 
+
+
 //Tæmir textaskránna "toppings.txt"
 void ToppingRepo::clearToppings()
 {

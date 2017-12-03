@@ -15,7 +15,7 @@
 
 using namespace std;
 
-const int MAXCHARINSIZE = 30;
+const int MAXCHARINSIZENAME = 4;
 
 class Size{
     
@@ -29,7 +29,7 @@ class Size{
         friend istream& operator >> (istream& in, Size& size);
         friend ostream& operator << (ostream& out, const Size& size);
     private:
-        char name[MAXCHARINSIZE];
+        char name[MAXCHARINSIZENAME];
         int price;
         bool verbose = true;
 };

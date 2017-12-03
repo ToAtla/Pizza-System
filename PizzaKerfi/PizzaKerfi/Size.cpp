@@ -27,7 +27,7 @@ char* Size::getName(){
 }
 
 void Size::setName(char inName[]){
-    for(int i = 0; i < MAXCHARINSIZE; i++)
+    for(int i = 0; i < MAXCHARINSIZENAME; i++)
     {
         name[i] = inName[i];
     }

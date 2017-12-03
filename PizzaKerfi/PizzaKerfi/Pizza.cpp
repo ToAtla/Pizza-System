@@ -30,7 +30,7 @@ Pizza::Pizza(){
 
 Pizza::Pizza(char inSize[MAXCHARSINPIZZASIZE], Topping inToppings[], int toppingsToAdd){
     strcpy(size, inSize);
-    price = 9999;
+    price = BASICCOST;
     if(toppingsToAdd > MAXTOPPINGSONPIZZA){
         cout << "Error: Topping amount exceeds max allowed number of toppings" << endl;
     }else{
@@ -41,12 +41,16 @@ Pizza::Pizza(char inSize[MAXCHARSINPIZZASIZE], Topping inToppings[], int topping
     }
 }
 
-/*
+void Pizza::createPizza(){
+    
+}
+
+
 string Pizza::getName(){
     return name;
 }
-void Pizza::setName(string inName){
-    name = inName;
+void Pizza::setName(char inName[MAXCHARSINPIZZANAME]){
+    strcpy(name, inName);
 }
 
 int Pizza::getPrice(){
@@ -55,7 +59,7 @@ int Pizza::getPrice(){
 void Pizza::setPrice(int inPrice){
     price = inPrice;
 }
-*/
+
 
 //Fall sem gefur notandanum kleift á því að velja botn fyrir pizzu tilvik.
 void Pizza::chooseBase(){
@@ -70,13 +74,9 @@ void Pizza::chooseBase(){
         cout << temp << endl;
     }
     int input = 0;
-    cout << "Please choose a base for you pizza:";
+    cout << "Please choose a base for your pizza:";
     cin >> input;
-    for(int i = 0; i < bases.size(); i++){
-        if(input == i+1){
-            baseForPizza = bases.at(i);
-        }
-    }
+    baseForPizza = bases.at(input-1);
     
     baseOfPizza.setName(baseForPizza.getName());
     baseOfPizza.setPrice(baseForPizza.getPrice());
@@ -97,7 +97,7 @@ void Pizza::chooseSize(){
         cout << temp << endl;
     }
     int input = 0;
-    cout << "Please choose a size for you pizza:";
+    cout << "Please choose a size for your pizza:";
     cin >> input;
     for(int i = 0; i < sizes.size(); i++){
         if(input == i+1){
@@ -111,10 +111,55 @@ void Pizza::chooseSize(){
 }
 
 
+void Pizza::chooseToppings(){
+    Topping toppingsForPizza[MAXTOPPINGSONPIZZA];
+    cout << endl << "-----List of available toppings-----" << endl;
+    ToppingRepo tr;
+    vector<Topping> allToppings = tr.getVectorOfToppings();
+    for (int i = 0; i < allToppings.size(); i++) {
+        cout << "Topping nr: " << i+1 << endl;
+        cout << allToppings.at(i);
+    }
+    int c = 0;
+    while(true){
+        //Veit ekki hvort þarf < eða <= hérna í næstu línu
+        if(c <= MAXTOPPINGSONPIZZA){
+            cout << "Enter an index of topping to add or 0 to exit: ";
+            int input;
+            cin >> input;
+            if(input != 0){
+                this->toppings[c] = allToppings.at(input-1);
+                c++;
+                cout << "Topping number " << input << " added" << endl;
+            }else{
+                break;
+            }
+        }
+    }
+    this->toppingCount = c;
+}
+
+
+//Þetta fall á að breyta nafninu á pizzunni í nafn á forminu
+//STO ORG PP SKI SVE
+void Pizza::fixName(){
+    char tempName[MAXCHARSINPIZZANAME];
+    strcpy(tempName, sizeOfPizza.getName());
+    strcat(tempName, " ");
+    strcat(tempName, baseOfPizza.getName());
+    for (int i = 0; i < this->toppingCount; i++) {
+        strcat(tempName, " ");
+        strcat(tempName, toppings[i].getName());
+    }
+    strcpy(name, tempName);
+}
+
 ostream& operator << (ostream& out, const Pizza& pizza){
+    
     if(pizza.verbose){
         out << "Name: " << pizza.name << endl;
         out << "Price: " << pizza.price << endl;
+        out << endl;
     }else{
         out << pizza.name << endl;
         out << pizza.price << endl;
@@ -128,6 +173,9 @@ istream& operator >> (istream& in, Pizza& pizza){
     
     pizza.chooseSize();
     pizza.chooseBase();
-    
+    pizza.chooseToppings();
+    pizza.fixName();
+   
     return in;
 }
+

@@ -29,6 +29,8 @@ class SalesUI{
        void startSalesUI();
     private:
         void createOrder();
+        void createASinglePizzaToTest();
+        void displayPizzas();
 };
 
 

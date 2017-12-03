@@ -8,6 +8,7 @@
 
 #include "SalesUI.hpp"
 #include "Order.hpp"
+#include "PizzaRepo.hpp"
 
 void SalesUI::startSalesUI(){
     
@@ -17,7 +18,9 @@ void SalesUI::startSalesUI(){
         cout << "1: Create a orders BROKEN" << endl;
         cout << "2: View all orders BROKEN" << endl;
         cout << "3: Change a order BROKEN" << endl;
-        cout << "3: delete a order BROKEN" << endl;
+        cout << "4: delete a order BROKEN" << endl;
+        cout << "5: add one pizza to pizzas.dat" << endl;
+        cout << "6: display all pizzas in pizzas.dat" << endl;
         cout << "b: back" << endl;
         cin >> input;
         if(input == '1')
@@ -36,10 +39,70 @@ void SalesUI::startSalesUI(){
         {
             
         }
+        else if(input == '5'){
+            createASinglePizzaToTest();
+        }
+        else if(input == '6'){
+            displayPizzas();
+        }
     }
 }
 
 void SalesUI::createOrder(){
     Order order;
     cin >> order;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
+ Bráðabirgðaföll til að sjá hvort það virki að vista pizzur í skrár
+*/
+
+void SalesUI::createASinglePizzaToTest(){
+    //Also saves to file
+    Pizza pizza;
+    cin >> pizza;
+    PizzaRepo pr;
+    pr.storePizza(pizza);
+}
+
+void SalesUI::displayPizzas(){
+    Pizza pizza;
+    PizzaRepo pr;
+    int size = 0;
+    Pizza* pizzas = pr.retrievePizzaArray(size);
+    for (int i = 0; i < size; i++) {
+        cout << pizzas[i] << endl;
+    }
 }

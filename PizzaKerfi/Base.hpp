@@ -15,7 +15,7 @@
 
 using namespace std;
 
-const int MAXCHARINBASE = 30;
+const int MAXCHARSINBASENAME = 4;
 
 class Base{
     
@@ -29,7 +29,7 @@ class Base{
         friend istream& operator >> (istream& in, Base& base);
         friend ostream& operator << (ostream& out, const Base& base);
     private:
-        char name[MAXCHARINBASE];
+        char name[MAXCHARSINBASENAME];
         int price;
         bool verbose = true;
 };
