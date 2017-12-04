@@ -118,7 +118,7 @@ void Pizza::chooseToppings(){
     vector<Topping> allToppings = tr.getVectorOfToppings();
     for (int i = 0; i < allToppings.size(); i++) {
         cout << "Topping nr: " << i+1 << endl;
-        cout << allToppings.at(i);
+        cout << allToppings.at(i) << endl;
     }
     int c = 0;
     while(true){

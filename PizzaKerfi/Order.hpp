@@ -14,6 +14,7 @@
 #include "Pizza.hpp"
 #include "Side.hpp"
 #include "Drink.hpp"
+#include "Location.hpp"
 
 const int MAXSTUFFSINORDER = 20;
 
@@ -31,7 +32,10 @@ private:
     Pizza pizzaList[MAXSTUFFSINORDER];
     Side sideList[MAXSTUFFSINORDER];
     Drink drinkList[MAXSTUFFSINORDER];
+    Location locationOfOrder;
     int numberOfPizzas;
+    int numberOfSides;
+    int numberOfDrinks;
     int totalPrice;
     bool paid = false;
     bool ready = false;
