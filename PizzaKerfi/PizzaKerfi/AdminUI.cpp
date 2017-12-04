@@ -25,7 +25,7 @@ void AdminUI::startAdminUI(){
         cout << "b: back" << endl;
         cin >> input;
         cout << endl;
-        
+
         if(input == '1'){
             displayToppingMenu();
 
@@ -326,7 +326,7 @@ void AdminUI::displaySideMenu(){
         cout << "b: back" << endl;
         cin >> input;
         cout << endl;
-        
+
         if(input == '1'){
             cout << endl << "-----List of all sides-----" << endl << endl;
             displayAllSides();
@@ -357,7 +357,7 @@ void AdminUI::displayAllSides(){
 
 void AdminUI::addSide(){
     char input = 'y';
-    
+
     while(input == 'y'){
         SideRepo sideRepo;
         Side temp;
@@ -378,9 +378,9 @@ void AdminUI::changeSide(){
     SideRepo sideRepo;
     vector<Side> sides = sideRepo.getVectorOfSides();
     cout << endl;
-    
+
     char choice = 'y';
-    
+
     while(choice == 'y')
     {
         for(int i = 0; i < sides.size(); i++){
@@ -391,7 +391,7 @@ void AdminUI::changeSide(){
         int input = 0;
         cout << "Choose a side to change: ";
         cin >> input;
-        
+
         for(int i = 0; i < sides.size(); i++){
             if(input == i+1){
                 cin >> sides.at(i);
@@ -415,20 +415,20 @@ void AdminUI::removeSide(){
     SideRepo sideRepo;
     vector<Side> sides = sideRepo.getVectorOfSides();
     cout << endl;
-    
+
     char choice = 'y';
-    
+
     while(choice == 'y'){
         for(int i = 0; i < sides.size(); i++){
             Side temp = sides.at(i);
             cout << "Side number: " << i+1 << endl;
             cout <<  temp << endl;
         }
-        
+
         int input = 0;
         cout << "Choose a side to remove: ";
         cin >> input;
-        
+
         for(int i = 0; i < sides.size(); i++){
             if(input == i+1){
                 sides.erase(sides.begin() + i);
@@ -458,7 +458,7 @@ void AdminUI::displayDrinkMenu(){
         cout << "b: back" << endl;
         cin >> input;
         cout << endl;
-        
+
         if(input == '1'){
             cout << endl << "-----List of all drinks-----" << endl << endl;
             displayAllDrinks();
@@ -489,9 +489,9 @@ void AdminUI::changeDrink(){
     DrinkRepo drinkRepo;
     vector<Drink> drinks = drinkRepo.getVectorOfDrinks();
     cout << endl;
-    
+
     char choice = 'y';
-    
+
     while(choice == 'y')
     {
         for(int i = 0; i < drinks.size(); i++){
@@ -502,7 +502,7 @@ void AdminUI::changeDrink(){
         int input = 0;
         cout << "Choose a drink to change: ";
         cin >> input;
-        
+
         for(int i = 0; i < drinks.size(); i++){
             if(input == i+1){
                 cin >> drinks.at(i);
@@ -523,7 +523,7 @@ void AdminUI::changeDrink(){
 
 void AdminUI::addDrink(){
     char input = 'y';
-    
+
     while(input == 'y'){
         DrinkRepo drinkRepo;
         Drink temp;
@@ -544,20 +544,20 @@ void AdminUI::removeDrink(){
     DrinkRepo drinkRepo;
     vector<Drink> drinks = drinkRepo.getVectorOfDrinks();
     cout << endl;
-    
+
     char choice = 'y';
-    
+
     while(choice == 'y'){
         for(int i = 0; i < drinks.size(); i++){
             Drink temp = drinks.at(i);
             cout << "Drink number: " << i+1 << endl;
             cout <<  temp << endl;
         }
-        
+
         int input = 0;
         cout << "Choose a drink to remove: ";
         cin >> input;
-        
+
         for(int i = 0; i < drinks.size(); i++){
             if(input == i+1){
                 drinks.erase(drinks.begin() + i);
@@ -588,7 +588,7 @@ void AdminUI::displaySizeMenu(){
         cout << "b: back" << endl;
         cin >> input;
         cout << endl;
-        
+
         if(input == '1'){
             cout << endl << "-----List of all sizes-----" << endl << endl;
             displayAllSizes();
@@ -620,9 +620,9 @@ void AdminUI::changeSize(){
     SizeRepo sizeRepo;
     vector<Size> sizes = sizeRepo.getVectorOfSizes();
     cout << endl;
-    
+
     char choice = 'y';
-    
+
     while(choice == 'y')
     {
         for(int i = 0; i < sizes.size(); i++){
@@ -633,7 +633,7 @@ void AdminUI::changeSize(){
         int input = 0;
         cout << "Choose a size to change: ";
         cin >> input;
-        
+
         for(int i = 0; i < sizes.size(); i++){
             if(input == i+1){
                 cin >> sizes.at(i);
@@ -655,7 +655,7 @@ void AdminUI::changeSize(){
 
 void AdminUI::addSize(){
     char input = 'y';
-    
+
     while(input == 'y'){
         SizeRepo sizeRepo;
         Size temp;
@@ -676,20 +676,20 @@ void AdminUI::removeSize(){
     SizeRepo sizeRepo;
     vector<Size> sizes = sizeRepo.getVectorOfSizes();
     cout << endl;
-    
+
     char choice = 'y';
-    
+
     while(choice == 'y'){
         for(int i = 0; i < sizes.size(); i++){
             Size temp = sizes.at(i);
             cout << "Size number: " << i+1 << endl;
             cout <<  temp << endl;
         }
-        
+
         int input = 0;
         cout << "Choose a drink to remove: ";
         cin >> input;
-        
+
         for(int i = 0; i < sizes.size(); i++){
             if(input == i+1){
                 sizes.erase(sizes.begin() + i);
@@ -719,7 +719,7 @@ void AdminUI::displayBaseMenu(){
         cout << "b: back" << endl;
         cin >> input;
         cout << endl;
-        
+
         if(input == '1'){
             cout << endl << "-----List of all bases-----" << endl << endl;
             displayAllBases();
@@ -739,7 +739,7 @@ void AdminUI::displayBaseMenu(){
 void AdminUI::displayAllBases(){
     BaseRepo baseRepo;
     vector<Base> bases = baseRepo.getVectorOfBases();
-    for (int i = 0; i < bases.size(); i++) {
+    for (unsigned int i = 0; i < bases.size(); i++) {
         Base temp = bases.at(i);
         cout << temp << endl;
     }
@@ -749,9 +749,9 @@ void AdminUI::changeBase(){
     BaseRepo baseRepo;
     vector<Base> bases = baseRepo.getVectorOfBases();
     cout << endl;
-    
+
     char choice = 'y';
-    
+
     while(choice == 'y')
     {
         for(int i = 0; i < bases.size(); i++){
@@ -762,7 +762,7 @@ void AdminUI::changeBase(){
         int input = 0;
         cout << "Choose a base to change: ";
         cin >> input;
-        
+
         for(int i = 0; i < bases.size(); i++){
             if(input == i+1){
                 cin >> bases.at(i);
@@ -783,7 +783,7 @@ void AdminUI::changeBase(){
 
 void AdminUI::addBase(){
     char input = 'y';
-    
+
     while(input == 'y'){
         BaseRepo baseRepo;
         Base temp;
@@ -805,20 +805,20 @@ void AdminUI::removeBase(){
     BaseRepo baseRepo;
     vector<Base> bases = baseRepo.getVectorOfBases();
     cout << endl;
-    
+
     char choice = 'y';
-    
+
     while(choice == 'y'){
         for(int i = 0; i < bases.size(); i++){
             Base temp = bases.at(i);
             cout << "Size number: " << i+1 << endl;
             cout <<  temp << endl;
         }
-        
+
         int input = 0;
         cout << "Choose a drink to remove: ";
         cin >> input;
-        
+
         for(int i = 0; i < bases.size(); i++){
             if(input == i+1){
                 bases.erase(bases.begin() + i);
