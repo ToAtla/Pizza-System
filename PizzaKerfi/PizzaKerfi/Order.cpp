@@ -35,7 +35,7 @@ istream& operator >> (istream& in, Order& order){
     in >> order.numberOfPizzas;
     
     for (int i = 0; i < order.numberOfPizzas; i++) {
-        cout << "Pizza number: " << i+1;
+        cout << endl << "Pizza number: " << i+1 << endl;
         order.pizzaList[i] = Pizza();
         in >> order.pizzaList[i];
     }
