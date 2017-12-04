@@ -15,7 +15,7 @@
 
 using namespace std;
 
-const int MAXCHARSINBASENAME = 4;
+const int MAXCHARSINBASENAME = 15;
 
 class Base{
     
