@@ -129,6 +129,7 @@ void Pizza::chooseToppings(){
             cin >> input;
             if(input != 0){
                 this->toppings[c] = allToppings.at(input-1);
+                this->price += allToppings.at(input-1).getPrice();
                 c++;
                 cout << "Topping number " << input << " added" << endl;
             }else{
