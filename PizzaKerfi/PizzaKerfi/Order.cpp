@@ -13,6 +13,9 @@ using namespace std;
 Order::Order(){
     numberOfPizzas = 0;
     totalPrice = 0;
+    paid = false;
+    ready = false;
+    delievered = false;
 }
 
 Pizza* Order::getPizzasInOrder(){
