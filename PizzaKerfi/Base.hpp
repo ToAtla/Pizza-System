@@ -15,10 +15,10 @@
 
 using namespace std;
 
-const int MAXCHARSINBASENAME = 15;
+const int MAXCHARSINBASENAME = 4;
 
 class Base{
-    
+
     public:
         Base();
         int getPrice();
