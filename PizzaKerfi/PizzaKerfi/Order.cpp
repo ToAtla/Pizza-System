@@ -9,7 +9,7 @@
 #include "Order.hpp"
 #include "SideRepo.hpp"
 #include "DrinkRepo.hpp"
-#include "Location.hpp"
+#include "LocationRepo.hpp"
 #include <iostream>
 using namespace std;
 
@@ -79,7 +79,7 @@ istream& operator >> (istream& in, Order& order){
     
     c = 0;
     
-    cout << endl << "Would you like to a drink with your order? y: yes";
+    cout << endl << "Would you like to a drink with your order? y: yes ";
     cin >> input;
     
     while(input == 'y') {
@@ -103,34 +103,61 @@ istream& operator >> (istream& in, Order& order){
             }
         }
         
-        cout << endl <<"Would you like do add another drink? y: yes";
+        cout << endl <<"Would you like do add another drink? y: yes ";
         cin >> input;
         
     }
     
+    cout << endl << "-----Locations available-----" << endl << endl;
+    int locationNumber = 0;
     
+    bool invalidInput = true;
     
-    
+    while(invalidInput)
+    {
+        LocationRepo lr;
+        vector<Location> locations = lr.getVectorOfLocations();
+        
+        for(unsigned int i = 0; i < locations.size(); i++){
+            cout << "Location number: " << i+1 << endl;
+            cout << locations.at(i) << endl;
+        }
+        cout << "Choose a location for your order: " << endl;
+        cin >> locationNumber;
+        
+        for(unsigned int i = 0; i < locations.size(); i++){
+            if(locationNumber == i+1){
+                order.locationOfOrder = locations.at(i);
+                invalidInput = false;
+            }
+        }
+        
+        if(!invalidInput){
+            cout << "Please enter a valid location: " << endl;
+        }
+    }
     
     return in;
 }
 
 ostream& operator << (ostream& out, const Order& order){
-    cout << endl <<  " - - - - " << endl;
-    cout << "Pizza/s:" << endl;
+    out << endl <<  " - - - - " << endl;
+    out << "Pizza/s:" << endl;
     for(int i = 0; i < order.numberOfPizzas; i++) {
         out << order.pizzaList[i];
     }
-    cout << endl <<"Side/s:" << endl;
+    out << endl <<"Side/s:" << endl;
     for(int i = 0; i < order.numberOfSides; i++){
         out << order.sideList[i] << endl;
     }
-    cout << endl << "Drink/s:" << endl;
+    out << endl << "Drink/s:" << endl;
     for(int i = 0; i < order.numberOfDrinks; i++){
         out << order.drinkList[i] << endl;
     }
-    cout << endl << "The total price of order: " << order.totalPrice << endl;
-    cout << " - - - - " << endl;
+    out << endl << "Location of order" << endl;
+    out << order.locationOfOrder;
+    out << endl << "The total price of order: " << order.totalPrice << endl;
+    out << " - - - - " << endl;
     
     return out;
 }

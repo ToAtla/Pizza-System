@@ -20,10 +20,8 @@ LocationRepo::LocationRepo(){
 void LocationRepo::storeLocation(Location& location){
     ofstream fout;
     fout.open("Branches.txt", ios::app);
-    location.setVerbose(false);
     fout << location;
     fout.close();
-    location.setVerbose(true);
 }
 
 vector<Location> LocationRepo::getVectorOfLocations(){
@@ -32,9 +30,7 @@ vector<Location> LocationRepo::getVectorOfLocations(){
     fin.open("Branches.txt");
     while(!fin.eof()){
         Location temp;
-        temp.setVerbose(false);
         fin >> temp;
-        temp.setVerbose(true);
         locations.push_back(temp);
     }
     locations.pop_back();
@@ -47,7 +43,6 @@ void LocationRepo::storeVectorOfLocations(vector<Location> locations){
     ofstream fout;
     fout.open("Branches.txt");
     for(int i = 0; i < locations.size(); i++){
-        locations[i].setVerbose(false);
         fout << locations[i];
     }
     fout.close();
