@@ -38,6 +38,7 @@ istream& operator >> (istream& in, Order& order){
         cout << endl << "Pizza number: " << i+1 << endl;
         order.pizzaList[i] = Pizza();
         in >> order.pizzaList[i];
+        order.totalPrice += order.pizzaList[i].getPrice();
     }
     return in;
 }
@@ -47,6 +48,8 @@ ostream& operator << (ostream& out, const Order& order){
     for(int i = 0; i < order.numberOfPizzas; i++) {
         out << order.pizzaList[i];
     }
+    cout << endl << "The total pice of order: " << order.totalPrice << endl;
     cout << " - - - - " << endl;
+    
     return out;
 }

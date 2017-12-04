@@ -15,7 +15,7 @@
 
 using namespace std;
 
-const int MAXCHARINSIZENAME = 4;
+const int MAXCHARINSIZENAME = 15;
 
 class Size{
     
