@@ -10,7 +10,14 @@
 #define ConsoleMagic_hpp
 
 #include <stdio.h>
-void clearScreen();
+
+class ConsoleMagic{
+public:
+    void clearScreen();
+private:
+};
+
+
 #endif /* ConsoleMagic_hpp */
 
 

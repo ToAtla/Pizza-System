@@ -8,7 +8,7 @@
 
 #include "ConsoleMagic.hpp"
 
-void clearScreen(){
+void ConsoleMagic::clearScreen(){
     int n;
     for (n = 0; n < 10; n++)
         printf( "\n\n\n\n\n\n\n\n\n\n" );

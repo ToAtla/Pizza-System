@@ -13,11 +13,10 @@
 #include "DeliveryUI.hpp"
 #include "LocationRepo.hpp"
 #include "Location.hpp"
+#include "ConsoleMagic.hpp"
 #include <stdlib.h>
 
 void MainUI::startUI(){
-
-   
     
     char input = '\0';
     while(input != 'q'){
@@ -52,7 +51,7 @@ void MainUI::startUI(){
         else if(input == 'q'){
             break;
         }
-        //clearScreen();
+       
     }
 }
 
