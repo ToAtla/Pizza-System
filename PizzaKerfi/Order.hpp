@@ -15,6 +15,7 @@
 #include "Side.hpp"
 #include "Drink.hpp"
 #include "Location.hpp"
+#include <iomanip>
 
 const int MAXSTUFFSINORDER = 20;
 
