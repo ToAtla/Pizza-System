@@ -17,6 +17,7 @@ Order::Order(){
     numberOfPizzas = 0;
     numberOfSides = 0;
     numberOfDrinks = 0;
+    ID = 6969;
     locationOfOrder = Location();
     totalPrice = 0;
     paid = false;
@@ -47,7 +48,7 @@ bool Order::isDelivered(){
 }
 
 istream& operator >> (istream& in, Order& order){
-    
+    order.ID = 6969;
     cout << "Enter number of pizzas to add to order: ";
     in >> order.numberOfPizzas;
     
@@ -151,23 +152,26 @@ istream& operator >> (istream& in, Order& order){
 }
 
 ostream& operator << (ostream& out, const Order& order){
-    out << endl <<  " - - - - " << endl;
-    out << "Pizza/s:" << endl;
+    out << "-------------------------------------------------------" << endl;
+    
+    out << "#" << order.ID << "\t\t\t " << order.locationOfOrder << " \t\t\t\t\t\t";
+    if(!order.paid){
+        cout << "NOT ";
+    }
+    out << "PAID" << endl;
     for(int i = 0; i < order.numberOfPizzas; i++) {
         out << order.pizzaList[i];
     }
-    out << endl <<"Side/s:" << endl;
+    
     for(int i = 0; i < order.numberOfSides; i++){
         out << order.sideList[i] << endl;
     }
-    out << endl << "Drink/s:" << endl;
+    
     for(int i = 0; i < order.numberOfDrinks; i++){
         out << order.drinkList[i] << endl;
     }
-    out << endl << "Location of order" << endl;
-    out << order.locationOfOrder;
-    out << endl << "The total price of order: " << order.totalPrice << endl;
-    out << " - - - - " << endl;
+    out << "-------------------------------------------------------" << endl;
+    out << "TOTAL: \t\t\t\t\t\t\t\t\t" << order.totalPrice << endl;
     
     return out;
 }

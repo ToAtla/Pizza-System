@@ -20,6 +20,7 @@ public:
     void displayUnpaidOrders();
     void displayPaidOrders();
     void displayAllOrders();
+    void displayLegacyOrders();
 private:
     OrderService orderService;
 };

@@ -15,10 +15,10 @@ using namespace std;
 void DeliveryUI::startDeliveryUI(){
     char input = '\0';
     while(input != 'b'){
-        cout << "1: List all orders" << endl;
+        cout << "1: List all orders BROKEN" << endl;
         cout << "2: List all unpaid orders" << endl;
         cout << "3: List all paid orders" << endl;
-        cout << "4: BROKEN" << endl;
+        cout << "4: List all legacy orders BROKEN" << endl;
         cout << "b: back" << endl;
         cin >> input;
         cout << endl;
@@ -33,6 +33,7 @@ void DeliveryUI::startDeliveryUI(){
             displayPaidOrders();
         }
         else if(input == '4'){
+            displayLegacyOrders();
         }
     }
 }
@@ -108,4 +109,9 @@ void DeliveryUI::displayPaidOrders(){
             break;
         }
     }
+}
+
+
+void DeliveryUI::displayLegacyOrders(){
+    cout << "Work in progress" << endl;
 }

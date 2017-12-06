@@ -36,7 +36,7 @@ return in;
 
 ostream& operator << (ostream& out, const Location& location){
 
-    out << location.name << endl;
+    out << location.name;
 
 return out;
 }
