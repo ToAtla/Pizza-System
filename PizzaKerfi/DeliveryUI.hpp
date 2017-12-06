@@ -13,9 +13,12 @@
 #include <stdio.h>
 #include "ConsoleMagic.hpp"
 #include "OrderService.hpp"
+#include "LocationRepo.hpp"
+#include "Location.hpp"
 
 class DeliveryUI{
 public:
+    void chooseYourLocation();
     void startDeliveryUI();
     void displayUnpaidOrders();
     void displayPaidOrders();
@@ -23,6 +26,7 @@ public:
     void displayLegacyOrders();
 private:
     OrderService orderService;
+    Location locationOfDelivery;
 };
 
 #endif /* DeliveryUI_hpp */

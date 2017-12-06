@@ -10,6 +10,7 @@
 #define PrepUI_hpp
 
 #include <stdio.h>
+#include "LocationRepo.hpp"
 
 class PrepUI{
 public:
@@ -18,5 +19,6 @@ private:
     void waitingOverview();
     void preppingOverview();
     void readyOverview();
+    Location locationOfPrep;
 };
 #endif /* PrepUI_hpp */

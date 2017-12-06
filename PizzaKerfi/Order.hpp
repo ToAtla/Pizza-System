@@ -26,6 +26,7 @@ public:
     Order();
     Pizza* getPizzasInOrder();
     int getNumberOfPizzas();
+    Location getLocation();
     void setPaid(bool paid);
     bool isPaid();
     void setDelivered(bool v);
