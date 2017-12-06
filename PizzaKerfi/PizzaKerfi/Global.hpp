@@ -10,6 +10,12 @@
 #define Global_hpp
 
 #include <stdio.h>
+#include <string>
+#include <cstring>
+#include <iostream>
+#include <fstream>
+
+using namespace std;
 
 const int MAXCHARSINBASENAME = 4;
 const int MAXCHARINSIZENAME = 15;
@@ -19,5 +25,6 @@ const int MAXCHARINLOCATIONNAME = 30;
 const int MAXTOPPINGS = 16;
 const int MAXCHARSINTOPPINGNAME = 20;
 const int MAXSTUFFSINORDER = 20;
+const string tabString = "\t\t\t\t\t\t\t\t\t\t\t";
 
 #endif /* Global_hpp */

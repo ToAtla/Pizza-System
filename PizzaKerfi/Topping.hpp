@@ -20,7 +20,6 @@ class Topping {
         Topping();
         int getPrice();
         void setPrice(int inPrice);
-        void setVerbose(bool v);
         char* getName();
         void setName(char inName[]);
         friend istream& operator >> (istream& in, Topping& topping);
@@ -28,7 +27,6 @@ class Topping {
     private:
         char name[30];
         int price;
-        bool verbose = true;
 };
 
 #endif /* Topping_hpp */

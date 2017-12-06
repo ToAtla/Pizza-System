@@ -24,7 +24,6 @@ class Size{
         Size();
         int getPrice();
         void setPrice(int inPrice);
-        void setVerbose(bool v);
         char* getName();
         void setName(char inName[]);
         friend istream& operator >> (istream& in, Size& size);
@@ -32,7 +31,6 @@ class Size{
     private:
         char name[MAXCHARINSIZENAME];
         int price;
-        bool verbose = true;
 };
 
 #endif /* Size_hpp */

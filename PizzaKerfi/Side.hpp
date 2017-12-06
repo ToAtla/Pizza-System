@@ -24,7 +24,6 @@ class Side{
         Side();
         int getPrice();
         void setPrice(int inPrice);
-        void setVerbose(bool v);
         char* getName();
         void setName(char inName[]);
         friend istream& operator >> (istream& in, Side& side);
@@ -32,7 +31,6 @@ class Side{
     private:
         char name[MAXCHARINSIDENAME];
         int price;
-        bool verbose = true;
     
 };
 

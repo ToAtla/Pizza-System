@@ -37,7 +37,7 @@ Order* OrderRepo::retrieveOrderArray(string fileName, int& tellMeHowManyOrders){
     ifstream fin;
     fin.open(fileName, ios::binary);
     fin.seekg(0, fin.end);
-    tellMeHowManyOrders = fin.tellg() / sizeof(Order);
+    tellMeHowManyOrders = (int)(fin.tellg() / sizeof(Order));
     fin.seekg(0, fin.beg);
     fin.read((char*)(orderList), sizeof(Order)*tellMeHowManyOrders);
     fin.close();

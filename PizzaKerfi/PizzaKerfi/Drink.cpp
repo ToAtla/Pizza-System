@@ -9,7 +9,7 @@
 #include "Drink.hpp"
 #include <iomanip>
 
-const string tabString = "\t\t\t\t\t\t\t\t\t\t\t";
+
 
 //Defult constuctor.
 Drink::Drink(){
@@ -29,11 +29,6 @@ void Drink::setPrice(int inPrice){
     price = inPrice;
 }
 
-//Takes in a bool parameter and gives the private variable verbose the value of the parameter.
-void Drink::setVerbose(bool v){
-    
-    verbose = v;
-}
 
 //Returns the private variable name.
 char* Drink::getName(){
@@ -50,26 +45,17 @@ void Drink::setName(char inName[]){
 
 //Overloads the ostream operator so one can use the '<<' operator to print the contents of a Drink instance.
 ostream& operator << (ostream& out, const Drink& drink){
-
-    if(drink.verbose){
-        out << drink.name << tabString << drink.price;
-    }else{
-        out << drink.name << endl;
-        out << drink.price << endl;
-    }
     
+    
+    out << drink.name << tabString << drink.price;
     return out;
 }
 
 //Overloads the ostream operator so one can use the '>>' operator to input the contents of a Drink Side.
 istream& operator >> (istream& in, Drink& drink){
-    
-    if(drink.verbose)
-        cout << "Enter drink name: ";
+    cout << "Enter drink name: ";
     in >> drink.name;
-    
-    if(drink.verbose)
-        cout << "Enter drink price: ";
+    cout << "Enter drink price: ";
     in >> drink.price;
     
     return in;

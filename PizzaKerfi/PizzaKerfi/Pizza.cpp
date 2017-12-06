@@ -18,8 +18,6 @@
 #include <string>
 
 using namespace std;
-const string tabString = "\t\t\t\t\t\t\t";
-using namespace std;
 
 Pizza::Pizza(){
     strcpy(name, "THIS SHOULD NEVER BE VISIBLE");

@@ -20,10 +20,6 @@ void Base::setPrice(int inPrice){
     price = inPrice;
 }
 
-void Base::setVerbose(bool v){
-    verbose = v;
-}
-
 char* Base::getName(){
     return name;
 }
@@ -38,25 +34,15 @@ void Base::setName(char inName[]){
 
 istream& operator >> (istream& in, Base& base){
     
-    if(base.verbose)
-        cout << "Enter base name: ";
+    cout << "Enter base name: ";
     in >> base.name;
-    
-    if(base.verbose)
-        cout << "Enter side price: ";
+    cout << "Enter side price: ";
     in >> base.price;
     return in;
 }
 
 ostream& operator << (ostream& out, const Base& base){
-    
-    if(base.verbose)
-        out << "Base: ";
-    out << base.name << endl;
-    
-    if(base.verbose)
-        out << "Price: ";
-    out << base.price << endl;
+    out << base.name << "\t\t\t\t\t\t\t\t" << base.price << endl;
     
     return out;
 }
