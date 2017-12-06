@@ -10,7 +10,7 @@
 #define MainUI_hpp
 
 #include <stdio.h>
-#include "ConsoleMagic.hpp"
+#include "Global.hpp"
 
 class MainUI{
 

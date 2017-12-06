@@ -13,6 +13,7 @@
 
 #include <vector>
 #include "Side.hpp"
+#include "Global.hpp"
 
 using namespace std;
 

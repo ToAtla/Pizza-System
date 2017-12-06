@@ -41,7 +41,7 @@ char* Drink::getName(){
 
 //Take in a character array as a paramaeter and puts it into the private variable name.
 void Drink::setName(char inName[]){
-    for(int i = 0; i < MAXCHARINDRINK; i++){
+    for(int i = 0; i < MAXCHARINDRINKNAME; i++){
         name[i] = inName[i];
     }
 }

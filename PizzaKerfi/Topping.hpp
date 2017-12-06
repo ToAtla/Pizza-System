@@ -11,9 +11,7 @@
 
 #include <stdio.h>
 #include <string>
-
-const int MAXTOPPINGS = 16;
-const int MAXCHARSINTOPPINGNAME = 20;
+#include "Global.hpp"
 
 using namespace std;
 
@@ -28,7 +26,7 @@ class Topping {
         friend istream& operator >> (istream& in, Topping& topping);
         friend ostream& operator << (ostream& out, const Topping& topping);
     private:
-        char name[MAXCHARSINTOPPINGNAME];
+        char name[30];
         int price;
         bool verbose = true;
 };

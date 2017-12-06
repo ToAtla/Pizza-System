@@ -42,7 +42,7 @@ char* Side::getName(){
 
 //Take in a character array as a paramaeter and puts it into the private variable name.
 void Side::setName(char inName[]){
-    for(int i = 0; i < MAXCHARINSIDE; i++){
+    for(int i = 0; i < MAXCHARINSIDENAME; i++){
         name[i] = inName[i];
     }
 }

@@ -12,10 +12,11 @@
 #include <stdio.h>
 #include <iostream>
 #include <fstream>
+#include "Global.hpp"
 
 using namespace std;
 
-const int MAXCHARINSIZENAME = 15;
+
 
 class Size{
     

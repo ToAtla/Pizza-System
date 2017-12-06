@@ -12,6 +12,7 @@
 #include <stdio.h>
 #include <vector>
 #include "Topping.hpp"
+#include "Global.hpp"
 
 using namespace std;
 

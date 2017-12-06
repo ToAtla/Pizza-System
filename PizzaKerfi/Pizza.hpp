@@ -28,7 +28,6 @@ class Pizza{
 public:
         
     Pizza();
-    Pizza(char inSize[MAXCHARSINPIZZASIZE], Topping inToppings[], int toppingsToAdd);
     void createPizza();
     
     bool getVerbose();

@@ -12,6 +12,7 @@
 #include <stdio.h>
 #include "Pizza.hpp"
 #include "PizzaRepo.hpp"
+#include "Global.hpp"
 
 
 /*

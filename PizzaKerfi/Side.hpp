@@ -12,10 +12,11 @@
 #include <stdio.h>
 #include <iostream>
 #include <fstream>
+#include "Global.hpp"
 
 using namespace std;
 
-const int MAXCHARINSIDE = 30;
+
 
 class Side{
 
@@ -29,7 +30,7 @@ class Side{
         friend istream& operator >> (istream& in, Side& side);
         friend ostream& operator << (ostream& out, const Side& side);
     private:
-        char name[MAXCHARINSIDE];
+        char name[MAXCHARINSIDENAME];
         int price;
         bool verbose = true;
     

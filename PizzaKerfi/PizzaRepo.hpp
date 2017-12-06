@@ -11,6 +11,7 @@
 
 #include <stdio.h>
 #include "Pizza.hpp"
+#include "Global.hpp"
 
 class PizzaRepo {
 public:

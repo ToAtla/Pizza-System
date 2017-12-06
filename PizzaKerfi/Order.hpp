@@ -15,8 +15,8 @@
 #include "Side.hpp"
 #include "Drink.hpp"
 #include "Location.hpp"
+#include "Global.hpp"
 
-const int MAXSTUFFSINORDER = 20;
 
 using namespace std;
 

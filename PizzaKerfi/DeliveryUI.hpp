@@ -13,6 +13,7 @@
 #include <stdio.h>
 #include "ConsoleMagic.hpp"
 #include "OrderService.hpp"
+#include "Global.hpp"
 
 class DeliveryUI{
 public:

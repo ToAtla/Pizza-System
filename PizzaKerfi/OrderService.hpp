@@ -11,6 +11,8 @@
 
 #include <stdio.h>
 #include "OrderRepo.hpp"
+#include "Global.hpp"
+
 class OrderService {
 public:
     void setOrderPaidValue(string fileName, int pureIndex, bool value);

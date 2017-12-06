@@ -21,8 +21,8 @@ Location::Location(){
 string Location::getLocation(){
     return name;
 }
-void Location::setName(char inName[MAXCHARINLOC]){
-    for(int i = 0; i < MAXCHARINLOC; i++){
+void Location::setName(char inName[30]){
+    for(int i = 0; i < 30; i++){
     name[i] = inName[i];
     }
 }

@@ -18,27 +18,12 @@
 #include <string>
 
 using namespace std;
-const int BASICCOST = 1000;
 const string tabString = "\t\t\t\t\t\t\t";
 using namespace std;
 
 Pizza::Pizza(){
-    
-    strcpy(name, "Margarita");
-    price = BASICCOST;
-}
-
-Pizza::Pizza(char inSize[MAXCHARSINPIZZASIZE], Topping inToppings[], int toppingsToAdd){
-    strcpy(size, inSize);
-    price = BASICCOST;
-    if(toppingsToAdd > MAXTOPPINGSONPIZZA){
-        cout << "Error: Topping amount exceeds max allowed number of toppings" << endl;
-    }else{
-        for (int i = 0; i < toppingsToAdd; i++) {
-            inToppings[i] = toppings[i];
-        }
-        toppingCount = toppingsToAdd;
-    }
+    strcpy(name, "THIS SHOULD NEVER BE VISIBLE");
+    price = 0;
 }
 
 void Pizza::createPizza(){
