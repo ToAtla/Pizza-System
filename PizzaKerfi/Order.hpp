@@ -27,6 +27,8 @@ public:
     int getNumberOfPizzas();
     void setPaid(bool paid);
     bool isPaid();
+    void setDelivered(bool v);
+    bool isDelivered();
     friend ostream& operator << (ostream& out, const Order&);
     friend istream& operator >> (istream& in, Order&);
 private:

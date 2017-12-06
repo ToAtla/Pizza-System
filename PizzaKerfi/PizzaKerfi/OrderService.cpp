@@ -17,3 +17,14 @@ void OrderService::setOrderPaidValue(string fileName, int pureIndex, bool value)
         orderRepo.storeOrder(orders[i]);
     }
 }
+
+void OrderService::setOrderDeliveredValue(string fileName, int pureIndex, bool value){
+    int size;
+    Order* orders = orderRepo.retrieveOrderArray(fileName, size);
+    orders[pureIndex].setDelivered(value);
+    orderRepo.clearOrderFile(fileName);
+    for (int i = 0; i < size; i++) {
+        orderRepo.storeOrder(orders[i]);
+    }
+}
+
