@@ -52,4 +52,8 @@ bool OrderRepo::fileExists(string fileName){
     return returnValue;
 }
 
-
+void OrderRepo::clearOrderFile(string fileName){
+    ofstream fout;
+    fout.open(fileName);
+    fout.close();
+}

@@ -25,6 +25,7 @@ public:
     Order();
     Pizza* getPizzasInOrder();
     int getNumberOfPizzas();
+    void setPaid(bool paid);
     bool isPaid();
     friend ostream& operator << (ostream& out, const Order&);
     friend istream& operator >> (istream& in, Order&);

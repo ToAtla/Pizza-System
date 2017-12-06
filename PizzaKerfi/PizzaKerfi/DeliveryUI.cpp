@@ -24,18 +24,25 @@ void DeliveryUI::startDeliveryUI(){
         cout << endl;
         
         if(input == '1'){
-            displayOrders();
+            displayAllOrders();
         }
         else if(input == '2'){
+            displayUnpaidOrders();
         }
         else if(input == '3'){
+            displayPaidOrders();
         }
         else if(input == '4'){
         }
     }
 }
 
-void DeliveryUI::displayOrders(){
+
+void DeliveryUI::displayAllOrders(){
+    cout << "WORK IN PROGRESS" << endl;
+}
+
+void DeliveryUI::displayUnpaidOrders(){
     string orderFile = "orders.dat";
     OrderRepo ordRep;
     int sizeOfOrderList;
@@ -43,10 +50,11 @@ void DeliveryUI::displayOrders(){
     cout << " - - - - Orders - - - - " << endl;
     if(ordRep.fileExists(orderFile) && sizeOfOrderList != 0){
         for (int i = 0; i < sizeOfOrderList; i++) {
+            cout << "#" << i+1;
             if(orders[i].isPaid()){
-                cout << "#" << i+1 << " PAID"<< endl;
+                cout << " PAID"<< endl;
             }else{
-                cout << "#" << i+1 << " NOT PAID"<< endl;
+                cout << " NOT PAID"<< endl;
             }
             cout << orders[i] << endl;
         }
@@ -56,4 +64,22 @@ void DeliveryUI::displayOrders(){
         cout << "List is empty" << endl;
         cout << endl;
     }
+    
+    int input = '\0';
+    while(input != '0'){
+        cout << "Pick a number to mark for paid or 0 to exit: ";
+        cin >> input;
+        if(input != 0){
+            if(input <= sizeOfOrderList && input > 0){
+                orderService.setOrderPaidValue(orderFile, input-1, true);
+                cout << "Order number " << input << " marked prepared" << endl;
+            }
+        }else{
+            break;
+        }
+    }
+}
+
+void DeliveryUI::displayPaidOrders(){
+    cout << "WORK IN PROGRESS" << endl;
 }
