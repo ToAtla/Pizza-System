@@ -8,7 +8,7 @@
 
 #include "Side.hpp"
 
-const string tabString = "\t\t\t\t\t\t\t\t";
+const string tabString = "\t\t\t\t\t\t\t\t\t\t\t";
 
 //Defult constructor.
 Side::Side(){

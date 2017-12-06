@@ -11,6 +11,8 @@
 #include "DrinkRepo.hpp"
 #include "LocationRepo.hpp"
 #include <iostream>
+#include <iomanip>
+
 using namespace std;
 
 Order::Order(){
@@ -60,10 +62,11 @@ istream& operator >> (istream& in, Order& order){
     }
  
     cout << endl << "Would you like a side with your order? y: yes ";
-    char input = 0;
+    char input = '0';
     cin >> input;
     
     int c = 0;
+    order.numberOfSides = 0;
     while(input == 'y') {
        
         SideRepo sr;
@@ -93,6 +96,7 @@ istream& operator >> (istream& in, Order& order){
     
     cout << endl << "Would you like to a drink with your order? y: yes ";
     cin >> input;
+    order.numberOfDrinks = 0;
     
     while(input == 'y') {
         
@@ -153,7 +157,6 @@ istream& operator >> (istream& in, Order& order){
 }
 
 ostream& operator << (ostream& out, const Order& order){
-    out << "-------------------------------------------------------" << endl;
     
     out << "#" << order.ID << "\t\t\t " << order.locationOfOrder << " \t\t\t\t\t\t";
     if(!order.paid){
@@ -172,7 +175,8 @@ ostream& operator << (ostream& out, const Order& order){
         out << order.drinkList[i] << endl;
     }
     out << "-------------------------------------------------------" << endl;
-    out << "TOTAL: \t\t\t\t\t\t\t\t\t" << order.totalPrice << endl;
+    out << "TOTAL: \t\t\t\t\t\t\t\t\t\t\t" << order.totalPrice << endl;
+    out << endl;
     
     return out;
 }
