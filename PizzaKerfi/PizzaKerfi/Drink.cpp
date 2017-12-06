@@ -7,6 +7,7 @@
 //
 
 #include "Drink.hpp"
+const string tabString = "\t\t\t\t\t\t\t\t";
 
 //Defult constuctor.
 Drink::Drink(){
@@ -47,15 +48,13 @@ void Drink::setName(char inName[]){
 
 //Overloads the ostream operator so one can use the '<<' operator to print the contents of a Drink instance.
 ostream& operator << (ostream& out, const Drink& drink){
-    
-    if(drink.verbose)
-        out << "Drink: ";
-    out << drink.name << endl;
-    
-    if(drink.verbose)
-        out << "Price: ";
-    out << drink.price << endl;
-    
+
+    if(drink.verbose){
+        out << drink.name << tabString << drink.price;
+    }else{
+        out << drink.name << endl;
+        out << drink.price << endl;
+    }
     
     return out;
 }

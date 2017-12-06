@@ -8,6 +8,8 @@
 
 #include "Side.hpp"
 
+const string tabString = "\t\t\t\t\t\t\t\t";
+
 //Defult constructor.
 Side::Side(){
     price = 0;
@@ -48,15 +50,12 @@ void Side::setName(char inName[]){
 //Overloads the ostream operator so one can use the '<<' operator to print the contents of a topping instance.
 ostream& operator << (ostream& out, const Side& side){
     
-    if(side.verbose)
-        out << "Side: ";
-    out << side.name << endl;
-    
-    if(side.verbose)
-        out << "Price: ";
-    out << side.price << endl;
-    
-    
+    if(side.verbose){
+        out << side.name << tabString << side.price;
+    }else{
+        out << side.name << endl;
+        out << side.price << endl;
+    }
     return out;
 }
 

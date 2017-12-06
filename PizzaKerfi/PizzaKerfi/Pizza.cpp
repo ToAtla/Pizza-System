@@ -19,7 +19,7 @@
 
 using namespace std;
 const int BASICCOST = 1000;
-
+const string tabString = "\t\t\t\t\t\t\t";
 using namespace std;
 
 Pizza::Pizza(){
@@ -156,10 +156,7 @@ void Pizza::fixName(){
 }
 
 ostream& operator << (ostream& out, const Pizza& pizza){
-    
-        out << pizza.name << '\t' << pizza.price << endl;
-        out << endl;
-    
+        out << pizza.name << tabString << pizza.price << endl;
     return out;
 }
 

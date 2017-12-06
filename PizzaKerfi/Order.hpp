@@ -40,6 +40,7 @@ private:
     int numberOfSides;
     int numberOfDrinks;
     int totalPrice;
+    int ID;
     bool paid = false;
     bool ready = false;
     bool delievered = false;
