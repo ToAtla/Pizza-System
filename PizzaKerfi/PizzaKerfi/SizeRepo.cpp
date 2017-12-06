@@ -16,26 +16,31 @@ SizeRepo::SizeRepo(){
 //Bætir breytu af taginu Size inní textaskránna "sizes.txt"
 void SizeRepo::addSize(Size& size){
     ofstream fout;
-    fout.open("sizes.txt", ios::app);
-    size.setVerbose(false);
-    fout << size;
+    fout.open("sizes.dat", ios::binary|ios::app);
+    fout.write((char*)(&size), sizeof(Size));
     fout.close();
-    size.setVerbose(true);
 }
 
 //Skilar vector af öllum meðlætum sem eru í "sizes.txt"
 vector<Size> SizeRepo::getVectorOfSizes(){
     vector<Size> sizes;
     ifstream fin;
-    fin.open("sizes.txt");
-    while(!fin.eof()){
-        Size temp;
-        temp.setVerbose(false);
-        fin >> temp;
-        temp.setVerbose(true);
-        sizes.push_back(temp);
+    fin.open("sizes.dat", ios::binary);
+    
+    fin.seekg(0, fin.end);
+    int numberOfSizes = (int)(fin.tellg() / sizeof(Size));
+    fin.seekg(0, fin.beg);
+    
+    //Almennt gerum við svona.
+    //fin.read((char*)(&drinks), sizeof(Drink)*numberOfDrinks);
+    //En ekki í þessu tilviki
+    //Því búið er að hanna klasan í kringum vektora
+    
+    for (int i = 0; i < numberOfSizes; i++) {
+        Size tempSize;
+        fin.read((char*)(&tempSize), sizeof(Size));
+        sizes.push_back(tempSize);
     }
-    sizes.pop_back();
     return sizes;
 }
 
@@ -46,10 +51,10 @@ void SizeRepo::storeVectorOfSizes(vector<Size> sizes){
     clearSizes();
     
     ofstream fout;
-    fout.open("sizes.txt");
+    fout.open("sizes.dat", ios::binary|ios::app);
     for(int i = 0; i < sizes.size(); i++){
-        sizes[i].setVerbose(false);
-        fout << sizes[i];
+        Size tempSize = sizes.at(i);
+        fout.write((char*)(&tempSize), sizeof(Size));
     }
     fout.close();
 }
@@ -59,6 +64,6 @@ void SizeRepo::storeVectorOfSizes(vector<Size> sizes){
 void SizeRepo::clearSizes()
 {
     ofstream fout;
-    fout.open("sizes.txt");
+    fout.open("sizes.dat", ios::binary);
     fout.close();
 }

@@ -16,11 +16,9 @@ BaseRepo::BaseRepo(){
 //Bætir breytu af taginu Base inní textaskránna "bases.txt"
 void BaseRepo::addBase(Base& base){
     ofstream fout;
-    fout.open("bases.txt", ios::app);
-    base.setVerbose(false);
-    fout << base;
+    fout.open("bases.dat", ios::binary|ios::app);
+    fout.write((char*)(&base), sizeof(Base));
     fout.close();
-    base.setVerbose(true);
 }
 
 //Skilar vector af öllum botnum sem eru í "bases.txt"
@@ -28,15 +26,22 @@ vector<Base> BaseRepo::getVectorOfBases(){
     
     vector<Base> bases;
     ifstream fin;
-    fin.open("bases.txt");
-    while(!fin.eof()){
-        Base temp;
-        temp.setVerbose(false);
-        fin >> temp;
-        temp.setVerbose(true);
-        bases.push_back(temp);
+    fin.open("bases.dat", ios::binary);
+    
+    fin.seekg(0, fin.end);
+    int numberOfBases = (int)(fin.tellg() / sizeof(Base));
+    fin.seekg(0, fin.beg);
+    
+    //Almennt gerum við svona.
+    //fin.read((char*)(&drinks), sizeof(Drink)*numberOfDrinks);
+    //En ekki í þessu tilviki
+    //Því búið er að hanna klasan í kringum vektora
+    
+    for (int i = 0; i < numberOfBases; i++) {
+        Base tempBase;
+        fin.read((char*)(&tempBase), sizeof(Base));
+        bases.push_back(tempBase);
     }
-    bases.pop_back();
     return bases;
 }
 
@@ -47,20 +52,19 @@ void BaseRepo::storeVectorOfBases(vector<Base> bases){
     clearBases();
     
     ofstream fout;
-    fout.open("bases.txt");
+    fout.open("bases.dat", ios::binary|ios::app);
     for(int i = 0; i < bases.size(); i++){
-        bases[i].setVerbose(false);
-        fout << bases[i];
+        Base tempBase = bases.at(i);
+        fout.write((char*)(&tempBase), sizeof(Base));
     }
     fout.close();
 }
 
 
 //Tæmir textaskránna "bases.txt"
-void BaseRepo::clearBases()
-{
+void BaseRepo::clearBases(){
     ofstream fout;
-    fout.open("bases.txt");
+    fout.open("bases.dat", ios::binary);
     fout.close();
 }
 

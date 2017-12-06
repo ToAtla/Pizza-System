@@ -32,26 +32,16 @@ vector<Drink> DrinkRepo::getVectorOfDrinks(){
     int numberOfDrinks = (int)(fin.tellg() / sizeof(Drink));
     fin.seekg(0, fin.beg);
     
+    //Almennt gerum við svona.
     //fin.read((char*)(&drinks), sizeof(Drink)*numberOfDrinks);
-    
-    //EÐA
+    //En ekki í þessu tilviki
+    //Því búið er að hanna klasan í kringum vektora
     
     for (int i = 0; i < numberOfDrinks; i++) {
         Drink tempDrink;
         fin.read((char*)(&tempDrink), sizeof(Drink));
         drinks.push_back(tempDrink);
     }
-    /*
-    fin.open("drinks.txt");
-    while(!fin.eof()){
-        Drink temp;
-        temp.setVerbose(false);
-        fin >> temp;
-        temp.setVerbose(true);
-        drinks.push_back(temp);
-    }
-    */
-    //drinks.pop_back();
     return drinks;
 }
 

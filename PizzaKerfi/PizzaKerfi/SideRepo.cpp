@@ -16,26 +16,32 @@ SideRepo::SideRepo(){
 //Bætir breytu af taginu Side inní textaskránna "toppings.txt"
 void SideRepo::addSide(Side& side){
     ofstream fout;
-    fout.open("sides.txt", ios::app);
-    side.setVerbose(false);
-    fout << side;
+    fout.open("sides.dat", ios::binary|ios::app);
+    fout.write((char*)(&side), sizeof(Side));
     fout.close();
-    side.setVerbose(true);
 }
 
 //Skilar vector af öllum meðlætum sem eru í "sides.txt"
 vector<Side> SideRepo::getVectorOfSides(){
+    
     vector<Side> sides;
     ifstream fin;
-    fin.open("sides.txt");
-    while(!fin.eof()){
-        Side temp;
-        temp.setVerbose(false);
-        fin >> temp;
-        temp.setVerbose(true);
-        sides.push_back(temp);
+    fin.open("sides.dat", ios::binary);
+    
+    fin.seekg(0, fin.end);
+    int numberOfSides = (int)(fin.tellg() / sizeof(Side));
+    fin.seekg(0, fin.beg);
+    
+    //Almennt gerum við svona.
+    //fin.read((char*)(&drinks), sizeof(Drink)*numberOfDrinks);
+    //En ekki í þessu tilviki
+    //Því búið er að hanna klasan í kringum vektora
+    
+    for (int i = 0; i < numberOfSides; i++) {
+        Side tempSide;
+        fin.read((char*)(&tempSide), sizeof(Side));
+        sides.push_back(tempSide);
     }
-    sides.pop_back();
     return sides;
 }
 
@@ -43,13 +49,14 @@ vector<Side> SideRepo::getVectorOfSides(){
 //Tekur inn vector af sides og setur það inn í textaskránna.
 void SideRepo::storeVectorOfSides(vector<Side> sides){
     
+    
     clearSides();
     
     ofstream fout;
-    fout.open("sides.txt");
+    fout.open("sides.dat", ios::binary|ios::app);
     for(int i = 0; i < sides.size(); i++){
-        sides[i].setVerbose(false);
-        fout << sides[i];
+        Side tempSide = sides.at(i);
+        fout.write((char*)(&tempSide), sizeof(Side));
     }
     fout.close();
 }
@@ -59,6 +66,6 @@ void SideRepo::storeVectorOfSides(vector<Side> sides){
 void SideRepo::clearSides()
 {
     ofstream fout;
-    fout.open("sides.txt");
+    fout.open("sides.dat", ios::binary);
     fout.close();
 }

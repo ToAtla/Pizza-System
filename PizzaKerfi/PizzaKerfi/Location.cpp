@@ -28,15 +28,15 @@ void Location::setName(char inName[30]){
 }
 
 istream& operator >> (istream& in, Location& location){
-    
+    cout << "Enter the location name:";
     in >> location.name;
 
-return in;
+    return in;
 }
 
 ostream& operator << (ostream& out, const Location& location){
 
     out << location.name;
 
-return out;
+    return out;
 }
