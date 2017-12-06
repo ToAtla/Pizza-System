@@ -15,6 +15,7 @@
 class PrepUI{
 public:
     void startPrepUI();
+    void chooseYourLocation();
 private:
     void waitingOverview();
     void preppingOverview();

@@ -18,8 +18,8 @@
 
 class DeliveryUI{
 public:
-    void chooseYourLocation();
     void startDeliveryUI();
+    void chooseYourLocation();
     void displayUnpaidOrders();
     void displayPaidOrders();
     void displayAllOrders();

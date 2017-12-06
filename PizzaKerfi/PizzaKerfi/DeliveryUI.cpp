@@ -64,7 +64,7 @@ void DeliveryUI::chooseYourLocation(){
             goodInput = false;
         }
         
-        //Ef að inputið er ekki bokstafur þa fer fer maður í for loopuna og gefur private breytunni location gildid sem þu valdir.
+        //Ef að inputið er ekki bokstafur þa fer fer maður í for loopuna og gefur private breytunni locationOfDelivery gildid sem þu valdir.
         //Og goodInput er sett false og while loopan hættir að loopa.
         if(goodInput)
         {
