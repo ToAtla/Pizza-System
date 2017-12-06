@@ -39,6 +39,13 @@ bool Order::isPaid(){
     return paid;
 }
 
+void Order::setDelivered(bool v){
+    delievered = v;
+}
+bool Order::isDelivered(){
+    return delievered;
+}
+
 istream& operator >> (istream& in, Order& order){
     
     cout << "Enter number of pizzas to add to order: ";

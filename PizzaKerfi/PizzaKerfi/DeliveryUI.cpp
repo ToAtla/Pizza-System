@@ -15,9 +15,9 @@ using namespace std;
 void DeliveryUI::startDeliveryUI(){
     char input = '\0';
     while(input != 'b'){
-        cout << "1: List all orders regarding paid status" << endl;
-        cout << "2: " << endl;
-        cout << "3: options" << endl;
+        cout << "1: List all orders" << endl;
+        cout << "2: List all unpaid orders" << endl;
+        cout << "3: List all paid orders" << endl;
         cout << "4: BROKEN" << endl;
         cout << "b: back" << endl;
         cin >> input;
@@ -50,13 +50,9 @@ void DeliveryUI::displayUnpaidOrders(){
     cout << " - - - - Orders - - - - " << endl;
     if(ordRep.fileExists(orderFile) && sizeOfOrderList != 0){
         for (int i = 0; i < sizeOfOrderList; i++) {
-            cout << "#" << i+1;
-            if(orders[i].isPaid()){
-                cout << " PAID"<< endl;
-            }else{
-                cout << " NOT PAID"<< endl;
+            if(!orders[i].isPaid() && !orders[i].isDelivered()){
+                cout << orders[i] << endl;
             }
-            cout << orders[i] << endl;
         }
         cout << endl;
     }else{
@@ -81,5 +77,35 @@ void DeliveryUI::displayUnpaidOrders(){
 }
 
 void DeliveryUI::displayPaidOrders(){
-    cout << "WORK IN PROGRESS" << endl;
+    string orderFile = "orders.dat";
+    OrderRepo ordRep;
+    int sizeOfOrderList;
+    Order* orders = ordRep.retrieveOrderArray(orderFile, sizeOfOrderList);
+    cout << " - - - - Orders - - - - " << endl;
+    if(ordRep.fileExists(orderFile) && sizeOfOrderList != 0){
+        for (int i = 0; i < sizeOfOrderList; i++) {
+            if(orders[i].isPaid() && !orders[i].isDelivered()){
+                cout << orders[i] << endl;
+            }
+        }
+        cout << endl;
+    }else{
+        cout << endl;
+        cout << "List is empty" << endl;
+        cout << endl;
+    }
+    
+    int input = '\0';
+    while(input != '0'){
+        cout << "Pick a number to mark for delivery or 0 to exit: ";
+        cin >> input;
+        if(input != 0){
+            if(input <= sizeOfOrderList && input > 0){
+                orderService.setOrderDeliveredValue(orderFile, input-1, true);
+                cout << "Order number " << input << " marked prepared" << endl;
+            }
+        }else{
+            break;
+        }
+    }
 }

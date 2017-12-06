@@ -14,6 +14,7 @@
 class OrderService {
 public:
     void setOrderPaidValue(string fileName, int pureIndex, bool value);
+    void setOrderDeliveredValue(string fileName, int pureIndex, bool value);
 private:
     OrderRepo orderRepo;
     
