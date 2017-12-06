@@ -35,7 +35,7 @@ Pizza* PizzaRepo::retrievePizzaArray(string fileName, int& tellMeHowMany){
     ifstream fin;
     fin.open(fileName, ios::binary);
     fin.seekg(0, fin.end);
-    tellMeHowMany = fin.tellg()/sizeof(Pizza);
+    tellMeHowMany = (int)(fin.tellg()/sizeof(Pizza));
     fin.seekg(0, fin.beg);
     fin.read((char*)(pizzas), sizeof(Pizza)*tellMeHowMany);
     fin.close();

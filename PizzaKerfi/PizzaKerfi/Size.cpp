@@ -19,9 +19,7 @@ int Size::getPrice(){
 void Size::setPrice(int inPrice){
     price = inPrice;
 }
-void Size::setVerbose(bool v){
-    verbose = v;
-}
+
 char* Size::getName(){
     return name;
 }
@@ -34,28 +32,16 @@ void Size::setName(char inName[]){
 }
 
 istream& operator >> (istream& in, Size& size){
-    
-    if(size.verbose)
-        cout << "Enter size name: ";
+    cout << "Enter size name: ";
     in >> size.name;
-    
-    if(size.verbose)
-        cout << "Enter side price: ";
+    cout << "Enter side price: ";
     in >> size.price;
     
     return in;
 }
 
 ostream& operator << (ostream& out, const Size& size){
-    
-    if(size.verbose)
-        out << "Size: ";
-    out << size.name << endl;
-    
-    if(size.verbose)
-        out << "Price: ";
-    out << size.price << endl;
-    
+    out << size.name << tabString << size.price << endl;
     return out;
 }
 

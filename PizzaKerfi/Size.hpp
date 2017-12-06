@@ -12,10 +12,11 @@
 #include <stdio.h>
 #include <iostream>
 #include <fstream>
+#include "Global.hpp"
 
 using namespace std;
 
-const int MAXCHARINSIZENAME = 15;
+
 
 class Size{
     
@@ -23,7 +24,6 @@ class Size{
         Size();
         int getPrice();
         void setPrice(int inPrice);
-        void setVerbose(bool v);
         char* getName();
         void setName(char inName[]);
         friend istream& operator >> (istream& in, Size& size);
@@ -31,7 +31,6 @@ class Size{
     private:
         char name[MAXCHARINSIZENAME];
         int price;
-        bool verbose = true;
 };
 
 #endif /* Size_hpp */

@@ -10,6 +10,7 @@
 #define ConsoleMagic_hpp
 
 #include <stdio.h>
+#include "Global.hpp"
 
 class ConsoleMagic{
 public:

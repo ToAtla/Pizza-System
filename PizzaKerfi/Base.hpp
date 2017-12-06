@@ -12,10 +12,11 @@
 #include <stdio.h>
 #include <iostream>
 #include <fstream>
+#include "Global.hpp"
 
 using namespace std;
 
-const int MAXCHARSINBASENAME = 4;
+
 
 class Base{
 
@@ -23,7 +24,6 @@ class Base{
         Base();
         int getPrice();
         void setPrice(int inPrice);
-        void setVerbose(bool v);
         char* getName();
         void setName(char inName[]);
         friend istream& operator >> (istream& in, Base& base);
@@ -31,7 +31,6 @@ class Base{
     private:
         char name[MAXCHARSINBASENAME];
         int price;
-        bool verbose = true;
 };
 
 #endif /* Base_hpp */

@@ -15,9 +15,8 @@
 #include "Side.hpp"
 #include "Drink.hpp"
 #include "Location.hpp"
+#include "Global.hpp"
 #include <iomanip>
-
-const int MAXSTUFFSINORDER = 20;
 
 using namespace std;
 
@@ -27,7 +26,7 @@ public:
     Pizza* getPizzasInOrder();
     int getNumberOfPizzas();
     Location getLocation();
-    void setPaid(bool paid);
+    void setPaid(bool value);
     bool isPaid();
     void setDelivered(bool v);
     bool isDelivered();

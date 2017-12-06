@@ -11,9 +11,9 @@
 
 #include <stdio.h>
 #include <string>
+#include "Global.hpp"
 
 using namespace std;
-const int MAXCHARINLOC = 20;
 
 class Location{
     public:
@@ -23,7 +23,7 @@ class Location{
         friend istream& operator >> (istream& in, Location& Location);
         friend ostream& operator << (ostream& out, const Location& Location);
     private:
-        char name[MAXCHARINLOC];
+        char name[30];
 };
 
 #endif /* Location_hpp */

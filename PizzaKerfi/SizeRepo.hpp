@@ -13,6 +13,7 @@
 
 #include <vector>
 #include "Size.hpp"
+#include "Global.hpp"
 
 using namespace std;
 

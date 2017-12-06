@@ -28,11 +28,8 @@ class Pizza{
 public:
         
     Pizza();
-    Pizza(char inSize[MAXCHARSINPIZZASIZE], Topping inToppings[], int toppingsToAdd);
     void createPizza();
     
-    bool getVerbose();
-    void setVerbose(bool v);
     
     string getName();
     void setName(char inName[MAXCHARSINPIZZANAME]);
@@ -51,8 +48,6 @@ private:
     Size sizeOfPizza;
     Base baseOfPizza;
     char name[MAXCHARSINPIZZANAME];
-    //má fjarlæga þennan?
-    char size[MAXCHARSINPIZZASIZE];
     int price;
     int toppingCount;
     

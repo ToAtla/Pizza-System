@@ -20,7 +20,7 @@
 #include "BaseRepo.hpp"
 #include <fstream>
 #include <iostream>
-#include "ConsoleMagic.hpp"
+#include "Global.hpp"
 
 using namespace std;
 

@@ -12,6 +12,7 @@
 #include <stdio.h>
 #include <fstream>
 #include "Order.hpp"
+#include "Global.hpp"
 
 class OrderRepo{
 public:

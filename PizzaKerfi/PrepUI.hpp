@@ -10,6 +10,7 @@
 #define PrepUI_hpp
 
 #include <stdio.h>
+#include "Global.hpp"
 #include "LocationRepo.hpp"
 
 class PrepUI{

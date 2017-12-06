@@ -12,6 +12,7 @@
 #include <stdio.h>
 #include <vector>
 #include "Drink.hpp"
+#include "Global.hpp"
 
 using namespace std;
 

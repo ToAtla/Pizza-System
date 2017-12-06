@@ -19,31 +19,43 @@ LocationRepo::LocationRepo(){
 
 void LocationRepo::storeLocation(Location& location){
     ofstream fout;
-    fout.open("Branches.txt", ios::app);
-    fout << location;
+    fout.open("locations.dat", ios::binary|ios::app);
+    fout.write((char*)(&location), sizeof(Location));
     fout.close();
 }
 
 vector<Location> LocationRepo::getVectorOfLocations(){
-     vector<Location> locations;
+    
+    vector<Location> locations;
     ifstream fin;
-    fin.open("Branches.txt");
-    while(!fin.eof()){
-        Location temp;
-        fin >> temp;
-        locations.push_back(temp);
+    fin.open("locations.dat", ios::binary);
+    
+    fin.seekg(0, fin.end);
+    int numberOfLocations = (int)(fin.tellg() / sizeof(Location));
+    fin.seekg(0, fin.beg);
+    
+    //Almennt gerum við svona.
+    //fin.read((char*)(&drinks), sizeof(Drink)*numberOfDrinks);
+    //En ekki í þessu tilviki
+    //Því búið er að hanna klasan í kringum vektora
+    
+    for (int i = 0; i < numberOfLocations; i++) {
+        Location tempLocation;
+        fin.read((char*)(&tempLocation), sizeof(Location));
+        locations.push_back(tempLocation);
     }
-    locations.pop_back();
     return locations;
 }
 
 void LocationRepo::storeVectorOfLocations(vector<Location> locations){
+    
     clearLocations();
-
+    
     ofstream fout;
-    fout.open("Branches.txt");
+    fout.open("locations.dat", ios::binary|ios::app);
     for(int i = 0; i < locations.size(); i++){
-        fout << locations[i];
+        Location tempLocation = locations.at(i);
+        fout.write((char*)(&tempLocation), sizeof(Location));
     }
     fout.close();
 
@@ -51,7 +63,7 @@ void LocationRepo::storeVectorOfLocations(vector<Location> locations){
 
 void LocationRepo::clearLocations(){
     ofstream fout;
-    fout.open("Branches.txt");
+    fout.open("locations.dat", ios::binary);
     fout.close();
 }
 

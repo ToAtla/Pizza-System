@@ -227,7 +227,8 @@ void AdminUI::displayAllLocations(){
 }
 
 void AdminUI::addLocation(){
- char input = 'y';
+    
+    char input = 'y';
 
     while(input == 'y'){
         LocationRepo LocationRepo;
