@@ -46,7 +46,7 @@ istream& operator >> (istream& in, Order& order){
         in >> order.pizzaList[i];
         order.totalPrice += order.pizzaList[i].getPrice();
     }
-    
+ 
     cout << endl << "Would you like a side with your order? y: yes ";
     char input = 0;
     cin >> input;
@@ -136,8 +136,9 @@ istream& operator >> (istream& in, Order& order){
             cout << "Please enter a valid location: " << endl;
         }
     }
-    
+  
     return in;
+  
 }
 
 ostream& operator << (ostream& out, const Order& order){
