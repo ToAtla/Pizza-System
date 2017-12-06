@@ -23,22 +23,18 @@ ToppingRepo::ToppingRepo(){
 //Bætir breytu af taginu topping inní textaskránna "toppings.txt"
 void ToppingRepo::addTopping(Topping& topping){
     ofstream fout;
-    fout.open("toppings.txt", ios::app);
-    topping.setVerbose(false);
-    fout << topping;
+    fout.open("toppings.dat", ios::binary|ios::app);
+    fout.write((char*)(&topping), sizeof(Topping));
     fout.close();
-    topping.setVerbose(true);
 }
 
 //Skilar fyrsta alegginu út textaskránni.
 Topping ToppingRepo::retrieveTopping(){
     ifstream fin;
     Topping temp;
-    fin.open("toppings.txt");
-    temp.setVerbose(false);
-    fin >> temp;
+    fin.open("toppings.dat", ios::binary);
+    fin.read((char*)(&temp), sizeof(Topping));
     fin.close();
-    temp.setVerbose(true);
     return temp;
 }
 
@@ -47,16 +43,24 @@ vector<Topping> ToppingRepo::getVectorOfToppings(){
     
     vector<Topping> toppings;
     ifstream fin;
-    fin.open("toppings.txt");
-    while(!fin.eof()){
-        Topping temp;
-        temp.setVerbose(false);
-        fin >> temp;
-        temp.setVerbose(true);
-        toppings.push_back(temp);
+    fin.open("toppings.dat", ios::binary);
+    
+    fin.seekg(0, fin.end);
+    int numberOfToppings = (int)(fin.tellg() / sizeof(Topping));
+    fin.seekg(0, fin.beg);
+    
+    //Almennt gerum við svona.
+    //fin.read((char*)(&drinks), sizeof(Drink)*numberOfDrinks);
+    //En ekki í þessu tilviki
+    //Því búið er að hanna klasan í kringum vektora
+    
+    for (int i = 0; i < numberOfToppings; i++) {
+        Topping tempTopping;
+        fin.read((char*)(&tempTopping), sizeof(Topping));
+        toppings.push_back(tempTopping);
     }
-    toppings.pop_back();
     return toppings;
+
 }
 
 //Byrjar á því að tæma textaskránna "toppings.txt"
@@ -64,12 +68,12 @@ vector<Topping> ToppingRepo::getVectorOfToppings(){
 void ToppingRepo::storeVectorOfToppings(vector<Topping> toppings){
     
     clearToppings();
-
+    
     ofstream fout;
-    fout.open("toppings.txt");
+    fout.open("toppings.dat", ios::binary|ios::app);
     for(int i = 0; i < toppings.size(); i++){
-        toppings[i].setVerbose(false);
-        fout << toppings[i];
+        Topping tempTopping = toppings.at(i);
+        fout.write((char*)(&tempTopping), sizeof(Topping));
     }
     fout.close();
 }
@@ -81,6 +85,6 @@ void ToppingRepo::storeVectorOfToppings(vector<Topping> toppings){
 void ToppingRepo::clearToppings()
 {
     ofstream fout;
-    fout.open("toppings.txt");
+    fout.open("toppings.dat", ios::binary);
     fout.close();
 }
