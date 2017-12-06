@@ -31,6 +31,10 @@ int Order::getNumberOfPizzas(){
     return numberOfPizzas;
 }
 
+void Order::setPaid(bool input){
+    this->paid = input;
+}
+
 bool Order::isPaid(){
     return paid;
 }
@@ -113,8 +117,7 @@ istream& operator >> (istream& in, Order& order){
     
     bool invalidInput = true;
     
-    while(invalidInput)
-    {
+    while(invalidInput){
         LocationRepo lr;
         vector<Location> locations = lr.getVectorOfLocations();
         

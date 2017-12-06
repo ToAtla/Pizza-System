@@ -55,7 +55,6 @@ private:
     char size[MAXCHARSINPIZZASIZE];
     int price;
     int toppingCount;
-    bool verbose = true;
     
 };
 #endif /* Pizza_hpp */

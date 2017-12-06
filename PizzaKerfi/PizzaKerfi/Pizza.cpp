@@ -157,14 +157,9 @@ void Pizza::fixName(){
 
 ostream& operator << (ostream& out, const Pizza& pizza){
     
-    if(pizza.verbose){
-        out << "Name: " << pizza.name << endl;
-        out << "Price: " << pizza.price << endl;
+        out << pizza.name << '\t' << pizza.price << endl;
         out << endl;
-    }else{
-        out << pizza.name << endl;
-        out << pizza.price << endl;
-    }
+    
     return out;
 }
 

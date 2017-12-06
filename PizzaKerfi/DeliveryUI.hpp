@@ -12,13 +12,16 @@
 
 #include <stdio.h>
 #include "ConsoleMagic.hpp"
+#include "OrderService.hpp"
 
 class DeliveryUI{
 public:
     void startDeliveryUI();
-    void displayOrders();
+    void displayUnpaidOrders();
+    void displayPaidOrders();
+    void displayAllOrders();
 private:
-    
+    OrderService orderService;
 };
 
 #endif /* DeliveryUI_hpp */

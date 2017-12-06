@@ -20,6 +20,7 @@ public:
     Order retrieveOrder();
     Order* retrieveOrderArray(string fileName, int& tellMeHowManyOrders);
     bool fileExists(string fileName);
+    void clearOrderFile(string fileName);
 private:
     
 };
