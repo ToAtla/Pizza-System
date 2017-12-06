@@ -14,6 +14,9 @@ using namespace std;
 
 void DeliveryUI::startDeliveryUI(){
     char input = '\0';
+    
+    chooseYourLocation();
+    
     while(input != 'b'){
         cout << "1: List all orders BROKEN" << endl;
         cout << "2: List all unpaid orders" << endl;
@@ -38,6 +41,43 @@ void DeliveryUI::startDeliveryUI(){
     }
 }
 
+void DeliveryUI::chooseYourLocation(){
+    
+    vector<Location> locations;
+    LocationRepo lr;
+    locations = lr.getVectorOfLocations();
+    bool goodInput = true;
+    
+    while(goodInput) {
+        cout << "- - - - - - Choose your location - - - - - - -" << endl;
+        for(int i = 0; i < locations.size(); i++){
+            cout << "Location number: " << i+1 << endl;
+            cout << locations[i] << endl << endl;
+        }
+        cout << "Choose location: ";
+        char input = 0;
+        cin >> input;
+        
+        //Herna athuga eg hvort að input se bokstafur og ef það er bokstafur þa breyti eg good input i false.
+        if(!isdigit(input)){
+            cout << "Please enter a valid input" << endl;
+            goodInput = false;
+        }
+        
+        //Ef að inputið er ekki bokstafur þa fer fer maður í for loopuna og gefur private breytunni locationOfDelivery gildid sem þu valdir.
+        //Og goodInput er sett false og while loopan hættir að loopa.
+        if(goodInput)
+        {
+            for(int i = 0; i < locations.size(); i++){
+                if(input-48 == i+1){
+                    this->locationOfDelivery = locations[i];
+                    goodInput = false;
+                }
+            }
+        }
+    }
+    
+}
 
 void DeliveryUI::displayAllOrders(){
     cout << "WORK IN PROGRESS" << endl;
@@ -51,7 +91,7 @@ void DeliveryUI::displayUnpaidOrders(){
     cout << " - - - - Orders - - - - " << endl;
     if(ordRep.fileExists(orderFile) && sizeOfOrderList != 0){
         for (int i = 0; i < sizeOfOrderList; i++) {
-            if(!orders[i].isPaid() && !orders[i].isDelivered()){
+            if(!orders[i].isPaid() && !orders[i].isDelivered() && locationOfDelivery.getLocation() == orders[i].getLocation().getLocation()){
                 cout << orders[i] << endl;
             }
         }

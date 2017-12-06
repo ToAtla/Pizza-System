@@ -28,10 +28,14 @@ Order::Order(){
 }
 
 Pizza* Order::getPizzasInOrder(){
-    return pizzaList;
+    return this->pizzaList;
 }
 int Order::getNumberOfPizzas(){
-    return numberOfPizzas;
+    return this->numberOfPizzas;
+}
+
+Location Order::getLocation(){
+    return this->locationOfOrder;
 }
 
 void Order::setPaid(bool input){
@@ -60,7 +64,7 @@ istream& operator >> (istream& in, Order& order){
         in >> order.pizzaList[i];
         order.totalPrice += order.pizzaList[i].getPrice();
     }
-    
+ 
     cout << endl << "Would you like a side with your order? y: yes ";
     char input = '0';
     cin >> input;
@@ -151,12 +155,13 @@ istream& operator >> (istream& in, Order& order){
             cout << "Please enter a valid location: " << endl;
         }
     }
-    
+  
     return in;
+  
 }
 
 ostream& operator << (ostream& out, const Order& order){
-    
+    out << "--------------------------------------------------------" << endl;
     out << "#" << order.ID << "\t\t\t " << order.locationOfOrder << " \t\t\t\t\t\t";
     if(!order.paid){
         cout << "NOT ";
@@ -174,7 +179,7 @@ ostream& operator << (ostream& out, const Order& order){
         out << order.drinkList[i] << endl;
     }
     out << "-------------------------------------------------------" << endl;
-    out << "TOTAL: \t\t\t\t\t\t\t\t\t\t\t" << order.totalPrice << endl;
+    out << "TOTAL:" << "\t\t\t\t\t\t\t\t\t\t\t\t" << order.totalPrice;
     out << endl;
     
     return out;

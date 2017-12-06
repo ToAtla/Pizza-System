@@ -14,6 +14,9 @@ using namespace std;
 
 void PrepUI::startPrepUI(){
     char input = '\0';
+    
+    chooseYourLocation();
+    
     while(input != 'b'){
         cout << "1: List waiting pizzas and sides" << endl;
         cout << "2: List pizzas and sides in preparation" << endl;
@@ -32,6 +35,44 @@ void PrepUI::startPrepUI(){
             readyOverview();
         }
     }
+}
+
+void PrepUI::chooseYourLocation(){
+    
+    vector<Location> locations;
+    LocationRepo lr;
+    locations = lr.getVectorOfLocations();
+    bool goodInput = true;
+    
+    while(goodInput) {
+        cout << "- - - - - - Choose your location - - - - - - -" << endl;
+        for(int i = 0; i < locations.size(); i++){
+            cout << "Location number: " << i+1 << endl;
+            cout << locations[i] << endl << endl;
+        }
+        cout << "Choose location: ";
+        char input = 0;
+        cin >> input;
+        
+        //Herna athuga eg hvort að input se bokstafur og ef það er bokstafur þa breyti eg good input i false.
+        if(!isdigit(input)){
+            cout << "Please enter a valid input" << endl;
+            goodInput = false;
+        }
+        
+        //Ef að inputið er ekki bokstafur þa fer fer maður í for loopuna og gefur private breytunni locationOfPrep gildid sem þu valdir.
+        //Og goodInput er sett false og while loopan hættir að loopa.
+        if(goodInput)
+        {
+            for(int i = 0; i < locations.size(); i++){
+                if(input-48 == i+1){
+                    this->locationOfPrep = locations[i];
+                    goodInput = false;
+                }
+            }
+        }
+    }
+    
 }
 
 void PrepUI::waitingOverview(){

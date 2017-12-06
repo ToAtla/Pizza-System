@@ -15,9 +15,11 @@
 class PrepUI{
 public:
     void startPrepUI();
+    void chooseYourLocation();
 private:
     void waitingOverview();
     void preppingOverview();
     void readyOverview();
+    Location locationOfPrep;
 };
 #endif /* PrepUI_hpp */

@@ -18,12 +18,14 @@
 class DeliveryUI{
 public:
     void startDeliveryUI();
+    void chooseYourLocation();
     void displayUnpaidOrders();
     void displayPaidOrders();
     void displayAllOrders();
     void displayLegacyOrders();
 private:
     OrderService orderService;
+    Location locationOfDelivery;
 };
 
 #endif /* DeliveryUI_hpp */
