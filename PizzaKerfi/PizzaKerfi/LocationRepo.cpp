@@ -29,7 +29,6 @@ vector<Location> LocationRepo::getVectorOfLocations(){
     vector<Location> locations;
     ifstream fin;
     fin.open("locations.dat", ios::binary);
-    
     fin.seekg(0, fin.end);
     int numberOfLocations = (int)(fin.tellg() / sizeof(Location));
     fin.seekg(0, fin.beg);

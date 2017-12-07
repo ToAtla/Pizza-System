@@ -83,6 +83,11 @@ void AdminUI::displayAllToppings(){
 
     ToppingRepo toppingRepo;
     vector<Topping> toppings = toppingRepo.getVectorOfToppings();
+    
+    if(toppings.size() < 1){
+        cout << "The file is empty :(" << endl << endl;
+    }
+    
     for (int i = 0; i < toppings.size(); i++) {
         Topping temp = toppings.at(i);
         cout << temp << endl;
@@ -218,8 +223,14 @@ void AdminUI::displayLocationMenu(){
 
 //Prentar út lista yfir alla afhendingarstaði.
 void AdminUI::displayAllLocations(){
+    
     LocationRepo locationRepo;
     vector<Location> locations = locationRepo.getVectorOfLocations();
+    
+    if(locations.size() < 1){
+        cout << "The file is empty :(" << endl << endl;
+    }
+    
     for (int i = 0; i < locations.size(); i++) {
         Location temp = locations.at(i);
         cout << temp << endl;
@@ -349,6 +360,11 @@ void AdminUI::displaySideMenu(){
 void AdminUI::displayAllSides(){
     SideRepo sideRepo;
     vector<Side> sides = sideRepo.getVectorOfSides();
+    
+    if(sides.size() < 1){
+        cout << "The file is empty :(" << endl << endl;
+    }
+    
     for (int i = 0; i < sides.size(); i++) {
         Side temp = sides.at(i);
         cout << temp << endl;
@@ -480,6 +496,11 @@ void AdminUI::displayDrinkMenu(){
 void AdminUI::displayAllDrinks(){
     DrinkRepo drinkRepo;
     vector<Drink> drinks = drinkRepo.getVectorOfDrinks();
+    
+    if(drinks.size() < 1){
+        cout << "The file is empty :(" << endl << endl;
+    }
+    
     for (int i = 0; i < drinks.size(); i++) {
         Drink temp = drinks.at(i);
         cout << temp << endl;
@@ -610,6 +631,11 @@ void AdminUI::displaySizeMenu(){
 void AdminUI::displayAllSizes(){
     SizeRepo sizeRepo;
     vector<Size> sizes = sizeRepo.getVectorOfSizes();
+    
+    if(sizes.size() < 1){
+        cout << "The file is empty :(" << endl << endl;
+    }
+    
     for (int i = 0; i < sizes.size(); i++) {
         Size temp = sizes.at(i);
         cout << temp << endl;
@@ -740,6 +766,11 @@ void AdminUI::displayBaseMenu(){
 void AdminUI::displayAllBases(){
     BaseRepo baseRepo;
     vector<Base> bases = baseRepo.getVectorOfBases();
+    
+    if(bases.size() < 1){
+        cout << "The file is empty :(" << endl << endl;
+    }
+    
     for (unsigned int i = 0; i < bases.size(); i++) {
         Base temp = bases.at(i);
         cout << temp << endl;

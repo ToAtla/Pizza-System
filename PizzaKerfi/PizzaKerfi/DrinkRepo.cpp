@@ -24,6 +24,8 @@ void DrinkRepo::addDrink(Drink& drink){
 //Skilar vector af öllum meðlætum sem eru í "drinks.txt"
 vector<Drink> DrinkRepo::getVectorOfDrinks(){
     
+    createDrinks();
+    
     vector<Drink> drinks;
     ifstream fin;
     fin.open("drinks.dat", ios::binary);
@@ -63,6 +65,12 @@ void DrinkRepo::storeVectorOfDrinks(vector<Drink> drinks){
 
 //Tæmir textaskránna "sides.txt"
 void DrinkRepo::clearDrinks(){
+    ofstream fout;
+    fout.open("drinks.dat", ios::binary);
+    fout.close();
+}
+
+void DrinkRepo::createDrinks(){
     ofstream fout;
     fout.open("drinks.dat", ios::binary);
     fout.close();

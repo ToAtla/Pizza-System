@@ -27,6 +27,7 @@ class ToppingRepo{
         Topping selectTopping();
     private:
         void clearToppings();
+        void createToppings();
 };
 
 #endif /* ToppingRepo_hpp */

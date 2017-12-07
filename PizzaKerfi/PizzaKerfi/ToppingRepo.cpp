@@ -30,6 +30,9 @@ void ToppingRepo::addTopping(Topping& topping){
 
 //Skilar fyrsta alegginu út textaskránni.
 Topping ToppingRepo::retrieveTopping(){
+    
+    createToppings();
+    
     ifstream fin;
     Topping temp;
     fin.open("toppings.dat", ios::binary);
@@ -40,6 +43,8 @@ Topping ToppingRepo::retrieveTopping(){
 
 //Skilar vector af öllum toppings sem eru í "toppings.txt"
 vector<Topping> ToppingRepo::getVectorOfToppings(){
+    
+    createToppings();
     
     vector<Topping> toppings;
     ifstream fin;
@@ -78,13 +83,17 @@ void ToppingRepo::storeVectorOfToppings(vector<Topping> toppings){
     fout.close();
 }
 
-
-
-
 //Tæmir textaskránna "toppings.txt"
 void ToppingRepo::clearToppings()
 {
     ofstream fout;
     fout.open("toppings.dat", ios::binary);
+    fout.close();
+}
+
+//Býr til textaskránna "toppings.txt" ef að hún er ekki til nú þegar.
+void ToppingRepo::createToppings(){
+    ofstream fout;
+    fout.open("toppings.dat", ios::binary|ios::app);
     fout.close();
 }

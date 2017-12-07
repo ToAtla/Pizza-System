@@ -26,6 +26,7 @@ class SideRepo{
         void storeVectorOfSides(vector<Side> sides);
     private:
         void clearSides();
+        void createSides();
 };
 
 #endif /* SideRepo_hpp */

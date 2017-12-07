@@ -24,6 +24,8 @@ void SideRepo::addSide(Side& side){
 //Skilar vector af öllum meðlætum sem eru í "sides.txt"
 vector<Side> SideRepo::getVectorOfSides(){
     
+    createSides();
+    
     vector<Side> sides;
     ifstream fin;
     fin.open("sides.dat", ios::binary);
@@ -63,9 +65,15 @@ void SideRepo::storeVectorOfSides(vector<Side> sides){
 
 
 //Tæmir textaskránna "sides.txt"
-void SideRepo::clearSides()
-{
+void SideRepo::clearSides(){
     ofstream fout;
     fout.open("sides.dat", ios::binary);
     fout.close();
 }
+
+void SideRepo::createSides(){
+    ofstream fout;
+    fout.open("sides.dat", ios::binary);
+    fout.close();
+}
+
