@@ -12,7 +12,7 @@
 
 #include <stdio.h>
 #include "ConsoleMagic.hpp"
-#include "OrderService.hpp"
+#include "Bizniz.hpp"
 #include "Global.hpp"
 
 class DeliveryUI{
@@ -24,7 +24,7 @@ public:
     void displayAllOrders();
     void displayLegacyOrders();
 private:
-    OrderService orderService;
+    Bizniz bizniz;
     Location locationOfDelivery;
 };
 
