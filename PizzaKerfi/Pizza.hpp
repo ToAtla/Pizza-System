@@ -40,6 +40,8 @@ public:
     void setPrice(int inPrice);
     void setLocation(Location inLocation);
     
+    status getStatus();
+    void setStatus(status inStatus);
     void chooseBase();
     void chooseSize();
     void chooseToppings();

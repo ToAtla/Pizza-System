@@ -52,6 +52,15 @@ void Pizza::setLocation(Location inlLocation){
     locationOfPizza = inlLocation;
 }
 
+status Pizza::getStatus(){
+    return status;
+}
+
+void Pizza::setStatus(enum status inStatus){
+    status = inStatus;
+}
+
+
 
 //Fall sem gefur notandanum kleift á því að velja botn fyrir pizzu tilvik.
 void Pizza::chooseBase(){
