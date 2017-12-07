@@ -191,12 +191,18 @@ istream& operator >> (istream& in, Order& order){
 }
 
 ostream& operator << (ostream& out, const Order& order){
-    out << "--------------------------------------------------------" << endl;
-    out << "#" << order.ID << "\t\t\t " << order.locationOfOrder << " \t\t\t\t\t\t";
+    out << "#" << order.ID << "\t\t\t\t\t\t" << order.locationOfOrder << "\t\t\t\t\t";
     if(!order.paid){
         cout << "NOT ";
     }
     out << "PAID" << endl;
+    out << LONGLINE << endl;
+    out << LONGLINE << endl;
+    
+    //Millilýsingar
+    cout << "ITEM" << "\t\t\t\t\t\t" << "STATUS" << "\t\t\t\t\t\t" << "PRICE" << endl;
+    cout << "----" << "\t\t\t\t\t\t" << "------" << "\t\t\t\t\t\t" << "-----" << endl;
+    
     for(int i = 0; i < order.numberOfPizzas; i++) {
         out << order.pizzaList[i];
     }
@@ -208,8 +214,10 @@ ostream& operator << (ostream& out, const Order& order){
     for(int i = 0; i < order.numberOfDrinks; i++){
         out << order.drinkList[i] << endl;
     }
-    out << "-------------------------------------------------------" << endl;
-    out << "TOTAL:" << "\t\t\t\t\t\t\t\t\t\t\t\t" << order.totalPrice;
+    out << LONGLINE << endl;
+    out << "TOTAL:" << TABSTRING << order.totalPrice << endl;
+    out << endl;
+    out << HALFTABSTRING << "------" << endl;
     out << endl;
     
     return out;
