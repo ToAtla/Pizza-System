@@ -52,6 +52,7 @@ public:
     void storeVectorOfBases(vector<Base> bases);
    
     Pizza* getArrayOfPizzasAtLocationWithSomeStatus(status status, Location location, int& sizeOfReturnPizzaList);
+    void savePizzaArrayInFile(Pizza pizzaArray[], int sizeOfArray);
     
     void setOrderPaidValue(string fileName, int pureIndex, bool value);
     void setOrderDeliveredValue(string fileName, int pureIndex, bool value);

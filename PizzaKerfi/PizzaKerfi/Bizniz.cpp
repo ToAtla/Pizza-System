@@ -202,8 +202,12 @@ Pizza* Bizniz::getArrayOfPizzasAtLocationWithSomeStatus(status status, Location 
     return returnPizzas;
 }
 
-
-
+void Bizniz::savePizzaArrayInFile(Pizza *pizzaArray, int sizeOfArray){
+    pizzaRepo.clearPizzaFile(PIZZAFILE);
+    for (int i = 0; i < sizeOfArray; i++) {
+        pizzaRepo.storePizza(pizzaArray[i], PIZZAFILE);
+    }
+}
 
 /**************************************************************************************
  

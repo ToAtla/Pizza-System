@@ -99,6 +99,7 @@ void PrepUI::waitingOverview(){
                     cout << "Pizza number " << input << " now in preparation" << endl;
                 }
             }else{
+                bizniz.savePizzaArrayInFile(waitPizzasAtThisLocation, sizeOfWaitingPizzaList);
                 break;
             }
         }
@@ -130,10 +131,11 @@ void PrepUI::preppingOverview(){
             cin >> input;
             if(input != 0){
                 if(input <= sizeOfPreppingPizzaList && input > 0){
-                    preppingPizzasAtThisLocation[input-1].setStatus(PREPPING);
+                    preppingPizzasAtThisLocation[input-1].setStatus(READY);
                     cout << "Pizza number " << input << " marked ready" << endl;
                 }
             }else{
+                bizniz.savePizzaArrayInFile(preppingPizzasAtThisLocation, sizeOfPreppingPizzaList);
                 break;
             }
         }
