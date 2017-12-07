@@ -18,6 +18,7 @@
 #include "DrinkRepo.hpp"
 #include "SizeRepo.hpp"
 #include "BaseRepo.hpp"
+#include "Bizniz.hpp"
 #include <fstream>
 #include <iostream>
 #include "Global.hpp"
@@ -28,12 +29,11 @@ class AdminUI{
 
     public:
         void startAdminUI();
-
     private:
+        Bizniz bizniz;
+    
         //Prentar út valmynd sem býður notandanum uppá að velja það sem hann vill gera með topping listann.
         void displayToppingMenu();
-        
-
         //Sub menu undir Topping
         void displayAllToppings();
         //Prentar út lista yfir öll álegg.
@@ -50,14 +50,12 @@ class AdminUI{
         void changeLocation();
         void removeLocation();
 
-        
         void displaySideMenu();
         void displayAllSides();
         void addSide();
         void changeSide();
         void removeSide();
 
-        
         void displayDrinkMenu();
         void displayAllDrinks();
         void addDrink();

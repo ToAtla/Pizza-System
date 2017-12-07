@@ -18,6 +18,7 @@ using namespace std;
 class Topping {
     public:
         Topping();
+        Topping(string inName, int inPrice);
         int getPrice();
         void setPrice(int inPrice);
         char* getName();
