@@ -42,7 +42,7 @@ void Side::setName(char inName[]){
 //Overloads the ostream operator so one can use the '<<' operator to print the contents of a topping instance.
 ostream& operator << (ostream& out, const Side& side){
     
-    out << side.name << tabString << side.price;
+    out << side.name << TABSTRING << side.price;
     
     return out;
 }

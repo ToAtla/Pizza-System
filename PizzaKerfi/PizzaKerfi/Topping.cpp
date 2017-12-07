@@ -42,7 +42,7 @@ void Topping::setPrice(int inPrice){
 
 //Overloads the ostream operator so one can use the '<<' operator to print the contents of a topping instance.
 ostream& operator << (ostream& out, const Topping& topping){
-    out << topping.name << tabString << topping.price << endl;
+    out << topping.name << TABSTRING << topping.price << endl;
     
     return out;
 }

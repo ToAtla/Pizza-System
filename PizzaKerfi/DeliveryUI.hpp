@@ -19,9 +19,9 @@ class DeliveryUI{
 public:
     void startDeliveryUI();
     void chooseYourLocation();
+    void displayAllOrders();
     void displayUnpaidOrders();
     void displayPaidOrders();
-    void displayAllOrders();
     void displayLegacyOrders();
 private:
     Bizniz bizniz;

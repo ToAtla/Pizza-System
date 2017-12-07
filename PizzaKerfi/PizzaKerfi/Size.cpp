@@ -41,7 +41,7 @@ istream& operator >> (istream& in, Size& size){
 }
 
 ostream& operator << (ostream& out, const Size& size){
-    out << size.name << tabString << size.price << endl;
+    out << size.name << TABSTRING << size.price << endl;
     return out;
 }
 

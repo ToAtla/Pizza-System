@@ -172,7 +172,7 @@ void Pizza::fixName(){
 }
 
 ostream& operator << (ostream& out, const Pizza& pizza){
-        out << pizza.name << tabString << pizza.price << endl;
+        out << pizza.name << TABSTRING << pizza.price << endl;
     return out;
 }
 

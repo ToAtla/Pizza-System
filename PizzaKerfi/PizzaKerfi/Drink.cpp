@@ -47,7 +47,7 @@ void Drink::setName(char inName[]){
 ostream& operator << (ostream& out, const Drink& drink){
     
     
-    out << drink.name << tabString << drink.price;
+    out << drink.name << TABSTRING << drink.price;
     return out;
 }
 
