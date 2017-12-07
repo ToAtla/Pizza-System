@@ -73,7 +73,7 @@ istream& operator >> (istream& in, Order& order){
             
             for(unsigned int i = 0; i < locations.size(); i++){
                 cout << "Location number: " << i+1 << endl;
-                cout << locations.at(i) << endl;
+                cout << locations.at(i) << endl << endl;
             }
             cout << "Choose a location for your order: ";
             cin >> locationNumber;
@@ -99,6 +99,7 @@ istream& operator >> (istream& in, Order& order){
         for (int i = 0; i < order.numberOfPizzas; i++) {
             cout << endl << "Pizza number: " << i+1 << endl;
             order.pizzaList[i] = Pizza();
+            order.pizzaList[i].setLocation(order.locationOfOrder);
             in >> order.pizzaList[i];
             order.totalPrice += order.pizzaList[i].getPrice();
         }

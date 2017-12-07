@@ -81,11 +81,21 @@ void PrepUI::waitingOverview(){
     PizzaRepo pr;
     
     int sizeOfWaitingPizzaList;
+    int sizeOfWaitingPizzaListLocation;
     Pizza* waitPizzas = pr.retrievePizzaArray(waitFile, sizeOfWaitingPizzaList);
+    Pizza* waitPizzasInLocation;
     
     cout << " - - - - Pizzas not yet started - - - - " << endl;
     
     if(pr.fileExists(waitFile) && sizeOfWaitingPizzaList != 0){
+        
+     /*   for(int i = 0; i < sizeOfWaitingPizzaList; i++){
+            if(waitPizzas[i].getLocation().getLocation() == locationOfPrep.getLocation()){
+                sizeOfWaitingPizzaListLocation++;
+                waitPizzasInLocation[sizeOfWaitingPizzaListLocation] = waitPizzas[i];
+            }
+        }
+        */
         for (int i = 0; i < sizeOfWaitingPizzaList; i++) {
             cout << "[" << i+1 << "] " << waitPizzas[i] << endl;
         }
@@ -95,7 +105,7 @@ void PrepUI::waitingOverview(){
             cout << "Pick a number to mark for prep or 0 to exit: ";
             cin >> input;
             if(input != 0){
-                if(input <= sizeOfWaitingPizzaList && input > 0){
+                if(input <= sizeOfWaitingPizzaListLocation && input > 0){
                     pr.moveBetween(waitFile, prepFile, input-1);
                     cout << "Pizza number " << input << " marked prepared" << endl;
                 }

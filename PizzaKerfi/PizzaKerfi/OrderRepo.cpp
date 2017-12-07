@@ -25,13 +25,6 @@ Order OrderRepo::retrieveOrder(){
     return order;
 }
 
-
-
-
-
-
-
-
 Order* OrderRepo::retrieveOrderArray(string fileName, int& tellMeHowManyOrders){
     Order orderList[MAXSTUFFSINORDER];
     ifstream fin;

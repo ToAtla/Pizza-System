@@ -15,6 +15,7 @@
 #include "Topping.hpp"
 #include "Size.hpp"
 #include "Base.hpp"
+#include "Location.hpp"
 
 using namespace std;
 //MUNA AÐ SKILJA EFTIR PLÁSS FYRIR NULLCHARACTER Í LOKIN 
@@ -35,7 +36,9 @@ public:
     void setName(char inName[MAXCHARSINPIZZANAME]);
 
     int getPrice();
+    Location getLocation();
     void setPrice(int inPrice);
+    void setLocation(Location inLocation);
     
     void chooseBase();
     void chooseSize();
@@ -47,6 +50,7 @@ private:
     Topping toppings[MAXTOPPINGSONPIZZA];
     Size sizeOfPizza;
     Base baseOfPizza;
+    Location locationOfPizza;
     char name[MAXCHARSINPIZZANAME];
     int price;
     int toppingCount;
