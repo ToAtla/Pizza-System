@@ -7,6 +7,39 @@
 //
 
 #include "Bizniz.hpp"
+
+
+vector<Topping> Bizniz::getVectorOfToppings(){
+    
+    vector<Topping> toppings;
+    toppings = toppingRepo.getVectorOfToppings();
+    
+    return toppings;
+}
+
+void Bizniz::addTopping(Topping& topping){
+   
+    toppingRepo.addTopping(topping);
+    
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 void Bizniz::setOrderPaidValue(string fileName, int pureIndex, bool value){
     int size;
     Order* orders = orderRepo.retrieveOrderArray(fileName, size);

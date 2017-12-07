@@ -28,7 +28,6 @@ void AdminUI::startAdminUI(){
 
         if(input == '1'){
             displayToppingMenu();
-
         }
         else if(input == '2'){
             displayLocationMenu();
@@ -61,10 +60,9 @@ void AdminUI::displayToppingMenu(){
         cout << endl;
 
         if(input == '1'){
-            cout << endl << "-----List of all topings-----" << endl;
-            cout << endl << endl;
+            
             displayAllToppings();
-            cout << endl;
+            
         }
         else if(input == '2'){
             changeTopping();
@@ -82,16 +80,20 @@ void AdminUI::displayToppingMenu(){
 void AdminUI::displayAllToppings(){
 
     ToppingRepo toppingRepo;
-    vector<Topping> toppings = toppingRepo.getVectorOfToppings();
-    
+    vector<Topping> toppings = bizniz.getVectorOfToppings();
+    cout << endl << "-----List of all topings-----" << endl;
     if(toppings.size() < 1){
         cout << "The file is empty :(" << endl << endl;
     }
-    
-    for (int i = 0; i < toppings.size(); i++) {
-        Topping temp = toppings.at(i);
-        cout << temp << endl;
+    else{
+        for (int i = 0; i < toppings.size(); i++) {
+            Topping temp = toppings.at(i);
+            cout << temp << endl;
+        }
     }
+    
+    cout << endl;
+    
 }
 
 //Bætir við áleggi í textaskránna toppings.txt
