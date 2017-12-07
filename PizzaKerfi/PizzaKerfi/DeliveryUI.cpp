@@ -85,10 +85,20 @@ void DeliveryUI::displayAllOrders(){
     OrderRepo ordRep;
     int sizeOfOrderList;
     Order* orders = ordRep.retrieveOrderArray(orderFile, sizeOfOrderList);
+    //Kominn með allar pantanir
+    //þarf núna að sigta út virkar pantanir þeas þær sem er ekki búið að afgreiða
+    int amountOfUndeliveredOrdersAtThisLocation = 0;
+    for (int i = 0; i < sizeOfOrderList; i++) {
+        if(locationOfDelivery.getLocation() == orders[i].getLocation().getLocation() && !orders[i].isDelivered()){
+            amountOfUndeliveredOrdersAtThisLocation++;
+        }
+    }
     cout << " - - - - - - - - - - Listing All Active Orders in " << locationOfDelivery << " - - - - - - - - - - " << endl;
-    if(ordRep.fileExists(orderFile) && sizeOfOrderList != 0){
+    if(ordRep.fileExists(orderFile) && amountOfUndeliveredOrdersAtThisLocation != 0){
         for (int i = 0; i < sizeOfOrderList; i++) {
+            if(locationOfDelivery.getLocation() == orders[i].getLocation().getLocation() && !orders[i].isDelivered()){
                 cout << orders[i] << endl;
+            }
         }
         cout << endl;
     }else{
@@ -149,7 +159,6 @@ void DeliveryUI::displayPaidOrders(){
     //Kominn með allar pantanir
     //þarf núna að sigta út greiddar
     int amountOfPaidUndeliveredOrdersAtThisLocation = 0;
-    cout << "Size of order list:" << sizeOfOrderList << endl;
     for (int i = 0; i < sizeOfOrderList; i++) {
         if(locationOfDelivery.getLocation() == orders[i].getLocation().getLocation() && orders[i].isPaid() && !orders[i].isDelivered()){
             cout << "Hér er ég" << endl;
@@ -188,5 +197,29 @@ void DeliveryUI::displayPaidOrders(){
 
 
 void DeliveryUI::displayLegacyOrders(){
-    cout << "Work in progress" << endl;
+    string orderFile = "orders.dat";
+    OrderRepo ordRep;
+    int sizeOfOrderList;
+    Order* orders = ordRep.retrieveOrderArray(orderFile, sizeOfOrderList);
+    //Kominn með allar pantanir
+    //þarf núna að sigta út óvirkar pantanir þeas þær sem er  bið að afgreiða
+    int amountOfDeliveredOrdersAtThisLocation = 0;
+    for (int i = 0; i < sizeOfOrderList; i++) {
+        if(locationOfDelivery.getLocation() == orders[i].getLocation().getLocation() && orders[i].isDelivered()){
+            amountOfDeliveredOrdersAtThisLocation++;
+        }
+    }
+    cout << " - - - - - - - - - - Listing All Legacy Orders in " << locationOfDelivery << " - - - - - - - - - - " << endl;
+    if(ordRep.fileExists(orderFile) && amountOfDeliveredOrdersAtThisLocation != 0){
+        for (int i = 0; i < sizeOfOrderList; i++) {
+            if(locationOfDelivery.getLocation() == orders[i].getLocation().getLocation() && orders[i].isDelivered()){
+                cout << orders[i] << endl;
+            }
+        }
+        cout << endl;
+    }else{
+        cout << endl;
+        cout << "List is empty" << endl;
+        cout << endl;
+    }
 }
