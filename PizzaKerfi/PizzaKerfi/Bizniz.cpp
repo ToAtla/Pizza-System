@@ -1,14 +1,13 @@
 //
-//  OrderService.cpp
+//  Bizniz.cpp
 //  PizzaKerfi
 //
-//  Created by Þórður Atlason on 06/12/2017.
+//  Created by Þórður Atlason on 07/12/2017.
 //  Copyright © 2017 Þórður Atlason. All rights reserved.
 //
 
-#include "OrderService.hpp"
-
-void OrderService::setOrderPaidValue(string fileName, int pureIndex, bool value){
+#include "Bizniz.hpp"
+void Bizniz::setOrderPaidValue(string fileName, int pureIndex, bool value){
     int size;
     Order* orders = orderRepo.retrieveOrderArray(fileName, size);
     orders[pureIndex].setPaid(value);
@@ -18,7 +17,7 @@ void OrderService::setOrderPaidValue(string fileName, int pureIndex, bool value)
     }
 }
 
-void OrderService::setOrderDeliveredValue(string fileName, int pureIndex, bool value){
+void Bizniz::setOrderDeliveredValue(string fileName, int pureIndex, bool value){
     int size;
     Order* orders = orderRepo.retrieveOrderArray(fileName, size);
     orders[pureIndex].setDelivered(value);
@@ -27,4 +26,3 @@ void OrderService::setOrderDeliveredValue(string fileName, int pureIndex, bool v
         orderRepo.storeOrder(orders[i]);
     }
 }
-

@@ -22,7 +22,7 @@ void DeliveryUI::startDeliveryUI(){
         cout << "1: List all orders" << endl;
         cout << "2: List all unpaid orders" << endl;
         cout << "3: List all paid orders" << endl;
-        cout << "4: List all legacy orders BROKEN" << endl;
+        cout << "4: List all legacy orders" << endl;
         cout << "b: back" << endl;
         cin >> input;
         cout << endl;
@@ -137,7 +137,7 @@ void DeliveryUI::displayUnpaidOrders(){
             cin >> input;
             if(input != 0){
                 if(input <= sizeOfOrderList && input > 0){
-                    orderService.setOrderPaidValue(orderFile, input-1, true);
+                    bizniz.setOrderPaidValue(orderFile, input-1, true);
                     cout << "Order number " << input << " is now in preparation" << endl;
                 }
             }else{
@@ -181,7 +181,7 @@ void DeliveryUI::displayPaidOrders(){
             cin >> input;
             if(input != 0){
                 if(input <= sizeOfOrderList && input > 0){
-                    orderService.setOrderDeliveredValue(orderFile, input-1, true);
+                    bizniz.setOrderDeliveredValue(orderFile, input-1, true);
                     cout << "Order number " << input << " marked prepared" << endl;
                 }
             }else{
