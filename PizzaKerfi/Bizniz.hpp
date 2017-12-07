@@ -26,6 +26,31 @@ public:
     void addTopping(Topping& topping);
     void storeVectorOfToppings(vector<Topping> toppings);
     
+    //Locations
+    vector<Location> getVectorOfLocations();
+    void addLocation(Location& location);
+    void storeVectorOfLocations(vector<Location> locations);
+    
+    //Side
+    vector<Side> getVectorOfSides();
+    void addSide(Side& side);
+    void storeVectorOfSides(vector<Side> sides);
+    
+    //Drink
+    vector<Drink> getVectorOfDrinks();
+    void addDrink(Drink& drink);
+    void storeVectorOfDrinks(vector<Drink> drinks);
+    
+    //Size
+    vector<Size> getVectorOfSizes();
+    void addSize(Size& size);
+    void storeVectorOfSizes(vector<Size> sizes);
+    
+    //Base
+    vector<Base> getVectorOfBases();
+    void addBase(Base& base);
+    void storeVectorOfBases(vector<Base> bases);
+   
     Pizza* getArrayOfPizzasAtLocationWithSomeStatus(status status, Location location, int& sizeOfReturnPizzaList);
     
     void setOrderPaidValue(string fileName, int pureIndex, bool value);
