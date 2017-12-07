@@ -24,6 +24,8 @@ void BaseRepo::addBase(Base& base){
 //Skilar vector af öllum botnum sem eru í "bases.txt"
 vector<Base> BaseRepo::getVectorOfBases(){
     
+    createBases();
+    
     vector<Base> bases;
     ifstream fin;
     fin.open("bases.dat", ios::binary);
@@ -66,5 +68,13 @@ void BaseRepo::clearBases(){
     ofstream fout;
     fout.open("bases.dat", ios::binary);
     fout.close();
+}
+
+//Býr til textaskránna "bases.txt"
+void BaseRepo::createBases(){
+    ofstream fout;
+    fout.open("bases.dat", ios::binary);
+    fout.close();
+    
 }
 

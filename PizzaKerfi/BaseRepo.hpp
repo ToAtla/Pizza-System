@@ -25,5 +25,6 @@ class BaseRepo{
         void storeVectorOfBases(vector<Base> bases);
     private:
         void clearBases();
+        void createBases();
 };
 #endif /* BaseRepo_hpp */
