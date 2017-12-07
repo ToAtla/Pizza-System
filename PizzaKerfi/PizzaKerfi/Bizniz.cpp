@@ -17,6 +17,11 @@ vector<Topping> Bizniz::getVectorOfToppings(){
     return toppings;
 }
 
+void Bizniz::addTopping(Topping& topping){
+   
+    toppingRepo.addTopping(topping);
+    
+}
 
 
 

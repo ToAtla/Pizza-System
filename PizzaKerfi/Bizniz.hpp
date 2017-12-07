@@ -17,7 +17,7 @@ class Bizniz {
 public:
     
     vector<Topping> getVectorOfToppings();
-    
+    void addTopping(Topping& topping);
     
     
     
