@@ -200,8 +200,10 @@ ostream& operator << (ostream& out, const Order& order){
     out << LONGLINE << endl;
     
     //Millilýsingar
-    cout << "ITEM" << "\t\t\t\t\t\t" << "STATUS" << "\t\t\t\t\t\t" << "PRICE" << endl;
-    cout << "----" << "\t\t\t\t\t\t" << "------" << "\t\t\t\t\t\t" << "-----" << endl;
+    //cout << "ITEM" << "\t\t\t\t\t\t\t" << "STATUS" << "\t\t\t\t\t\t" << "PRICE" << endl;
+    cout << "ITEM" << "\t\t\t\t\t\t\t" << "STATUS(pláss fyrir 6 álegg" << "\t\t\t\t\t\t" << "PRICE" << endl;
+
+    cout << "----" << "\t\t\t\t\t\t\t" << "------" << "\t\t\t\t\t\t" << "-----" << endl;
     
     for(int i = 0; i < order.numberOfPizzas; i++) {
         out << order.pizzaList[i];
