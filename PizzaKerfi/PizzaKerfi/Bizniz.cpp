@@ -38,6 +38,127 @@ void Bizniz::storeVectorOfToppings(vector<Topping> toppings){
 
 
 
+/**************************************************************************************
+ 
+                                    LOCATIONS
+ 
+ ***************************************************************************************/
+/*vector<Location> bizniz::getVectorOfLocations(){
+    vector<Topping> toppings;
+    toppings = toppingRepo.getVectorOfToppings();
+    
+    return toppings;
+    
+}
+void addLocation(Location& location){
+    
+    
+}
+void storeVectorOfLocations(vector<Location> locations){
+    
+    
+}
+
+
+
+*/
+/**************************************************************************************
+ 
+                                    SIDES
+ 
+ ***************************************************************************************/
+/*vector<Side> getVectorOfSides(){
+    vector<Topping> toppings;
+    toppings = toppingRepo.getVectorOfToppings();
+    
+    return toppings;
+    
+}
+void addTopping(Side& side){
+    
+    
+}
+void storeVectorOfToppings(vector<Side> sides){
+    
+    
+}
+
+
+
+*/
+/**************************************************************************************
+ 
+                                    DRINKS
+ 
+ ***************************************************************************************/
+/*vector<Drink> getVectorOfDrinks(){
+    vector<Topping> toppings;
+    toppings = toppingRepo.getVectorOfToppings();
+    
+    return toppings;
+    
+}
+
+void addTopping(Drink& drink){
+    
+    
+}
+
+void storeVectorOfToppings(vector<Drink> drinks){
+    
+    
+}
+
+
+*/
+/**************************************************************************************
+ 
+                                    SIZES
+ 
+ ***************************************************************************************/
+/*vector<Size> getVectorOfSizes(){
+    vector<Topping> toppings;
+    toppings = toppingRepo.getVectorOfToppings();
+    
+    return toppings;
+    
+}
+
+void addSize(Size& size){
+    
+    
+}
+
+void storeVectorOfToppings(vector<Size> sizes){
+    
+    
+}
+
+
+
+/**************************************************************************************
+ 
+                                    BASES
+ 
+ ***************************************************************************************/
+/*vector<Base> getVectorOfBases(){
+    vector<Topping> toppings;
+    toppings = toppingRepo.getVectorOfToppings();
+    
+    return toppings;
+    
+}
+
+void addBase(Base& base){
+    
+    
+}
+
+void storeVectorOfbases(vector<Base> bases){
+    
+    
+}
+*/
 
 
 
