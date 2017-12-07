@@ -28,5 +28,6 @@ const int MAXSTUFFSINORDER = 20;
 const string TABSTRING = "\t\t\t\t\t\t\t\t\t\t\t\t\t";
 const string HALFTABSTRING = "\t\t\t\t\t\t\t";
 const string LONGLINE = "-----------------------------------------------------------------";
+enum status {FRESH, PREPPING, READY, DELIVERED};
 
 #endif /* Global_hpp */

@@ -54,6 +54,7 @@ private:
     char name[MAXCHARSINPIZZANAME];
     int price;
     int toppingCount;
+    status status;
     
 };
 #endif /* Pizza_hpp */
