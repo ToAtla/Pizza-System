@@ -28,6 +28,8 @@ const int MAXSTUFFSINORDER = 20;
 const string TABSTRING = "\t\t\t\t\t\t\t\t\t\t\t\t\t";
 const string HALFTABSTRING = "\t\t\t\t\t\t\t";
 const string LONGLINE = "-----------------------------------------------------------------";
-enum status {FRESH, PREPPING, READY, DELIVERED};
+enum status {WAITING, PREPPING, READY, DELIVERED};
 
+
+const string PIZZAFILE = "pizzas.dat";
 #endif /* Global_hpp */

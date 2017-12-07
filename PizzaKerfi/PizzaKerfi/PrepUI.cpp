@@ -76,6 +76,9 @@ void PrepUI::chooseYourLocation(){
 }
 
 void PrepUI::waitingOverview(){
+    
+    //Fylki af öllum biðpizzum
+    //ýtra í gegnum það og birta þær
     string waitFile = "waiting.dat";
     string prepFile = "prepping.dat";
     PizzaRepo pr;

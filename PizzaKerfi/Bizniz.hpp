@@ -10,22 +10,24 @@
 #define Bizniz_hpp
 
 #include <stdio.h>
-#include "OrderRepo.hpp"
 #include "ToppingRepo.hpp"
-
+#include "PizzaRepo.hpp"
+#include "OrderRepo.hpp"
 class Bizniz {
 public:
     
     vector<Topping> getVectorOfToppings();
     void addTopping(Topping& topping);
     
-    
+    Pizza* getArrayOfWaitingPizzas(int& sizeOfWaitingPizzaList);
     
     void setOrderPaidValue(string fileName, int pureIndex, bool value);
     void setOrderDeliveredValue(string fileName, int pureIndex, bool value);
 private:
-    OrderRepo orderRepo;
+    
     ToppingRepo toppingRepo;
+    PizzaRepo pizzaRepo;
+    OrderRepo orderRepo;
 };
 
 #endif /* Bizniz_hpp */
