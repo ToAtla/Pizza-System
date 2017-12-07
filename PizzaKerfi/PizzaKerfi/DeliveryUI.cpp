@@ -19,7 +19,7 @@ void DeliveryUI::startDeliveryUI(){
     chooseYourLocation();
     
     while(input != 'b'){
-        cout << "1: List all orders BROKEN" << endl;
+        cout << "1: List all orders" << endl;
         cout << "2: List all unpaid orders" << endl;
         cout << "3: List all paid orders" << endl;
         cout << "4: List all legacy orders BROKEN" << endl;
@@ -81,20 +81,14 @@ void DeliveryUI::chooseYourLocation(){
 }
 
 void DeliveryUI::displayAllOrders(){
-    cout << "WORK IN PROGRESS" << endl;
-}
-
-void DeliveryUI::displayUnpaidOrders(){
     string orderFile = "orders.dat";
     OrderRepo ordRep;
     int sizeOfOrderList;
     Order* orders = ordRep.retrieveOrderArray(orderFile, sizeOfOrderList);
-    cout << " - - - - Orders - - - - " << endl;
+    cout << " - - - - - - - - - - Listing All Active Orders in " << locationOfDelivery << " - - - - - - - - - - " << endl;
     if(ordRep.fileExists(orderFile) && sizeOfOrderList != 0){
         for (int i = 0; i < sizeOfOrderList; i++) {
-            if(locationOfDelivery.getLocation() == orders[i].getLocation().getLocation() && !orders[i].isPaid() && !orders[i].isDelivered()){
                 cout << orders[i] << endl;
-            }
         }
         cout << endl;
     }else{
@@ -102,19 +96,48 @@ void DeliveryUI::displayUnpaidOrders(){
         cout << "List is empty" << endl;
         cout << endl;
     }
-    
-    int input = '\0';
-    while(input != '0'){
-        cout << "Pick a number to mark for paid or 0 to exit: ";
-        cin >> input;
-        if(input != 0){
-            if(input <= sizeOfOrderList && input > 0){
-                orderService.setOrderPaidValue(orderFile, input-1, true);
-                cout << "Order number " << input << " marked prepared" << endl;
-            }
-        }else{
-            break;
+}
+
+void DeliveryUI::displayUnpaidOrders(){
+    string orderFile = "orders.dat";
+    OrderRepo ordRep;
+    int sizeOfOrderList;
+    Order* orders = ordRep.retrieveOrderArray(orderFile, sizeOfOrderList);
+    //Kominn með allar pantanir
+    //þarf núna að sigta út ógreiddar
+    int amountOfUnpaidUndeliveredOrdersAtThisLocation = 0;
+    for (int i = 0; i < sizeOfOrderList; i++) {
+        if(locationOfDelivery.getLocation() == orders[i].getLocation().getLocation() && !orders[i].isPaid() && !orders[i].isDelivered()){
+            amountOfUnpaidUndeliveredOrdersAtThisLocation++;
         }
+    }
+    cout << " - - - - - - - - - - Listing Unpaid Orders in " << locationOfDelivery << " - - - - - - - - - - " << endl;
+    if(ordRep.fileExists(orderFile) && amountOfUnpaidUndeliveredOrdersAtThisLocation != 0){
+        for (int i = 0; i < sizeOfOrderList; i++) {
+            if(locationOfDelivery.getLocation() == orders[i].getLocation().getLocation() && !orders[i].isPaid() && !orders[i].isDelivered()){
+                cout << orders[i] << endl;
+            }
+        }
+        cout << endl;
+    
+    
+        int input = '\0';
+        while(input != '0'){
+            cout << "Pick a number to mark for paid or 0 to exit: ";
+            cin >> input;
+            if(input != 0){
+                if(input <= sizeOfOrderList && input > 0){
+                    orderService.setOrderPaidValue(orderFile, input-1, true);
+                    cout << "Order number " << input << " is now in preparation" << endl;
+                }
+            }else{
+                break;
+            }
+        }
+    }else{
+        cout << endl;
+        cout << "List is empty" << endl;
+        cout << endl;
     }
 }
 
@@ -123,32 +146,43 @@ void DeliveryUI::displayPaidOrders(){
     OrderRepo ordRep;
     int sizeOfOrderList;
     Order* orders = ordRep.retrieveOrderArray(orderFile, sizeOfOrderList);
-    cout << " - - - - Orders - - - - " << endl;
-    if(ordRep.fileExists(orderFile) && sizeOfOrderList != 0){
+    //Kominn með allar pantanir
+    //þarf núna að sigta út greiddar
+    int amountOfPaidUndeliveredOrdersAtThisLocation = 0;
+    cout << "Size of order list:" << sizeOfOrderList << endl;
+    for (int i = 0; i < sizeOfOrderList; i++) {
+        if(locationOfDelivery.getLocation() == orders[i].getLocation().getLocation() && orders[i].isPaid() && !orders[i].isDelivered()){
+            cout << "Hér er ég" << endl;
+            amountOfPaidUndeliveredOrdersAtThisLocation++;
+        }
+    }
+    cout << " - - - - - - - - - - Listing Paid Orders in " << locationOfDelivery << " - - - - - - - - - - " << endl;
+    if(ordRep.fileExists(orderFile) && amountOfPaidUndeliveredOrdersAtThisLocation != 0){
         for (int i = 0; i < sizeOfOrderList; i++) {
             if(locationOfDelivery.getLocation() == orders[i].getLocation().getLocation() && orders[i].isPaid() && !orders[i].isDelivered()){
                 cout << orders[i] << endl;
             }
         }
         cout << endl;
+    
+    
+        int input = '\0';
+        while(input != '0'){
+            cout << "Pick a number to mark for delivery or 0 to exit: ";
+            cin >> input;
+            if(input != 0){
+                if(input <= sizeOfOrderList && input > 0){
+                    orderService.setOrderDeliveredValue(orderFile, input-1, true);
+                    cout << "Order number " << input << " marked prepared" << endl;
+                }
+            }else{
+                break;
+            }
+        }
     }else{
         cout << endl;
         cout << "List is empty" << endl;
         cout << endl;
-    }
-    
-    int input = '\0';
-    while(input != '0'){
-        cout << "Pick a number to mark for delivery or 0 to exit: ";
-        cin >> input;
-        if(input != 0){
-            if(input <= sizeOfOrderList && input > 0){
-                orderService.setOrderDeliveredValue(orderFile, input-1, true);
-                cout << "Order number " << input << " marked prepared" << endl;
-            }
-        }else{
-            break;
-        }
     }
 }
 
