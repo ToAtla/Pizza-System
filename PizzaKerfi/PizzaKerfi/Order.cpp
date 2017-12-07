@@ -75,7 +75,7 @@ istream& operator >> (istream& in, Order& order){
                 cout << "Location number: " << i+1 << endl;
                 cout << locations.at(i) << endl;
             }
-            cout << "Choose a location for your order: " << endl;
+            cout << "Choose a location for your order: ";
             cin >> locationNumber;
             
             for(unsigned int i = 0; i < locations.size(); i++){
@@ -85,14 +85,15 @@ istream& operator >> (istream& in, Order& order){
                 }
             }
             
-            if(!invalidInput){
+            if(invalidInput){
                 cout << "Please enter a valid location: " << endl;
+                
             }
         }
         
          order.ID = 6969;
         
-        cout << "Enter number of pizzas to add to order: ";
+        cout << endl << "Enter number of pizzas to add to order: ";
         in >> order.numberOfPizzas;
         
         for (int i = 0; i < order.numberOfPizzas; i++) {

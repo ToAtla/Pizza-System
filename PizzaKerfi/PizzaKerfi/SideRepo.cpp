@@ -73,7 +73,7 @@ void SideRepo::clearSides(){
 
 void SideRepo::createSides(){
     ofstream fout;
-    fout.open("sides.dat", ios::binary);
+    fout.open("sides.dat", ios::binary|ios::app);
     fout.close();
 }
 

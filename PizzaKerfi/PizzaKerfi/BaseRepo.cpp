@@ -73,7 +73,7 @@ void BaseRepo::clearBases(){
 //Býr til textaskránna "bases.txt"
 void BaseRepo::createBases(){
     ofstream fout;
-    fout.open("bases.dat", ios::binary);
+    fout.open("bases.dat", ios::binary|ios::app);
     fout.close();
     
 }

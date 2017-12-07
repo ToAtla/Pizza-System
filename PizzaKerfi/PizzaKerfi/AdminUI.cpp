@@ -233,7 +233,7 @@ void AdminUI::displayAllLocations(){
     
     for (int i = 0; i < locations.size(); i++) {
         Location temp = locations.at(i);
-        cout << temp << endl;
+        cout << temp << endl << endl;
     }
 }
 
@@ -246,7 +246,7 @@ void AdminUI::addLocation(){
         Location temp;
         cin >> temp;
         LocationRepo.storeLocation(temp);
-        cout << endl << "Do you want to add another location? y/n" << endl;
+        cout << endl << "Do you want to add another location? y/n ";
         cin >> input;
         while(input != 'y' && input != 'n'){
             cout << endl << "Please enter either 'y' or 'n' " << endl;
@@ -503,7 +503,7 @@ void AdminUI::displayAllDrinks(){
     
     for (int i = 0; i < drinks.size(); i++) {
         Drink temp = drinks.at(i);
-        cout << temp << endl;
+        cout << temp << endl << endl;
     }
 }
 

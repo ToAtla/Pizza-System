@@ -92,7 +92,7 @@ void DeliveryUI::displayUnpaidOrders(){
     cout << " - - - - Orders - - - - " << endl;
     if(ordRep.fileExists(orderFile) && sizeOfOrderList != 0){
         for (int i = 0; i < sizeOfOrderList; i++) {
-            if(!orders[i].isPaid() && !orders[i].isDelivered() && locationOfDelivery.getLocation() == orders[i].getLocation().getLocation()){
+            if(locationOfDelivery.getLocation() == orders[i].getLocation().getLocation() && !orders[i].isPaid() && !orders[i].isDelivered()){
                 cout << orders[i] << endl;
             }
         }
@@ -126,7 +126,7 @@ void DeliveryUI::displayPaidOrders(){
     cout << " - - - - Orders - - - - " << endl;
     if(ordRep.fileExists(orderFile) && sizeOfOrderList != 0){
         for (int i = 0; i < sizeOfOrderList; i++) {
-            if(orders[i].isPaid() && !orders[i].isDelivered()){
+            if(locationOfDelivery.getLocation() == orders[i].getLocation().getLocation() && orders[i].isPaid() && !orders[i].isDelivered()){
                 cout << orders[i] << endl;
             }
         }

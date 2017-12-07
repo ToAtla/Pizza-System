@@ -72,6 +72,6 @@ void DrinkRepo::clearDrinks(){
 
 void DrinkRepo::createDrinks(){
     ofstream fout;
-    fout.open("drinks.dat", ios::binary);
+    fout.open("drinks.dat", ios::binary|ios::app);
     fout.close();
 }

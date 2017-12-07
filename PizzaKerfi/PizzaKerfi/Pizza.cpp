@@ -65,7 +65,7 @@ void Pizza::chooseBase(){
             cout << temp << endl;
         }
         int input = 0;
-        cout << "Please choose a base for your pizza:";
+        cout << "Please choose a base for your pizza: ";
         cin >> input;
         baseForPizza = bases.at(input-1);
         
@@ -97,7 +97,7 @@ void Pizza::chooseSize(){
             cout << temp << endl;
         }
         int input = 0;
-        cout << "Please choose a size for your pizza:";
+        cout << "Please choose a size for your pizza: ";
         cin >> input;
         for(int i = 0; i < sizes.size(); i++){
             if(input == i+1){
