@@ -59,11 +59,10 @@ void SalesUI::createOrder(){
     
     
     //Save Pizzas to pizzafile
-    string pizzaFile = "waiting.dat";
     Pizza* pizzasInOrder = order.getPizzasInOrder();
     PizzaRepo pr;
     for (int i = 0; i < order.getNumberOfPizzas(); i++) {
-        pr.storePizza( pizzasInOrder[i], pizzaFile);
+        pr.storePizza( pizzasInOrder[i], PIZZAFILE);
     }
 }
 

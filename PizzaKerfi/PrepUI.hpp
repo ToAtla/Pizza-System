@@ -12,6 +12,7 @@
 #include <stdio.h>
 #include "Global.hpp"
 #include "LocationRepo.hpp"
+#include "Bizniz.hpp"
 
 class PrepUI{
 public:
@@ -22,5 +23,6 @@ private:
     void preppingOverview();
     void readyOverview();
     Location locationOfPrep;
+    Bizniz bizniz;
 };
 #endif /* PrepUI_hpp */
