@@ -15,7 +15,6 @@
  
  ***************************************************************************************/
  
-
 vector<Topping> Bizniz::getVectorOfToppings(){
     
     vector<Topping> toppings;
@@ -37,6 +36,144 @@ void Bizniz::storeVectorOfToppings(vector<Topping> toppings){
 
 
 
+
+/**************************************************************************************
+ 
+                                    LOCATIONS
+ 
+ ***************************************************************************************/
+
+vector<Location> Bizniz::getVectorOfLocations(){
+    vector<Location> locations;
+    locations = locationRepo.getVectorOfLocations();
+    
+    return locations;
+    
+}
+void Bizniz::addLocation(Location& location){
+    
+    locationRepo.addLocation(location);
+    
+}
+void Bizniz::storeVectorOfLocations(vector<Location> locations){
+    
+    locationRepo.storeVectorOfLocations(locations);
+    
+}
+
+
+
+
+/**************************************************************************************
+ 
+                                    SIDES
+ 
+ ***************************************************************************************/
+
+vector<Side> Bizniz::getVectorOfSides(){
+    
+    vector<Side> sides;
+    sides = sideRepo.getVectorOfSides();
+    
+    return sides;
+    
+}
+void Bizniz::addSide(Side& side){
+    
+    sideRepo.addSide(side);
+    
+}
+void Bizniz::storeVectorOfSides(vector<Side> sides){
+    
+    sideRepo.storeVectorOfSides(sides);
+    
+}
+
+
+
+
+/**************************************************************************************
+ 
+                                    DRINKS
+ 
+ ***************************************************************************************/
+
+vector<Drink> Bizniz::getVectorOfDrinks(){
+    vector<Drink> drinks;
+    drinks = drinkRepo.getVectorOfDrinks();
+    
+    return drinks;
+    
+}
+
+void Bizniz::addDrink(Drink& drink){
+    
+    drinkRepo.addDrink(drink);
+    
+}
+
+void Bizniz::storeVectorOfDrinks(vector<Drink> drinks){
+    
+    drinkRepo.storeVectorOfDrinks(drinks);
+    
+}
+
+
+
+/**************************************************************************************
+ 
+                                    SIZES
+ 
+ ***************************************************************************************/
+
+vector<Size> Bizniz::getVectorOfSizes(){
+    
+    vector<Size> sizes;
+    sizes = sizeRepo.getVectorOfSizes();
+    
+    return sizes;
+    
+}
+
+void Bizniz::addSize(Size& size){
+    
+    sizeRepo.addSize(size);
+    
+}
+
+void Bizniz::storeVectorOfSizes(vector<Size> sizes){
+    
+    sizeRepo.storeVectorOfSizes(sizes);
+    
+}
+
+
+
+/**************************************************************************************
+ 
+                                    BASES
+ 
+ ***************************************************************************************/
+vector<Base> Bizniz::getVectorOfBases(){
+    
+    vector<Base> bases;
+    bases = baseRepo.getVectorOfBases();
+    
+    return bases;
+    
+}
+
+void Bizniz::addBase(Base& base){
+    
+    baseRepo.addBase(base);
+    
+}
+
+void Bizniz::storeVectorOfBases(vector<Base> bases){
+    
+    baseRepo.storeVectorOfBases(bases);
+    
+}
 
 
 

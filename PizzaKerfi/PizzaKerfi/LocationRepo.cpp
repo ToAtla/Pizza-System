@@ -17,7 +17,7 @@ LocationRepo::LocationRepo(){
 }
 
 
-void LocationRepo::storeLocation(Location& location){
+void LocationRepo::addLocation(Location& location){
     ofstream fout;
     fout.open("locations.dat", ios::binary|ios::app);
     fout.write((char*)(&location), sizeof(Location));

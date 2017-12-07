@@ -12,11 +12,16 @@
 #include <stdio.h>
 #include "Location.hpp"
 #include "ToppingRepo.hpp"
+#include "LocationRepo.hpp"
+#include "SideRepo.hpp"
+#include "DrinkRepo.hpp"
+#include "SizeRepo.hpp"
+#include "BaseRepo.hpp"
 #include "PizzaRepo.hpp"
 #include "OrderRepo.hpp"
 class Bizniz {
 public:
-    
+    //Toppings
     vector<Topping> getVectorOfToppings();
     void addTopping(Topping& topping);
     void storeVectorOfToppings(vector<Topping> toppings);
@@ -27,6 +32,11 @@ public:
     void setOrderDeliveredValue(string fileName, int pureIndex, bool value);
 private:
     ToppingRepo toppingRepo;
+    LocationRepo locationRepo;
+    SideRepo sideRepo;
+    DrinkRepo drinkRepo;
+    SizeRepo sizeRepo;
+    BaseRepo baseRepo;
     PizzaRepo pizzaRepo;
     OrderRepo orderRepo;
 };
