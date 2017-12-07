@@ -22,7 +22,7 @@ void DeliveryUI::startDeliveryUI(){
         cout << "1: List all orders" << endl;
         cout << "2: List all unpaid orders" << endl;
         cout << "3: List all paid orders" << endl;
-        cout << "4: List all legacy orders BROKEN" << endl;
+        cout << "4: List all legacy orders" << endl;
         cout << "b: back" << endl;
         cin >> input;
         cout << endl;
