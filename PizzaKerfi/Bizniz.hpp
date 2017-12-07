@@ -32,23 +32,23 @@ public:
     
     //Side
     vector<Side> getVectorOfSides();
-    void addTopping(Side& side);
-    void storeVectorOfToppings(vector<Side> sides);
+    void addSide(Side& side);
+    void storeVectorOfSides(vector<Side> sides);
     
     //Drink
     vector<Drink> getVectorOfDrinks();
-    void addTopping(Drink& drink);
-    void storeVectorOfToppings(vector<Drink> drinks);
+    void addDrink(Drink& drink);
+    void storeVectorOfDrinks(vector<Drink> drinks);
     
     //Size
     vector<Size> getVectorOfSizes();
     void addSize(Size& size);
-    void storeVectorOfToppings(vector<Size> sizes);
+    void storeVectorOfSizes(vector<Size> sizes);
     
     //Base
     vector<Base> getVectorOfBases();
     void addBase(Base& base);
-    void storeVectorOfbases(vector<Base> bases);
+    void storeVectorOfBases(vector<Base> bases);
    
     Pizza* getArrayOfWaitingPizzas(int& sizeOfWaitingPizzaList);
     
@@ -57,6 +57,11 @@ public:
 private:
     
     ToppingRepo toppingRepo;
+    LocationRepo locationRepo;
+    SideRepo sideRepo;
+    DrinkRepo drinkRepo;
+    SizeRepo sizeRepo;
+    BaseRepo baseRepo;
     PizzaRepo pizzaRepo;
     OrderRepo orderRepo;
 };

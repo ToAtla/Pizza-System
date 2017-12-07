@@ -9,8 +9,6 @@
 #include "AdminUI.hpp"
 
 
-
-
 //Prentar út valmynd sem býður notandanum að velja það sem hann vill fikta í.
 void AdminUI::startAdminUI(){
 
@@ -223,8 +221,7 @@ void AdminUI::displayLocationMenu(){
 //Prentar út lista yfir alla afhendingarstaði.
 void AdminUI::displayAllLocations(){
     
-    LocationRepo locationRepo;
-    vector<Location> locations = locationRepo.getVectorOfLocations();
+    vector<Location> locations = bizniz.getVectorOfLocations();
     
     if(locations.size() < 1){
         cout << "The file is empty :(" << endl << endl;
@@ -241,10 +238,9 @@ void AdminUI::addLocation(){
     char input = 'y';
 
     while(input == 'y'){
-        LocationRepo LocationRepo;
         Location temp;
         cin >> temp;
-        LocationRepo.storeLocation(temp);
+        bizniz.addLocation(temp);
         cout << endl << "Do you want to add another location? y/n ";
         cin >> input;
         while(input != 'y' && input != 'n'){
@@ -255,8 +251,8 @@ void AdminUI::addLocation(){
     }
 }
 void AdminUI::changeLocation(){
-    LocationRepo locationRepo;
-    vector<Location> locations = locationRepo.getVectorOfLocations();
+   
+    vector<Location> locations = bizniz.getVectorOfLocations();
     cout << endl;
 
     char choice = 'y';
@@ -277,7 +273,7 @@ void AdminUI::changeLocation(){
                 cin >> locations.at(i);
             }
         }
-        locationRepo.storeVectorOfLocations(locations);
+        bizniz.storeVectorOfLocations(locations);
         cout << endl << "Location changed" << endl << endl;
         cout << "do you want to change another location: y/n ";
         cin >> choice;
@@ -291,8 +287,8 @@ void AdminUI::changeLocation(){
 }
 
 void AdminUI::removeLocation(){
-    LocationRepo locationRepo;
-    vector<Location> locations = locationRepo.getVectorOfLocations();
+
+    vector<Location> locations = bizniz.getVectorOfLocations();
     cout << endl;
 
     char choice = 'y';
@@ -313,7 +309,7 @@ void AdminUI::removeLocation(){
                 locations.erase(locations.begin() + i);
             }
         }
-        locationRepo.storeVectorOfLocations(locations);
+        bizniz.storeVectorOfLocations(locations);
         cout << endl << "Location removed" << endl << endl;
         cout << "do you want to change another location: y/n ";
         cin >> choice;
@@ -357,8 +353,8 @@ void AdminUI::displaySideMenu(){
 
 
 void AdminUI::displayAllSides(){
-    SideRepo sideRepo;
-    vector<Side> sides = sideRepo.getVectorOfSides();
+    
+    vector<Side> sides = bizniz.getVectorOfSides();
     
     if(sides.size() < 1){
         cout << "The file is empty :(" << endl << endl;
@@ -375,10 +371,9 @@ void AdminUI::addSide(){
     char input = 'y';
 
     while(input == 'y'){
-        SideRepo sideRepo;
         Side temp;
         cin >> temp;
-        sideRepo.addSide(temp);
+        bizniz.addSide(temp);
         cout << endl << "Do you want to add another side? y/n" << endl;
         cin >> input;
         while(input != 'y' && input != 'n'){
@@ -391,8 +386,8 @@ void AdminUI::addSide(){
 
 
 void AdminUI::changeSide(){
-    SideRepo sideRepo;
-    vector<Side> sides = sideRepo.getVectorOfSides();
+
+    vector<Side> sides = bizniz.getVectorOfSides();
     cout << endl;
 
     char choice = 'y';
@@ -413,7 +408,7 @@ void AdminUI::changeSide(){
                 cin >> sides.at(i);
             }
         }
-        sideRepo.storeVectorOfSides(sides);
+        bizniz.storeVectorOfSides(sides);
         cout << endl << "Side changed" << endl << endl;
         cout << "do you want to change another side: y/n ";
         cin >> choice;
@@ -428,8 +423,8 @@ void AdminUI::changeSide(){
 
 
 void AdminUI::removeSide(){
-    SideRepo sideRepo;
-    vector<Side> sides = sideRepo.getVectorOfSides();
+    
+    vector<Side> sides = bizniz.getVectorOfSides();
     cout << endl;
 
     char choice = 'y';
@@ -450,7 +445,7 @@ void AdminUI::removeSide(){
                 sides.erase(sides.begin() + i);
             }
         }
-        sideRepo.storeVectorOfSides(sides);
+        bizniz.storeVectorOfSides(sides);
         cout << endl << "Side removed" << endl << endl;
         cout << "Do you want to change another side: y/n ";
         cin >> choice;
@@ -493,8 +488,8 @@ void AdminUI::displayDrinkMenu(){
 }
 
 void AdminUI::displayAllDrinks(){
-    DrinkRepo drinkRepo;
-    vector<Drink> drinks = drinkRepo.getVectorOfDrinks();
+    
+    vector<Drink> drinks = bizniz.getVectorOfDrinks();
     
     if(drinks.size() < 1){
         cout << "The file is empty :(" << endl << endl;
@@ -507,8 +502,8 @@ void AdminUI::displayAllDrinks(){
 }
 
 void AdminUI::changeDrink(){
-    DrinkRepo drinkRepo;
-    vector<Drink> drinks = drinkRepo.getVectorOfDrinks();
+    
+    vector<Drink> drinks = bizniz.getVectorOfDrinks();
     cout << endl;
 
     char choice = 'y';
@@ -529,7 +524,7 @@ void AdminUI::changeDrink(){
                 cin >> drinks.at(i);
             }
         }
-        drinkRepo.storeVectorOfDrinks(drinks);
+        bizniz.storeVectorOfDrinks(drinks);
         cout << endl << "Drink changed" << endl << endl;
         cout << "Do you want to change another drink: y/n ";
         cin >> choice;
@@ -549,7 +544,7 @@ void AdminUI::addDrink(){
         DrinkRepo drinkRepo;
         Drink temp;
         cin >> temp;
-        drinkRepo.addDrink(temp);
+        bizniz.addDrink(temp);
         cout << endl << "Do you want to add another drink? y/n" << endl;
         cin >> input;
         while(input != 'y' && input != 'n'){
@@ -562,8 +557,8 @@ void AdminUI::addDrink(){
 
 
 void AdminUI::removeDrink(){
-    DrinkRepo drinkRepo;
-    vector<Drink> drinks = drinkRepo.getVectorOfDrinks();
+    
+    vector<Drink> drinks = bizniz.getVectorOfDrinks();
     cout << endl;
 
     char choice = 'y';
@@ -584,7 +579,7 @@ void AdminUI::removeDrink(){
                 drinks.erase(drinks.begin() + i);
             }
         }
-        drinkRepo.storeVectorOfDrinks(drinks);
+        bizniz.storeVectorOfDrinks(drinks);
         cout << endl << "Drink removed" << endl << endl;
         cout << "do you want to change another drink: y/n ";
         cin >> choice;
@@ -628,8 +623,8 @@ void AdminUI::displaySizeMenu(){
 }
 
 void AdminUI::displayAllSizes(){
-    SizeRepo sizeRepo;
-    vector<Size> sizes = sizeRepo.getVectorOfSizes();
+    
+    vector<Size> sizes = bizniz.getVectorOfSizes();
     
     if(sizes.size() < 1){
         cout << "The file is empty :(" << endl << endl;
@@ -643,8 +638,8 @@ void AdminUI::displayAllSizes(){
 
 
 void AdminUI::changeSize(){
-    SizeRepo sizeRepo;
-    vector<Size> sizes = sizeRepo.getVectorOfSizes();
+    
+    vector<Size> sizes = bizniz.getVectorOfSizes();
     cout << endl;
 
     char choice = 'y';
@@ -665,7 +660,7 @@ void AdminUI::changeSize(){
                 cin >> sizes.at(i);
             }
         }
-        sizeRepo.storeVectorOfSizes(sizes);
+        bizniz.storeVectorOfSizes(sizes);
         cout << endl << "Size changed" << endl << endl;
         cout << "Do you want to change another size: y/n ";
         cin >> choice;
@@ -683,10 +678,9 @@ void AdminUI::addSize(){
     char input = 'y';
 
     while(input == 'y'){
-        SizeRepo sizeRepo;
         Size temp;
         cin >> temp;
-        sizeRepo.addSize(temp);
+        bizniz.addSize(temp);
         cout << endl << "Do you want to add another size? y/n" << endl;
         cin >> input;
         while(input != 'y' && input != 'n'){
@@ -699,8 +693,8 @@ void AdminUI::addSize(){
 
 
 void AdminUI::removeSize(){
-    SizeRepo sizeRepo;
-    vector<Size> sizes = sizeRepo.getVectorOfSizes();
+    
+    vector<Size> sizes = bizniz.getVectorOfSizes();
     cout << endl;
 
     char choice = 'y';
@@ -721,7 +715,7 @@ void AdminUI::removeSize(){
                 sizes.erase(sizes.begin() + i);
             }
         }
-        sizeRepo.storeVectorOfSizes(sizes);
+        bizniz.storeVectorOfSizes(sizes);
         cout << endl << "Size removed" << endl << endl;
         cout << "do you want to change another size: y/n ";
         cin >> choice;
@@ -763,8 +757,8 @@ void AdminUI::displayBaseMenu(){
     }
 }
 void AdminUI::displayAllBases(){
-    BaseRepo baseRepo;
-    vector<Base> bases = baseRepo.getVectorOfBases();
+    
+    vector<Base> bases = bizniz.getVectorOfBases();
     
     if(bases.size() < 1){
         cout << "The file is empty :(" << endl << endl;
@@ -777,8 +771,8 @@ void AdminUI::displayAllBases(){
 }
 
 void AdminUI::changeBase(){
-    BaseRepo baseRepo;
-    vector<Base> bases = baseRepo.getVectorOfBases();
+    
+    vector<Base> bases = bizniz.getVectorOfBases();
     cout << endl;
 
     char choice = 'y';
@@ -799,7 +793,7 @@ void AdminUI::changeBase(){
                 cin >> bases.at(i);
             }
         }
-        baseRepo.storeVectorOfBases(bases);
+        bizniz.storeVectorOfBases(bases);
         cout << endl << "Base changed" << endl << endl;
         cout << "Do you want to change another base: y/n ";
         cin >> choice;
@@ -816,10 +810,10 @@ void AdminUI::addBase(){
     char input = 'y';
 
     while(input == 'y'){
-        BaseRepo baseRepo;
+        
         Base temp;
         cin >> temp;
-        baseRepo.addBase(temp);
+        bizniz.addBase(temp);
         cout << endl << "Do you want to add another base? y/n" << endl;
         cin >> input;
         while(input != 'y' && input != 'n'){
@@ -833,8 +827,8 @@ void AdminUI::addBase(){
 
 
 void AdminUI::removeBase(){
-    BaseRepo baseRepo;
-    vector<Base> bases = baseRepo.getVectorOfBases();
+    
+    vector<Base> bases = bizniz.getVectorOfBases();
     cout << endl;
 
     char choice = 'y';
@@ -855,7 +849,7 @@ void AdminUI::removeBase(){
                 bases.erase(bases.begin() + i);
             }
         }
-        baseRepo.storeVectorOfBases(bases);
+        bizniz.storeVectorOfBases(bases);
         cout << endl << "Size removed" << endl << endl;
         cout << "do you want to change another sizeb: y/n ";
         cin >> choice;
