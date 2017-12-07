@@ -18,6 +18,7 @@ public:
     
     vector<Topping> getVectorOfToppings();
     void addTopping(Topping& topping);
+    void storeVectorOfToppings(vector<Topping> toppings);
     
     Pizza* getArrayOfWaitingPizzas(int& sizeOfWaitingPizzaList);
     

@@ -30,6 +30,10 @@ void Bizniz::addTopping(Topping& topping){
     
 }
 
+void Bizniz::storeVectorOfToppings(vector<Topping> toppings){
+    
+    toppingRepo.storeVectorOfToppings(toppings);
+}
 
 
 
