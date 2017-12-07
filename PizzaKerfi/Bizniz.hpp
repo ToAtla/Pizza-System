@@ -10,6 +10,7 @@
 #define Bizniz_hpp
 
 #include <stdio.h>
+#include "Location.hpp"
 #include "ToppingRepo.hpp"
 #include "PizzaRepo.hpp"
 #include "OrderRepo.hpp"
@@ -20,12 +21,11 @@ public:
     void addTopping(Topping& topping);
     void storeVectorOfToppings(vector<Topping> toppings);
     
-    Pizza* getArrayOfWaitingPizzas(int& sizeOfWaitingPizzaList);
+    Pizza* getArrayOfPizzasAtLocationWithSomeStatus(status status, Location location, int& sizeOfReturnPizzaList);
     
     void setOrderPaidValue(string fileName, int pureIndex, bool value);
     void setOrderDeliveredValue(string fileName, int pureIndex, bool value);
 private:
-    
     ToppingRepo toppingRepo;
     PizzaRepo pizzaRepo;
     OrderRepo orderRepo;

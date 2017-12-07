@@ -21,6 +21,7 @@ using namespace std;
 
 Pizza::Pizza(){
     strcpy(name, "THIS SHOULD NEVER BE VISIBLE");
+    status = WAITING;
     price = 0;
 }
 
