@@ -39,8 +39,17 @@ void Pizza::setName(char inName[MAXCHARSINPIZZANAME]){
 int Pizza::getPrice(){
     return price;
 }
+
+Location Pizza::getLocation(){
+    return locationOfPizza;
+}
+
 void Pizza::setPrice(int inPrice){
     price = inPrice;
+}
+
+void Pizza::setLocation(Location inlLocation){
+    locationOfPizza = inlLocation;
 }
 
 
@@ -124,7 +133,7 @@ void Pizza::chooseToppings(){
     else{
         for (int i = 0; i < allToppings.size(); i++) {
             cout << "Topping nr: " << i+1 << endl;
-            cout << allToppings.at(i) << endl;
+            cout << allToppings.at(i) << endl << endl;
         }
         int c = 0;
         while(true){
