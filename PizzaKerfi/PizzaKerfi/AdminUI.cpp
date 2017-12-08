@@ -100,7 +100,7 @@ void AdminUI::displayAllToppings(){
         for (int i = 0; i < toppings.size(); i++) {
             Topping temp = toppings.at(i);
             cout << temp;
-            cout << setfill(CHARFORSETFILL) << setw(INTFORADMINUISETW) << "-" << endl;
+            cout << setfill(CHARFORSETFILL) << setw(SIZEOFSETW) << "-" << endl;
         }
     }
     
@@ -183,7 +183,7 @@ void AdminUI::removeTopping()
             Topping temp = toppings.at(i);
             cout << "Topping number: " << i+1 << endl;
             cout <<  temp;
-            cout << setfill(CHARFORSETFILL) << setw(INTFORADMINUISETW) << "-" << endl;
+            cout << setfill(CHARFORSETFILL) << setw(SIZEOFSETW) << "-" << endl;
         }
 
         int input = 0;
@@ -254,7 +254,7 @@ void AdminUI::displayAllLocations(){
     for (int i = 0; i < locations.size(); i++) {
         Location temp = locations.at(i);
         cout << temp << endl;
-        cout << setfill(CHARFORSETFILL) << setw(INTFORADMINUISETW) << "-" << endl;
+        cout << setfill(CHARFORSETFILL) << setw(SIZEOFSETW) << "-" << endl;
     }
 }
 
