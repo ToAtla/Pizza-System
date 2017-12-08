@@ -63,6 +63,7 @@ public:
     void setOrderPaidValue(string fileName, int pureIndex, bool value);
     void setOrderDeliveredValue(string fileName, int pureIndex, bool value);
     bool isEverythingInOrderReady(Order order);
+    int getNumberForNextOrder();
 private:
     ToppingRepo toppingRepo;
     LocationRepo locationRepo;
