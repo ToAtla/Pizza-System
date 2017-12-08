@@ -114,7 +114,7 @@ void AdminUI::addTopping(){
 
     while(input == 'y'){
         Topping temp;
-        cout << "Addin a topping!" << endl << endl;
+        cout << "Adding a topping!" << endl << endl;
         cin >> temp;
         bizniz.addTopping(temp);
         cout << endl << "Do you want to add another topping? y/n" << endl;
@@ -143,7 +143,7 @@ void AdminUI::changeTopping(){
             Topping temp = toppings.at(i);
             cout << "Topping number: " << i+1 << endl;
             cout <<  temp;
-            cout << setfill(CHARFORSETFILL) << setw(INTFORADMINUISETW) << "-" << endl << endl;
+            cout << setfill(CHARFORSETFILL) << setw(INTFORADMINUISETW) << "-" << endl;
         }
         int input = 0;
         cout << "Choose a topping to change: ";
@@ -210,6 +210,7 @@ void AdminUI::removeTopping()
 
 
 void AdminUI::displayLocationMenu(){
+   
     char input = '\0';
     while(input != 'b'){
         cout << "1: List locations" << endl;
@@ -263,7 +264,7 @@ void AdminUI::addLocation(){
 
     while(input == 'y'){
         Location temp;
-        cout << "Addin a location!" << endl << endl;
+        cout << "Adding a location!" << endl << endl;
         cin >> temp;
         bizniz.addLocation(temp);
         cout << endl << "Do you want to add another location? y/n ";
@@ -289,8 +290,7 @@ void AdminUI::changeLocation(){
             Location temp = locations.at(i);
             cout << "Location number: " << i+1 << endl;
             cout <<  temp << endl;
-            cout << setfill(CHARFORSETFILL) << setw(INTFORADMINUISETW) << "-" << endl << endl;
-            
+            cout << setfill(CHARFORSETFILL) << setw(INTFORADMINUISETW) << "-" << endl;
         }
         int input = 0;
         cout << "Choose a location to change: ";
@@ -327,7 +327,7 @@ void AdminUI::removeLocation(){
             Location temp = locations.at(i);
             cout << "Location number: " << i+1 << endl;
             cout <<  temp << endl;
-            cout << setfill(CHARFORSETFILL) << setw(INTFORADMINUISETW) << "-" << endl << endl;
+            cout << setfill(CHARFORSETFILL) << setw(INTFORADMINUISETW) << "-" << endl;
         }
 
         int input = 0;
@@ -365,17 +365,19 @@ void AdminUI::displaySideMenu(){
         cout << endl;
 
         if(input == '1'){
-            cout << endl << "-----List of all sides-----" << endl << endl;
+            magic.clearScreen();
             displayAllSides();
-            cout << endl;
         }
         else if(input == '2'){
+            magic.clearScreen();
             changeSide();
         }
         else if(input == '3'){
+            magic.clearScreen();
             addSide();
         }
         else if(input == '4'){
+            magic.clearScreen();
             removeSide();
         }
     }
@@ -386,14 +388,19 @@ void AdminUI::displayAllSides(){
     
     vector<Side> sides = bizniz.getVectorOfSides();
     
+    cout << endl << "----------------------------List of all sides----------------------------" << endl;
+    
     if(sides.size() < 1){
         cout << "The file is empty :(" << endl << endl;
     }
     
     for (int i = 0; i < sides.size(); i++) {
+        
         Side temp = sides.at(i);
         cout << temp << endl;
+        cout << setfill(CHARFORSETFILL) << setw(INTFORADMINUISETW) << "-" << endl;
     }
+    cout << endl;
 }
 
 
@@ -401,6 +408,7 @@ void AdminUI::addSide(){
     char input = 'y';
 
     while(input == 'y'){
+        cout << "Adding a side!" << endl << endl;
         Side temp;
         cin >> temp;
         bizniz.addSide(temp);
@@ -424,10 +432,12 @@ void AdminUI::changeSide(){
 
     while(choice == 'y')
     {
+        cout << endl << "----------------------------List of all sides----------------------------" << endl;
         for(int i = 0; i < sides.size(); i++){
             Side temp = sides.at(i);
             cout << "Side number: " << i+1 << endl;
             cout <<  temp << endl;
+            cout << setfill(CHARFORSETFILL) << setw(INTFORADMINUISETW) << "-" << endl;
         }
         int input = 0;
         cout << "Choose a side to change: ";
@@ -460,10 +470,12 @@ void AdminUI::removeSide(){
     char choice = 'y';
 
     while(choice == 'y'){
+        cout << endl << "----------------------------List of all sides----------------------------" << endl;
         for(int i = 0; i < sides.size(); i++){
             Side temp = sides.at(i);
             cout << "Side number: " << i+1 << endl;
             cout <<  temp << endl;
+            cout << setfill(CHARFORSETFILL) << setw(INTFORADMINUISETW) << "-" << endl;
         }
 
         int input = 0;
@@ -501,17 +513,21 @@ void AdminUI::displayDrinkMenu(){
         cout << endl;
 
         if(input == '1'){
-            cout << endl << "-----List of all drinks-----" << endl << endl;
+            
+            magic.clearScreen();
             displayAllDrinks();
-            cout << endl;
+            
         }
         else if(input == '2'){
+            magic.clearScreen();
             changeDrink();
         }
         else if(input == '3'){
+            magic.clearScreen();
             addDrink();
         }
         else if(input == '4'){
+            magic.clearScreen();
             removeDrink();
         }
     }
@@ -520,15 +536,17 @@ void AdminUI::displayDrinkMenu(){
 void AdminUI::displayAllDrinks(){
     
     vector<Drink> drinks = bizniz.getVectorOfDrinks();
-    
+    cout << endl << "----------------------------List of all drinks----------------------------" << endl;
     if(drinks.size() < 1){
         cout << "The file is empty :(" << endl << endl;
     }
     
     for (int i = 0; i < drinks.size(); i++) {
         Drink temp = drinks.at(i);
-        cout << temp << endl << endl;
+        cout << temp << endl;
+        cout << setfill(CHARFORSETFILL) << setw(INTFORADMINUISETW) << "-" << endl;
     }
+    cout << endl;
 }
 
 void AdminUI::changeDrink(){
@@ -538,12 +556,13 @@ void AdminUI::changeDrink(){
 
     char choice = 'y';
 
-    while(choice == 'y')
-    {
+    while(choice == 'y'){
+        cout << endl << "----------------------------List of all drinks----------------------------" << endl;
         for(int i = 0; i < drinks.size(); i++){
             Drink temp = drinks.at(i);
             cout << "Drink number: " << i+1 << endl;
-            cout <<  temp << endl;
+            cout <<  temp;
+            cout << setfill(CHARFORSETFILL) << setw(INTFORADMINUISETW) << "-" << endl;
         }
         int input = 0;
         cout << "Choose a drink to change: ";
@@ -571,7 +590,7 @@ void AdminUI::addDrink(){
     char input = 'y';
 
     while(input == 'y'){
-        DrinkRepo drinkRepo;
+        cout << "Adding drink!" << endl;
         Drink temp;
         cin >> temp;
         bizniz.addDrink(temp);
@@ -594,10 +613,12 @@ void AdminUI::removeDrink(){
     char choice = 'y';
 
     while(choice == 'y'){
+        cout << endl << "----------------------------List of all drinks----------------------------" << endl;
         for(int i = 0; i < drinks.size(); i++){
             Drink temp = drinks.at(i);
             cout << "Drink number: " << i+1 << endl;
-            cout <<  temp << endl;
+            cout <<  temp;
+            cout << setfill(CHARFORSETFILL) << setw(INTFORADMINUISETW) << "-" << endl;
         }
 
         int input = 0;
@@ -636,17 +657,19 @@ void AdminUI::displaySizeMenu(){
         cout << endl;
 
         if(input == '1'){
-            cout << endl << "-----List of all sizes-----" << endl << endl;
+            magic.clearScreen();
             displayAllSizes();
-            cout << endl;
         }
         else if(input == '2'){
+            magic.clearScreen();
             changeSize();
         }
         else if(input == '3'){
+            magic.clearScreen();
             addSize();
         }
         else if(input == '4'){
+            magic.clearScreen();
             removeSize();
         }
     }
@@ -655,14 +678,15 @@ void AdminUI::displaySizeMenu(){
 void AdminUI::displayAllSizes(){
     
     vector<Size> sizes = bizniz.getVectorOfSizes();
-    
+    cout << endl << "----------------------------List of all drinks----------------------------" << endl;
     if(sizes.size() < 1){
         cout << "The file is empty :(" << endl << endl;
     }
     
     for (int i = 0; i < sizes.size(); i++) {
         Size temp = sizes.at(i);
-        cout << temp << endl;
+        cout << temp;
+        cout << setfill(CHARFORSETFILL) << setw(INTFORADMINUISETW) << "-" << endl;
     }
 }
 
@@ -676,10 +700,12 @@ void AdminUI::changeSize(){
 
     while(choice == 'y')
     {
+        cout << endl << "----------------------------List of all sizes----------------------------" << endl;
         for(int i = 0; i < sizes.size(); i++){
             Size temp = sizes.at(i);
             cout << "Size number: " << i+1 << endl;
-            cout <<  temp << endl;
+            cout <<  temp;
+            cout << setfill(CHARFORSETFILL) << setw(INTFORADMINUISETW) << "-" << endl;
         }
         int input = 0;
         cout << "Choose a size to change: ";
@@ -709,6 +735,7 @@ void AdminUI::addSize(){
 
     while(input == 'y'){
         Size temp;
+        cout << "Adding size!" << endl << endl;
         cin >> temp;
         bizniz.addSize(temp);
         cout << endl << "Do you want to add another size? y/n" << endl;
@@ -730,14 +757,16 @@ void AdminUI::removeSize(){
     char choice = 'y';
 
     while(choice == 'y'){
+        cout << endl << "----------------------------List of all sizes----------------------------" << endl;
         for(int i = 0; i < sizes.size(); i++){
             Size temp = sizes.at(i);
             cout << "Size number: " << i+1 << endl;
-            cout <<  temp << endl;
+            cout <<  temp;
+            cout << setfill(CHARFORSETFILL) << setw(INTFORADMINUISETW) << "-" << endl;
         }
 
         int input = 0;
-        cout << "Choose a drink to remove: ";
+        cout << "Choose a size to remove: ";
         cin >> input;
 
         for(int i = 0; i < sizes.size(); i++){
@@ -771,17 +800,20 @@ void AdminUI::displayBaseMenu(){
         cout << endl;
 
         if(input == '1'){
-            cout << endl << "-----List of all bases-----" << endl << endl;
+            magic.clearScreen();
             displayAllBases();
-            cout << endl;
+            
         }
         else if(input == '2'){
+            magic.clearScreen();
             changeBase();
         }
         else if(input == '3'){
+            magic.clearScreen();
             addBase();
         }
         else if(input == '4'){
+            magic.clearScreen();
             removeBase();
         }
     }
@@ -789,15 +821,17 @@ void AdminUI::displayBaseMenu(){
 void AdminUI::displayAllBases(){
     
     vector<Base> bases = bizniz.getVectorOfBases();
-    
+    cout << endl << "----------------------------List of all bases----------------------------" << endl;
     if(bases.size() < 1){
         cout << "The file is empty :(" << endl << endl;
     }
     
     for (unsigned int i = 0; i < bases.size(); i++) {
         Base temp = bases.at(i);
-        cout << temp << endl;
+        cout << temp;
+        cout << setfill(CHARFORSETFILL) << setw(INTFORADMINUISETW) << "-" << endl;
     }
+    
 }
 
 void AdminUI::changeBase(){
@@ -809,10 +843,12 @@ void AdminUI::changeBase(){
 
     while(choice == 'y')
     {
+        cout << endl << "----------------------------List of all bases----------------------------" << endl;
         for(int i = 0; i < bases.size(); i++){
             Base temp = bases.at(i);
             cout << "Base number: " << i+1 << endl;
-            cout <<  temp << endl;
+            cout <<  temp;
+            cout << setfill(CHARFORSETFILL) << setw(INTFORADMINUISETW) << "-" << endl;
         }
         int input = 0;
         cout << "Choose a base to change: ";
@@ -842,6 +878,7 @@ void AdminUI::addBase(){
     while(input == 'y'){
         
         Base temp;
+        cout << "Add bases!" << endl << endl;
         cin >> temp;
         bizniz.addBase(temp);
         cout << endl << "Do you want to add another base? y/n" << endl;
@@ -864,10 +901,12 @@ void AdminUI::removeBase(){
     char choice = 'y';
 
     while(choice == 'y'){
+        cout << endl << "----------------------------List of all bases----------------------------" << endl;
         for(int i = 0; i < bases.size(); i++){
             Base temp = bases.at(i);
             cout << "Size number: " << i+1 << endl;
-            cout <<  temp << endl;
+            cout <<  temp;
+            cout << setfill(CHARFORSETFILL) << setw(INTFORADMINUISETW) << "-" << endl;
         }
 
         int input = 0;
