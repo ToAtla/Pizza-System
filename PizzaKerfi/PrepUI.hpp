@@ -19,6 +19,7 @@ public:
     void startPrepUI();
     void chooseYourLocation();
 private:
+    void allActiveOverview();
     void waitingOverview();
     void preppingOverview();
     void readyOverview();

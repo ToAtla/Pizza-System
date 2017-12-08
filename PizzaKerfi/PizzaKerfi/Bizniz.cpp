@@ -7,6 +7,7 @@
 //
 
 #include "Bizniz.hpp"
+#include <cstring>
 
 
 /**************************************************************************************
@@ -202,11 +203,40 @@ Pizza* Bizniz::getArrayOfPizzasAtLocationWithSomeStatus(status status, Location 
     return returnPizzas;
 }
 
+Pizza* Bizniz::getArrayOfPizzasAtLocationWithoutSomeStatus(status status, Location location, int& sizeOfReturnPizzaList){
+    int sizeOfEntirePizzaList;
+    Pizza* allPizzas = pizzaRepo.retrievePizzaArray(PIZZAFILE, sizeOfEntirePizzaList);
+    Pizza* returnPizzas = new Pizza[sizeOfEntirePizzaList];
+    sizeOfReturnPizzaList = 0;
+    for (int i = 0; i < sizeOfEntirePizzaList; i++) {
+        if((allPizzas[i].getStatus()) != status && allPizzas[i].getLocation().getLocation() == location.getLocation()){
+            returnPizzas[sizeOfReturnPizzaList] = allPizzas[i];
+            sizeOfReturnPizzaList++;
+        }
+    }
+    return returnPizzas;
+}
+
+
 void Bizniz::savePizzaArrayInFile(Pizza *pizzaArray, int sizeOfArray){
     pizzaRepo.clearPizzaFile(PIZZAFILE);
     for (int i = 0; i < sizeOfArray; i++) {
         pizzaRepo.storePizza(pizzaArray[i], PIZZAFILE);
     }
+}
+
+char* Bizniz::statusToString(status status){
+    char* statusString = new char[MAXCHARINSTATUSSTRING];
+    if(status == WAITING){
+        strcpy(statusString, "WAITING");
+    }else if(status == PREPPING){
+        strcpy(statusString, "PREPPING");
+    }else if(status == READY){
+        strcpy(statusString, "READY");
+    }else if(status == DELIVERED){
+        strcpy(statusString, "DELIVERED");
+    }
+    return statusString;
 }
 
 /**************************************************************************************

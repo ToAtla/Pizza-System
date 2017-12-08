@@ -18,20 +18,25 @@ void PrepUI::startPrepUI(){
     chooseYourLocation();
     
     while(input != 'b'){
-        cout << "1: List waiting pizzas and sides" << endl;
-        cout << "2: List pizzas and sides in preparation" << endl;
-        cout << "3: List ready pizzas and sides" << endl;
+        cout << "1: List all pizzas in house" << endl;
+        cout << "2: List waiting pizzas and sides" << endl;
+        cout << "3: List pizzas and sides in preparation" << endl;
+        cout << "4: List ready pizzas and sides" << endl;
         cout << "b: back" << endl;
         cin >> input;
         cout << endl;
         
         if(input == '1'){
-            waitingOverview();
+            allActiveOverview();
         }
         else if(input == '2'){
-            preppingOverview();
+            waitingOverview();
+            
         }
         else if(input == '3'){
+            preppingOverview();
+        }
+        else if(input == '4'){
             readyOverview();
         }
     }
@@ -72,6 +77,29 @@ void PrepUI::chooseYourLocation(){
             }
         }
     }
+    
+}
+
+void PrepUI::allActiveOverview(){
+    //Fylki af öllum
+    //Fylki af öllum biðpizzum
+    //ýtra í gegnum það og birta þær
+    int sizeOfActivePizzaList;
+    Pizza* activePizzasAtThisLocation = bizniz.getArrayOfPizzasAtLocationWithoutSomeStatus(DELIVERED, locationOfPrep, sizeOfActivePizzaList);
+    
+    cout << " - - - - All Pizzas in " << locationOfPrep << " - - - - " << endl;
+    
+    if(sizeOfActivePizzaList != 0){
+        for (int i = 0; i < sizeOfActivePizzaList; i++) {
+            cout << "[" << i+1 << "] " << activePizzasAtThisLocation[i] << endl;
+        }
+        cout << endl;
+    }else{
+        cout << endl;
+        cout << "List is empty" << endl;
+        cout << endl;
+    }
+    delete [] activePizzasAtThisLocation;
     
 }
 
