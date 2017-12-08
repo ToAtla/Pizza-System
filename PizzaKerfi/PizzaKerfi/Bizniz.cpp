@@ -287,3 +287,14 @@ void Bizniz::setOrderDeliveredValue(string fileName, int pureIndex, bool value){
         orderRepo.storeOrder(orders[i]);
     }
 }
+
+
+bool Bizniz::isEverythingInOrderReady(Order order){
+    
+    for (int i = 0; i <order.getNumberOfPizzas(); i++) {
+        if(order.getPizzasInOrder()[i].getStatus() != READY){
+            return false;
+        }
+    }
+    return true;
+}

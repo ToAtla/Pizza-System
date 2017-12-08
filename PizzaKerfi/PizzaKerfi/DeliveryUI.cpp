@@ -138,7 +138,7 @@ void DeliveryUI::displayUnpaidOrders(){
             if(input != 0){
                 if(input <= sizeOfOrderList && input > 0){
                     bizniz.setOrderPaidValue(orderFile, input-1, true);
-                    cout << "Order number " << input << " is now in preparation" << endl;
+                    cout << "Order number " << input << " has been marked paid" << endl;
                 }
             }else{
                 break;
@@ -181,8 +181,9 @@ void DeliveryUI::displayPaidOrders(){
             cin >> input;
             if(input != 0){
                 if(input <= sizeOfOrderList && input > 0){
+                    
                     bizniz.setOrderDeliveredValue(orderFile, input-1, true);
-                    cout << "Order number " << input << " marked prepared" << endl;
+                    cout << "Order number " << input << " has been marked delivered" << endl;
                 }
             }else{
                 break;
