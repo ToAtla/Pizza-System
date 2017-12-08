@@ -64,6 +64,9 @@ public:
     char* statusToString(status status);
     string getStatusAndPriceCharArr(Pizza pizza);
     void fixNameOfPizza(Pizza& pizza);
+    void chooseToppingsOnPizza(Pizza& pizza);
+    void chooseSizeForPizza(Pizza& pizza);
+    void chooseBaseForPizza(Pizza& pizza);
     
     
     //Order
