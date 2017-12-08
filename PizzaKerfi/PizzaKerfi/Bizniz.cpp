@@ -292,8 +292,12 @@ int Bizniz::getNumberForNextOrder(){
     int orderCnt = 0;
     OrderRepo ordRep;
     ordRep.retrieveOrderArray("orders.dat", orderCnt);
-    
-    return (orderCnt+1);
+    if(orderCnt <= 0){
+        orderCnt = 1;
+        return orderCnt;
+    }
+    orderCnt++;
+    return orderCnt;
 }
 bool Bizniz::isEverythingInOrderReady(Order order){
     
