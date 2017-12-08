@@ -185,7 +185,8 @@ void Pizza::fixName(){
 ostream& operator << (ostream& out, const Pizza& pizza){
     Bizniz biz;
     char* statusString = biz.statusToString(pizza.status);
-    out << pizza.name << HALFTABSTRING << statusString << HALFTABSTRING << pizza.price << endl;
+    //out << pizza.name << HALFTABSTRING << statusString << HALFTABSTRING << pizza.price << endl;
+    out << setw(69) << left << pizza.name << pizza.price << endl;
     delete [] statusString;
     return out;
 }
