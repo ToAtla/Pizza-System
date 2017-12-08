@@ -11,6 +11,7 @@
 
 #include <stdio.h>
 #include <iostream>
+#include "ConsoleMagic.hpp"
 #include "ToppingRepo.hpp"
 #include "LocationRepo.hpp"
 #include "Location.hpp"
@@ -31,6 +32,7 @@ class AdminUI{
         void startAdminUI();
     private:
         Bizniz bizniz;
+        ConsoleMagic magic;
     
         //Prentar út valmynd sem býður notandanum uppá að velja það sem hann vill gera með topping listann.
         void displayToppingMenu();

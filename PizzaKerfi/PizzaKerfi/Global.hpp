@@ -17,6 +17,8 @@
 
 using namespace std;
 
+const char CHARFORSETFILL = '-';
+const int INTFORADMINUISETW = 76;
 const int MAXCHARSINBASENAME = 4;
 const int MAXCHARINSIZENAME = 15;
 const int MAXCHARINSIDENAME = 30;

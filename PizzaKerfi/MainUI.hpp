@@ -11,16 +11,21 @@
 
 #include <stdio.h>
 #include "Global.hpp"
+#include "AdminUI.hpp"
+#include "PrepUI.hpp"
+#include "SalesUI.hpp"
+#include "DeliveryUI.hpp"
+#include "LocationRepo.hpp"
+#include "Location.hpp"
+#include "ConsoleMagic.hpp"
 #include "Order.hpp"
 
 class MainUI{
     
     public:
         void startUI();
-        void branchLocation();
-
     private:
-
+        ConsoleMagic magic;
 
 };
 

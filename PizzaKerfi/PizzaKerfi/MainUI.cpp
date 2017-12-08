@@ -7,19 +7,16 @@
 //
 
 #include "MainUI.hpp"
-#include "AdminUI.hpp"
-#include "PrepUI.hpp"
-#include "SalesUI.hpp"
-#include "DeliveryUI.hpp"
-#include "LocationRepo.hpp"
-#include "Location.hpp"
-#include "ConsoleMagic.hpp"
+
 #include <stdlib.h>
 
 void MainUI::startUI(){
     
+    
+    
     char input = '\0';
     while(input != 'q'){
+        magic.clearScreen();
         cout << " -------------------------------" << endl;
         cout << "|1: Manager     |2: Sales       |" << endl;
         cout << " -------------------------------" << endl;
@@ -31,6 +28,7 @@ void MainUI::startUI(){
         cout << endl;
         
         if(input == '1'){
+            magic.clearScreen();
             AdminUI adminUI;
             adminUI.startAdminUI();
         }
@@ -53,29 +51,4 @@ void MainUI::startUI(){
         }
        
     }
-}
-
-void MainUI::branchLocation(){
-
-    //A EFTIR AD KLARA!!
-    cout << endl <<  "-----Locations-----" << endl;
-    LocationRepo locationRepo;
-    vector<Location> locations = locationRepo.getVectorOfLocations();
-    cout << endl;
-    
-        for(int i = 0; i < locations.size(); i++){
-            Location temp = locations.at(i);
-            cout << "Location number: " << i+1 << endl;
-            cout <<  temp << endl;
-        }
-        int input = 0;
-        cout << "Choose a location: ";
-        cin >> input;
-        
-        for(int i = 0; i < locations.size(); i++){
-            if(input == i+1){
-                
-            }
-        }
-    
 }

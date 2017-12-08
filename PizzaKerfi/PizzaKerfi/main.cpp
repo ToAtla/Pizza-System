@@ -15,9 +15,11 @@
 using namespace std;
 
 int main(){
-
-    MainUI mainUI;
+    
+   MainUI mainUI;
     
     mainUI.startUI();
+    
+    
     return 0;
 }

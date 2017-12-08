@@ -8,12 +8,14 @@
 
 #include "AdminUI.hpp"
 
-
 //Prentar út valmynd sem býður notandanum að velja það sem hann vill fikta í.
 void AdminUI::startAdminUI(){
 
+    
+    
     char input = 0;
     while(input != 'b'){
+        magic.clearScreen();
         cout << "1: Add/change the topping list" << endl;
         cout << "2: Add/change the location list" << endl;
         cout << "3: Add/change the side list" << endl;
@@ -25,21 +27,27 @@ void AdminUI::startAdminUI(){
         cout << endl;
 
         if(input == '1'){
+            magic.clearScreen();
             displayToppingMenu();
         }
         else if(input == '2'){
+            magic.clearScreen();
             displayLocationMenu();
         }
         else if(input == '3'){
+            magic.clearScreen();
             displaySideMenu();
         }
         else if(input == '4'){
+            magic.clearScreen();
             displayDrinkMenu();
         }
         else if(input == '5'){
+            magic.clearScreen();
             displaySizeMenu();
         }
         else if(input == '6'){
+            magic.clearScreen();
             displayBaseMenu();
         }
     }
@@ -47,6 +55,9 @@ void AdminUI::startAdminUI(){
 
 //Prentar út valmynd sem býður notandanum uppá að velja það sem hann vill gera með topping listann.
 void AdminUI::displayToppingMenu(){
+   
+    
+    
     char input = '\0';
     while(input != 'b'){
         cout << "1: List toppings" << endl;
@@ -58,17 +69,19 @@ void AdminUI::displayToppingMenu(){
         cout << endl;
 
         if(input == '1'){
-            
+            magic.clearScreen();
             displayAllToppings();
-            
         }
         else if(input == '2'){
+            magic.clearScreen();
             changeTopping();
         }
         else if(input == '3'){
+            magic.clearScreen();
             addTopping();
         }
         else if(input == '4'){
+            magic.clearScreen();
             removeTopping();
         }
     }
@@ -79,14 +92,15 @@ void AdminUI::displayAllToppings(){
 
     ToppingRepo toppingRepo;
     vector<Topping> toppings = bizniz.getVectorOfToppings();
-    cout << endl << "-----List of all topings-----" << endl;
+    cout << endl << "----------------------------List of all toppings----------------------------" << endl;
     if(toppings.size() < 1){
         cout << "The file is empty :(" << endl << endl;
     }
     else{
         for (int i = 0; i < toppings.size(); i++) {
             Topping temp = toppings.at(i);
-            cout << temp << endl;
+            cout << temp;
+            cout << setfill(CHARFORSETFILL) << setw(INTFORADMINUISETW) << "-" << endl;
         }
     }
     
@@ -100,6 +114,7 @@ void AdminUI::addTopping(){
 
     while(input == 'y'){
         Topping temp;
+        cout << "Addin a topping!" << endl << endl;
         cin >> temp;
         bizniz.addTopping(temp);
         cout << endl << "Do you want to add another topping? y/n" << endl;
@@ -123,10 +138,12 @@ void AdminUI::changeTopping(){
 
     while(choice == 'y')
     {
+        cout << endl << "----------------------------List of all toppings----------------------------" << endl;
         for(int i = 0; i < toppings.size(); i++){
             Topping temp = toppings.at(i);
             cout << "Topping number: " << i+1 << endl;
-            cout <<  temp << endl;
+            cout <<  temp;
+            cout << setfill(CHARFORSETFILL) << setw(INTFORADMINUISETW) << "-" << endl << endl;
         }
         int input = 0;
         cout << "Choose a topping to change: ";
@@ -161,10 +178,12 @@ void AdminUI::removeTopping()
     char choice = 'y';
 
     while(choice == 'y'){
+        cout << endl << "----------------------------List of all toppings----------------------------" << endl;
         for(int i = 0; i < toppings.size(); i++){
             Topping temp = toppings.at(i);
             cout << "Topping number: " << i+1 << endl;
-            cout <<  temp << endl;
+            cout <<  temp;
+            cout << setfill(CHARFORSETFILL) << setw(INTFORADMINUISETW) << "-" << endl;
         }
 
         int input = 0;
@@ -202,17 +221,21 @@ void AdminUI::displayLocationMenu(){
         cout << endl;
 
         if(input == '1'){
-            cout << endl << "-----List of all locations-----" << endl << endl;
+            magic.clearScreen();
+            cout << endl << "----------------------------List of all locations----------------------------" << endl;
             displayAllLocations();
             cout << endl;
         }
         else if(input == '2'){
+            magic.clearScreen();
             changeLocation();
         }
         else if(input == '3'){
+            magic.clearScreen();
             addLocation();
         }
         else if(input == '4'){
+            magic.clearScreen();
             removeLocation();
         }
     }
@@ -229,7 +252,8 @@ void AdminUI::displayAllLocations(){
     
     for (int i = 0; i < locations.size(); i++) {
         Location temp = locations.at(i);
-        cout << temp << endl << endl;
+        cout << temp << endl;
+        cout << setfill(CHARFORSETFILL) << setw(INTFORADMINUISETW) << "-" << endl;
     }
 }
 
@@ -239,6 +263,7 @@ void AdminUI::addLocation(){
 
     while(input == 'y'){
         Location temp;
+        cout << "Addin a location!" << endl << endl;
         cin >> temp;
         bizniz.addLocation(temp);
         cout << endl << "Do you want to add another location? y/n ";
@@ -257,12 +282,15 @@ void AdminUI::changeLocation(){
 
     char choice = 'y';
 
-    while(choice == 'y')
-    {
+    while(choice == 'y'){
+        
+        cout << endl << "----------------------------List of all locations----------------------------" << endl;
         for(int i = 0; i < locations.size(); i++){
             Location temp = locations.at(i);
             cout << "Location number: " << i+1 << endl;
             cout <<  temp << endl;
+            cout << setfill(CHARFORSETFILL) << setw(INTFORADMINUISETW) << "-" << endl << endl;
+            
         }
         int input = 0;
         cout << "Choose a location to change: ";
@@ -294,10 +322,12 @@ void AdminUI::removeLocation(){
     char choice = 'y';
 
     while(choice == 'y'){
+        cout << endl << "----------------------------List of all locations----------------------------" << endl;
         for(int i = 0; i < locations.size(); i++){
             Location temp = locations.at(i);
             cout << "Location number: " << i+1 << endl;
             cout <<  temp << endl;
+            cout << setfill(CHARFORSETFILL) << setw(INTFORADMINUISETW) << "-" << endl << endl;
         }
 
         int input = 0;
