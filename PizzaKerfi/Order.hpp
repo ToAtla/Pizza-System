@@ -23,13 +23,31 @@ using namespace std;
 class Order {
 public:
     Order();
-    Pizza* getPizzasInOrder();
-    int getNumberOfPizzas();
-    Location getLocation();
     void setPaid(bool value);
     bool isPaid();
     void setDelivered(bool v);
     bool isDelivered();
+    
+    
+    void setLocation(Location inLocation);
+    int getID();
+    void setID(int inID);
+    void setNumberOfPizzas(int inNumberOfPizzas);
+    Pizza* getPizzasInOrder();
+    int getNumberOfPizzas();
+    Location getLocation();
+    int getTotalPrice();
+    void setTotalPrice(int inTotalPrice);
+    int getNumberOfSides();
+    void setNumberofSides(int inNumberOfSides);
+    int getNumberOfDrinks();
+    void setNumberOfDrinks(int inNumberOfDrinks);
+    Side* getSideList();
+    Drink* getDrinkList();
+    
+    
+    
+    
     friend ostream& operator << (ostream& out, const Order&);
     friend istream& operator >> (istream& in, Order&);
 private:

@@ -426,3 +426,144 @@ bool Bizniz::isEverythingInOrderReady(Order order){
     }
     return true;
 }
+
+void Bizniz::assembleOrder(Order &order){
+    
+    LocationRepo lr;
+    vector<Location> locations = lr.getVectorOfLocations();
+    
+    if(locations.size() < 1){
+        cout << endl << "No locations available at this time" << endl << endl;
+    }
+    else{
+        cout << endl << "-----Locations available-----" << endl << endl;
+        int locationNumber = 0;
+        
+        bool invalidInput = true;
+        
+        while(invalidInput){
+            LocationRepo lr;
+            vector<Location> locations = lr.getVectorOfLocations();
+            
+            for(unsigned int i = 0; i < locations.size(); i++){
+                cout << "Location number: " << i+1 << endl;
+                cout << locations.at(i) << endl << endl;
+            }
+            cout << "Choose a location for your order: ";
+            cin >> locationNumber;
+            
+            for(unsigned int i = 0; i < locations.size(); i++){
+                if(locationNumber == i+1){
+                    order.setLocation(locations.at(i));
+                    invalidInput = false;
+                }
+            }
+            
+            if(invalidInput){
+                cout << "Please enter a valid location: " << endl;
+                
+            }
+        }
+        Bizniz bizniz;
+        order.setID(bizniz.getNumberForNextOrder());
+        
+        cout << endl << "Enter number of pizzas to add to order: ";
+        int inNumPizz;
+        cin >> inNumPizz;
+        order.setNumberOfPizzas(inNumPizz);
+        
+        for (int i = 0; i < order.getNumberOfPizzas(); i++) {
+            cout << endl << "Pizza number: " << i+1 << endl;
+            order.getPizzasInOrder()[i] = Pizza();
+            order.getPizzasInOrder()[i].setLocation(order.getLocation());
+            
+            cin >> order.getPizzasInOrder()[i];
+            order.setTotalPrice(order.getTotalPrice() + order.getPizzasInOrder()[i].getPrice());
+        }
+        
+        SideRepo sr;
+        vector<Side> sides = sr.getVectorOfSides();
+        char input = '0';
+        int c = 0;
+        
+        if(sides.size() < 1){
+            cout << endl << "There are no sides available at this time." << endl;
+        }
+        else{
+            cout << endl << "Would you like a side with your order? y: yes ";
+            char input = '0';
+            cin >> input;
+            
+            int c = 0;
+            order.setNumberofSides(0);
+            
+            while(input == 'y') {
+                SideRepo sr;
+                vector<Side> sides = sr.getVectorOfSides();
+                
+                for(unsigned int i = 0; i < sides.size(); i++){
+                    cout << "Side number: " << i+1 << endl;
+                    cout << sides.at(i) << endl;
+                }
+                cout << "Choose a side you want to add to your order: ";
+                int sideNumber = 0;
+                cin >> sideNumber;
+                for(unsigned int i = 0; i < sides.size(); i++){
+                    if(sideNumber == i+1){
+                        order.getSideList()[c] = sides.at(i);
+                        
+                        order.setTotalPrice(order.getTotalPrice() + sides.at(i).getPrice());
+                        
+                        order.setNumberofSides(order.getNumberOfSides() + 1);
+                        
+                        c++;
+                    }
+                }
+                
+                cout << endl << "Would you like to add another side? y: yes ";
+                cin >> input;
+            }
+            
+            
+        }
+        c = 0;
+        
+        DrinkRepo dr;
+        vector<Drink> drinks = dr.getVectorOfDrinks();
+        
+        if(drinks.size() < 1){
+            cout << endl << "There are no drinks available at this time." << endl;
+        }
+        else{
+            cout << endl << "Would you like to a drink with your order? y: yes ";
+            cin >> input;
+            order.setNumberOfDrinks(0);
+            
+            while(input == 'y') {
+                DrinkRepo dr;
+                vector<Drink> drinks = dr.getVectorOfDrinks();
+                
+                for(unsigned int i = 0; i < drinks.size(); i++){
+                    cout << "Drink number: " << i+1 << endl;
+                    cout << drinks.at(i) << endl;
+                }
+                cout << "Choose a drink you want to add to your order: ";
+                int drinkNumber = 0;
+                cin >> drinkNumber;
+                for(unsigned int i = 0; i < drinks.size(); i++){
+                    if(drinkNumber == i+1){
+                        order.getDrinkList()[c] = drinks.at(i);
+                        order.setTotalPrice(order.getTotalPrice() + drinks.at(i).getPrice());
+                        order.setNumberOfDrinks(order.getNumberOfDrinks() + 1);
+                        c++;
+                    }
+                }
+                
+                cout << endl <<"Would you like do add another drink? y: yes ";
+                cin >> input;
+            }
+            
+        }
+    }
+    
+}

@@ -74,6 +74,8 @@ public:
     void setOrderDeliveredValue(string fileName, int pureIndex, bool value);
     bool isEverythingInOrderReady(Order order);
     int getNumberForNextOrder();
+    void assembleOrder(Order& order);
+    
 private:
     ToppingRepo toppingRepo;
     LocationRepo locationRepo;
