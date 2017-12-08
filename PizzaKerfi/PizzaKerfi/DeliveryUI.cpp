@@ -181,11 +181,14 @@ void DeliveryUI::displayPaidOrders(){
             cin >> input;
             if(input != 0){
                 if(input <= sizeOfOrderList && input > 0){
-                    
-                    bizniz.setOrderDeliveredValue(orderFile, input-1, true);
-                    cout << "Order number " << input << " has been marked delivered" << endl;
+                    if(bizniz.isEverythingInOrderReady(orders[input-1]))
+                        bizniz.setOrderDeliveredValue(orderFile, input-1, true);
+                        cout << "Order number " << input << " has been marked delivered" << endl;
+                }else{
+                    cout << "Not all items in that order are ready" << endl;
                 }
-            }else{
+            }
+            else{
                 break;
             }
         }

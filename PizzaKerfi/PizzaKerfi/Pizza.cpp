@@ -168,6 +168,19 @@ void Pizza::chooseToppings(){
 }
 
 
+Base Pizza::getBase(){
+    return baseOfPizza;
+}
+Size Pizza::getSize(){
+    return sizeOfPizza;
+}
+Topping* Pizza::getToppings(){
+    return toppings;
+}
+int Pizza::getToppingCount(){
+    return toppingCount;
+}
+
 //Þetta fall á að breyta nafninu á pizzunni í nafn á forminu
 //STO ORG PP SKI SVE
 void Pizza::fixName(){
@@ -194,11 +207,11 @@ ostream& operator << (ostream& out, const Pizza& pizza){
 //Það á eftir að bæta meira við!
 //Leyfir notandanum að velja af lista botn pizzunar og stærð hennar.
 istream& operator >> (istream& in, Pizza& pizza){
-    
+    Bizniz bizniz;
     pizza.chooseSize();
     pizza.chooseBase();
     pizza.chooseToppings();
-    pizza.fixName();
+    bizniz.fixNameOfPizza(pizza);
    
     return in;
 }

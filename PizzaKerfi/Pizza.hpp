@@ -45,6 +45,11 @@ public:
     void chooseBase();
     void chooseSize();
     void chooseToppings();
+    Base getBase();
+    Size getSize();
+    Topping* getToppings();
+    int getToppingCount();
+    
     void fixName();
     friend ostream& operator << (ostream& out, const Pizza&);
     friend istream& operator >> (istream& in, Pizza&);

@@ -259,6 +259,20 @@ string Bizniz::getStatusAndPriceCharArr(Pizza pizza){
     return returnString;
 }
 
+void Bizniz::fixNameOfPizza(Pizza& pizza){
+    char tempName[MAXCHARSINPIZZANAME];
+    char* name = new char[MAXCHARSINPIZZANAME];
+    strcpy(tempName, pizza.getSize().getName());
+    strcat(tempName, " ");
+    strcat(tempName, pizza.getBase().getName());
+    for (int i = 0; i < pizza.getToppingCount(); i++) {
+        strcat(tempName, " ");
+        strcat(tempName, pizza.getToppings()[i].getName());
+    }
+    strcpy(name, tempName);
+    pizza.setName(name);
+}
+
 
 /**************************************************************************************
  
