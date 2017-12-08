@@ -25,11 +25,11 @@ const int MAXCHARINLOCATIONNAME = 30;
 const int MAXTOPPINGS = 16;
 const int MAXCHARSINTOPPINGNAME = 20;
 const int MAXSTUFFSINORDER = 20;
+const int MAXCHARINSTATUSSTRING = 10;
 const string TABSTRING = "\t\t\t\t\t\t\t\t\t\t\t\t\t";
-const string HALFTABSTRING = "\t\t\t\t\t\t\t";
+const string HALFTABSTRING = "\t\t\t\t\t";
 const string LONGLINE = "-----------------------------------------------------------------";
 enum status {WAITING, PREPPING, READY, DELIVERED};
-
 
 const string PIZZAFILE = "pizzas.dat";
 #endif /* Global_hpp */

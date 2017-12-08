@@ -7,6 +7,7 @@
 //
 
 #include "Bizniz.hpp"
+#include <cstring>
 
 
 /**************************************************************************************
@@ -222,6 +223,20 @@ void Bizniz::savePizzaArrayInFile(Pizza *pizzaArray, int sizeOfArray){
     for (int i = 0; i < sizeOfArray; i++) {
         pizzaRepo.storePizza(pizzaArray[i], PIZZAFILE);
     }
+}
+
+char* Bizniz::statusToString(status status){
+    char* statusString = new char[MAXCHARINSTATUSSTRING];
+    if(status == WAITING){
+        strcpy(statusString, "WAITING");
+    }else if(status == PREPPING){
+        strcpy(statusString, "PREPPING");
+    }else if(status == READY){
+        strcpy(statusString, "READY");
+    }else if(status == DELIVERED){
+        strcpy(statusString, "DELIVERED");
+    }
+    return statusString;
 }
 
 /**************************************************************************************

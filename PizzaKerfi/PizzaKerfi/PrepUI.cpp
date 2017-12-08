@@ -94,20 +94,6 @@ void PrepUI::allActiveOverview(){
             cout << "[" << i+1 << "] " << activePizzasAtThisLocation[i] << endl;
         }
         cout << endl;
-        int input = '\0';
-        while(input != '0'){
-            cout << "Pick a number to mark for prep or 0 to exit: ";
-            cin >> input;
-            if(input != 0){
-                if(input <= sizeOfActivePizzaList && input > 0){
-                    activePizzasAtThisLocation[input-1].setStatus(PREPPING);
-                    cout << "Pizza number " << input << " now in preparation" << endl;
-                }
-            }else{
-                bizniz.savePizzaArrayInFile(activePizzasAtThisLocation, sizeOfActivePizzaList);
-                break;
-            }
-        }
     }else{
         cout << endl;
         cout << "List is empty" << endl;
