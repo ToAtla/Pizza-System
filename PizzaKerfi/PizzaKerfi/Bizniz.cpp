@@ -228,16 +228,37 @@ void Bizniz::savePizzaArrayInFile(Pizza *pizzaArray, int sizeOfArray){
 char* Bizniz::statusToString(status status){
     char* statusString = new char[MAXCHARINSTATUSSTRING];
     if(status == WAITING){
-        strcpy(statusString, "WAITING");
+        strcpy(statusString, "WAITING  ");
     }else if(status == PREPPING){
-        strcpy(statusString, "PREPPING");
+        strcpy(statusString, "PREPPING ");
     }else if(status == READY){
-        strcpy(statusString, "READY");
+        strcpy(statusString, "READY    ");
     }else if(status == DELIVERED){
         strcpy(statusString, "DELIVERED");
     }
     return statusString;
 }
+
+string Bizniz::getStatusAndPriceCharArr(Pizza pizza){
+    
+    char* statusAndPriceString = new char[MAXCHARINSTATUSANDPRICESTRING];
+    //Hef streng STATUS
+    strcpy(statusAndPriceString, statusToString(pizza.getStatus()));
+    //Hef string BIL
+    strcat(statusAndPriceString, "          ");//Passa að þessi lengd sé sú sama og SIZEOF.. breytan
+   
+    //Hef int price
+    char* priceString = new char[MAXCHARINPRICESTRING];
+    int price = pizza.getPrice();
+    sprintf(priceString, "%d", price);
+    
+    //Vil STATUSBILprice
+    strcat(statusAndPriceString, priceString);
+    //cout << statusAndPriceString << endl;
+    string returnString = statusAndPriceString;
+    return returnString;
+}
+
 
 /**************************************************************************************
  

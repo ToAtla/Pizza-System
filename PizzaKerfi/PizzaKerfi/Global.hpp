@@ -28,6 +28,10 @@ const int MAXTOPPINGS = 16;
 const int MAXCHARSINTOPPINGNAME = 20;
 const int MAXSTUFFSINORDER = 20;
 const int MAXCHARINSTATUSSTRING = 10;
+const int MAXCHARINPRICESTRING = 5;
+const int MAXCHARINSTATUSANDPRICESTRING = 40;
+const int SIZEOFSPACEBETWEENPIZZASTATUSANDPRICE = 10;
+
 const string TABSTRING = "\t\t\t\t\t\t\t\t\t\t\t\t\t";
 const string HALFTABSTRING = "\t\t\t\t\t";
 const string LONGLINE = "-----------------------------------------------------------------";
