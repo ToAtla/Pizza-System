@@ -143,7 +143,7 @@ void AdminUI::changeTopping(){
             Topping temp = toppings.at(i);
             cout << "Topping number: " << i+1 << endl;
             cout <<  temp;
-            cout << setfill(CHARFORSETFILL) << setw(INTFORADMINUISETW) << "-" << endl;
+            cout << setfill(CHARFORSETFILL) << setw(SIZEOFSETW) << "-" << endl;
         }
         int input = 0;
         cout << "Choose a topping to change: ";
@@ -290,7 +290,7 @@ void AdminUI::changeLocation(){
             Location temp = locations.at(i);
             cout << "Location number: " << i+1 << endl;
             cout <<  temp << endl;
-            cout << setfill(CHARFORSETFILL) << setw(INTFORADMINUISETW) << "-" << endl;
+            cout << setfill(CHARFORSETFILL) << setw(SIZEOFSETW) << "-" << endl;
         }
         int input = 0;
         cout << "Choose a location to change: ";
@@ -327,7 +327,7 @@ void AdminUI::removeLocation(){
             Location temp = locations.at(i);
             cout << "Location number: " << i+1 << endl;
             cout <<  temp << endl;
-            cout << setfill(CHARFORSETFILL) << setw(INTFORADMINUISETW) << "-" << endl;
+            cout << setfill(CHARFORSETFILL) << setw(SIZEOFSETW) << "-" << endl;
         }
 
         int input = 0;
@@ -398,7 +398,7 @@ void AdminUI::displayAllSides(){
         
         Side temp = sides.at(i);
         cout << temp << endl;
-        cout << setfill(CHARFORSETFILL) << setw(INTFORADMINUISETW) << "-" << endl;
+        cout << setfill(CHARFORSETFILL) << setw(SIZEOFSETW) << "-" << endl;
     }
     cout << endl;
 }
@@ -437,7 +437,7 @@ void AdminUI::changeSide(){
             Side temp = sides.at(i);
             cout << "Side number: " << i+1 << endl;
             cout <<  temp << endl;
-            cout << setfill(CHARFORSETFILL) << setw(INTFORADMINUISETW) << "-" << endl;
+            cout << setfill(CHARFORSETFILL) << setw(SIZEOFSETW) << "-" << endl;
         }
         int input = 0;
         cout << "Choose a side to change: ";
@@ -475,7 +475,7 @@ void AdminUI::removeSide(){
             Side temp = sides.at(i);
             cout << "Side number: " << i+1 << endl;
             cout <<  temp << endl;
-            cout << setfill(CHARFORSETFILL) << setw(INTFORADMINUISETW) << "-" << endl;
+            cout << setfill(CHARFORSETFILL) << setw(SIZEOFSETW) << "-" << endl;
         }
 
         int input = 0;
@@ -544,7 +544,7 @@ void AdminUI::displayAllDrinks(){
     for (int i = 0; i < drinks.size(); i++) {
         Drink temp = drinks.at(i);
         cout << temp << endl;
-        cout << setfill(CHARFORSETFILL) << setw(INTFORADMINUISETW) << "-" << endl;
+        cout << setfill(CHARFORSETFILL) << setw(SIZEOFSETW) << "-" << endl;
     }
     cout << endl;
 }
@@ -562,7 +562,7 @@ void AdminUI::changeDrink(){
             Drink temp = drinks.at(i);
             cout << "Drink number: " << i+1 << endl;
             cout <<  temp;
-            cout << setfill(CHARFORSETFILL) << setw(INTFORADMINUISETW) << "-" << endl;
+            cout << setfill(CHARFORSETFILL) << setw(SIZEOFSETW) << "-" << endl;
         }
         int input = 0;
         cout << "Choose a drink to change: ";
@@ -618,7 +618,7 @@ void AdminUI::removeDrink(){
             Drink temp = drinks.at(i);
             cout << "Drink number: " << i+1 << endl;
             cout <<  temp;
-            cout << setfill(CHARFORSETFILL) << setw(INTFORADMINUISETW) << "-" << endl;
+            cout << setfill(CHARFORSETFILL) << setw(SIZEOFSETW) << "-" << endl;
         }
 
         int input = 0;
@@ -686,7 +686,7 @@ void AdminUI::displayAllSizes(){
     for (int i = 0; i < sizes.size(); i++) {
         Size temp = sizes.at(i);
         cout << temp;
-        cout << setfill(CHARFORSETFILL) << setw(INTFORADMINUISETW) << "-" << endl;
+        cout << setfill(CHARFORSETFILL) << setw(SIZEOFSETW) << "-" << endl;
     }
 }
 
@@ -705,7 +705,7 @@ void AdminUI::changeSize(){
             Size temp = sizes.at(i);
             cout << "Size number: " << i+1 << endl;
             cout <<  temp;
-            cout << setfill(CHARFORSETFILL) << setw(INTFORADMINUISETW) << "-" << endl;
+            cout << setfill(CHARFORSETFILL) << setw(SIZEOFSETW) << "-" << endl;
         }
         int input = 0;
         cout << "Choose a size to change: ";
@@ -762,7 +762,7 @@ void AdminUI::removeSize(){
             Size temp = sizes.at(i);
             cout << "Size number: " << i+1 << endl;
             cout <<  temp;
-            cout << setfill(CHARFORSETFILL) << setw(INTFORADMINUISETW) << "-" << endl;
+            cout << setfill(CHARFORSETFILL) << setw(SIZEOFSETW) << "-" << endl;
         }
 
         int input = 0;
@@ -829,7 +829,7 @@ void AdminUI::displayAllBases(){
     for (unsigned int i = 0; i < bases.size(); i++) {
         Base temp = bases.at(i);
         cout << temp;
-        cout << setfill(CHARFORSETFILL) << setw(INTFORADMINUISETW) << "-" << endl;
+        cout << setfill(CHARFORSETFILL) << setw(SIZEOFSETW) << "-" << endl;
     }
     
 }
@@ -848,7 +848,7 @@ void AdminUI::changeBase(){
             Base temp = bases.at(i);
             cout << "Base number: " << i+1 << endl;
             cout <<  temp;
-            cout << setfill(CHARFORSETFILL) << setw(INTFORADMINUISETW) << "-" << endl;
+            cout << setfill(CHARFORSETFILL) << setw(SIZEOFSETW) << "-" << endl;
         }
         int input = 0;
         cout << "Choose a base to change: ";
@@ -906,7 +906,7 @@ void AdminUI::removeBase(){
             Base temp = bases.at(i);
             cout << "Size number: " << i+1 << endl;
             cout <<  temp;
-            cout << setfill(CHARFORSETFILL) << setw(INTFORADMINUISETW) << "-" << endl;
+            cout << setfill(CHARFORSETFILL) << setw(SIZEOFSETW) << "-" << endl;
         }
 
         int input = 0;
