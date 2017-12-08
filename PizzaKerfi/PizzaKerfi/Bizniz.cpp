@@ -287,3 +287,11 @@ void Bizniz::setOrderDeliveredValue(string fileName, int pureIndex, bool value){
         orderRepo.storeOrder(orders[i]);
     }
 }
+
+int Bizniz::getNumberForNextOrder(){
+    int orderCnt = 0;
+    OrderRepo ordRep;
+    ordRep.retrieveOrderArray("orders.dat", orderCnt);
+
+    return (orderCnt+1);
+}
