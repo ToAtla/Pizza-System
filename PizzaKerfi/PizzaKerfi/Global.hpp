@@ -33,6 +33,11 @@ const int MAXCHARINPRICESTRING = 5;
 const int MAXCHARINSTATUSANDPRICESTRING = 40;
 const int SIZEOFSPACEBETWEENPIZZASTATUSANDPRICE = 10;
 
+const int MAXTOPPINGSONPIZZA = 16;
+const int MAXCHARSINPIZZANAME = 100;
+const int MAXCHARSINPIZZASIZE = 4;
+const int MAXPIZZASINPIZZAFILE = 20;
+
 const string TABSTRING = "\t\t\t\t\t\t\t\t\t\t\t\t\t";
 const string HALFTABSTRING = "\t\t\t\t\t";
 const string LONGLINE = "---------------------------------------------------------------------------";

@@ -16,13 +16,11 @@
 #include "Size.hpp"
 #include "Base.hpp"
 #include "Location.hpp"
+#include "Global.hpp"
 
 using namespace std;
 //MUNA AÐ SKILJA EFTIR PLÁSS FYRIR NULLCHARACTER Í LOKIN 
-const int MAXTOPPINGSONPIZZA = 16;
-const int MAXCHARSINPIZZANAME = 100;
-const int MAXCHARSINPIZZASIZE = 4;
-const int MAXPIZZASINPIZZAFILE = 20;
+
 
 class Pizza{
 
@@ -42,10 +40,13 @@ public:
     
     status getStatus();
     void setStatus(status inStatus);
-    void chooseBase();
-    void chooseSize();
-    void chooseToppings();
-    void fixName();
+    
+    Base getBase();
+    Size getSize();
+    Topping* getToppings();
+    int getToppingCount();
+    void setToppingCount(int inToppingCount);
+    
     friend ostream& operator << (ostream& out, const Pizza&);
     friend istream& operator >> (istream& in, Pizza&);
 private:
@@ -57,6 +58,7 @@ private:
     int price;
     int toppingCount;
     status status;
+    
     
 };
 #endif /* Pizza_hpp */

@@ -297,6 +297,124 @@ string Bizniz::getStatusAndPriceCharArr(Pizza pizza){
     return returnString;
 }
 
+//Þetta fall á að breyta nafninu á pizzunni í nafn á forminu
+//STO ORG PP SKI SVE
+void Bizniz::fixNameOfPizza(Pizza& pizza){
+    char tempName[MAXCHARSINPIZZANAME];
+    char* name = new char[MAXCHARSINPIZZANAME];
+    strcpy(tempName, pizza.getSize().getName());
+    strcat(tempName, " ");
+    strcat(tempName, pizza.getBase().getName());
+    for (int i = 0; i < pizza.getToppingCount(); i++) {
+        strcat(tempName, " ");
+        strcat(tempName, pizza.getToppings()[i].getName());
+    }
+    strcpy(name, tempName);
+    pizza.setName(name);
+}
+
+void Bizniz::chooseToppingsOnPizza(Pizza& pizza){
+    Topping toppingsForPizza[MAXTOPPINGSONPIZZA];
+    cout << endl << "-----List of available toppings-----" << endl;
+    ToppingRepo tr;
+    vector<Topping> allToppings = tr.getVectorOfToppings();
+    
+    if(allToppings.size() < 1){
+        cout << endl << "No toppings available at this time." << endl;
+    }
+    else{
+        for (int i = 0; i < allToppings.size(); i++) {
+            cout << "Topping nr: " << i+1 << endl;
+            cout << allToppings.at(i) << endl << endl;
+        }
+        int c = 0;
+        while(true){
+            //Veit ekki hvort þarf < eða <= hérna í næstu línu
+            if(c <= MAXTOPPINGSONPIZZA){
+                cout << "Enter an index of topping to add or 0 to exit: ";
+                int input;
+                cin >> input;
+                if(input != 0){
+                    pizza.getToppings()[c] = allToppings.at(input-1);
+                    pizza.setPrice(pizza.getPrice() + allToppings.at(input-1).getPrice());
+                    c++;
+                    cout << "Topping number " << input << " added" << endl;
+                }else{
+                    break;
+                }
+            }
+        }
+        pizza.setToppingCount(c);
+    }
+}
+
+
+void Bizniz::chooseSizeForPizza(Pizza &pizza){
+    Size sizeForPizza;
+    
+    cout << endl << "-----List of available sizes-----" << endl;
+    SizeRepo sizeRepo;
+    vector<Size> sizes = sizeRepo.getVectorOfSizes();
+    
+    if(sizes.size() < 1){
+        
+        cout << endl << "No sizes available at this time." << endl;
+        
+    }
+    else{
+        for(int i = 0; i < sizes.size(); i++){
+            Size temp = sizes.at(i);
+            cout << "Base number " << i+1 << endl;
+            cout << temp << endl;
+        }
+        int input = 0;
+        cout << "Please choose a size for your pizza: ";
+        cin >> input;
+        for(int i = 0; i < sizes.size(); i++){
+            if(input == i+1){
+                sizeForPizza = sizes.at(i);
+            }
+        }
+        
+        pizza.getSize().setName(sizeForPizza.getName());
+        pizza.getSize().setPrice(sizeForPizza.getPrice());
+        pizza.setPrice(pizza.getPrice() + pizza.getSize().getPrice());
+    }
+}
+
+
+//Fall sem gefur notandanum kleift á því að velja botn fyrir pizzu tilvik.
+void Bizniz::chooseBaseForPizza(Pizza &pizza){
+    Base baseForPizza;
+    
+    cout << endl << "-----List of available bases-----" << endl;
+    
+    BaseRepo baseRepo;
+    vector<Base> bases = baseRepo.getVectorOfBases();
+    
+    if(bases.size() < 1){
+        
+        cout << endl << "No bases available at this time." << endl;
+        
+    }
+    else{
+        for(int i = 0; i < bases.size(); i++){
+            Base temp = bases.at(i);
+            cout << "Base number " << i+1 << endl;
+            cout << temp << endl;
+        }
+        int input = 0;
+        cout << "Please choose a base for your pizza: ";
+        cin >> input;
+        baseForPizza = bases.at(input-1);
+        
+        pizza.getBase().setName(baseForPizza.getName());
+        pizza.getBase().setPrice(baseForPizza.getPrice());
+        pizza.setPrice(pizza.getPrice() + baseForPizza.getPrice());
+    }
+    
+}
+
 
 /**************************************************************************************
  
