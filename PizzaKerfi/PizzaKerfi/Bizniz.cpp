@@ -35,6 +35,13 @@ void Bizniz::storeVectorOfToppings(vector<Topping> toppings){
     toppingRepo.storeVectorOfToppings(toppings);
 }
 
+void Bizniz::removeTopping(vector<Topping> toppings, int index){
+    
+    toppings.erase(toppings.begin() + (index-1));
+    
+    toppingRepo.storeVectorOfToppings(toppings);
+    
+}
 
 
 
@@ -57,6 +64,14 @@ void Bizniz::addLocation(Location& location){
     
 }
 void Bizniz::storeVectorOfLocations(vector<Location> locations){
+    
+    locationRepo.storeVectorOfLocations(locations);
+    
+}
+
+void Bizniz::removeLocation(vector<Location> locations, int index){
+    
+    locations.erase(locations.begin() + (index-1));
     
     locationRepo.storeVectorOfLocations(locations);
     
@@ -90,6 +105,12 @@ void Bizniz::storeVectorOfSides(vector<Side> sides){
     
 }
 
+void Bizniz::removeSide(vector<Side> sides, int index){
+    
+    sides.erase(sides.begin() + (index-1));
+    
+    sideRepo.storeVectorOfSides(sides);
+}
 
 
 
@@ -119,6 +140,12 @@ void Bizniz::storeVectorOfDrinks(vector<Drink> drinks){
     
 }
 
+void Bizniz::removeDrink(vector<Drink> drinks, int index){
+    
+    drinks.erase(drinks.begin() + (index-1));
+    
+    drinkRepo.storeVectorOfDrinks(drinks);
+}
 
 
 /**************************************************************************************
@@ -148,6 +175,12 @@ void Bizniz::storeVectorOfSizes(vector<Size> sizes){
     
 }
 
+void Bizniz::removeSize(vector<Size> sizes, int index){
+    
+    sizes.erase(sizes.begin() + (index-1));
+    
+    sizeRepo.storeVectorOfSizes(sizes);
+}
 
 
 /**************************************************************************************
@@ -176,7 +209,12 @@ void Bizniz::storeVectorOfBases(vector<Base> bases){
     
 }
 
-
+void Bizniz::removeBase(vector<Base> bases, int index){
+   
+    bases.erase(bases.begin() + (index-1));
+    
+    baseRepo.storeVectorOfBases(bases);
+}
 
 
 
