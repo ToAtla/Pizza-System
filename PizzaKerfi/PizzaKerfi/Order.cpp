@@ -191,19 +191,19 @@ istream& operator >> (istream& in, Order& order){
 }
 
 ostream& operator << (ostream& out, const Order& order){
-    out << "#" << order.ID << "\t\t\t\t\t\t" << order.locationOfOrder << "\t\t\t\t\t";
+    out << "#" << order.ID << "\t\t\t\t\t\t\t\t\t\t\t   " << order.locationOfOrder << "  \t\t\t\t\t\t\t\t";
     if(!order.paid){
         cout << "NOT ";
     }
     out << "PAID" << endl;
-    out << LONGLINE << endl;
-    out << LONGLINE << endl;
-    out << endl;
+    out << setfill(CHARFORSETFILL) << setw(SIZEOFSETWBIG) << "-" << endl;
+    out << setfill(CHARFORSETFILL) << setw(SIZEOFSETWBIG) << "-" << endl;
+    
+    out << setfill(' ') <<  endl;
     //Millilýsingar
-    //cout << "ITEM" << "\t\t\t\t\t\t\t" << "STATUS" << "\t\t\t\t\t\t" << "PRICE" << endl;
-    cout << "ITEM" << "\t\t\t\t\t\t\t" << "STATUS" << "\t\t\t\t\t\t" << "PRICE" << endl;
-
-    cout << "----" << "\t\t\t\t\t\t\t" << "------" << "\t\t\t\t\t\t" << "-----" << endl;
+    
+    out << setw(SIZEOFSETW) << left << "ITEM" << "STATUS              PRICE" << endl;
+    out << setw(SIZEOFSETW) << left << "----" << "----------          -----" << endl;
     
     for(int i = 0; i < order.numberOfPizzas; i++) {
         out << order.pizzaList[i];
@@ -216,10 +216,17 @@ ostream& operator << (ostream& out, const Order& order){
     for(int i = 0; i < order.numberOfDrinks; i++){
         out << order.drinkList[i] << endl;
     }
-    out << LONGLINE << endl;
-    out << "TOTAL:" << TABSTRING << order.totalPrice << endl;
+    cout << setfill(CHARFORSETFILL) << setw(SIZEOFSETWBIG) << "-" << endl << endl;
+    cout << setfill(' ');
+    char* totalPriceCA = new char[7];
+    
+    sprintf(totalPriceCA, "%d", order.totalPrice);
+    string totalPriceString = totalPriceCA;
+    
+    //cout << LONGLINE << endl;
+    out <<  setw(SIZEOFSETWBIG-6) << left << "TOTAL:" << totalPriceString << endl;
     out << endl;
-    out << HALFTABSTRING << "------" << endl;
+    out << TABSTRING << "------" << endl;
     out << endl;
     
     return out;

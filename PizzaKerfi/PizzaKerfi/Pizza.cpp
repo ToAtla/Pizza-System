@@ -187,7 +187,7 @@ ostream& operator << (ostream& out, const Pizza& pizza){
     //char* statusAndPriceString = new char[MAXCHARINSTATUSANDPRICESTRING];
     string statusAndPriceString = biz.getStatusAndPriceCharArr(pizza);
     //out << pizza.name << HALFTABSTRING << statusString << HALFTABSTRING << pizza.price << endl;
-    out << setw(70) << left << pizza.name << statusAndPriceString << endl;
+    out << setw(SIZEOFSETW) << left << pizza.name << statusAndPriceString << endl;
     return out;
 }
 

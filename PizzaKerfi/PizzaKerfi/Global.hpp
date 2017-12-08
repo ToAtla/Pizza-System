@@ -18,7 +18,8 @@
 using namespace std;
 
 const char CHARFORSETFILL = '-';
-const int INTFORADMINUISETW = 76;
+const int SIZEOFSETW = 76;
+const int SIZEOFSETWBIG = 100;
 const int MAXCHARSINBASENAME = 4;
 const int MAXCHARINSIZENAME = 15;
 const int MAXCHARINSIDENAME = 30;
@@ -34,7 +35,7 @@ const int SIZEOFSPACEBETWEENPIZZASTATUSANDPRICE = 10;
 
 const string TABSTRING = "\t\t\t\t\t\t\t\t\t\t\t\t\t";
 const string HALFTABSTRING = "\t\t\t\t\t";
-const string LONGLINE = "-----------------------------------------------------------------";
+const string LONGLINE = "---------------------------------------------------------------------------";
 enum status {WAITING, PREPPING, READY, DELIVERED};
 
 const string PIZZAFILE = "pizzas.dat";
