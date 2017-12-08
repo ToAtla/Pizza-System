@@ -239,23 +239,24 @@ char* Bizniz::statusToString(status status){
     return statusString;
 }
 
-char* Bizniz::getStatusAndPriceCharArr(Pizza pizza){
+string Bizniz::getStatusAndPriceCharArr(Pizza pizza){
     
+    char* statusAndPriceString = new char[MAXCHARINSTATUSANDPRICESTRING];
     //Hef streng STATUS
-    char sta[MAXCHARINSTATUSSTRING];
-    strcpy(sta, statusToString(pizza.getStatus()));
+    strcpy(statusAndPriceString, statusToString(pizza.getStatus()));
     //Hef string BIL
-    char* bil = new char[5];
-    strcpy(bil, "          ");
+    strcat(statusAndPriceString, "          ");//Passa að þessi lengd sé sú sama og SIZEOF.. breytan
+   
     //Hef int price
-    char* priceString = new char[5];
-    int price = 4359;
+    char* priceString = new char[MAXCHARINPRICESTRING];
+    int price = pizza.getPrice();
     sprintf(priceString, "%d", price);
+    
     //Vil STATUSBILprice
-    strcat(sta, bil);
-    strcat(sta, priceString);
-    cout << sta << endl;
-    return sta;
+    strcat(statusAndPriceString, priceString);
+    //cout << statusAndPriceString << endl;
+    string returnString = statusAndPriceString;
+    return returnString;
 }
 
 
