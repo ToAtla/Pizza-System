@@ -56,6 +56,7 @@ public:
     Pizza* getArrayOfPizzasAtLocationWithoutSomeStatus(status status, Location location, int& sizeOfReturnPizzaList);
     void savePizzaArrayInFile(Pizza pizzaArray[], int sizeOfArray);
     char* statusToString(status status);
+    char* getStatusAndPriceCharArr(Pizza pizza);
     
     
     //Order

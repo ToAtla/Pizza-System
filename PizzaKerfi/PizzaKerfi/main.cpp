@@ -12,12 +12,18 @@
 #include "Order.hpp"
 #include "MainUI.hpp"
 
+#include <cstring>
+#include <stdlib.h>
+#include <cstdio>
 using namespace std;
 
 int main(){
 
-    MainUI mainUI;
     
+    
+    
+    
+    MainUI mainUI;
     mainUI.startUI();
     return 0;
 }

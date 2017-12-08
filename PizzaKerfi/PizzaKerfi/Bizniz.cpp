@@ -228,16 +228,36 @@ void Bizniz::savePizzaArrayInFile(Pizza *pizzaArray, int sizeOfArray){
 char* Bizniz::statusToString(status status){
     char* statusString = new char[MAXCHARINSTATUSSTRING];
     if(status == WAITING){
-        strcpy(statusString, "WAITING");
+        strcpy(statusString, "WAITING  ");
     }else if(status == PREPPING){
-        strcpy(statusString, "PREPPING");
+        strcpy(statusString, "PREPPING ");
     }else if(status == READY){
-        strcpy(statusString, "READY");
+        strcpy(statusString, "READY    ");
     }else if(status == DELIVERED){
         strcpy(statusString, "DELIVERED");
     }
     return statusString;
 }
+
+char* Bizniz::getStatusAndPriceCharArr(Pizza pizza){
+    
+    //Hef streng STATUS
+    char sta[MAXCHARINSTATUSSTRING];
+    strcpy(sta, statusToString(pizza.getStatus()));
+    //Hef string BIL
+    char* bil = new char[5];
+    strcpy(bil, "          ");
+    //Hef int price
+    char* priceString = new char[5];
+    int price = 4359;
+    sprintf(priceString, "%d", price);
+    //Vil STATUSBILprice
+    strcat(sta, bil);
+    strcat(sta, priceString);
+    cout << sta << endl;
+    return sta;
+}
+
 
 /**************************************************************************************
  
