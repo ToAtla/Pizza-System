@@ -10,6 +10,7 @@
 #include "SideRepo.hpp"
 #include "DrinkRepo.hpp"
 #include "LocationRepo.hpp"
+#include "Bizniz.hpp"
 #include <iostream>
 #include <iomanip>
 
@@ -19,7 +20,7 @@ Order::Order(){
     numberOfPizzas = 0;
     numberOfSides = 0;
     numberOfDrinks = 0;
-    ID = 6969;
+    ID = 0;
     locationOfOrder = Location();
     totalPrice = 0;
     paid = false;
@@ -90,8 +91,8 @@ istream& operator >> (istream& in, Order& order){
                 
             }
         }
-        
-         order.ID = 6969;
+        Bizniz bizniz;
+        order.ID = bizniz.getNumberForNextOrder();
         
         cout << endl << "Enter number of pizzas to add to order: ";
         in >> order.numberOfPizzas;
