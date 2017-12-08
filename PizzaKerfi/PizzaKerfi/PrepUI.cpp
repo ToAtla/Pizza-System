@@ -18,6 +18,7 @@ void PrepUI::startPrepUI(){
     chooseYourLocation();
     
     while(input != 'b'){
+        cout << "Preparation line in " << locationOfPrep << endl;
         cout << "1: List all pizzas in house" << endl;
         cout << "2: List waiting pizzas and sides" << endl;
         cout << "3: List pizzas and sides in preparation" << endl;
