@@ -149,16 +149,14 @@ void AdminUI::changeTopping(){
         cout << "Choose a topping to change: ";
         cin >> input;
         
-        bizniz.removeTopping(toppings, input);
-
         for(int i = 0; i < toppings.size(); i++){
             if(input == i+1){
                 cin >> toppings.at(i);
+                cout << endl << "Topping changed" << endl << endl;
             }
  
         }
         bizniz.storeVectorOfToppings(toppings);
-        cout << endl << "Topping changed" << endl << endl;
         cout << "do you want to change another topping: y/n ";
         cin >> choice;
         cout << endl;
@@ -193,9 +191,13 @@ void AdminUI::removeTopping()
         cout << "Choose a topping to remove: ";
         cin >> input;
 
-        bizniz.removeTopping(toppings, input);
-        
-        cout << endl << "Topping removed" << endl << endl;
+        if(input < 1 ||input > (toppings.size())){
+            cout << endl << "No topping chosen" << endl << endl;
+        } else {
+            bizniz.removeTopping(toppings, input);
+            
+            cout << endl << "Topping removed" << endl << endl;
+        }
         cout << "do you want to change another topping: y/n ";
         cin >> choice;
         cout << endl;
@@ -298,10 +300,10 @@ void AdminUI::changeLocation(){
         for(int i = 0; i < locations.size(); i++){
             if(input == i+1){
                 cin >> locations.at(i);
+                cout << endl << "Location changed" << endl << endl;
             }
         }
         bizniz.storeVectorOfLocations(locations);
-        cout << endl << "Location changed" << endl << endl;
         cout << "do you want to change another location: y/n ";
         cin >> choice;
         cout << endl;
@@ -333,9 +335,13 @@ void AdminUI::removeLocation(){
         cout << "Choose a location to remove: ";
         cin >> input;
 
-        bizniz.removeLocation(locations, input);
-        
-        cout << endl << "Location removed" << endl << endl;
+        if(input < 1 ||input > (locations.size())){
+            cout << endl << "No location chosen" << endl << endl;
+        } else {
+            bizniz.removeLocation(locations, input);
+            
+            cout << endl << "Location removed" << endl << endl;
+        }
         cout << "do you want to change another location: y/n ";
         cin >> choice;
         cout << endl;
@@ -441,10 +447,10 @@ void AdminUI::changeSide(){
         for(int i = 0; i < sides.size(); i++){
             if(input == i+1){
                 cin >> sides.at(i);
+                cout << endl << "Side changed" << endl << endl;
             }
         }
         bizniz.storeVectorOfSides(sides);
-        cout << endl << "Side changed" << endl << endl;
         cout << "do you want to change another side: y/n ";
         cin >> choice;
         cout << endl;
@@ -477,13 +483,12 @@ void AdminUI::removeSide(){
         cout << "Choose a side to remove: ";
         cin >> input;
 
-        for(int i = 0; i < sides.size(); i++){
-            if(input == i+1){
-                sides.erase(sides.begin() + i);
-            }
+        if(input < 1 ||input > (sides.size())){
+            cout << "No side chosen" << endl << endl;
+        } else {
+            bizniz.removeSide(sides, input);
+            cout << endl << "Side removed" << endl << endl;
         }
-        bizniz.storeVectorOfSides(sides);
-        cout << endl << "Side removed" << endl << endl;
         cout << "Do you want to change another side: y/n ";
         cin >> choice;
         cout << endl;
@@ -566,10 +571,10 @@ void AdminUI::changeDrink(){
         for(int i = 0; i < drinks.size(); i++){
             if(input == i+1){
                 cin >> drinks.at(i);
+                cout << endl << "Drink changed" << endl << endl;
             }
         }
         bizniz.storeVectorOfDrinks(drinks);
-        cout << endl << "Drink changed" << endl << endl;
         cout << "Do you want to change another drink: y/n ";
         cin >> choice;
         cout << endl;
@@ -620,9 +625,14 @@ void AdminUI::removeDrink(){
         cout << "Choose a drink to remove: ";
         cin >> input;
 
-        bizniz.removeDrink(drinks, input);
-        
-        cout << endl << "Drink removed" << endl << endl;
+        if(input < 1 ||input > (drinks.size())){
+            cout << endl << "No drink chosen" << endl << endl;
+        }
+        else{
+            bizniz.removeDrink(drinks, input);
+            
+            cout << endl << "Drink removed" << endl << endl;
+        }
         cout << "do you want to change another drink: y/n ";
         cin >> choice;
         cout << endl;
@@ -705,10 +715,10 @@ void AdminUI::changeSize(){
         for(int i = 0; i < sizes.size(); i++){
             if(input == i+1){
                 cin >> sizes.at(i);
+                cout << endl << "Size changed" << endl << endl;
             }
         }
         bizniz.storeVectorOfSizes(sizes);
-        cout << endl << "Size changed" << endl << endl;
         cout << "Do you want to change another size: y/n ";
         cin >> choice;
         cout << endl;
@@ -760,9 +770,14 @@ void AdminUI::removeSize(){
         cout << "Choose a size to remove: ";
         cin >> input;
 
-        bizniz.removeSize(sizes, input);
-        
-        cout << endl << "Size removed" << endl << endl;
+        if(input < 1 ||input > (sizes.size())){
+            cout << endl << "No size chosen" << endl << endl;
+        }
+        else {
+            bizniz.removeSize(sizes, input);
+            
+            cout << endl << "Size removed" << endl << endl;
+        }
         cout << "do you want to change another size: y/n ";
         cin >> choice;
         cout << endl;
@@ -840,14 +855,19 @@ void AdminUI::changeBase(){
         int input = 0;
         cout << "Choose a base to change: ";
         cin >> input;
-
-        for(int i = 0; i < bases.size(); i++){
-            if(input == i+1){
-                cin >> bases.at(i);
-            }
+        
+        if(input < 1 ||input > (bases.size())){
+            cout << "No base chosen" << endl << endl;
         }
-        bizniz.storeVectorOfBases(bases);
-        cout << endl << "Base changed" << endl << endl;
+        else {
+            for(int i = 0; i < bases.size(); i++){
+                if(input == i+1){
+                    cin >> bases.at(i);
+                }
+            }
+            bizniz.storeVectorOfBases(bases);
+            cout << endl << "Base changed" << endl << endl;
+        }
         cout << "Do you want to change another base: y/n ";
         cin >> choice;
         cout << endl;
@@ -855,7 +875,8 @@ void AdminUI::changeBase(){
             cout << "Please enter either 'y' or 'n' ";
             cin >> choice;
             cout << endl;
-        }
+            }
+        
     }
 }
 
@@ -897,13 +918,17 @@ void AdminUI::removeBase(){
         }
 
         int input = 0;
-        cout << "Choose a drink to remove: ";
+        cout << "Choose a base to remove: ";
         cin >> input;
 
-        bizniz.removeBase(bases, input);
-        
-        cout << endl << "Size removed" << endl << endl;
-        cout << "do you want to change another sizeb: y/n ";
+        if(input < 1 ||input > (bases.size())){
+            cout << endl << "No base chosen" << endl << endl;
+        }
+        else{
+            bizniz.removeBase(bases, input);
+            cout << endl << "Size removed" << endl << endl;
+        }
+        cout << "do you want to change another base: y/n ";
         cin >> choice;
         cout << endl;
         while(choice != 'y' && choice != 'n'){
