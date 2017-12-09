@@ -86,7 +86,7 @@ public:
     //Exceptions
     bool isValidName(string name);
     bool isValidPrice(int price);
-    bool isValidInput(int input, unsigned int sizeOfList);
+    bool isValidInput(int input, unsigned long sizeOfList);
     bool isPriceDigit(string price);
     bool isInputDigit(string input);
     bool isValidNameLength(string name, int lenght);

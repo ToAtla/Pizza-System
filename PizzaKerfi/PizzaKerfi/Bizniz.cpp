@@ -97,7 +97,9 @@ vector<Side> Bizniz::getVectorOfSides(){
 }
 void Bizniz::addSide(Side& side){
     
-    sideRepo.addSide(side);
+    if(isValidPrice(side.getPrice())){
+        sideRepo.addSide(side);
+    }
     
 }
 void Bizniz::storeVectorOfSides(vector<Side> sides){
@@ -439,33 +441,31 @@ bool Bizniz::isValidPrice(int price){
 
 bool Bizniz::isPriceDigit(string price){
     
-    for(int i = 1; i < price.length(); i++){
-        if(!isdigit(price[i]) && price[1] != '-'){
-            throw InvalidPriceException("Invalid price! (Price can't contain letters)");
+    for(int i = 0; i < price.length(); i++){
+        if(!isdigit(price[i])){
+            throw InvalidPriceException("Invalid price!");
         }
     }
     
     return true;
 }
 
-bool Bizniz::isValidInput(int input, unsigned int sizeOfList){
+bool Bizniz::isValidInput(int input, unsigned long sizeOfList){
     
+    unsigned long unsignedInput = input;
     
+    if(unsignedInput < 1 || unsignedInput > sizeOfList){
+        throw InvalidInputException("Invalid input! (Input does not match any index on the list)");
+    }
     
     return true;
 }
 
 bool Bizniz::isInputDigit(string input){
     
-    for(int i = 1; i < input.length(); i++){
-        if(isdigit(input[i]) && input[1] == '-'){
-            throw InvalidInputException("Invalid input!");
-        }
-    }
-    
     for(int i = 0; i < input.length(); i++){
         if(!isdigit(input[i])){
-            throw InvalidInputException("Invalid input!");
+            throw InvalidInputException("Invalid input! (Input does not match any index on the list)");
         }
     }
     
