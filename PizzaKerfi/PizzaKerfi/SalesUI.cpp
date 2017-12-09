@@ -303,6 +303,7 @@ void SalesUI::sideListCreationProcess(Order &order){
 }
 
 void SalesUI::drinkListCreationProcess(Order &order){
+    
     int c = 0;
     char input = '\0';
     vector<Drink> drinks = bizniz.getVectorOfDrinks();

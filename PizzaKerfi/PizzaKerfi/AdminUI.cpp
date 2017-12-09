@@ -129,103 +129,79 @@ void AdminUI::displayAllToppings(){
 
 //Bætir við áleggi í textaskránna toppings.txt
 void AdminUI::addTopping(){
-    char input = 'y';
     
     string name;
     string price;
 
-    while(input == 'y'){
-        cout << "Adding a topping!" << endl << endl;
-        cout << "Enter topping name (Max " << MAXCHARSINTOPPINGNAME-1 << " letters): ";
-        cin >> name;
-        cout << "Enter topping price: ";
-        cin >> price;
-        if(bizniz.isValidName(name) && bizniz.isPriceDigit(price) && bizniz.isValidNameLength(name, MAXCHARSINTOPPINGNAME)){
+    
+    cout << "Adding a topping!" << endl << endl;
+    cout << "Enter topping name (Max " << MAXCHARSINTOPPINGNAME-1 << " letters): ";
+    cin >> name;
+    cout << "Enter topping price: ";
+    cin >> price;
+    if(bizniz.isValidName(name) && bizniz.isPriceDigit(price) && bizniz.isValidNameLength(name, MAXCHARSINTOPPINGNAME)){
             
-            int intPrice = stoi(price);
+        int intPrice = stoi(price);
+        
+        Topping temp(name, intPrice);
             
-            Topping temp(name, intPrice);
-            
-            bizniz.addTopping(temp);
-            cout << endl << "Do you want to add another topping? y/n" << endl;
-            cin >> input;
-            while(input != 'y' && input != 'n'){
-                cout << endl << "Please enter either 'y' or 'n' " << endl;
-                cin >> input;
-            }
-        }
-        cout << endl;
+        bizniz.addTopping(temp);
+        
     }
+    cout << endl;
 }
 
 //Tekur á móti vector af öllum áleggjum úr toppings.txt skránni og birtir það sem lista.
 //Gerir notandanum kleift að velja álegg af listanum og breyta nafninu og verðinu á því.
 void AdminUI::changeTopping(){
 
-    char choice = 'y';
+    vector<Topping> toppings = bizniz.getVectorOfToppings();
+    cout << endl;
+    cout << endl << "----------------------------List of all toppings----------------------------" << endl;
+    for(int i = 0; i < toppings.size(); i++){
+        Topping temp = toppings.at(i);
+        cout << "Topping number: " << i+1 << endl;
+        cout <<  temp;
+        cout << setfill(CHARFORSETFILL) << setw(SIZEOFSETW) << "-" << endl;
+    }
+    string input;
+    cout << "Choose a topping to change: ";
+    cin >> input;
+        
+    if(bizniz.isInputDigit(input)){
+        
+        int intInput = stoi(input);
 
-    while(choice == 'y'){
-        vector<Topping> toppings = bizniz.getVectorOfToppings();
-        cout << endl;
-        cout << endl << "----------------------------List of all toppings----------------------------" << endl;
         for(int i = 0; i < toppings.size(); i++){
-            Topping temp = toppings.at(i);
-            cout << "Topping number: " << i+1 << endl;
-            cout <<  temp;
-            cout << setfill(CHARFORSETFILL) << setw(SIZEOFSETW) << "-" << endl;
-        }
-        string input;
-        cout << "Choose a topping to change: ";
-        cin >> input;
-        
-        if(bizniz.isInputDigit(input)){
-        
-            int intInput = stoi(input);
-
-            for(int i = 0; i < toppings.size(); i++){
-                if(intInput == i+1){
-                    cout << "Enter topping name (Max " << MAXCHARSINTOPPINGNAME-1 << " letters): ";
-                    string name;
-                    cin >> name;
-                    cout << "Enter toppine price: ";
-                    string price;
-                    cin >> price;
-                    if(bizniz.isValidName(name) && bizniz.isPriceDigit(price) && bizniz.isValidNameLength(name, MAXCHARSINTOPPINGNAME)){
+            if(intInput == i+1){
+                cout << "Enter topping name (Max " << MAXCHARSINTOPPINGNAME-1 << " letters): ";
+                string name;
+                cin >> name;
+                cout << "Enter toppine price: ";
+                string price;
+                cin >> price;
+                if(bizniz.isValidName(name) && bizniz.isPriceDigit(price) && bizniz.isValidNameLength(name, MAXCHARSINTOPPINGNAME)){
+                    
+                    int intPrice = stoi(price);
                         
-                        int intPrice = stoi(price);
-                        
-                        if(bizniz.isValidPrice(intPrice)){
+                    if(bizniz.isValidPrice(intPrice)){
                             
-                            Topping temp(price, intPrice);
-                            toppings.at(i) = temp;
-                            cout << endl << "Topping changed" << endl << endl;
-                        }
+                        Topping temp(price, intPrice);
+                        toppings.at(i) = temp;
+                        cout << endl << "Topping changed" << endl << endl;
                     }
                 }
-
             }
-            bizniz.storeVectorOfToppings(toppings);
+            
         }
-        cout << "do you want to change another topping: y/n ";
-        cin >> choice;
-        cout << endl;
-        while(choice != 'y' && choice != 'n'){
-            cout << "Please enter either 'y' or 'n' ";
-            cin >> choice;
-            cout << endl;
-        }
+        bizniz.storeVectorOfToppings(toppings);
     }
-
 }
 
 //Tekur á móti vector af af öllum áleggjum úr toppings.txt skránni og birtir það sem lista.
 //Gerir notandanum kleift að velja álegg af listanum og eyða því.
-void AdminUI::removeTopping()
-{
+void AdminUI::removeTopping(){
 
-    char choice = 'y';
-
-    while(choice == 'y'){
         vector<Topping> toppings = bizniz.getVectorOfToppings();
         cout << endl;
         cout << endl << "----------------------------List of all toppings----------------------------" << endl;
@@ -251,16 +227,7 @@ void AdminUI::removeTopping()
                 
                 cout << endl << "Topping removed" << endl << endl;
             }
-            cout << "do you want to change another topping: y/n ";
-            cin >> choice;
-            cout << endl;
-            while(choice != 'y' && choice != 'n'){
-                cout << "Please enter either 'y' or 'n' ";
-                cin >> choice;
-                cout << endl;
-            }
         }
-    }
 }
 
 
@@ -328,8 +295,6 @@ void AdminUI::displayAllLocations(){
 }
 
 void AdminUI::addLocation(){
-    
-    char input = 'y';
 
     string name;
     cout << "Adding a location!" << endl << endl;

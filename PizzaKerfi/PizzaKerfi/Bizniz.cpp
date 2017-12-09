@@ -430,7 +430,7 @@ bool Bizniz::isValidName(string name){
 
 bool Bizniz::isValidPrice(int price){
     
-    if(price < 1){
+    if(price < 0){
         throw InvalidPriceException("Invalid price! (Price must be higher than 0)");
     }
     
@@ -444,6 +444,13 @@ bool Bizniz::isPriceDigit(string price){
             throw InvalidPriceException("Invalid price! (Price can't contain letters)");
         }
     }
+    
+    return true;
+}
+
+bool Bizniz::isValidInput(int input, unsigned int sizeOfList){
+    
+    
     
     return true;
 }
@@ -474,5 +481,5 @@ bool Bizniz::isValidNameLength(string name, int lenght){
     return true;
 }
     
-    
+
     
