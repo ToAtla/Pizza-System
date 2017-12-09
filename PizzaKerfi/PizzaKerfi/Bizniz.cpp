@@ -266,6 +266,10 @@ void Bizniz::savePizzaArrayInFile(Pizza *pizzaArray, int sizeOfArray){
     }
 }
 
+void Bizniz::storePizza(Pizza pizza, string fileName){
+    pizzaRepo.storePizza(pizza, fileName);
+}
+
 char* Bizniz::statusToString(status status){
     char* statusString = new char[MAXCHARINSTATUSSTRING];
     if(status == WAITING){
@@ -496,55 +500,20 @@ void Bizniz::assembleOrder(Order &order){
     
     LocationRepo lr;
     vector<Location> locations = lr.getVectorOfLocations();
+
+    
     
     if(locations.size() < 1){
         cout << endl << "No locations available at this time" << endl << endl;
     }
     else{
-        cout << endl << "-----Locations available-----" << endl << endl;
-        int locationNumber = 0;
         
-        bool invalidInput = true;
+        displayAndChooseLocation(order);
         
-        while(invalidInput){
-            LocationRepo lr;
-            vector<Location> locations = lr.getVectorOfLocations();
-            
-            for(unsigned int i = 0; i < locations.size(); i++){
-                cout << "Location number: " << i+1 << endl;
-                cout << locations.at(i) << endl << endl;
-            }
-            cout << "Choose a location for your order: ";
-            cin >> locationNumber;
-            
-            for(unsigned int i = 0; i < locations.size(); i++){
-                if(locationNumber == i+1){
-                    order.setLocation(locations.at(i));
-                    invalidInput = false;
-                }
-            }
-            
-            if(invalidInput){
-                cout << "Please enter a valid location: " << endl;
-                
-            }
-        }
         Bizniz bizniz;
         order.setID(bizniz.getNumberForNextOrder());
         
-        cout << endl << "Enter number of pizzas to add to order: ";
-        int inNumPizz;
-        cin >> inNumPizz;
-        order.setNumberOfPizzas(inNumPizz);
-        
-        for (int i = 0; i < order.getNumberOfPizzas(); i++) {
-            cout << endl << "Pizza number: " << i+1 << endl;
-            order.getPizzasInOrder()[i] = Pizza();
-            order.getPizzasInOrder()[i].setLocation(order.getLocation());
-            
-            cin >> order.getPizzasInOrder()[i];
-            order.setTotalPrice(order.getTotalPrice() + order.getPizzasInOrder()[i].getPrice());
-        }
+        choosingPizzasInOrder(order);
         
         SideRepo sr;
         vector<Side> sides = sr.getVectorOfSides();
@@ -630,7 +599,63 @@ void Bizniz::assembleOrder(Order &order){
             
         }
     }
+}
     
+
+void Bizniz::displayAndChooseLocation(Order& order){
+    cout << endl << "-----Locations available-----" << endl << endl;
+    int locationNumber = 0;
+    
+    bool invalidInput = true;
+    
+    while(invalidInput){
+        LocationRepo lr;
+        vector<Location> locations = lr.getVectorOfLocations();
+        
+        for(unsigned int i = 0; i < locations.size(); i++){
+            cout << "Location number: " << i+1 << endl;
+            cout << locations.at(i) << endl << endl;
+        }
+        cout << "Choose a location for your order: ";
+        cin >> locationNumber;
+        
+        for(unsigned int i = 0; i < locations.size(); i++){
+            if(locationNumber == i+1){
+                order.setLocation(locations.at(i));
+                invalidInput = false;
+            }
+        }
+        
+        if(invalidInput){
+            cout << "Please enter a valid location: " << endl;
+            
+        }
+    }
+}
+
+void Bizniz::choosingPizzasInOrder(Order& order){
+
+    cout << endl << "Enter number of pizzas to add to order: ";
+    int inNumPizz;
+    cin >> inNumPizz;
+    order.setNumberOfPizzas(inNumPizz);
+
+    for (int i = 0; i < order.getNumberOfPizzas(); i++) {
+        cout << endl << "Pizza number: " << i+1 << endl;
+        order.getPizzasInOrder()[i] = Pizza();
+        order.getPizzasInOrder()[i].setLocation(order.getLocation());
+        
+        cin >> order.getPizzasInOrder()[i];
+        order.setTotalPrice(order.getTotalPrice() + order.getPizzasInOrder()[i].getPrice());
+    }
+}
+
+void Bizniz::storeOrder(Order order){
+    orderRepo.storeOrder(order);
+}
+
+Order* Bizniz::getArrayOfOrders(string fileName, int& tellMeHowManyOrders){
+    return orderRepo.retrieveOrderArray(fileName, tellMeHowManyOrders);
 }
 
 /**************************************************************************************
