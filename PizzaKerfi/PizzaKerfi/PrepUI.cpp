@@ -191,6 +191,7 @@ void PrepUI::readyOverview(){
         cout << "List is empty" << endl;
         cout << endl;
     }
+    delete [] readyPizzasAtThisLocation;
 }
 
 

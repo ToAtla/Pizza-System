@@ -44,4 +44,5 @@ const string LONGLINE = "-------------------------------------------------------
 enum status {WAITING, PREPPING, READY, DELIVERED};
 
 const string PIZZAFILE = "pizzas.dat";
+const string ORDERFILE = "orders.dat";
 #endif /* Global_hpp */

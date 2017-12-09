@@ -106,6 +106,7 @@ void DeliveryUI::displayAllOrders(){
         cout << "List is empty" << endl;
         cout << endl;
     }
+    delete [] orders;
 }
 
 void DeliveryUI::displayUnpaidOrders(){
@@ -149,6 +150,7 @@ void DeliveryUI::displayUnpaidOrders(){
         cout << "List is empty" << endl;
         cout << endl;
     }
+    delete [] orders;
 }
 
 void DeliveryUI::displayPaidOrders(){
@@ -197,6 +199,7 @@ void DeliveryUI::displayPaidOrders(){
         cout << "List is empty" << endl;
         cout << endl;
     }
+    delete [] orders;
 }
 
 
@@ -226,4 +229,5 @@ void DeliveryUI::displayLegacyOrders(){
         cout << "List is empty" << endl;
         cout << endl;
     }
+    delete [] orders;
 }
