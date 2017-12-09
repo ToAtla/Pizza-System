@@ -47,22 +47,6 @@ void SalesUI::startSalesUI(){
 
 //Býr til pöntun og vistar hana
 //vistar svo pizzurnar sérstaklega í pizzuskjal
-//void SalesUI::createOrder(){
-//    Order order;
-//    cin >> order;
-//    bizniz.storeOrder(order);
-//
-//
-//
-//
-//    //Save Pizzas to pizzafile
-//    Pizza* pizzasInOrder = order.getPizzasInOrder();
-//    for (int i = 0; i < order.getNumberOfPizzas(); i++) {
-//        bizniz.storePizza( pizzasInOrder[i], PIZZAFILE);
-//    }
-//}
-
-
 void SalesUI::createOrder(){
     Order order;
     cout << "+++++++++++    Creating a new Order    +++++++++++" << endl;
@@ -89,11 +73,6 @@ void SalesUI::displayOrders(){
     }
     delete [] orderList;
 }
-
-
-
-
-
 
 
 Size SalesUI::sizePickingProcess(){
@@ -358,7 +337,5 @@ void SalesUI::createASinglePizzaToTest(){
     Pizza newPizza = bizniz.assemblePizza(pizzaSize, pizzaBase, pizzaToppings, toppingCount, pizzaLocation);
     delete [] pizzaToppings;
     bizniz.appendPizzaToFile(PIZZAFILE, newPizza);
-    
-    
 }
 
