@@ -16,13 +16,19 @@ void SalesUI::startSalesUI(){
     char input = 0;
     while(input != 'b')
     {
-        cout << "1: New order" << endl;
-        cout << "2: View all orders" << endl;
-        cout << "3: Change a order BROKEN" << endl;
-        cout << "4: delete a order BROKEN" << endl;
-        cout << "5: (temporary)add one pizza directly to pizzas.dat with status WAITING" << endl;
-        cout << "b: back" << endl;
+        
+        cout << setfill(CHARFORSETFILL) << setw(SIZEOFSETWBIG) << "-" << endl;
+        cout << "\t\t\t\t\t\t\t\t\t\t\t" << "Sales" << endl;
+        cout << setfill(CHARFORSETFILL) << setw(SIZEOFSETWBIG) << "-" << endl << endl;
+        cout << NINETABSTRING << "1: New order" << endl;
+        cout << NINETABSTRING << "2: View all orders" << endl;
+        cout << NINETABSTRING << "3: Change a order BROKEN" << endl;
+        cout << NINETABSTRING << "4: delete a order BROKEN" << endl;
+        cout << NINETABSTRING << "5: (temporary)add one pizza directly to pizzas.dat with status WAITING" << endl;
+        cout << NINETABSTRING << "b: back" << endl << endl << NINETABSTRING;
         cin >> input;
+        clearScreen();
+        
         if(input == '1')
         {
             createOrder();
@@ -49,8 +55,11 @@ void SalesUI::startSalesUI(){
 //vistar svo pizzurnar sérstaklega í pizzuskjal
 void SalesUI::createOrder(){
     Order order;
-    cout << "+++++++++++    Creating a new Order    +++++++++++" << endl;
+    cout << setfill(CHARFORSUBACTION) << setw(36) << "+" << "    Creating a new Order    " <<  setfill(CHARFORSUBACTION) << setw(36) << "+" << endl << endl;
+    
     order.setLocation(locationPickingProcess());
+
+    clearScreen();
     
     order.setID(bizniz.getNumberForNextOrder());
    
@@ -178,7 +187,8 @@ Location SalesUI::locationPickingProcess(){
         cout << endl << "No locations available at this time" << endl << endl;
     }
     else{
-        cout << endl << "-----Locations available-----" << endl << endl;
+        cout << endl << setfill(CHARFORSETFILL) << setw(36) << "-" << "    Locations available    " << setfill(CHARFORSETFILL) << setw(37) << "-" << endl << endl;
+        
         int locationNumber = 0;
         
         bool invalidInput = true;
@@ -187,8 +197,8 @@ Location SalesUI::locationPickingProcess(){
             vector<Location> locations = bizniz.getVectorOfLocations();
             
             for(unsigned int i = 0; i < locations.size(); i++){
-                cout << "Location number: " << i+1 << endl;
-                cout << locations.at(i) << endl << endl;
+                cout << NINETABSTRING << " Location number: " << i+1 << endl;
+                cout << NINETABSTRING << " " << locations.at(i) << endl << endl;
             }
             cout << "Choose a location for your order: ";
             cin >> locationNumber;
@@ -321,6 +331,11 @@ void SalesUI::drinkListCreationProcess(Order &order){
     }
 }
 
+void SalesUI::clearScreen(){
+    ConsoleMagic consoleMagic;
+    consoleMagic.clearScreen();
+}
+
 /*
  Bráðabirgðaföll til að sjá hvort það virki að vista pizzur í skrár
 */
@@ -338,4 +353,6 @@ void SalesUI::createASinglePizzaToTest(){
     delete [] pizzaToppings;
     bizniz.appendPizzaToFile(PIZZAFILE, newPizza);
 }
+
+
 
