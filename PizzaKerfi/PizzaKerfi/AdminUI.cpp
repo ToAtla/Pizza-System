@@ -331,120 +331,92 @@ void AdminUI::addLocation(){
     
     char input = 'y';
 
-    while(input == 'y'){
-        cout << "Adding a location!" << endl << endl;
-        cout << "Enter location name (Max " << MAXCHARINLOCATIONNAME-1 << " letters): ";
-        string name;
-        cin.ignore();
-        getline(cin, name);
-        if(bizniz.isValidNameLength(name, MAXCHARINLOCATIONNAME)){
-            Location temp(name);
-            bizniz.addLocation(temp);
-            cout << endl << "Do you want to add another location? y/n ";
-            cin >> input;
-            while(input != 'y' && input != 'n'){
-                cout << endl << "Please enter either 'y' or 'n' " << endl;
-                cin >> input;
-            }
-        }
-        
+    string name;
+    cout << "Adding a location!" << endl << endl;
+    cout << "Enter location name (Max " << MAXCHARINLOCATIONNAME-1 << " letters): ";
+    cin.ignore();
+    getline(cin, name);
+    if(bizniz.isValidNameLength(name, MAXCHARINLOCATIONNAME)){
+        Location temp(name);
+        bizniz.addLocation(temp);
     }
-        cout << endl;
+    
+    cout << endl << "Location added!" << endl;
+    cout << endl;
 }
+
 void AdminUI::changeLocation(){
    
-    
+    vector<Location> locations = bizniz.getVectorOfLocations();
+    cout << endl;
+    cout << endl << "----------------------------List of all locations----------------------------" << endl;
+    if(locations.size() > 0){
+    for(int i = 0; i < locations.size(); i++){
+        Location temp = locations.at(i);
+        cout << "Location number: " << i+1 << endl;
+        cout <<  temp << endl;
+        cout << setfill(CHARFORSETFILL) << setw(SIZEOFSETW) << "-" << endl;
+    }
+    string input;
+    cout << "Choose a location to change: ";
+    cin >> input;
 
-    char choice = 'y';
-
-    while(choice == 'y'){
-        vector<Location> locations = bizniz.getVectorOfLocations();
-        cout << endl;
-        cout << endl << "----------------------------List of all locations----------------------------" << endl;
-        for(int i = 0; i < locations.size(); i++){
-            Location temp = locations.at(i);
-            cout << "Location number: " << i+1 << endl;
-            cout <<  temp << endl;
-            cout << setfill(CHARFORSETFILL) << setw(SIZEOFSETW) << "-" << endl;
-        }
-        string input;
-        cout << "Choose a location to change: ";
-        cin >> input;
-
-        if(bizniz.isInputDigit(input)){
+    if(bizniz.isInputDigit(input)){
         
-            int intInput = stoi(input);
+        int intInput = stoi(input);
             
-            for(int i = 0; i < locations.size(); i++){
-                if(intInput == i+1){
-                    cout << "Enter location name (Max " << MAXCHARINLOCATIONNAME-1 << " letters): ";
-                    string name;
-                    cin >> name;
-                    if(bizniz.isValidNameLength(name, MAXCHARINLOCATIONNAME))
-                    {
-                        Location temp(name);
-                        locations.at(i) = temp;
-                        cout << endl << "Location changed" << endl << endl;
-                    }
+        for(int i = 0; i < locations.size(); i++){
+            if(intInput == i+1){
+                cout << "Enter location name (Max " << MAXCHARINLOCATIONNAME-1 << " letters): ";
+                string name;
+                cin >> name;
+                if(bizniz.isValidNameLength(name, MAXCHARINLOCATIONNAME))
+                {
+                    Location temp(name);
+                    locations.at(i) = temp;
+                    cout << endl << "Location changed" << endl << endl;
                 }
             }
-            bizniz.storeVectorOfLocations(locations);
         }
-        cout << "do you want to change another location: y/n ";
-        cin >> choice;
-        cout << endl;
-        while(choice != 'y' && choice != 'n'){
-            cout << "Please enter either 'y' or 'n' ";
-            cin >> choice;
-            cout << endl;
-        }
+        bizniz.storeVectorOfLocations(locations);
+    }
+    }
+    else{
+        cout << endl << "The file is empty :(" << endl << endl;
     }
 }
 
 void AdminUI::removeLocation(){
 
     
-
-    char choice = 'y';
-
-    while(choice == 'y'){
-        vector<Location> locations = bizniz.getVectorOfLocations();
-        cout << endl;
-        cout << endl << "----------------------------List of all locations----------------------------" << endl;
-        for(int i = 0; i < locations.size(); i++){
-            Location temp = locations.at(i);
-            cout << "Location number: " << i+1 << endl;
-            cout <<  temp << endl;
-            cout << setfill(CHARFORSETFILL) << setw(SIZEOFSETW) << "-" << endl;
-        }
-
-        string input;
-        cout << "Choose a location to remove: ";
-        cin >> input;
-
-        if(bizniz.isInputDigit(input)){
-            
-            int intInput = stoi(input);
-        
-            if(intInput < 1 ||intInput > (locations.size())){
-                cout << endl << "No location chosen" << endl << endl;
-            } else {
-                bizniz.removeLocation(locations, intInput);
-                
-                cout << endl << "Location removed" << endl << endl;
-            }
-            cout << "do you want to change another location: y/n ";
-            cin >> choice;
-            cout << endl;
-            while(choice != 'y' && choice != 'n'){
-                cout << "Please enter either 'y' or 'n' ";
-                cin >> choice;
-                cout << endl;
-            }
-        }
+    vector<Location> locations = bizniz.getVectorOfLocations();
+    cout << endl;
+    cout << endl << "----------------------------List of all locations----------------------------" << endl;
+    for(int i = 0; i < locations.size(); i++){
+        Location temp = locations.at(i);
+        cout << "Location number: " << i+1 << endl;
+        cout <<  temp << endl;
+        cout << setfill(CHARFORSETFILL) << setw(SIZEOFSETW) << "-" << endl;
     }
 
+    string input;
+    cout << "Choose a location to remove: ";
+    cin >> input;
+
+    if(bizniz.isInputDigit(input)){
+            
+        int intInput = stoi(input);
+        
+        if(intInput < 1 ||intInput > (locations.size())){
+            cout << endl << "No location chosen" << endl << endl;
+        } else {
+            bizniz.removeLocation(locations, intInput);
+                
+            cout << endl << "Location removed" << endl << endl;
+        }
+    }
 }
+
 
 void AdminUI::displaySideMenu(){
     char input = '\0';

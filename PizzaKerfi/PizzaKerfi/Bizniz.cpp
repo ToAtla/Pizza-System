@@ -715,7 +715,7 @@ bool Bizniz::isInputDigit(string input){
 
 bool Bizniz::isValidNameLength(string name, int lenght){
     
-    if(name.length() > (lenght-1)){
+    if(name.length() > (lenght)){
         throw InvalidNameException("Invalid name! (Name cant exceed the maximum amount of characters)");
     }
         
