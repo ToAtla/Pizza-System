@@ -227,36 +227,8 @@ void Bizniz::removeBase(vector<Base> bases, int index){
  ***************************************************************************************/
 
 
-Pizza* Bizniz::getArrayOfPizzasAtLocationWithSomeStatus(status status, Location location, int &sizeOfReturnPizzaList){
-    
-    int sizeOfEntirePizzaList;
-    Pizza* allPizzas = pizzaRepo.retrievePizzaArray(PIZZAFILE, sizeOfEntirePizzaList);
-    Pizza* returnPizzas = new Pizza[sizeOfEntirePizzaList];
-    sizeOfReturnPizzaList = 0;
-    for (int i = 0; i < sizeOfEntirePizzaList; i++) {
-        if((allPizzas[i].getStatus()) == status && allPizzas[i].getLocation().getLocation() == location.getLocation()){
-            returnPizzas[sizeOfReturnPizzaList] = allPizzas[i];
-            sizeOfReturnPizzaList++;
-        }
-    }
-    delete [] allPizzas;
-    return returnPizzas;
-}
 
-Pizza* Bizniz::getArrayOfPizzasAtLocationWithoutSomeStatus(status status, Location location, int& sizeOfReturnPizzaList){
-    int sizeOfEntirePizzaList;
-    Pizza* allPizzas = pizzaRepo.retrievePizzaArray(PIZZAFILE, sizeOfEntirePizzaList);
-    Pizza* returnPizzas = new Pizza[sizeOfEntirePizzaList];
-    sizeOfReturnPizzaList = 0;
-    for (int i = 0; i < sizeOfEntirePizzaList; i++) {
-        if((allPizzas[i].getStatus()) != status && allPizzas[i].getLocation().getLocation() == location.getLocation()){
-            returnPizzas[sizeOfReturnPizzaList] = allPizzas[i];
-            sizeOfReturnPizzaList++;
-        }
-    }
-    delete [] allPizzas;
-    return returnPizzas;
-}
+
 
 
 void Bizniz::savePizzaArrayInFile(Pizza *pizzaArray, int sizeOfArray){
@@ -301,6 +273,7 @@ string Bizniz::getStatusAndPriceCharArr(Pizza pizza){
     
     //Vil STATUSBILprice
     strcat(statusAndPriceString, priceString);
+    delete [] priceString;
     //cout << statusAndPriceString << endl;
     string returnString = statusAndPriceString;
     delete [] statusAndPriceString;
@@ -348,6 +321,29 @@ void Bizniz::extractPizzasForPrepUI(Order order){
         storePizza( pizzasInOrder[i], PIZZAFILE);
     }
 }
+
+Pizza* Bizniz::extractAllPizzasWithStatusFromOrder(Order order, status status, int& tellMeHowMany){
+    tellMeHowMany = 0;
+    Pizza* returnPizzas = new Pizza[order.getNumberOfPizzas()];
+    for (int i = 0; i < order.getNumberOfPizzas(); i++) {
+        if(order.getPizzasInOrder()[i].getStatus() == status){
+            returnPizzas[tellMeHowMany] = order.getPizzasInOrder()[i];
+        }
+    }
+    return returnPizzas;
+}
+
+Pizza* Bizniz::extractAllPizzasWithoutStatusFromOrder(Order order, status status, int& tellMeHowMany){
+    tellMeHowMany = 0;
+    Pizza* returnPizzas = new Pizza[order.getNumberOfPizzas()];
+    for (int i = 0; i < order.getNumberOfPizzas(); i++) {
+        if(order.getPizzasInOrder()[i].getStatus() != status){
+            returnPizzas[tellMeHowMany] = order.getPizzasInOrder()[i];
+        }
+    }
+    return returnPizzas;
+}
+
 
 /**************************************************************************************
  
@@ -410,6 +406,78 @@ Order* Bizniz::getArrayOfOrders(string fileName, int& tellMeHowManyOrders){
     return orderRepo.retrieveOrderArray(fileName, tellMeHowManyOrders);
 }
 
+void Bizniz::locateFirstOrderWithPizzaWithStatusAtLocation(status status, Location location, int& orderNum, int& pizzaNum){
+    int ordersInFile = 0;
+    Order* allOrders = getArrayOfOrders(ORDERFILE, ordersInFile);
+    for (int i = 0; i < ordersInFile; i++) {
+        if(allOrders[i].getLocation().getLocation() == location.getLocation()){
+            for (int c = 0; c < allOrders[i].getNumberOfPizzas(); i++) {
+                if(allOrders[i].getPizzasInOrder()[c].getStatus() == status){
+                    orderNum = i;
+                    pizzaNum = c;
+                    i = ordersInFile;
+                    c = allOrders[i].getNumberOfPizzas();
+                }
+            }
+        }
+    }
+    delete [] allOrders;
+}
+void Bizniz::changeStatusOfPizzaInOrder(int orderNum, int pizzaNumber, status status){
+    int ordersInFile = 0;
+    Order* allOrders = getArrayOfOrders(ORDERFILE, ordersInFile);
+    allOrders[orderNum].getPizzasInOrder()[pizzaNumber].setStatus(status);
+    
+    //Hér á eftir að setja inn að hann visti dæmið í skrána
+    for (int i = 0; i < ordersInFile; i++) {
+        orderRepo.clearOrderFile(ORDERFILE);
+        storeOrder(allOrders[i]);
+    }
+    delete [] allOrders;
+}
+
+Order* Bizniz::getArrayOfOrdersAtLocationWithPizzasWithStatus(status status, Location location, int &sizeOfReturnOrderList){
+    
+    int ordersInFile = 0;
+    Order* allOrders = getArrayOfOrders(ORDERFILE, ordersInFile);
+    sizeOfReturnOrderList = 0;
+    Order* returnOrders = new Order[ordersInFile];
+    for (int i = 0; i < ordersInFile; i++) {
+        if(allOrders[i].getLocation().getLocation() == location.getLocation()){
+            for (int c = 0; c < allOrders[i].getNumberOfPizzas(); i++) {
+                if(allOrders[i].getPizzasInOrder()[c].getStatus() == status){
+                    returnOrders[sizeOfReturnOrderList] = allOrders[i];
+                    sizeOfReturnOrderList++;
+                }
+            }
+        }
+    }
+    delete [] allOrders;
+    return returnOrders;
+}
+
+
+Order* Bizniz::getArrayOfOrdersAtLocationWithPizzasWithoutSomeStatus(status status, Location location, int& sizeOfReturnOrderList){
+    
+    int ordersInFile = 0;
+    Order* allOrders = getArrayOfOrders(ORDERFILE, ordersInFile);
+    sizeOfReturnOrderList = 0;
+    Order* returnOrders = new Order[ordersInFile];
+    for (int i = 0; i < ordersInFile; i++) {
+        if(allOrders[i].getLocation().getLocation() == location.getLocation()){
+            for (int c = 0; c < allOrders[i].getNumberOfPizzas(); i++) {
+                if(allOrders[i].getPizzasInOrder()[c].getStatus() != status){
+                    returnOrders[sizeOfReturnOrderList] = allOrders[i];
+                    sizeOfReturnOrderList++;
+                }
+            }
+        }
+    }
+    delete [] allOrders;
+    return returnOrders;
+}
+               
+            
 /**************************************************************************************
  
                               Exceptions(Bool functions)

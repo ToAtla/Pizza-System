@@ -28,7 +28,6 @@ public:
     void setDelivered(bool v);
     bool isDelivered();
     
-    
     void setLocation(Location inLocation);
     int getID();
     void setID(int inID);
@@ -44,9 +43,6 @@ public:
     void setNumberOfDrinks(int inNumberOfDrinks);
     Side* getSideList();
     Drink* getDrinkList();
-    
-    
-    
     
     friend ostream& operator << (ostream& out, const Order&);
 private:
