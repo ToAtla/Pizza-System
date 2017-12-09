@@ -40,6 +40,8 @@ private:
     Location locationPickingProcess();
     Pizza pizzaCreationProcess(Location locationOfOrderForPizzaToFollow);
     void pizzaListCreationProcess(Order& order);
+    
+    //Skiptið um staði
     Drink drinkPickingProcess();
     void drinkListCreationProcess(Order& order);
     Side sidePickingProcess();
