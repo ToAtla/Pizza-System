@@ -149,13 +149,13 @@ void AdminUI::addTopping(){
 //Gerir notandanum kleift að velja álegg af listanum og breyta nafninu og verðinu á því.
 void AdminUI::changeTopping(){
 
-    vector<Topping> toppings = bizniz.getVectorOfToppings();
-    cout << endl;
+    
 
     char choice = 'y';
 
-    while(choice == 'y')
-    {
+    while(choice == 'y'){
+        vector<Topping> toppings = bizniz.getVectorOfToppings();
+        cout << endl;
         cout << endl << "----------------------------List of all toppings----------------------------" << endl;
         for(int i = 0; i < toppings.size(); i++){
             Topping temp = toppings.at(i);
@@ -191,12 +191,12 @@ void AdminUI::changeTopping(){
 //Gerir notandanum kleift að velja álegg af listanum og eyða því.
 void AdminUI::removeTopping()
 {
-    vector<Topping> toppings = bizniz.getVectorOfToppings();
-    cout << endl;
 
     char choice = 'y';
 
     while(choice == 'y'){
+        vector<Topping> toppings = bizniz.getVectorOfToppings();
+        cout << endl;
         cout << endl << "----------------------------List of all toppings----------------------------" << endl;
         for(int i = 0; i < toppings.size(); i++){
             Topping temp = toppings.at(i);
@@ -297,13 +297,13 @@ void AdminUI::addLocation(){
 }
 void AdminUI::changeLocation(){
    
-    vector<Location> locations = bizniz.getVectorOfLocations();
-    cout << endl;
+    
 
     char choice = 'y';
 
     while(choice == 'y'){
-        
+        vector<Location> locations = bizniz.getVectorOfLocations();
+        cout << endl;
         cout << endl << "----------------------------List of all locations----------------------------" << endl;
         for(int i = 0; i < locations.size(); i++){
             Location temp = locations.at(i);
@@ -335,12 +335,13 @@ void AdminUI::changeLocation(){
 
 void AdminUI::removeLocation(){
 
-    vector<Location> locations = bizniz.getVectorOfLocations();
-    cout << endl;
+    
 
     char choice = 'y';
 
     while(choice == 'y'){
+        vector<Location> locations = bizniz.getVectorOfLocations();
+        cout << endl;
         cout << endl << "----------------------------List of all locations----------------------------" << endl;
         for(int i = 0; i < locations.size(); i++){
             Location temp = locations.at(i);
@@ -444,13 +445,13 @@ void AdminUI::addSide(){
 
 void AdminUI::changeSide(){
 
-    vector<Side> sides = bizniz.getVectorOfSides();
-    cout << endl;
+    
 
     char choice = 'y';
 
-    while(choice == 'y')
-    {
+    while(choice == 'y') {
+        vector<Side> sides = bizniz.getVectorOfSides();
+        cout << endl;
         cout << endl << "----------------------------List of all sides----------------------------" << endl;
         for(int i = 0; i < sides.size(); i++){
             Side temp = sides.at(i);
@@ -483,12 +484,13 @@ void AdminUI::changeSide(){
 
 void AdminUI::removeSide(){
     
-    vector<Side> sides = bizniz.getVectorOfSides();
-    cout << endl;
+    
 
     char choice = 'y';
 
     while(choice == 'y'){
+        vector<Side> sides = bizniz.getVectorOfSides();
+        cout << endl;
         cout << endl << "----------------------------List of all sides----------------------------" << endl;
         for(int i = 0; i < sides.size(); i++){
             Side temp = sides.at(i);
@@ -569,12 +571,13 @@ void AdminUI::displayAllDrinks(){
 
 void AdminUI::changeDrink(){
     
-    vector<Drink> drinks = bizniz.getVectorOfDrinks();
-    cout << endl;
+    
 
     char choice = 'y';
 
     while(choice == 'y'){
+        vector<Drink> drinks = bizniz.getVectorOfDrinks();
+        cout << endl;
         cout << endl << "----------------------------List of all drinks----------------------------" << endl;
         for(int i = 0; i < drinks.size(); i++){
             Drink temp = drinks.at(i);
@@ -625,12 +628,13 @@ void AdminUI::addDrink(){
 
 void AdminUI::removeDrink(){
     
-    vector<Drink> drinks = bizniz.getVectorOfDrinks();
-    cout << endl;
+    
 
     char choice = 'y';
 
     while(choice == 'y'){
+        vector<Drink> drinks = bizniz.getVectorOfDrinks();
+        cout << endl;
         cout << endl << "----------------------------List of all drinks----------------------------" << endl;
         for(int i = 0; i < drinks.size(); i++){
             Drink temp = drinks.at(i);
@@ -712,13 +716,13 @@ void AdminUI::displayAllSizes(){
 
 void AdminUI::changeSize(){
     
-    vector<Size> sizes = bizniz.getVectorOfSizes();
-    cout << endl;
+    
 
     char choice = 'y';
 
-    while(choice == 'y')
-    {
+    while(choice == 'y') {
+        vector<Size> sizes = bizniz.getVectorOfSizes();
+        cout << endl;
         cout << endl << "----------------------------List of all sizes----------------------------" << endl;
         for(int i = 0; i < sizes.size(); i++){
             Size temp = sizes.at(i);
@@ -770,12 +774,13 @@ void AdminUI::addSize(){
 
 void AdminUI::removeSize(){
     
-    vector<Size> sizes = bizniz.getVectorOfSizes();
-    cout << endl;
+    
 
     char choice = 'y';
 
     while(choice == 'y'){
+        vector<Size> sizes = bizniz.getVectorOfSizes();
+        cout << endl;
         cout << endl << "----------------------------List of all sizes----------------------------" << endl;
         for(int i = 0; i < sizes.size(); i++){
             Size temp = sizes.at(i);
@@ -856,13 +861,13 @@ void AdminUI::displayAllBases(){
 
 void AdminUI::changeBase(){
     
-    vector<Base> bases = bizniz.getVectorOfBases();
-    cout << endl;
+    
 
     char choice = 'y';
 
-    while(choice == 'y')
-    {
+    while(choice == 'y') {
+        vector<Base> bases = bizniz.getVectorOfBases();
+        cout << endl;
         cout << endl << "----------------------------List of all bases----------------------------" << endl;
         for(int i = 0; i < bases.size(); i++){
             Base temp = bases.at(i);
@@ -921,12 +926,11 @@ void AdminUI::addBase(){
 
 void AdminUI::removeBase(){
     
-    vector<Base> bases = bizniz.getVectorOfBases();
-    cout << endl;
-
     char choice = 'y';
 
     while(choice == 'y'){
+        vector<Base> bases = bizniz.getVectorOfBases();
+        cout << endl;
         cout << endl << "----------------------------List of all bases----------------------------" << endl;
         for(int i = 0; i < bases.size(); i++){
             Base temp = bases.at(i);

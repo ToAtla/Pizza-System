@@ -82,7 +82,9 @@ public:
     
     //Exceptions
     bool isValidName(string name);
+    bool isValidPrice(int price);
     bool isPriceJustDigit(string price);
+    
 private:
     ToppingRepo toppingRepo;
     LocationRepo locationRepo;
