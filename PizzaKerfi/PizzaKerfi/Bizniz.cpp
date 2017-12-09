@@ -25,9 +25,10 @@ vector<Topping> Bizniz::getVectorOfToppings(){
 }
 
 void Bizniz::addTopping(Topping& topping){
-   
-    toppingRepo.addTopping(topping);
     
+    if(isValidPrice(topping.getPrice())){
+        toppingRepo.addTopping(topping);
+    }
 }
 
 void Bizniz::storeVectorOfToppings(vector<Topping> toppings){
@@ -642,7 +643,7 @@ bool Bizniz::isValidName(string name){
     
     for(int i = 0; i < name.length(); i++){
         if(isdigit(name[i])){
-            throw InvalidNameException("Please enter a valid name(no digits)!");
+            throw InvalidNameException("Invalid name! (Name cant include digits)");
         }
         
     }
@@ -650,11 +651,20 @@ bool Bizniz::isValidName(string name){
     return true;
 }
 
+bool Bizniz::isValidPrice(int price){
+    
+    if(price < 1){
+        throw InvalidPriceException("Invalid price! (Price must be higher than 0)");
+    }
+    
+    return true;
+}
+
 bool Bizniz::isPriceJustDigit(string price){
     
-    for(int i = 0; i < price.length(); i++){
-        if(!isdigit(price[i])){
-            throw InvalidPriceException("Please enter a valid digit(no characters)!");
+    for(int i = 1; i < price.length(); i++){
+        if(!isdigit(price[i]) && price[1] != '-'){
+            throw InvalidPriceException("Invalid price! (Price cant contain letters)");
         }
     }
     
