@@ -21,6 +21,8 @@
 #include "DrinkRepo.hpp"
 #include "Drink.hpp"
 #include "Global.hpp"
+#include "Size.hpp"
+#include "Bizniz.hpp"
 
 using namespace std;
 
@@ -28,13 +30,19 @@ class SalesUI{
 public:
    void startSalesUI();
 private:
+    Bizniz bizniz;
     void createOrder();
     void displayOrders();
     
+    Size sizePickingProcess();
+    Base basePickingProcess();
+    Topping* toppingPickingProcess(int& toppingCount);
+    Location locationPickingProcess();
     
     //Bráðabirgða
     void createASinglePizzaToTest();
-    void displayPizzas();
+    
+    
 };
 
 

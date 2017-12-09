@@ -17,6 +17,9 @@
 
 using namespace std;
 
+//MUNA AÐ SKILJA EFTIR PLÁSS FYRIR NULLCHARACTER Í LOKIN
+
+
 const char CHARFORSETFILL = '-';
 const int SIZEOFSETW = 76;
 const int SIZEOFSETWBIG = 100;
@@ -25,7 +28,6 @@ const int MAXCHARINSIZENAME = 4;
 const int MAXCHARINSIDENAME = 20;
 const int MAXCHARINDRINKNAME = 10;
 const int MAXCHARINLOCATIONNAME = 15;
-const int MAXTOPPINGS = 16;
 const int MAXCHARSINTOPPINGNAME = 4;
 const int MAXSTUFFSINORDER = 20;
 const int MAXCHARINSTATUSSTRING = 10;
@@ -45,4 +47,5 @@ enum status {WAITING, PREPPING, READY, DELIVERED};
 
 const string PIZZAFILE = "pizzas.dat";
 const string ORDERFILE = "orders.dat";
+const string BASEFILE = "bases.dat";
 #endif /* Global_hpp */

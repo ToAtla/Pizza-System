@@ -283,7 +283,9 @@ string Bizniz::getStatusAndPriceCharArr(Pizza pizza){
     
     char* statusAndPriceString = new char[MAXCHARINSTATUSANDPRICESTRING];
     //Hef streng STATUS
-    strcpy(statusAndPriceString, statusToString(pizza.getStatus()));
+    char* statusString = statusToString(pizza.getStatus());
+    strcpy(statusAndPriceString, statusString);
+    delete [] statusString;
     //Hef string BIL
     strcat(statusAndPriceString, "          ");//Passa að þessi lengd sé sú sama og SIZEOF.. breytan
    
@@ -296,6 +298,7 @@ string Bizniz::getStatusAndPriceCharArr(Pizza pizza){
     strcat(statusAndPriceString, priceString);
     //cout << statusAndPriceString << endl;
     string returnString = statusAndPriceString;
+    delete [] statusAndPriceString;
     return returnString;
 }
 
@@ -366,7 +369,7 @@ void Bizniz::chooseSizeForPizza(Pizza &pizza){
     else{
         for(int i = 0; i < sizes.size(); i++){
             Size temp = sizes.at(i);
-            cout << "Base number " << i+1 << endl;
+            cout << "Size number " << i+1 << endl;
             cout << temp << endl;
         }
         int input = 0;
@@ -414,9 +417,27 @@ void Bizniz::chooseBaseForPizza(Pizza &pizza){
         pizza.getBase().setPrice(baseForPizza.getPrice());
         pizza.setPrice(pizza.getPrice() + baseForPizza.getPrice());
     }
-    
 }
 
+
+Pizza Bizniz::assemblePizza(Size size, Base base, Topping *toppings, int amountOfToppings, Location location){
+    //Hingað má setja einhver tékk á það hvort allt sé rétt gert
+    int pizzaPrice = size.getPrice() + base.getPrice();
+    Pizza returnPizza = Pizza(size, base, location);
+    for (int i = 0; i < amountOfToppings; i++) {
+        returnPizza.getToppings()[i] = toppings[i];
+        pizzaPrice += toppings[i].getPrice();
+    }
+    returnPizza.setToppingCount(amountOfToppings);
+    fixNameOfPizza(returnPizza);
+    returnPizza.setPrice(pizzaPrice);
+    return returnPizza;
+}
+
+
+void Bizniz::appendPizzaToFile(string fileName, Pizza pizza){
+    pizzaRepo.storePizza(pizza, fileName);
+}
 
 /**************************************************************************************
  
