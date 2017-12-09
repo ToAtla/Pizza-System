@@ -73,6 +73,7 @@ void SalesUI::displayOrders(){
     for (int i = 0; i < orderCnt; i++) {
         cout << orderList[i];
     }
+    delete [] orderList;
 }
 
 
@@ -130,4 +131,5 @@ void SalesUI::displayPizzas(){
     for (int i = 0; i < size; i++) {
         cout << pizzas[i] << endl;
     }
+    delete [] pizzas;
 }

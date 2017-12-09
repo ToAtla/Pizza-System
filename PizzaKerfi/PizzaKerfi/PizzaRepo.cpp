@@ -26,12 +26,13 @@ Pizza PizzaRepo::retrievePizza(string fileName, int index){
     if(index < size){
         returnPizza = pizzaList[index];
     }
+    delete [] pizzaList;
     return returnPizza;
 }
 
 
 Pizza* PizzaRepo::retrievePizzaArray(string fileName, int& tellMeHowMany){
-    Pizza pizzas[MAXPIZZASINPIZZAFILE];
+    Pizza* pizzas = new Pizza[MAXPIZZASINPIZZAFILE];
     ifstream fin;
     fin.open(fileName, ios::binary);
     fin.seekg(0, fin.end);
@@ -62,6 +63,7 @@ void PizzaRepo::moveBetween(string sourceFile, string destFile, int index){
             storePizza(pizzaList[i+1], sourceFile);
         }
     }
+    delete [] pizzaList;
     //append to dest
     storePizza(tempPizza, destFile);
 }

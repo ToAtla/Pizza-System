@@ -238,6 +238,7 @@ Pizza* Bizniz::getArrayOfPizzasAtLocationWithSomeStatus(status status, Location 
             sizeOfReturnPizzaList++;
         }
     }
+    delete [] allPizzas;
     return returnPizzas;
 }
 
@@ -252,6 +253,7 @@ Pizza* Bizniz::getArrayOfPizzasAtLocationWithoutSomeStatus(status status, Locati
             sizeOfReturnPizzaList++;
         }
     }
+    delete [] allPizzas;
     return returnPizzas;
 }
 
@@ -432,6 +434,7 @@ void Bizniz::setOrderPaidValue(string fileName, int pureIndex, bool value){
     for (int i = 0; i < size; i++) {
         orderRepo.storeOrder(orders[i]);
     }
+    delete [] orders;
 }
 
 void Bizniz::setOrderDeliveredValue(string fileName, int pureIndex, bool value){
@@ -442,17 +445,19 @@ void Bizniz::setOrderDeliveredValue(string fileName, int pureIndex, bool value){
     for (int i = 0; i < size; i++) {
         orderRepo.storeOrder(orders[i]);
     }
+    delete [] orders;
 }
 
 int Bizniz::getNumberForNextOrder(){
     int orderCnt = 0;
     OrderRepo ordRep;
-    ordRep.retrieveOrderArray("orders.dat", orderCnt);
+    Order* tempOrderArray = ordRep.retrieveOrderArray(ORDERFILE, orderCnt);
     if(orderCnt <= 0){
         orderCnt = 1;
         return orderCnt;
     }
     orderCnt++;
+    delete [] tempOrderArray;
     return orderCnt;
 }
 bool Bizniz::isEverythingInOrderReady(Order order){

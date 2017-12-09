@@ -26,7 +26,7 @@ Order OrderRepo::retrieveOrder(){
 }
 
 Order* OrderRepo::retrieveOrderArray(string fileName, int& tellMeHowManyOrders){
-    Order orderList[MAXSTUFFSINORDER];
+    Order* orderList = new Order[MAXSTUFFSINORDER];
     ifstream fin;
     fin.open(fileName, ios::binary);
     fin.seekg(0, fin.end);
