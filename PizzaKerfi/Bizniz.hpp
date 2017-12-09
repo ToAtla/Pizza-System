@@ -65,6 +65,7 @@ public:
     Pizza* getArrayOfPizzasAtLocationWithSomeStatus(status status, Location location, int& sizeOfReturnPizzaList);
     Pizza* getArrayOfPizzasAtLocationWithoutSomeStatus(status status, Location location, int& sizeOfReturnPizzaList);
     void savePizzaArrayInFile(Pizza pizzaArray[], int sizeOfArray);
+    void storePizza(Pizza pizza, string fileName);
     char* statusToString(status status);
     string getStatusAndPriceCharArr(Pizza pizza);
     void fixNameOfPizza(Pizza& pizza);
@@ -81,6 +82,8 @@ public:
     bool isEverythingInOrderReady(Order order);
     int getNumberForNextOrder();
     void assembleOrder(Order& order);
+    void storeOrder(Order order);
+    Order* getArrayOfOrders(string fileName, int& tellMeHowManyOrders);
     
     //Exceptions
     bool isValidName(string name);

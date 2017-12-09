@@ -8,9 +8,8 @@
 
 #include "SalesUI.hpp"
 #include "Order.hpp"
-#include "PizzaRepo.hpp"
-#include "OrderRepo.hpp"
 #include "Bizniz.hpp"
+
 
 void SalesUI::startSalesUI(){
     
@@ -48,25 +47,124 @@ void SalesUI::startSalesUI(){
 
 //Býr til pöntun og vistar hana
 //vistar svo pizzurnar sérstaklega í pizzuskjal
+//void SalesUI::createOrder(){
+//    Order order;
+//    cin >> order;
+//    bizniz.storeOrder(order);
+//
+//
+//
+//
+//    //Save Pizzas to pizzafile
+//    Pizza* pizzasInOrder = order.getPizzasInOrder();
+//    for (int i = 0; i < order.getNumberOfPizzas(); i++) {
+//        bizniz.storePizza( pizzasInOrder[i], PIZZAFILE);
+//    }
+//}
+
+
 void SalesUI::createOrder(){
     Order order;
-    cin >> order;
-    OrderRepo ordRep;
-    ordRep.storeOrder(order);
+    
+    order.setLocation(locationPickingProcess());
+    
+    order.setID(bizniz.getNumberForNextOrder());
+    
+   
+    pizzaListCreationProcess(order);
     
     
-    //Save Pizzas to pizzafile
-    Pizza* pizzasInOrder = order.getPizzasInOrder();
-    PizzaRepo pr;
-    for (int i = 0; i < order.getNumberOfPizzas(); i++) {
-        pr.storePizza( pizzasInOrder[i], PIZZAFILE);
+    SideRepo sr;
+    vector<Side> sides = sr.getVectorOfSides();
+    char input = '0';
+    int c = 0;
+    
+    if(sides.size() < 1){
+        cout << endl << "There are no sides available at this time." << endl;
     }
+    else{
+        cout << endl << "Would you like a side with your order? y: yes ";
+        char input = '0';
+        cin >> input;
+        
+        int c = 0;
+        order.setNumberofSides(0);
+        
+        while(input == 'y') {
+            SideRepo sr;
+            vector<Side> sides = sr.getVectorOfSides();
+            
+            for(unsigned int i = 0; i < sides.size(); i++){
+                cout << "Side number: " << i+1 << endl;
+                cout << sides.at(i) << endl;
+            }
+            cout << "Choose a side you want to add to your order: ";
+            int sideNumber = 0;
+            cin >> sideNumber;
+            for(unsigned int i = 0; i < sides.size(); i++){
+                if(sideNumber == i+1){
+                    order.getSideList()[c] = sides.at(i);
+                    
+                    order.setTotalPrice(order.getTotalPrice() + sides.at(i).getPrice());
+                    
+                    order.setNumberofSides(order.getNumberOfSides() + 1);
+                    
+                    c++;
+                }
+            }
+            
+            cout << endl << "Would you like to add another side? y: yes ";
+            cin >> input;
+        }
+        
+        
+    }
+    c = 0;
+    
+    DrinkRepo dr;
+    vector<Drink> drinks = dr.getVectorOfDrinks();
+    
+    if(drinks.size() < 1){
+        cout << endl << "There are no drinks available at this time." << endl;
+    }
+    else{
+        cout << endl << "Would you like to a drink with your order? y: yes ";
+        cin >> input;
+        order.setNumberOfDrinks(0);
+        
+        while(input == 'y') {
+            DrinkRepo dr;
+            vector<Drink> drinks = dr.getVectorOfDrinks();
+            
+            for(unsigned int i = 0; i < drinks.size(); i++){
+                cout << "Drink number: " << i+1 << endl;
+                cout << drinks.at(i) << endl;
+            }
+            cout << "Choose a drink you want to add to your order: ";
+            int drinkNumber = 0;
+            cin >> drinkNumber;
+            for(unsigned int i = 0; i < drinks.size(); i++){
+                if(drinkNumber == i+1){
+                    order.getDrinkList()[c] = drinks.at(i);
+                    order.setTotalPrice(order.getTotalPrice() + drinks.at(i).getPrice());
+                    order.setNumberOfDrinks(order.getNumberOfDrinks() + 1);
+                    c++;
+                }
+            }
+            
+            cout << endl <<"Would you like do add another drink? y: yes ";
+            cin >> input;
+        }
+        
+    }
+    
+    
 }
+
 
 void SalesUI::displayOrders(){
     int orderCnt = 0;
-    OrderRepo ordRep;
-    Order* orderList = ordRep.retrieveOrderArray("orders.dat", orderCnt);
+    Order* orderList = bizniz.getArrayOfOrders(ORDERFILE, orderCnt);
     for (int i = 0; i < orderCnt; i++) {
         cout << orderList[i];
     }
@@ -83,13 +181,9 @@ Size SalesUI::sizePickingProcess(){
     Size sizeForPizza;
     
     cout << endl << "-----List of available sizes-----" << endl;
-    SizeRepo sizeRepo;
-    vector<Size> sizes = sizeRepo.getVectorOfSizes();
-    
+    vector<Size> sizes = bizniz.getVectorOfSizes();
     if(sizes.size() < 1){
-        
         cout << endl << "No sizes available at this time." << endl;
-        
     }
     else{
         for(int i = 0; i < sizes.size(); i++){
@@ -119,8 +213,7 @@ Base SalesUI::basePickingProcess(){
     
     cout << endl << "-----List of available bases-----" << endl;
     
-    BaseRepo baseRepo;
-    vector<Base> bases = baseRepo.getVectorOfBases();
+    vector<Base> bases = bizniz.getVectorOfBases();
     
     if(bases.size() < 1){
         
@@ -146,8 +239,8 @@ Topping* SalesUI::toppingPickingProcess(int& toppingCount){
     
     Topping* toppingsForPizza = new Topping[MAXTOPPINGSONPIZZA];
     cout << endl << "-----List of available toppings-----" << endl;
-    ToppingRepo tr;
-    vector<Topping> allToppings = tr.getVectorOfToppings();
+    
+    vector<Topping> allToppings = bizniz.getVectorOfToppings();
     
     if(allToppings.size() < 1){
         cout << endl << "No toppings available at this time." << endl;
@@ -181,8 +274,7 @@ Topping* SalesUI::toppingPickingProcess(int& toppingCount){
 
 Location SalesUI::locationPickingProcess(){
     Location returnLocation;
-    LocationRepo lr;
-    vector<Location> locations = lr.getVectorOfLocations();
+    vector<Location> locations = bizniz.getVectorOfLocations();
     
     if(locations.size() < 1){
         cout << endl << "No locations available at this time" << endl << endl;
@@ -194,8 +286,7 @@ Location SalesUI::locationPickingProcess(){
         bool invalidInput = true;
         
         while(invalidInput){
-            LocationRepo lr;
-            vector<Location> locations = lr.getVectorOfLocations();
+            vector<Location> locations = bizniz.getVectorOfLocations();
             
             for(unsigned int i = 0; i < locations.size(); i++){
                 cout << "Location number: " << i+1 << endl;
@@ -221,6 +312,19 @@ Location SalesUI::locationPickingProcess(){
     return returnLocation;
 }
 
+void SalesUI::pizzaListCreationProcess(Order& order){
+    
+    cout << endl << "Enter number of pizzas to add to order: ";
+    int inNumPizz;
+    cin >> inNumPizz;
+    order.setNumberOfPizzas(inNumPizz);
+    
+    for (int i = 0; i < order.getNumberOfPizzas(); i++) {
+        cout << endl << "Pizza number: " << i+1 << endl;
+        order.getPizzasInOrder()[i] = pizzaCreationProcess(order.getLocation());
+        order.setTotalPrice(order.getTotalPrice() + order.getPizzasInOrder()[i].getPrice());
+    }
+}
 
 
 
@@ -229,13 +333,16 @@ Location SalesUI::locationPickingProcess(){
 
 
 
-
-
-
-
-
-
-
+Pizza SalesUI::pizzaCreationProcess(Location locationOfOrderForPizzaToFollow){
+   
+    Size pizzaSize = sizePickingProcess();
+    Base pizzaBase = basePickingProcess();
+    int toppingCount;
+    Topping* pizzaToppings = toppingPickingProcess(toppingCount);
+    Pizza returnPizza = bizniz.assemblePizza(pizzaSize, pizzaBase, pizzaToppings, toppingCount, locationOfOrderForPizzaToFollow);
+    delete [] pizzaToppings;
+    return returnPizza;
+}
 
 
 /*

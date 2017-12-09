@@ -266,6 +266,10 @@ void Bizniz::savePizzaArrayInFile(Pizza *pizzaArray, int sizeOfArray){
     }
 }
 
+void Bizniz::storePizza(Pizza pizza, string fileName){
+    pizzaRepo.storePizza(pizza, fileName);
+}
+
 char* Bizniz::statusToString(status status){
     char* statusString = new char[MAXCHARINSTATUSSTRING];
     if(status == WAITING){
@@ -631,6 +635,14 @@ void Bizniz::assembleOrder(Order &order){
         }
     }
     
+}
+
+void Bizniz::storeOrder(Order order){
+    orderRepo.storeOrder(order);
+}
+
+Order* Bizniz::getArrayOfOrders(string fileName, int& tellMeHowManyOrders){
+    return orderRepo.retrieveOrderArray(fileName, tellMeHowManyOrders);
 }
 
 /**************************************************************************************
