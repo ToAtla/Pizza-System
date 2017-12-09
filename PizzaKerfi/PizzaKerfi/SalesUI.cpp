@@ -59,7 +59,6 @@ void SalesUI::createOrder(){
     
     order.setLocation(locationPickingProcess());
 
-    clearScreen();
     
     order.setID(bizniz.getNumberForNextOrder());
    
@@ -87,16 +86,19 @@ void SalesUI::displayOrders(){
 Size SalesUI::sizePickingProcess(){
     Size sizeForPizza;
     
-    cout << endl << "-----List of available sizes-----" << endl;
+    cout << endl << setfill(CHARFORSETFILL) << setw(35) << "-" << "    List of available sizes    " << setfill(CHARFORSETFILL) << setw(34) << "-" << endl << endl;
     vector<Size> sizes = bizniz.getVectorOfSizes();
     if(sizes.size() < 1){
         cout << endl << "No sizes available at this time." << endl;
     }
     else{
+        cout << HALFTABSTRING << TABSTRING << "Price" << endl;
+        cout << HALFTABSTRING << TABSTRING << "-----" << endl;
+        
         for(int i = 0; i < sizes.size(); i++){
             Size temp = sizes.at(i);
-            cout << "Size number " << i+1 << endl;
-            cout << temp << endl;
+            cout << HALFTABSTRING << "Size number " << i+1 << endl;
+            cout << HALFTABSTRING << temp << endl;
         }
         int input = 0;
         cout << "Please choose a size for your pizza: ";
@@ -118,7 +120,7 @@ Size SalesUI::sizePickingProcess(){
 Base SalesUI::basePickingProcess(){
     Base baseForPizza;
     
-    cout << endl << "-----List of available bases-----" << endl;
+    cout << endl << setfill(CHARFORSETFILL) << setw(35) << "-" << "    List of available bases    " << setfill(CHARFORSETFILL) << setw(34) << "-" << endl << endl;
     
     vector<Base> bases = bizniz.getVectorOfBases();
     
@@ -128,10 +130,14 @@ Base SalesUI::basePickingProcess(){
         
     }
     else{
+        cout << HALFTABSTRING << TABSTRING << "Price" << endl;
+        cout << HALFTABSTRING << TABSTRING << "-----" << endl;
+        
+        
         for(int i = 0; i < bases.size(); i++){
             Base temp = bases.at(i);
-            cout << "Base number " << i+1 << endl;
-            cout << temp << endl;
+            cout << HALFTABSTRING << "Base number " << i+1 << endl;
+            cout << HALFTABSTRING << temp << endl;
         }
         int input = 0;
         cout << "Please choose a base for your pizza: ";
@@ -145,7 +151,7 @@ Base SalesUI::basePickingProcess(){
 Topping* SalesUI::toppingPickingProcess(int& toppingCount){
     
     Topping* toppingsForPizza = new Topping[MAXTOPPINGSONPIZZA];
-    cout << endl << "-----List of available toppings-----" << endl;
+    cout << endl << setfill(CHARFORSETFILL) << setw(33) << "-" << "    List of available toppings    " << setfill(CHARFORSETFILL) << setw(33) << "-" << endl << endl;
     
     vector<Topping> allToppings = bizniz.getVectorOfToppings();
     
@@ -153,15 +159,18 @@ Topping* SalesUI::toppingPickingProcess(int& toppingCount){
         cout << endl << "No toppings available at this time." << endl;
     }
     else{
+        cout << HALFTABSTRING << TABSTRING << "Price" << endl;
+        cout << HALFTABSTRING << TABSTRING << "-----" << endl;
+        
         for (int i = 0; i < allToppings.size(); i++) {
-            cout << "Topping nr: " << i+1 << endl;
-            cout << allToppings.at(i) << endl << endl;
+            cout << HALFTABSTRING << "Topping nr: " << i+1 << endl;
+            cout << HALFTABSTRING << allToppings.at(i) << endl << endl;
         }
         int c = 0;
         while(true){
             //Veit ekki hvort þarf < eða <= hérna í næstu línu
             if(c <= MAXTOPPINGSONPIZZA){
-                cout << "Enter an index of topping to add or 0 to exit: ";
+                cout << HALFTABSTRING << "Enter an index of topping to add or 0 to exit: ";
                 int input;
                 cin >> input;
                 if(input != 0){
@@ -257,6 +266,7 @@ void SalesUI::sideListCreationProcess(Order &order){
         cout << endl << "Would you like a side with your order? y: yes ";
         char input = '0';
         cin >> input;
+        cout << endl;
         
         int c = 0;
         order.setNumberofSides(0);
@@ -264,9 +274,13 @@ void SalesUI::sideListCreationProcess(Order &order){
         while(input == 'y') {
             vector<Side> sides = bizniz.getVectorOfSides();
             
+            cout << setfill(CHARFORSETFILL) << setw(35) << "-" << "    List of available sides    " << setfill(CHARFORSETFILL) << setw(34) << "-" << endl << endl;
+            cout << HALFTABSTRING << TABSTRING << "Price" << endl;
+            cout << HALFTABSTRING << TABSTRING << "-----" << endl;
+            
             for(unsigned int i = 0; i < sides.size(); i++){
-                cout << "Side number: " << i+1 << endl;
-                cout << sides.at(i) << endl;
+                cout << HALFTABSTRING << "Side number: " << i+1 << endl;
+                cout << HALFTABSTRING << sides.at(i) << endl << endl;
             }
             cout << "Choose a side you want to add to your order: ";
             int sideNumber = 0;

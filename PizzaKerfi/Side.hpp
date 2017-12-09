@@ -12,6 +12,7 @@
 #include <stdio.h>
 #include <iostream>
 #include <fstream>
+#include <iomanip>
 #include "Global.hpp"
 
 using namespace std;
