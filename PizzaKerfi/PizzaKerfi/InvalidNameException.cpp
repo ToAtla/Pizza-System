@@ -8,7 +8,6 @@
 
 #include "InvalidNameException.hpp"
 
-
 InvalidNameException::InvalidNameException(string message){
     
     this->message = message;
