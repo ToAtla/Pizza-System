@@ -473,6 +473,3 @@ bool Bizniz::isValidNameLength(string name, int lenght){
         
     return true;
 }
-    
-    
-    
