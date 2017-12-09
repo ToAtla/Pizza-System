@@ -444,6 +444,13 @@ void Bizniz::appendPizzaToFile(string fileName, Pizza pizza){
     pizzaRepo.storePizza(pizza, fileName);
 }
 
+void Bizniz::extractPizzasForPrepUI(Order order){
+    Pizza* pizzasInOrder = order.getPizzasInOrder();
+    for (int i = 0; i < order.getNumberOfPizzas(); i++) {
+        storePizza( pizzasInOrder[i], PIZZAFILE);
+    }
+}
+
 /**************************************************************************************
  
                                         ORDER

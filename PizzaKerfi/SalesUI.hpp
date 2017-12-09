@@ -42,10 +42,10 @@ private:
     void pizzaListCreationProcess(Order& order);
     
     //Skiptið um staði
-    Drink drinkPickingProcess();
-    void drinkListCreationProcess(Order& order);
-    Side sidePickingProcess();
+    
     void sideListCreationProcess(Order& order);
+    void drinkListCreationProcess(Order& order);
+    
     
     //Bráðabirgða
     void createASinglePizzaToTest();
