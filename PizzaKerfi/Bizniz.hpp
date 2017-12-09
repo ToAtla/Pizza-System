@@ -70,9 +70,6 @@ public:
     char* statusToString(status status);
     string getStatusAndPriceCharArr(Pizza pizza);
     void fixNameOfPizza(Pizza& pizza);
-    void chooseToppingsOnPizza(Pizza& pizza);
-    void chooseSizeForPizza(Pizza& pizza);
-    void chooseBaseForPizza(Pizza& pizza);
     Pizza assemblePizza(Size size, Base base, Topping *toppings, int amountOfToppings, Location location);
     void appendPizzaToFile(string fileName, Pizza pizza);
     void extractPizzasForPrepUI(Order order);
@@ -83,8 +80,6 @@ public:
     void setOrderDeliveredValue(string fileName, int pureIndex, bool value);
     bool isEverythingInOrderReady(Order order);
     int getNumberForNextOrder();
-    void assembleOrder(Order& order);
-    void displayAndChooseLocation(Order& order);
     void storeOrder(Order order);
     Order* getArrayOfOrders(string fileName, int& tellMeHowManyOrders);
     
