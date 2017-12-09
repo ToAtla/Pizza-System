@@ -88,6 +88,7 @@ public:
     bool isValidPrice(int price);
     bool isPriceDigit(string price);
     bool isInputDigit(string input);
+    bool isValidNameLength(string name, int lenght);
     
 private:
     ToppingRepo toppingRepo;
