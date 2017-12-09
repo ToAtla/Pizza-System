@@ -78,7 +78,13 @@ void AdminUI::displayToppingMenu(){
         }
         else if(input == '3'){
             magic.clearScreen();
-            addTopping();
+            try {
+                addTopping();
+            } catch (InvalidNameException e) {
+                cout << endl << e.getMessage() << endl << endl;
+            } catch (InvalidPriceException e) {
+                cout << endl << e.getMessage() << endl << endl;
+            }
         }
         else if(input == '4'){
             magic.clearScreen();
@@ -111,17 +117,29 @@ void AdminUI::displayAllToppings(){
 //Bætir við áleggi í textaskránna toppings.txt
 void AdminUI::addTopping(){
     char input = 'y';
+    
+    string name;
+    string price;
 
     while(input == 'y'){
-        Topping temp;
         cout << "Adding a topping!" << endl << endl;
-        cin >> temp;
-        bizniz.addTopping(temp);
-        cout << endl << "Do you want to add another topping? y/n" << endl;
-        cin >> input;
-        while(input != 'y' && input != 'n'){
-            cout << endl << "Please enter either 'y' or 'n' " << endl;
+        cout << "Enter topping name: ";
+        cin >> name;
+        cout << "Enter topping price: ";
+        cin >> price;
+        if(bizniz.isValidName(name) && bizniz.isPriceJustDigit(price)){
+            
+            int intPrice = stoi(price);
+            
+            Topping temp(name, intPrice);
+            
+            bizniz.addTopping(temp);
+            cout << endl << "Do you want to add another topping? y/n" << endl;
             cin >> input;
+            while(input != 'y' && input != 'n'){
+                cout << endl << "Please enter either 'y' or 'n' " << endl;
+                cin >> input;
+        }
         }
         cout << endl;
     }

@@ -18,6 +18,8 @@
 		7BECD2B21FCDCC1600A0384A /* Pizza.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7BECD2B01FCDCC1600A0384A /* Pizza.cpp */; };
 		7BECD2B51FCDCE6400A0384A /* Topping.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7BECD2B31FCDCE6400A0384A /* Topping.cpp */; };
 		7BECD2B81FCDCE8100A0384A /* Order.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7BECD2B61FCDCE8100A0384A /* Order.cpp */; };
+		E950F3CF1FDC104F00B0ABDF /* InvalidNameException.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E950F3CD1FDC104F00B0ABDF /* InvalidNameException.cpp */; };
+		E950F3D21FDC157000B0ABDF /* InvalidPriceException.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E950F3D01FDC157000B0ABDF /* InvalidPriceException.cpp */; };
 		E974CD001FCF1EBF0005D0F9 /* SalesUI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E974CCFE1FCF1EBF0005D0F9 /* SalesUI.cpp */; };
 		E974CD031FCF1EF50005D0F9 /* DeliveryUI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E974CD011FCF1EF50005D0F9 /* DeliveryUI.cpp */; };
 		E974CD061FCF1F0D0005D0F9 /* PrepUI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E974CD041FCF1F0D0005D0F9 /* PrepUI.cpp */; };
@@ -71,6 +73,10 @@
 		7BECD2B41FCDCE6400A0384A /* Topping.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Topping.hpp; sourceTree = "<group>"; };
 		7BECD2B61FCDCE8100A0384A /* Order.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Order.cpp; sourceTree = "<group>"; };
 		7BECD2B71FCDCE8100A0384A /* Order.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Order.hpp; sourceTree = "<group>"; };
+		E950F3CD1FDC104F00B0ABDF /* InvalidNameException.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = InvalidNameException.cpp; sourceTree = "<group>"; };
+		E950F3CE1FDC104F00B0ABDF /* InvalidNameException.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = InvalidNameException.hpp; sourceTree = "<group>"; };
+		E950F3D01FDC157000B0ABDF /* InvalidPriceException.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = InvalidPriceException.cpp; sourceTree = "<group>"; };
+		E950F3D11FDC157000B0ABDF /* InvalidPriceException.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = InvalidPriceException.hpp; sourceTree = "<group>"; };
 		E974CCFE1FCF1EBF0005D0F9 /* SalesUI.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = SalesUI.cpp; sourceTree = "<group>"; };
 		E974CCFF1FCF1EBF0005D0F9 /* SalesUI.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = SalesUI.hpp; sourceTree = "<group>"; };
 		E974CD011FCF1EF50005D0F9 /* DeliveryUI.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = DeliveryUI.cpp; sourceTree = "<group>"; };
@@ -140,6 +146,8 @@
 				7B2CCE1F1FCF0FB10076A5EB /* ToppingRepo.hpp */,
 				7B9F681E1FCF0079006C9167 /* PizzaRepo.hpp */,
 				E974CD051FCF1F0D0005D0F9 /* PrepUI.hpp */,
+				E950F3CE1FDC104F00B0ABDF /* InvalidNameException.hpp */,
+				E950F3D11FDC157000B0ABDF /* InvalidPriceException.hpp */,
 				7BDA6A5C1FCDC2F200247376 /* PizzaKerfi */,
 				7B804D341FD875D60005EBA8 /* PizzaKerfi */,
 				7BDA6A5B1FCDC2F200247376 /* Products */,
@@ -182,6 +190,8 @@
 				E974CD321FD194110005D0F9 /* Size.cpp */,
 				E974CD351FD1BC510005D0F9 /* Base.cpp */,
 				7BC4854A1FD4415A00D2390D /* ConsoleMagic.cpp */,
+				E950F3CD1FDC104F00B0ABDF /* InvalidNameException.cpp */,
+				E950F3D01FDC157000B0ABDF /* InvalidPriceException.cpp */,
 			);
 			path = PizzaKerfi;
 			sourceTree = "<group>";
@@ -250,7 +260,9 @@
 				E974CD341FD194110005D0F9 /* Size.cpp in Sources */,
 				7BC4854C1FD4415A00D2390D /* ConsoleMagic.cpp in Sources */,
 				7B9F681C1FCEFC06006C9167 /* ToppingRepo.cpp in Sources */,
+				E950F3D21FDC157000B0ABDF /* InvalidPriceException.cpp in Sources */,
 				E974CD3A1FD1BC5D0005D0F9 /* BaseRepo.cpp in Sources */,
+				E950F3CF1FDC104F00B0ABDF /* InvalidNameException.cpp in Sources */,
 				E974CD371FD1BC510005D0F9 /* Base.cpp in Sources */,
 				7BAF73FF1FD9A6250011B799 /* Bizniz.cpp in Sources */,
 				E974CD001FCF1EBF0005D0F9 /* SalesUI.cpp in Sources */,

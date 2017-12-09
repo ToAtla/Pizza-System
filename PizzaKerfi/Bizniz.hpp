@@ -19,6 +19,10 @@
 #include "BaseRepo.hpp"
 #include "PizzaRepo.hpp"
 #include "OrderRepo.hpp"
+#include "InvalidNameException.hpp"
+#include "InvalidPriceException.hpp"
+#include <string>
+#include <stdio.h>
 class Bizniz {
 public:
     //Toppings
@@ -76,6 +80,9 @@ public:
     int getNumberForNextOrder();
     void assembleOrder(Order& order);
     
+    //Exceptions
+    bool isValidName(string name);
+    bool isPriceJustDigit(string price);
 private:
     ToppingRepo toppingRepo;
     LocationRepo locationRepo;

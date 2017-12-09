@@ -605,3 +605,34 @@ void Bizniz::assembleOrder(Order &order){
     }
     
 }
+
+/**************************************************************************************
+ 
+                              Exceptions(Bool functions)
+ 
+ ***************************************************************************************/
+
+bool Bizniz::isValidName(string name){
+    
+    for(int i = 0; i < name.length(); i++){
+        if(isdigit(name[i])){
+            throw InvalidNameException("Please enter a valid name(no digits)!");
+        }
+        
+    }
+    
+    return true;
+}
+
+bool Bizniz::isPriceJustDigit(string price){
+    
+    for(int i = 0; i < price.length(); i++){
+        if(!isdigit(price[i])){
+            throw InvalidPriceException("Please enter a valid digit(no characters)!");
+        }
+    }
+    
+    return true;
+}
+
+
