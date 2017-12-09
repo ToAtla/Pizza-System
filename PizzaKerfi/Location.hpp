@@ -18,13 +18,13 @@ using namespace std;
 class Location{
     public:
         Location();
-        Location(string name);
+        Location(char inName[MAXCHARINLOCATIONNAME]);
         string getLocation();
         void setName(char inName[]);
         friend istream& operator >> (istream& in, Location& Location);
         friend ostream& operator << (ostream& out, const Location& Location);
     private:
-        char name[30];
+        char name[MAXCHARINLOCATIONNAME];
 };
 
 #endif /* Location_hpp */

@@ -9,6 +9,7 @@
 #include "AdminUI.hpp"
 
 
+
 //Prentar út valmynd sem býður notandanum að velja það sem hann vill fikta í.
 void AdminUI::startAdminUI(){
 
@@ -188,9 +189,9 @@ void AdminUI::changeTopping(){
                     int intPrice = stoi(price);
                         
                     if(bizniz.isValidPrice(intPrice)){
-                            
-                        Topping temp(price, intPrice);
-                        toppings.at(i) = temp;
+                        Topping temp(name, intPrice);
+                        toppings.at(i).setName(temp.getName());
+                        toppings.at(i).setPrice(temp.getPrice());
                         cout << endl << "Topping changed" << endl << endl;
                     }
                 }
@@ -301,8 +302,12 @@ void AdminUI::addLocation(){
     cout << "Enter location name (Max " << MAXCHARINLOCATIONNAME-1 << " letters): ";
     cin.ignore();
     getline(cin, name);
+    char tempName[MAXCHARINLOCATIONNAME];
+    
+    strcpy(tempName, name.c_str());
+    
     if(bizniz.isValidNameLength(name, MAXCHARINLOCATIONNAME)){
-        Location temp(name);
+        Location temp(tempName);
         bizniz.addLocation(temp);
         cout << endl << "Location added!" << endl << endl;
     }
@@ -332,10 +337,14 @@ void AdminUI::changeLocation(){
             if(intInput == i+1){
                 cout << "Enter location name (Max " << MAXCHARINLOCATIONNAME-1 << " letters): ";
                 string name;
-                cin >> name;
-                if(bizniz.isValidNameLength(name, MAXCHARINLOCATIONNAME))
-                {
-                    Location temp(name);
+                cin.ignore();
+                getline(cin, name);
+                char tempName[MAXCHARINLOCATIONNAME];
+                
+                strcpy(tempName, name.c_str());
+                
+                if(bizniz.isValidNameLength(name, MAXCHARINLOCATIONNAME)){
+                    Location temp(tempName);
                     locations.at(i) = temp;
                     cout << endl << "Location changed" << endl << endl;
                 }

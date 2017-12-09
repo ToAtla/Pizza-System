@@ -23,7 +23,6 @@ Topping::Topping(string inName, int inPrice){
     for(int i = 0; i < inName.length(); i++){
         name[i] = inName[i];
     }
-    
 }
 
 //Returns the private variable name.
@@ -47,8 +46,7 @@ int Topping::getPrice(){
 void Topping::setPrice(int inPrice){
     price = inPrice;
 }
-
-
+    
 
 //Overloads the ostream operator so one can use the '<<' operator to print the contents of a topping instance.
 ostream& operator << (ostream& out, const Topping& topping){
