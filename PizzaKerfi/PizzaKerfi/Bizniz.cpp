@@ -511,7 +511,6 @@ void Bizniz::assembleOrder(Order &order){
         
         choosingPizzasInOrder(order);
         
-        
         SideRepo sr;
         vector<Side> sides = sr.getVectorOfSides();
         char input = '0';
