@@ -622,7 +622,7 @@ bool Bizniz::isValidName(string name){
     
     for(int i = 0; i < name.length(); i++){
         if(isdigit(name[i])){
-            throw InvalidNameException("Invalid name! (Name cant include digits)");
+            throw InvalidNameException("Invalid name! (Name can't include digits)");
         }
         
     }
@@ -639,15 +639,33 @@ bool Bizniz::isValidPrice(int price){
     return true;
 }
 
-bool Bizniz::isPriceJustDigit(string price){
+bool Bizniz::isPriceDigit(string price){
     
     for(int i = 1; i < price.length(); i++){
         if(!isdigit(price[i]) && price[1] != '-'){
-            throw InvalidPriceException("Invalid price! (Price cant contain letters)");
+            throw InvalidPriceException("Invalid price! (Price can't contain letters)");
         }
     }
     
     return true;
 }
 
+bool Bizniz::isInputDigit(string input){
+    
+    for(int i = 1; i < input.length(); i++){
+        if(isdigit(input[i]) && input[1] == '-'){
+            throw InvalidInputException("Invalid input! (Input can't be a negative number)");
+        }
+    }
+    
+    for(int i = 0; i < input.length(); i++){
+        if(!isdigit(input[i])){
+            throw InvalidInputException("Invalid input! (Input can't contain letters)");
+        }
+    }
+    
+  
+    
+    return true;
+}
 

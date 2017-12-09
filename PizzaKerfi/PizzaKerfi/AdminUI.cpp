@@ -74,7 +74,16 @@ void AdminUI::displayToppingMenu(){
         }
         else if(input == '2'){
             magic.clearScreen();
-            changeTopping();
+            try {
+                changeTopping();
+            } catch (InvalidInputException e) {
+                cout << endl << e.getMessage() << endl << endl;
+            } catch (InvalidNameException e) {
+                cout << endl << e.getMessage() << endl << endl;
+            } catch (InvalidPriceException e) {
+                cout << endl << e.getMessage() << endl << endl;
+            }
+            
         }
         else if(input == '3'){
             magic.clearScreen();
@@ -88,7 +97,11 @@ void AdminUI::displayToppingMenu(){
         }
         else if(input == '4'){
             magic.clearScreen();
-            removeTopping();
+            try {
+                removeTopping();
+            } catch (InvalidInputException e) {
+                cout << endl << e.getMessage() << endl << endl;
+            }
         }
     }
 }
@@ -127,7 +140,7 @@ void AdminUI::addTopping(){
         cin >> name;
         cout << "Enter topping price: ";
         cin >> price;
-        if(bizniz.isValidName(name) && bizniz.isPriceJustDigit(price)){
+        if(bizniz.isValidName(name) && bizniz.isPriceDigit(price)){
             
             int intPrice = stoi(price);
             
@@ -139,7 +152,7 @@ void AdminUI::addTopping(){
             while(input != 'y' && input != 'n'){
                 cout << endl << "Please enter either 'y' or 'n' " << endl;
                 cin >> input;
-        }
+            }
         }
         cout << endl;
     }
@@ -148,8 +161,6 @@ void AdminUI::addTopping(){
 //Tekur á móti vector af öllum áleggjum úr toppings.txt skránni og birtir það sem lista.
 //Gerir notandanum kleift að velja álegg af listanum og breyta nafninu og verðinu á því.
 void AdminUI::changeTopping(){
-
-    
 
     char choice = 'y';
 
@@ -163,18 +174,38 @@ void AdminUI::changeTopping(){
             cout <<  temp;
             cout << setfill(CHARFORSETFILL) << setw(SIZEOFSETW) << "-" << endl;
         }
-        int input = 0;
+        string input;
         cout << "Choose a topping to change: ";
         cin >> input;
         
-        for(int i = 0; i < toppings.size(); i++){
-            if(input == i+1){
-                cin >> toppings.at(i);
-                cout << endl << "Topping changed" << endl << endl;
+        if(bizniz.isInputDigit(input)){
+        
+            int intInput = stoi(input);
+
+            for(int i = 0; i < toppings.size(); i++){
+                if(intInput == i+1){
+                    cout << "Enter topping name: ";
+                    string name;
+                    cin >> name;
+                    cout << "Enter toppine price: ";
+                    string price;
+                    cin >> price;
+                    if(bizniz.isValidName(name) && bizniz.isPriceDigit(price)){
+                        
+                        int intPrice = stoi(price);
+                        
+                        if(bizniz.isValidPrice(intPrice)){
+                            
+                            Topping temp(price, intPrice);
+                            toppings.at(i) = temp;
+                            cout << endl << "Topping changed" << endl << endl;
+                        }
+                    }
+                }
+
             }
- 
+            bizniz.storeVectorOfToppings(toppings);
         }
-        bizniz.storeVectorOfToppings(toppings);
         cout << "do you want to change another topping: y/n ";
         cin >> choice;
         cout << endl;
@@ -205,24 +236,28 @@ void AdminUI::removeTopping()
             cout << setfill(CHARFORSETFILL) << setw(SIZEOFSETW) << "-" << endl;
         }
 
-        int input = 0;
+        string input;
         cout << "Choose a topping to remove: ";
         cin >> input;
+        if(bizniz.isInputDigit(input)){
 
-        if(input < 1 ||input > (toppings.size())){
-            cout << endl << "No topping chosen" << endl << endl;
-        } else {
-            bizniz.removeTopping(toppings, input);
+            int intInput = stoi(input);
             
-            cout << endl << "Topping removed" << endl << endl;
-        }
-        cout << "do you want to change another topping: y/n ";
-        cin >> choice;
-        cout << endl;
-        while(choice != 'y' && choice != 'n'){
-            cout << "Please enter either 'y' or 'n' ";
+            if(intInput < 1 ||intInput > (toppings.size())){
+                cout << endl << "No topping chosen" << endl << endl;
+            } else {
+                bizniz.removeTopping(toppings, intInput);
+                
+                cout << endl << "Topping removed" << endl << endl;
+            }
+            cout << "do you want to change another topping: y/n ";
             cin >> choice;
             cout << endl;
+            while(choice != 'y' && choice != 'n'){
+                cout << "Please enter either 'y' or 'n' ";
+                cin >> choice;
+                cout << endl;
+            }
         }
     }
 }
@@ -242,21 +277,34 @@ void AdminUI::displayLocationMenu(){
 
         if(input == '1'){
             magic.clearScreen();
-            cout << endl << "----------------------------List of all locations----------------------------" << endl;
             displayAllLocations();
-            cout << endl;
         }
         else if(input == '2'){
             magic.clearScreen();
-            changeLocation();
+            try {
+                changeLocation();
+            } catch (InvalidInputException e) {
+                cout << endl << e.getMessage() << endl << endl;
+            } catch (InvalidNameException e) {
+                cout << endl << e.getMessage() << endl << endl;
+            }
         }
         else if(input == '3'){
             magic.clearScreen();
-            addLocation();
+            try {
+                addLocation();
+            } catch (InvalidNameException e) {
+                cout << endl << e.getMessage() << endl << endl;
+            }
         }
         else if(input == '4'){
             magic.clearScreen();
-            removeLocation();
+            try {
+                removeLocation();
+            } catch (InvalidNameException e) {
+                cout << endl << e.getMessage() << endl << endl;
+            }
+            
         }
     }
 }
@@ -265,7 +313,7 @@ void AdminUI::displayLocationMenu(){
 void AdminUI::displayAllLocations(){
     
     vector<Location> locations = bizniz.getVectorOfLocations();
-    
+    cout << endl << "----------------------------List of all locations----------------------------" << endl;
     if(locations.size() < 1){
         cout << "The file is empty :(" << endl << endl;
     }
@@ -275,6 +323,7 @@ void AdminUI::displayAllLocations(){
         cout << temp << endl;
         cout << setfill(CHARFORSETFILL) << setw(SIZEOFSETW) << "-" << endl;
     }
+    cout << endl;
 }
 
 void AdminUI::addLocation(){
@@ -282,9 +331,12 @@ void AdminUI::addLocation(){
     char input = 'y';
 
     while(input == 'y'){
-        Location temp;
         cout << "Adding a location!" << endl << endl;
-        cin >> temp;
+        cout << "Enter name: ";
+        string name;
+        cin.ignore();
+        getline(cin, name);
+        Location temp(name);
         bizniz.addLocation(temp);
         cout << endl << "Do you want to add another location? y/n ";
         cin >> input;
@@ -292,8 +344,8 @@ void AdminUI::addLocation(){
             cout << endl << "Please enter either 'y' or 'n' " << endl;
             cin >> input;
         }
+        }
         cout << endl;
-    }
 }
 void AdminUI::changeLocation(){
    

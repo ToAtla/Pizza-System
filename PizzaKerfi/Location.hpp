@@ -18,6 +18,7 @@ using namespace std;
 class Location{
     public:
         Location();
+        Location(string name);
         string getLocation();
         void setName(char inName[]);
         friend istream& operator >> (istream& in, Location& Location);

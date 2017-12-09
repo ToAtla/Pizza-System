@@ -14,6 +14,16 @@ Side::Side(){
     name[0] = '\0';
 }
 
+Side::Side(string name, int price){
+    
+    this->price = price;
+    
+    for(int i = 0; i < name.length(); i++){
+        this->name[i] = name[i];
+    }
+    
+}
+
 //Returns the price of the side.
 int Side::getPrice(){
     

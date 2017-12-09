@@ -18,6 +18,14 @@ Location::Location(){
     name[0] = '\0';
 }
 
+Location::Location(string name){
+    
+    for(int i = 0; i < name.length(); i++){
+        this->name[i] = name[i];
+    }
+    
+}
+
 string Location::getLocation(){
     return name;
 }

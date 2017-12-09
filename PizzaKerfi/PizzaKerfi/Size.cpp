@@ -12,6 +12,17 @@ Size::Size(){
     name[0] = '\0';
     price = 0;
 }
+
+Size::Size(string name, int price){
+    
+    this->price = price;
+    
+    for(int i = 0; i < name.length(); i++){
+        this->name[i] = name[i];
+    }
+    
+}
+
 int Size::getPrice(){
     return price;
 }

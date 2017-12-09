@@ -22,6 +22,7 @@ class Drink{
     
     public:
         Drink();
+    Drink(string name, int price);
         int getPrice();
         void setPrice(int inPrice);
         char* getName();
