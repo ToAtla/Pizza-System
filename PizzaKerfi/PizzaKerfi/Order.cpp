@@ -94,13 +94,6 @@ Drink* Order::getDrinkList(){
     return drinkList;
 }
 
-istream& operator >> (istream& in, Order& order){
-   
-    Bizniz bizniz;
-    bizniz.assembleOrder(order);
-    return in;
-}
-
 ostream& operator << (ostream& out, const Order& order){
     out << "#" << order.ID << "\t\t\t\t\t\t\t\t\t\t\t   " << order.locationOfOrder << "  \t\t\t\t\t\t\t\t";
     if(!order.paid){
