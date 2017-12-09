@@ -65,13 +65,12 @@ void SalesUI::startSalesUI(){
 
 void SalesUI::createOrder(){
     Order order;
-    
+    cout << "+++++++++++    Creating a new Order    +++++++++++" << endl;
     order.setLocation(locationPickingProcess());
     
     order.setID(bizniz.getNumberForNextOrder());
    
     pizzaListCreationProcess(order);
-    
     
     sideListCreationProcess(order);
     
@@ -260,9 +259,7 @@ Pizza SalesUI::pizzaCreationProcess(Location locationOfOrderForPizzaToFollow){
 
 
 void SalesUI::sideListCreationProcess(Order &order){
-    SideRepo sr;
-    vector<Side> sides = sr.getVectorOfSides();
-    int c = 0;
+    vector<Side> sides = bizniz.getVectorOfSides();
     
     if(sides.size() < 1){
         cout << endl << "There are no sides available at this time." << endl;

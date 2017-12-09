@@ -520,7 +520,7 @@ void Bizniz::assembleOrder(Order &order){
         Bizniz bizniz;
         order.setID(bizniz.getNumberForNextOrder());
         
-        choosingPizzasInOrder(order);
+        //choosingPizzasInOrder(order);
         
         SideRepo sr;
         vector<Side> sides = sr.getVectorOfSides();
@@ -637,23 +637,6 @@ void Bizniz::displayAndChooseLocation(Order& order){
             cout << "Please enter a valid location: " << endl;
             
         }
-    }
-}
-
-void Bizniz::choosingPizzasInOrder(Order& order){
-
-    cout << endl << "Enter number of pizzas to add to order: ";
-    int inNumPizz;
-    cin >> inNumPizz;
-    order.setNumberOfPizzas(inNumPizz);
-
-    for (int i = 0; i < order.getNumberOfPizzas(); i++) {
-        cout << endl << "Pizza number: " << i+1 << endl;
-        order.getPizzasInOrder()[i] = Pizza();
-        order.getPizzasInOrder()[i].setLocation(order.getLocation());
-        
-        cin >> order.getPizzasInOrder()[i];
-        order.setTotalPrice(order.getTotalPrice() + order.getPizzasInOrder()[i].getPrice());
     }
 }
 
