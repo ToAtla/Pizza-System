@@ -1,19 +1,19 @@
 //
-//  InvalidNameException.cpp
+//  InvalidInputException.cpp
 //  PizzaKerfi
 //
 //  Created by Nokkvi Karlsson on 12/9/17.
 //  Copyright © 2017 Þórður Atlason. All rights reserved.
 //
 
-#include "InvalidNameException.hpp"
+#include "InvalidInputException.hpp"
 
-InvalidNameException::InvalidNameException(string message){
+InvalidInputException::InvalidInputException(string message){
     
     this->message = message;
-    
 }
 
-string InvalidNameException::getMessage(){
+string InvalidInputException::getMessage(){
+    
     return message;
 }

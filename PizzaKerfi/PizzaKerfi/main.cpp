@@ -18,7 +18,7 @@
 using namespace std;
 
 int main(){
-
+    
     /*
     //Hef streng STATUS
     char* sta = new char[9];

@@ -22,6 +22,7 @@ class Side{
 
     public:
         Side();
+        Side(string name, int price);
         int getPrice();
         void setPrice(int inPrice);
         char* getName();

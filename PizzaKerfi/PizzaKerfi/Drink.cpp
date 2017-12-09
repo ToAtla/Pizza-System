@@ -17,6 +17,16 @@ Drink::Drink(){
     name[0] = '\0';
 }
 
+Drink::Drink(string name, int price){
+    
+    this->price = price;
+    
+    for(int i = 0; i < name.length(); i++){
+        this->name[i] = name[i];
+    }
+    
+}
+
 //Returns the price of the drink.
 int Drink::getPrice(){
     

@@ -21,6 +21,7 @@
 #include "OrderRepo.hpp"
 #include "InvalidNameException.hpp"
 #include "InvalidPriceException.hpp"
+#include "InvalidInputException.hpp"
 #include <string>
 #include <stdio.h>
 class Bizniz {
@@ -88,7 +89,9 @@ public:
     //Exceptions
     bool isValidName(string name);
     bool isValidPrice(int price);
-    bool isPriceJustDigit(string price);
+    bool isPriceDigit(string price);
+    bool isInputDigit(string input);
+    bool isValidNameLength(string name, int lenght);
     
 private:
     ToppingRepo toppingRepo;

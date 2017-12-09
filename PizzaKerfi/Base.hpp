@@ -22,6 +22,7 @@ class Base{
 
     public:
         Base();
+        Base(string name, int price);
         int getPrice();
         void setPrice(int inPrice);
         char* getName();
