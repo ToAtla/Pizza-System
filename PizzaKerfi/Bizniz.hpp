@@ -72,6 +72,8 @@ public:
     void chooseToppingsOnPizza(Pizza& pizza);
     void chooseSizeForPizza(Pizza& pizza);
     void chooseBaseForPizza(Pizza& pizza);
+    Pizza assemblePizza(Size size, Base base, Topping *toppings, int amountOfToppings, Location location);
+    void appendPizzaToFile(string fileName, Pizza pizza);
     
     
     //Order

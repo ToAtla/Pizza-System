@@ -13,10 +13,10 @@
 #include "SizeRepo.hpp"
 #include "Base.hpp"
 #include "Size.hpp"
-#include "Bizniz.hpp"
 #include <iostream>
 #include <cstring>
 #include <string>
+#include "Bizniz.hpp"
 
 using namespace std;
 
@@ -24,6 +24,13 @@ Pizza::Pizza(){
     strcpy(name, "THIS SHOULD NEVER BE VISIBLE");
     status = WAITING;
     price = 0;
+}
+
+Pizza::Pizza(Size size, Base base, Location location){
+    sizeOfPizza = size;
+    baseOfPizza = base;
+    locationOfPizza = location;
+    status = WAITING;
 }
 
 void Pizza::createPizza(){

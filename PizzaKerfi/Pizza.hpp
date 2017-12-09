@@ -19,7 +19,6 @@
 #include "Global.hpp"
 
 using namespace std;
-//MUNA AÐ SKILJA EFTIR PLÁSS FYRIR NULLCHARACTER Í LOKIN 
 
 
 class Pizza{
@@ -27,6 +26,7 @@ class Pizza{
 public:
         
     Pizza();
+    Pizza(Size size, Base base, Location location);
     void createPizza();
     
     
@@ -58,6 +58,7 @@ private:
     int price;
     int toppingCount;
     status status;
+    
     
     
 };
