@@ -69,7 +69,6 @@ void SalesUI::createOrder(){
     order.setLocation(locationPickingProcess());
     
     order.setID(bizniz.getNumberForNextOrder());
-    
    
     pizzaListCreationProcess(order);
     
@@ -119,6 +118,7 @@ void SalesUI::createOrder(){
         
         
     }
+    
     c = 0;
     
     DrinkRepo dr;
@@ -325,12 +325,6 @@ void SalesUI::pizzaListCreationProcess(Order& order){
         order.setTotalPrice(order.getTotalPrice() + order.getPizzasInOrder()[i].getPrice());
     }
 }
-
-
-
-
-
-
 
 
 Pizza SalesUI::pizzaCreationProcess(Location locationOfOrderForPizzaToFollow){

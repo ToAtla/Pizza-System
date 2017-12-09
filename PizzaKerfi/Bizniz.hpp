@@ -85,6 +85,8 @@ public:
     void assembleOrder(Order& order);
     void displayAndChooseLocation(Order& order);
     void choosingPizzasInOrder(Order& order);
+    void storeOrder(Order order);
+    Order* getArrayOfOrders(string fileName, int& tellMeHowManyOrders);
     
     //Exceptions
     bool isValidName(string name);
