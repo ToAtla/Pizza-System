@@ -8,6 +8,7 @@
 
 #include "AdminUI.hpp"
 
+
 //Prentar út valmynd sem býður notandanum að velja það sem hann vill fikta í.
 void AdminUI::startAdminUI(){
 
@@ -111,7 +112,7 @@ void AdminUI::displayAllToppings(){
 
     ToppingRepo toppingRepo;
     vector<Topping> toppings = bizniz.getVectorOfToppings();
-    cout << endl << "----------------------------List of all toppings----------------------------" << endl;
+    cout << endl << "----------------------------List of all toppings------------------------------" << endl;
     if(toppings.size() < 1){
         cout << "The file is empty :(" << endl << endl;
     }
@@ -157,7 +158,8 @@ void AdminUI::changeTopping(){
 
     vector<Topping> toppings = bizniz.getVectorOfToppings();
     cout << endl;
-    cout << endl << "----------------------------List of all toppings----------------------------" << endl;
+    cout << endl << "----------------------------List of all toppings------------------------------" << endl;
+    
     for(int i = 0; i < toppings.size(); i++){
         Topping temp = toppings.at(i);
         cout << "Topping number: " << i+1 << endl;
@@ -204,7 +206,7 @@ void AdminUI::removeTopping(){
 
         vector<Topping> toppings = bizniz.getVectorOfToppings();
         cout << endl;
-        cout << endl << "----------------------------List of all toppings----------------------------" << endl;
+        cout << endl << "----------------------------List of all toppings------------------------------" << endl;
         for(int i = 0; i < toppings.size(); i++){
             Topping temp = toppings.at(i);
             cout << "Topping number: " << i+1 << endl;
@@ -223,7 +225,6 @@ void AdminUI::removeTopping(){
                 cout << endl << "No topping chosen" << endl << endl;
             } else {
                 bizniz.removeTopping(toppings, intInput);
-                
                 cout << endl << "Topping removed" << endl << endl;
             }
         }
@@ -280,7 +281,7 @@ void AdminUI::displayLocationMenu(){
 void AdminUI::displayAllLocations(){
     
     vector<Location> locations = bizniz.getVectorOfLocations();
-    cout << endl << "----------------------------List of all locations----------------------------" << endl;
+    cout << endl << "----------------------------List of all locations------------------------------" << endl;
     if(locations.size() < 1){
         cout << "The file is empty :(" << endl << endl;
     }
@@ -311,7 +312,7 @@ void AdminUI::changeLocation(){
    
     vector<Location> locations = bizniz.getVectorOfLocations();
     cout << endl;
-    cout << endl << "----------------------------List of all locations----------------------------" << endl;
+    cout << endl << "----------------------------List of all locations------------------------------" << endl;
     if(locations.size() > 0){
     for(int i = 0; i < locations.size(); i++){
         Location temp = locations.at(i);
@@ -353,7 +354,7 @@ void AdminUI::removeLocation(){
     
     vector<Location> locations = bizniz.getVectorOfLocations();
     cout << endl;
-    cout << endl << "----------------------------List of all locations----------------------------" << endl;
+    cout << endl << "----------------------------List of all locations------------------------------" << endl;
     for(int i = 0; i < locations.size(); i++){
         Location temp = locations.at(i);
         cout << "Location number: " << i+1 << endl;
@@ -372,7 +373,6 @@ void AdminUI::removeLocation(){
             cout << endl << "No location chosen" << endl << endl;
         } else {
             bizniz.removeLocation(locations, intInput);
-                
             cout << endl << "Location removed" << endl << endl;
         }
     }
@@ -433,7 +433,7 @@ void AdminUI::displayAllSides(){
     
     vector<Side> sides = bizniz.getVectorOfSides();
     
-    cout << endl << "----------------------------List of all sides----------------------------" << endl;
+    cout << endl << "----------------------------List of all sides------------------------------" << endl;
     
     if(sides.size() < 1){
         cout << "The file is empty :(" << endl << endl;
@@ -474,7 +474,7 @@ void AdminUI::changeSide(){
 
     vector<Side> sides = bizniz.getVectorOfSides();
     cout << endl;
-    cout << endl << "----------------------------List of all sides----------------------------" << endl;
+    cout << endl << "----------------------------List of all sides------------------------------" << endl;
     for(int i = 0; i < sides.size(); i++){
         Side temp = sides.at(i);
         cout << "Side number: " << i+1 << endl;
@@ -502,7 +502,7 @@ void AdminUI::changeSide(){
                 if(bizniz.isValidName(name) && bizniz.isPriceDigit(price) && bizniz.isValidNameLength(name, MAXCHARINSIDENAME)){
                     int intPrice = stoi(price);
                     Side temp(name, intPrice);
-                    sides.at(i) ;
+                    sides.at(i) = temp;
                     cout << endl << "Side changed" << endl << endl;
                 }
             }
@@ -516,7 +516,7 @@ void AdminUI::removeSide(){
     
     vector<Side> sides = bizniz.getVectorOfSides();
     cout << endl;
-    cout << endl << "----------------------------List of all sides----------------------------" << endl;
+    cout << endl << "----------------------------List of all sides------------------------------" << endl;
     for(int i = 0; i < sides.size(); i++){
         Side temp = sides.at(i);
         cout << "Side number: " << i+1 << endl;
@@ -536,6 +536,7 @@ void AdminUI::removeSide(){
             cout << "No side chosen" << endl << endl;
         } else {
             bizniz.removeSide(sides, intInput);
+            cout << endl << "Side removed!" << endl << endl;
         }
     }
 }
@@ -553,22 +554,38 @@ void AdminUI::displayDrinkMenu(){
         cout << endl;
 
         if(input == '1'){
-            
             magic.clearScreen();
             displayAllDrinks();
-            
         }
         else if(input == '2'){
             magic.clearScreen();
-            changeDrink();
+            try {
+                changeDrink();
+            } catch (InvalidInputException e) {
+                cout << endl << e.getMessage() << endl << endl;
+            } catch (InvalidNameException e) {
+                cout << endl << e.getMessage() << endl << endl;
+            } catch (InvalidPriceException e) {
+                cout << endl << e.getMessage() << endl << endl;
+            }
         }
         else if(input == '3'){
             magic.clearScreen();
-            addDrink();
+            try {
+                addDrink();
+            } catch (InvalidNameException e) {
+                cout << endl << e.getMessage() << endl << endl;
+            } catch (InvalidPriceException e) {
+                cout << endl << e.getMessage() << endl << endl;
+            }
         }
         else if(input == '4'){
             magic.clearScreen();
-            removeDrink();
+            try {
+                removeDrink();
+            } catch (InvalidInputException e) {
+                cout << endl << e.getMessage() << endl << endl;
+            }
         }
     }
 }
@@ -576,7 +593,7 @@ void AdminUI::displayDrinkMenu(){
 void AdminUI::displayAllDrinks(){
     
     vector<Drink> drinks = bizniz.getVectorOfDrinks();
-    cout << endl << "----------------------------List of all drinks----------------------------" << endl;
+    cout << endl << "----------------------------List of all drinks------------------------------" << endl;
     if(drinks.size() < 1){
         cout << "The file is empty :(" << endl << endl;
     }
@@ -593,33 +610,62 @@ void AdminUI::changeDrink(){
     
     vector<Drink> drinks = bizniz.getVectorOfDrinks();
     cout << endl;
-    cout << endl << "----------------------------List of all drinks----------------------------" << endl;
+    cout << endl << "----------------------------List of all drinks------------------------------" << endl;
     for(int i = 0; i < drinks.size(); i++){
         Drink temp = drinks.at(i);
         cout << "Drink number: " << i+1 << endl;
-        cout <<  temp;
+        cout <<  temp << endl;
         cout << setfill(CHARFORSETFILL) << setw(SIZEOFSETW) << "-" << endl;
     }
-    int input = 0;
+    string input;
     cout << "Choose a drink to change: ";
     cin >> input;
-
-    for(int i = 0; i < drinks.size(); i++){
-        if(input == i+1){
-            cin >> drinks.at(i);
-            cout << endl << "Drink changed" << endl << endl;
+    
+    if(bizniz.isValidInput(stoi(input), drinks.size())){
+        
+        int intInput = stoi(input);
+        
+        for(int i = 0; i < drinks.size(); i++){
+            if(intInput == i+1){
+                cout << "Enter drink name (Max " << MAXCHARINDRINKNAME-1 << " letters): ";
+                string name;
+                cin.ignore();
+                getline(cin, name);
+                cout << "Enter price: ";
+                string price;
+                cin >> price;
+                
+                if(bizniz.isValidName(name) && bizniz.isPriceDigit(price) && bizniz.isValidNameLength(name, MAXCHARINDRINKNAME)){
+                    int intPrice = stoi(price);
+                    Drink temp(name, intPrice);
+                    drinks.at(i) = temp;
+                    cout << endl << "Drink changed" << endl << endl;
+                }
+            }
         }
+        bizniz.storeVectorOfDrinks(drinks);
     }
-    bizniz.storeVectorOfDrinks(drinks);
 }
 
 void AdminUI::addDrink(){
     
-    cout << "Adding drink!" << endl;
-    Drink temp;
-    cin >> temp;
-    bizniz.addDrink(temp);
-    cout << endl;
+    
+    cout << "Adding a drink!" << endl << endl;
+    cout << "Enter Drink name (Max " << MAXCHARINDRINKNAME-1 << " letters): ";
+    string name;
+    cin.ignore();
+    getline(cin, name);
+    cout << "Enter price: ";
+    string price;
+    cin >> price;
+    
+    if(bizniz.isValidName(name) && bizniz.isPriceDigit(price) && bizniz.isValidNameLength(name, MAXCHARINDRINKNAME)){
+        
+        int intPrice = stoi(price);
+        Drink temp(name, intPrice);
+        bizniz.addDrink(temp);
+        cout << endl << "Drink added!" << endl << endl;
+    }
 }
 
 
@@ -627,25 +673,28 @@ void AdminUI::removeDrink(){
     
     vector<Drink> drinks = bizniz.getVectorOfDrinks();
     cout << endl;
-    cout << endl << "----------------------------List of all drinks----------------------------" << endl;
+    cout << endl << "----------------------------List of all drinks------------------------------" << endl;
     for(int i = 0; i < drinks.size(); i++){
         Drink temp = drinks.at(i);
         cout << "Drink number: " << i+1 << endl;
         cout <<  temp << endl;
         cout << setfill(CHARFORSETFILL) << setw(SIZEOFSETW) << "-" << endl;
     }
-
-    int input = 0;
+    
+    string input;
     cout << "Choose a drink to remove: ";
     cin >> input;
-
-    if(input < 1 ||input > (drinks.size())){
-        cout << endl << "No drink chosen" << endl << endl;
-    }
-    else{
-        bizniz.removeDrink(drinks, input);
-            
-        cout << endl << "Drink removed" << endl << endl;
+    
+    if(bizniz.isInputDigit(input) && bizniz.isValidInput(stoi(input), drinks.size())){
+        
+        int intInput = stoi(input);
+        
+        if(intInput < 1 ||intInput > (drinks.size())){
+            cout << "No drink chosen" << endl << endl;
+        } else {
+            bizniz.removeDrink(drinks, intInput);
+            cout << endl << "Drink removed!" << endl << endl;
+        }
     }
 }
 
@@ -668,15 +717,33 @@ void AdminUI::displaySizeMenu(){
         }
         else if(input == '2'){
             magic.clearScreen();
-            changeSize();
+            try {
+                changeSize();
+            } catch (InvalidInputException e) {
+                cout << endl << e.getMessage() << endl << endl;
+            } catch (InvalidNameException e) {
+                cout << endl << e.getMessage() << endl << endl;
+            } catch (InvalidPriceException e) {
+                cout << endl << e.getMessage() << endl << endl;
+            }
         }
         else if(input == '3'){
             magic.clearScreen();
-            addSize();
+            try {
+                addSize();
+            } catch (InvalidNameException e) {
+                cout << endl << e.getMessage() << endl << endl;
+            } catch (InvalidPriceException e) {
+                cout << endl << e.getMessage() << endl << endl;
+            }
         }
         else if(input == '4'){
             magic.clearScreen();
-            removeSize();
+            try {
+                removeSize();
+            } catch (InvalidInputException e) {
+                cout << endl << e.getMessage() << endl << endl;
+            }
         }
     }
 }
@@ -684,7 +751,7 @@ void AdminUI::displaySizeMenu(){
 void AdminUI::displayAllSizes(){
     
     vector<Size> sizes = bizniz.getVectorOfSizes();
-    cout << endl << "----------------------------List of all sizes----------------------------" << endl;
+    cout << endl << "----------------------------List of all sizes------------------------------" << endl;
     if(sizes.size() < 1){
         cout << "The file is empty :(" << endl << endl;
     }
@@ -701,34 +768,63 @@ void AdminUI::changeSize(){
     
     vector<Size> sizes = bizniz.getVectorOfSizes();
     cout << endl;
-    cout << endl << "----------------------------List of all sizes----------------------------" << endl;
+    cout << endl << "----------------------------List of all sizes------------------------------" << endl;
     for(int i = 0; i < sizes.size(); i++){
         Size temp = sizes.at(i);
         cout << "Size number: " << i+1 << endl;
         cout <<  temp;
         cout << setfill(CHARFORSETFILL) << setw(SIZEOFSETW) << "-" << endl;
     }
-    int input = 0;
+    
+    string input;
     cout << "Choose a size to change: ";
     cin >> input;
-
-    for(int i = 0; i < sizes.size(); i++){
-        if(input == i+1){
-            cin >> sizes.at(i);
-            cout << endl << "Size changed" << endl << endl;
+    
+    if(bizniz.isValidInput(stoi(input), sizes.size())){
+        
+        int intInput = stoi(input);
+        
+        for(int i = 0; i < sizes.size(); i++){
+            if(intInput == i+1){
+                cout << "Enter size name (Max " << MAXCHARINSIZENAME-1 << " letters): ";
+                string name;
+                cin.ignore();
+                getline(cin, name);
+                cout << "Enter price: ";
+                string price;
+                cin >> price;
+                
+                if(bizniz.isValidName(name) && bizniz.isPriceDigit(price) && bizniz.isValidNameLength(name, MAXCHARINDRINKNAME)){
+                    int intPrice = stoi(price);
+                    Size temp(name, intPrice);
+                    sizes.at(i) = temp;
+                    cout << endl << "Size changed" << endl << endl;
+                }
+            }
         }
+        bizniz.storeVectorOfSizes(sizes);
     }
-    bizniz.storeVectorOfSizes(sizes);
 }
 
 
 void AdminUI::addSize(){
 
-    Size temp;
-    cout << "Adding size!" << endl << endl;
-    cin >> temp;
-    bizniz.addSize(temp);
-    cout << endl;
+    cout << "Adding a size!" << endl << endl;
+    cout << "Enter size name (Max " << MAXCHARINSIZENAME-1 << " letters): ";
+    string name;
+    cin.ignore();
+    getline(cin, name);
+    cout << "Enter price: ";
+    string price;
+    cin >> price;
+    
+    if(bizniz.isValidName(name) && bizniz.isPriceDigit(price) && bizniz.isValidNameLength(name, MAXCHARINSIZENAME)){
+        
+        int intPrice = stoi(price);
+        Size temp(name, intPrice);
+        bizniz.addSize(temp);
+        cout << endl << "Size added!" << endl << endl;
+    }
 }
 
 
@@ -736,7 +832,7 @@ void AdminUI::removeSize(){
     
     vector<Size> sizes = bizniz.getVectorOfSizes();
     cout << endl;
-    cout << endl << "----------------------------List of all sizes----------------------------" << endl;
+    cout << endl << "----------------------------List of all sizes------------------------------" << endl;
     for(int i = 0; i < sizes.size(); i++){
         Size temp = sizes.at(i);
         cout << "Size number: " << i+1 << endl;
@@ -744,17 +840,21 @@ void AdminUI::removeSize(){
         cout << setfill(CHARFORSETFILL) << setw(SIZEOFSETW) << "-" << endl;
     }
 
-    int input = 0;
+    
+    string input;
     cout << "Choose a size to remove: ";
     cin >> input;
-
-    if(input < 1 ||input > (sizes.size())){
-        cout << endl << "No size chosen" << endl << endl;
-    }
-    else {
-        bizniz.removeSize(sizes, input);
+    
+    if(bizniz.isInputDigit(input) && bizniz.isValidInput(stoi(input), sizes.size())){
         
-        cout << endl << "Size removed" << endl << endl;
+        int intInput = stoi(input);
+        
+        if(intInput < 1 ||intInput > (sizes.size())){
+            cout << "No size chosen" << endl << endl;
+        } else {
+            bizniz.removeSize(sizes, intInput);
+            cout << endl << "Size removed!" << endl << endl;
+        }
     }
 }
 
@@ -773,26 +873,45 @@ void AdminUI::displayBaseMenu(){
         if(input == '1'){
             magic.clearScreen();
             displayAllBases();
-            
         }
         else if(input == '2'){
             magic.clearScreen();
-            changeBase();
+            try {
+                changeBase();
+            } catch (InvalidInputException e) {
+                cout << endl << e.getMessage() << endl << endl;
+            } catch (InvalidNameException e) {
+                cout << endl << e.getMessage() << endl << endl;
+            } catch (InvalidPriceException e) {
+                cout << endl << e.getMessage() << endl << endl;
+            }
         }
         else if(input == '3'){
             magic.clearScreen();
-            addBase();
+            try {
+                addBase();
+            } catch (InvalidNameException e) {
+                cout << endl << e.getMessage() << endl << endl;
+            } catch (InvalidPriceException e) {
+                cout << endl << e.getMessage() << endl << endl;
+            }
+            
         }
         else if(input == '4'){
             magic.clearScreen();
-            removeBase();
+            try {
+                removeBase();
+            } catch (InvalidInputException e) {
+                cout << endl << e.getMessage() << endl << endl;
+            }
+            
         }
     }
 }
 void AdminUI::displayAllBases(){
     
     vector<Base> bases = bizniz.getVectorOfBases();
-    cout << endl << "----------------------------List of all bases----------------------------" << endl;
+    cout << endl << "----------------------------List of all bases------------------------------" << endl;
     if(bases.size() < 1){
         cout << "The file is empty :(" << endl << endl;
     }
@@ -809,61 +928,90 @@ void AdminUI::changeBase(){
     
     vector<Base> bases = bizniz.getVectorOfBases();
     cout << endl;
-    cout << endl << "----------------------------List of all bases----------------------------" << endl;
+    cout << endl << "----------------------------List of all bases------------------------------" << endl;
     for(int i = 0; i < bases.size(); i++){
         Base temp = bases.at(i);
         cout << "Base number: " << i+1 << endl;
         cout <<  temp;
         cout << setfill(CHARFORSETFILL) << setw(SIZEOFSETW) << "-" << endl;
     }
-    int input = 0;
+    
+    string input;
     cout << "Choose a base to change: ";
     cin >> input;
     
-    if(input < 1 ||input > (bases.size())){
-        cout << "No base chosen" << endl << endl;
-    }
-    else {
+    if(bizniz.isValidInput(stoi(input), bases.size())){
+        
+        int intInput = stoi(input);
+        
         for(int i = 0; i < bases.size(); i++){
-            if(input == i+1){
-                cin >> bases.at(i);
+            if(intInput == i+1){
+                cout << "Enter size name (Max " << MAXCHARINSIZENAME-1 << " letters): ";
+                string name;
+                cin.ignore();
+                getline(cin, name);
+                cout << "Enter price: ";
+                string price;
+                cin >> price;
+                
+                if(bizniz.isValidName(name) && bizniz.isPriceDigit(price) && bizniz.isValidNameLength(name, MAXCHARINDRINKNAME)){
+                    int intPrice = stoi(price);
+                    Base temp(name, intPrice);
+                    bases.at(i) = temp;
+                    cout << endl << "Size changed" << endl << endl;
+                }
             }
         }
         bizniz.storeVectorOfBases(bases);
-        cout << endl << "Base changed" << endl << endl;
     }
 }
 
 void AdminUI::addBase(){
+    
+    cout << "Adding a base!" << endl << endl;
+    cout << "Enter base name (Max " << MAXCHARSINBASENAME-1 << " letters): ";
+    string name;
+    cin.ignore();
+    getline(cin, name);
+    cout << "Enter price: ";
+    string price;
+    cin >> price;
+    
+    if(bizniz.isValidName(name) && bizniz.isPriceDigit(price) && bizniz.isValidNameLength(name, MAXCHARSINBASENAME)){
         
-        Base temp;
-        cout << "Add bases!" << endl << endl;
-        cin >> temp;
+        int intPrice = stoi(price);
+        Base temp(name, intPrice);
         bizniz.addBase(temp);
-        cout << endl;
+        cout << endl << "Base added!" << endl << endl;
+    }
 }
 
 void AdminUI::removeBase(){
     
     vector<Base> bases = bizniz.getVectorOfBases();
     cout << endl;
-    cout << endl << "----------------------------List of all bases----------------------------" << endl;
+    cout << endl << "----------------------------List of all bases------------------------------" << endl;
     for(int i = 0; i < bases.size(); i++){
         Base temp = bases.at(i);
-        cout << "Size number: " << i+1 << endl;
+        cout << "Base number: " << i+1 << endl;
         cout <<  temp;
         cout << setfill(CHARFORSETFILL) << setw(SIZEOFSETW) << "-" << endl;
     }
+    cout << endl;
 
-    int input = 0;
+    string input;
     cout << "Choose a base to remove: ";
     cin >> input;
-
-    if(input < 1 ||input > (bases.size())){
-        cout << endl << "No base chosen" << endl << endl;
-    }
-    else{
-        bizniz.removeBase(bases, input);
-        cout << endl << "Size removed" << endl << endl;
+    
+    if(bizniz.isInputDigit(input) && bizniz.isValidInput(stoi(input), bases.size())){
+        
+        int intInput = stoi(input);
+        
+        if(intInput < 1 ||intInput > (bases.size())){
+            cout << "No base chosen" << endl << endl;
+        } else {
+            bizniz.removeBase(bases, intInput);
+            cout << endl << "Base removed!" << endl << endl;
+        }
     }
 }

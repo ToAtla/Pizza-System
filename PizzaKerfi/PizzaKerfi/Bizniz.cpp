@@ -61,7 +61,7 @@ vector<Location> Bizniz::getVectorOfLocations(){
 }
 void Bizniz::addLocation(Location& location){
     
-    locationRepo.addLocation(location);
+        locationRepo.addLocation(location);
     
 }
 void Bizniz::storeVectorOfLocations(vector<Location> locations){
@@ -133,7 +133,8 @@ vector<Drink> Bizniz::getVectorOfDrinks(){
 
 void Bizniz::addDrink(Drink& drink){
     
-    drinkRepo.addDrink(drink);
+    if(isValidPrice(drink.getPrice()))
+        drinkRepo.addDrink(drink);
     
 }
 
@@ -167,8 +168,9 @@ vector<Size> Bizniz::getVectorOfSizes(){
 }
 
 void Bizniz::addSize(Size& size){
-    
-    sizeRepo.addSize(size);
+   
+    if(isValidPrice(size.getPrice()))
+        sizeRepo.addSize(size);
     
 }
 
@@ -202,7 +204,8 @@ vector<Base> Bizniz::getVectorOfBases(){
 
 void Bizniz::addBase(Base& base){
     
-    baseRepo.addBase(base);
+    if(isValidPrice(base.getPrice()))
+        baseRepo.addBase(base);
     
 }
 

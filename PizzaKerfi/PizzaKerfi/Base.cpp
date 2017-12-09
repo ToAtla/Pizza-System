@@ -12,6 +12,17 @@ Base::Base(){
     name[0] = '\0';
     price = 0;
 }
+
+Base::Base(string name, int inPrice){
+    
+    price = inPrice;
+    
+    for(int i = 0; i < name.length(); i++){
+        this->name[i] = name[i];
+    }
+    
+}
+
 int Base::getPrice(){
     return price;
 }
