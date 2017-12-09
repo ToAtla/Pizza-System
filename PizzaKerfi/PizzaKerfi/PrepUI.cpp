@@ -169,13 +169,14 @@ bool PrepUI::canPrintPizzaListWithStatusAtCurrentLocationAndDoes(status status){
 bool PrepUI::canPrintPizzaListWithoutStatusAtCurrentLocationAndDoes(status status){
     int size;
     Order* orderList = bizniz.getArrayOfOrdersAtLocationWithPizzasWithoutSomeStatus(status, locationOfPrep, size);
-    cout << " - - - - Pizzas with status " << bizniz.statusToString(status) << " - - - - " << endl;
+    cout << " - - - - Pizzas without status " << bizniz.statusToString(status) << " - - - - " << endl;
     
     if(size != 0){
         for (int i = 0; i < size; i++) {
             cout << "#" << orderList[i].getID() << endl;
             int howManyPizzasApply;
             Pizza* pizzasThatApply = bizniz.extractAllPizzasWithStatusFromOrder(orderList[i], status, howManyPizzasApply);
+            cout << "Amount " << howManyPizzasApply;
             for (int c = 0; c < howManyPizzasApply; i++) {
                 cout << pizzasThatApply[c];
             }
