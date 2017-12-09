@@ -38,6 +38,12 @@ private:
     Base basePickingProcess();
     Topping* toppingPickingProcess(int& toppingCount);
     Location locationPickingProcess();
+    Pizza pizzaCreationProcess(Location locationOfOrderForPizzaToFollow);
+    void pizzaListCreationProcess(Order& order);
+    Drink drinkPickingProcess();
+    void drinkListCreationProcess(Order& order);
+    Side sidePickingProcess();
+    void sideListCreationProcess(Order& order);
     
     //Bráðabirgða
     void createASinglePizzaToTest();

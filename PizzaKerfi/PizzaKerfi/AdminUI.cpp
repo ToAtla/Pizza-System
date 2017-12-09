@@ -136,11 +136,11 @@ void AdminUI::addTopping(){
 
     while(input == 'y'){
         cout << "Adding a topping!" << endl << endl;
-        cout << "Enter topping name: ";
+        cout << "Enter topping name (Max " << MAXCHARSINTOPPINGNAME-1 << " letters): ";
         cin >> name;
         cout << "Enter topping price: ";
         cin >> price;
-        if(bizniz.isValidName(name) && bizniz.isPriceDigit(price)){
+        if(bizniz.isValidName(name) && bizniz.isPriceDigit(price) && bizniz.isValidNameLength(name, MAXCHARSINTOPPINGNAME)){
             
             int intPrice = stoi(price);
             
@@ -184,13 +184,13 @@ void AdminUI::changeTopping(){
 
             for(int i = 0; i < toppings.size(); i++){
                 if(intInput == i+1){
-                    cout << "Enter topping name: ";
+                    cout << "Enter topping name (Max " << MAXCHARSINTOPPINGNAME-1 << " letters): ";
                     string name;
                     cin >> name;
                     cout << "Enter toppine price: ";
                     string price;
                     cin >> price;
-                    if(bizniz.isValidName(name) && bizniz.isPriceDigit(price)){
+                    if(bizniz.isValidName(name) && bizniz.isPriceDigit(price) && bizniz.isValidNameLength(name, MAXCHARSINTOPPINGNAME)){
                         
                         int intPrice = stoi(price);
                         
@@ -239,6 +239,7 @@ void AdminUI::removeTopping()
         string input;
         cout << "Choose a topping to remove: ";
         cin >> input;
+        
         if(bizniz.isInputDigit(input)){
 
             int intInput = stoi(input);
@@ -301,7 +302,7 @@ void AdminUI::displayLocationMenu(){
             magic.clearScreen();
             try {
                 removeLocation();
-            } catch (InvalidNameException e) {
+            } catch (InvalidInputException e) {
                 cout << endl << e.getMessage() << endl << endl;
             }
             
@@ -332,19 +333,22 @@ void AdminUI::addLocation(){
 
     while(input == 'y'){
         cout << "Adding a location!" << endl << endl;
-        cout << "Enter name: ";
+        cout << "Enter location name (Max " << MAXCHARINLOCATIONNAME-1 << " letters): ";
         string name;
         cin.ignore();
         getline(cin, name);
-        Location temp(name);
-        bizniz.addLocation(temp);
-        cout << endl << "Do you want to add another location? y/n ";
-        cin >> input;
-        while(input != 'y' && input != 'n'){
-            cout << endl << "Please enter either 'y' or 'n' " << endl;
+        if(bizniz.isValidNameLength(name, MAXCHARINLOCATIONNAME)){
+            Location temp(name);
+            bizniz.addLocation(temp);
+            cout << endl << "Do you want to add another location? y/n ";
             cin >> input;
+            while(input != 'y' && input != 'n'){
+                cout << endl << "Please enter either 'y' or 'n' " << endl;
+                cin >> input;
+            }
         }
-        }
+        
+    }
         cout << endl;
 }
 void AdminUI::changeLocation(){
@@ -363,17 +367,29 @@ void AdminUI::changeLocation(){
             cout <<  temp << endl;
             cout << setfill(CHARFORSETFILL) << setw(SIZEOFSETW) << "-" << endl;
         }
-        int input = 0;
+        string input;
         cout << "Choose a location to change: ";
         cin >> input;
 
-        for(int i = 0; i < locations.size(); i++){
-            if(input == i+1){
-                cin >> locations.at(i);
-                cout << endl << "Location changed" << endl << endl;
+        if(bizniz.isInputDigit(input)){
+        
+            int intInput = stoi(input);
+            
+            for(int i = 0; i < locations.size(); i++){
+                if(intInput == i+1){
+                    cout << "Enter location name (Max " << MAXCHARINLOCATIONNAME-1 << " letters): ";
+                    string name;
+                    cin >> name;
+                    if(bizniz.isValidNameLength(name, MAXCHARINLOCATIONNAME))
+                    {
+                        Location temp(name);
+                        locations.at(i) = temp;
+                        cout << endl << "Location changed" << endl << endl;
+                    }
+                }
             }
+            bizniz.storeVectorOfLocations(locations);
         }
-        bizniz.storeVectorOfLocations(locations);
         cout << "do you want to change another location: y/n ";
         cin >> choice;
         cout << endl;
@@ -402,24 +418,29 @@ void AdminUI::removeLocation(){
             cout << setfill(CHARFORSETFILL) << setw(SIZEOFSETW) << "-" << endl;
         }
 
-        int input = 0;
+        string input;
         cout << "Choose a location to remove: ";
         cin >> input;
 
-        if(input < 1 ||input > (locations.size())){
-            cout << endl << "No location chosen" << endl << endl;
-        } else {
-            bizniz.removeLocation(locations, input);
+        if(bizniz.isInputDigit(input)){
             
-            cout << endl << "Location removed" << endl << endl;
-        }
-        cout << "do you want to change another location: y/n ";
-        cin >> choice;
-        cout << endl;
-        while(choice != 'y' && choice != 'n'){
-            cout << "Please enter either 'y' or 'n' ";
+            int intInput = stoi(input);
+        
+            if(intInput < 1 ||intInput > (locations.size())){
+                cout << endl << "No location chosen" << endl << endl;
+            } else {
+                bizniz.removeLocation(locations, intInput);
+                
+                cout << endl << "Location removed" << endl << endl;
+            }
+            cout << "do you want to change another location: y/n ";
             cin >> choice;
             cout << endl;
+            while(choice != 'y' && choice != 'n'){
+                cout << "Please enter either 'y' or 'n' ";
+                cin >> choice;
+                cout << endl;
+            }
         }
     }
 

@@ -266,6 +266,10 @@ void Bizniz::savePizzaArrayInFile(Pizza *pizzaArray, int sizeOfArray){
     }
 }
 
+void Bizniz::storePizza(Pizza pizza, string fileName){
+    pizzaRepo.storePizza(pizza, fileName);
+}
+
 char* Bizniz::statusToString(status status){
     char* statusString = new char[MAXCHARINSTATUSSTRING];
     if(status == WAITING){
@@ -646,6 +650,14 @@ void Bizniz::choosingPizzasInOrder(Order& order){
     }
 }
 
+void Bizniz::storeOrder(Order order){
+    orderRepo.storeOrder(order);
+}
+
+Order* Bizniz::getArrayOfOrders(string fileName, int& tellMeHowManyOrders){
+    return orderRepo.retrieveOrderArray(fileName, tellMeHowManyOrders);
+}
+
 /**************************************************************************************
  
                               Exceptions(Bool functions)
@@ -688,18 +700,27 @@ bool Bizniz::isInputDigit(string input){
     
     for(int i = 1; i < input.length(); i++){
         if(isdigit(input[i]) && input[1] == '-'){
-            throw InvalidInputException("Invalid input! (Input can't be a negative number)");
+            throw InvalidInputException("Invalid input!");
         }
     }
     
     for(int i = 0; i < input.length(); i++){
         if(!isdigit(input[i])){
-            throw InvalidInputException("Invalid input! (Input can't contain letters)");
+            throw InvalidInputException("Invalid input!");
         }
     }
-    
-  
     
     return true;
 }
 
+bool Bizniz::isValidNameLength(string name, int lenght){
+    
+    if(name.length() > (lenght-1)){
+        throw InvalidNameException("Invalid name! (Name cant exceed the maximum amount of characters)");
+    }
+        
+    return true;
+}
+    
+    
+    

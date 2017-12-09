@@ -66,6 +66,7 @@ public:
     Pizza* getArrayOfPizzasAtLocationWithSomeStatus(status status, Location location, int& sizeOfReturnPizzaList);
     Pizza* getArrayOfPizzasAtLocationWithoutSomeStatus(status status, Location location, int& sizeOfReturnPizzaList);
     void savePizzaArrayInFile(Pizza pizzaArray[], int sizeOfArray);
+    void storePizza(Pizza pizza, string fileName);
     char* statusToString(status status);
     string getStatusAndPriceCharArr(Pizza pizza);
     void fixNameOfPizza(Pizza& pizza);
@@ -90,6 +91,7 @@ public:
     bool isValidPrice(int price);
     bool isPriceDigit(string price);
     bool isInputDigit(string input);
+    bool isValidNameLength(string name, int lenght);
     
 private:
     ToppingRepo toppingRepo;
