@@ -82,6 +82,8 @@ public:
     bool isEverythingInOrderReady(Order order);
     int getNumberForNextOrder();
     void assembleOrder(Order& order);
+    void displayAndChooseLocation(Order& order);
+    void choosingPizzasInOrder(Order& order);
     
     //Exceptions
     bool isValidName(string name);
