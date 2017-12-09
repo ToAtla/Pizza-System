@@ -48,7 +48,6 @@ public:
     void setToppingCount(int inToppingCount);
     
     friend ostream& operator << (ostream& out, const Pizza&);
-    friend istream& operator >> (istream& in, Pizza&);
 private:
     Topping toppings[MAXTOPPINGSONPIZZA];
     Size sizeOfPizza;

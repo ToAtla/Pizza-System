@@ -65,100 +65,19 @@ void SalesUI::startSalesUI(){
 
 void SalesUI::createOrder(){
     Order order;
-    
+    cout << "+++++++++++    Creating a new Order    +++++++++++" << endl;
     order.setLocation(locationPickingProcess());
     
     order.setID(bizniz.getNumberForNextOrder());
    
     pizzaListCreationProcess(order);
     
+    sideListCreationProcess(order);
     
-    SideRepo sr;
-    vector<Side> sides = sr.getVectorOfSides();
-    char input = '0';
-    int c = 0;
+    drinkListCreationProcess(order);
     
-    if(sides.size() < 1){
-        cout << endl << "There are no sides available at this time." << endl;
-    }
-    else{
-        cout << endl << "Would you like a side with your order? y: yes ";
-        char input = '0';
-        cin >> input;
-        
-        int c = 0;
-        order.setNumberofSides(0);
-        
-        while(input == 'y') {
-            SideRepo sr;
-            vector<Side> sides = sr.getVectorOfSides();
-            
-            for(unsigned int i = 0; i < sides.size(); i++){
-                cout << "Side number: " << i+1 << endl;
-                cout << sides.at(i) << endl;
-            }
-            cout << "Choose a side you want to add to your order: ";
-            int sideNumber = 0;
-            cin >> sideNumber;
-            for(unsigned int i = 0; i < sides.size(); i++){
-                if(sideNumber == i+1){
-                    order.getSideList()[c] = sides.at(i);
-                    
-                    order.setTotalPrice(order.getTotalPrice() + sides.at(i).getPrice());
-                    
-                    order.setNumberofSides(order.getNumberOfSides() + 1);
-                    
-                    c++;
-                }
-            }
-            
-            cout << endl << "Would you like to add another side? y: yes ";
-            cin >> input;
-        }
-        
-        
-    }
-    
-    c = 0;
-    
-    DrinkRepo dr;
-    vector<Drink> drinks = dr.getVectorOfDrinks();
-    
-    if(drinks.size() < 1){
-        cout << endl << "There are no drinks available at this time." << endl;
-    }
-    else{
-        cout << endl << "Would you like to a drink with your order? y: yes ";
-        cin >> input;
-        order.setNumberOfDrinks(0);
-        
-        while(input == 'y') {
-            DrinkRepo dr;
-            vector<Drink> drinks = dr.getVectorOfDrinks();
-            
-            for(unsigned int i = 0; i < drinks.size(); i++){
-                cout << "Drink number: " << i+1 << endl;
-                cout << drinks.at(i) << endl;
-            }
-            cout << "Choose a drink you want to add to your order: ";
-            int drinkNumber = 0;
-            cin >> drinkNumber;
-            for(unsigned int i = 0; i < drinks.size(); i++){
-                if(drinkNumber == i+1){
-                    order.getDrinkList()[c] = drinks.at(i);
-                    order.setTotalPrice(order.getTotalPrice() + drinks.at(i).getPrice());
-                    order.setNumberOfDrinks(order.getNumberOfDrinks() + 1);
-                    c++;
-                }
-            }
-            
-            cout << endl <<"Would you like do add another drink? y: yes ";
-            cin >> input;
-        }
-        
-    }
-    
-    
+    bizniz.storeOrder(order);
+    bizniz.extractPizzasForPrepUI(order);
 }
 
 
@@ -338,6 +257,89 @@ Pizza SalesUI::pizzaCreationProcess(Location locationOfOrderForPizzaToFollow){
     return returnPizza;
 }
 
+
+void SalesUI::sideListCreationProcess(Order &order){
+    vector<Side> sides = bizniz.getVectorOfSides();
+    
+    if(sides.size() < 1){
+        cout << endl << "There are no sides available at this time." << endl;
+    }
+    else{
+        cout << endl << "Would you like a side with your order? y: yes ";
+        char input = '0';
+        cin >> input;
+        
+        int c = 0;
+        order.setNumberofSides(0);
+        
+        while(input == 'y') {
+            vector<Side> sides = bizniz.getVectorOfSides();
+            
+            for(unsigned int i = 0; i < sides.size(); i++){
+                cout << "Side number: " << i+1 << endl;
+                cout << sides.at(i) << endl;
+            }
+            cout << "Choose a side you want to add to your order: ";
+            int sideNumber = 0;
+            cin >> sideNumber;
+            for(unsigned int i = 0; i < sides.size(); i++){
+                if(sideNumber == i+1){
+                    order.getSideList()[c] = sides.at(i);
+                    
+                    order.setTotalPrice(order.getTotalPrice() + sides.at(i).getPrice());
+                    
+                    order.setNumberofSides(order.getNumberOfSides() + 1);
+                    
+                    c++;
+                }
+            }
+            
+            cout << endl << "Would you like to add another side? y: yes ";
+            cin >> input;
+        }
+        
+        
+    }
+}
+
+void SalesUI::drinkListCreationProcess(Order &order){
+    int c = 0;
+    char input = '\0';
+    vector<Drink> drinks = bizniz.getVectorOfDrinks();
+    
+    if(drinks.size() < 1){
+        cout << endl << "There are no drinks available at this time." << endl;
+    }
+    else{
+        cout << endl << "Would you like to a drink with your order? y: yes ";
+        cin >> input;
+        order.setNumberOfDrinks(0);
+        
+        while(input == 'y') {
+            vector<Drink> drinks = bizniz.getVectorOfDrinks();
+            
+            for(unsigned int i = 0; i < drinks.size(); i++){
+                cout << "Drink number: " << i+1 << endl;
+                cout << drinks.at(i) << endl;
+            }
+            cout << "Choose a drink you want to add to your order: ";
+            int drinkNumber = 0;
+            cin >> drinkNumber;
+            for(unsigned int i = 0; i < drinks.size(); i++){
+                if(drinkNumber == i+1){
+                    order.getDrinkList()[c] = drinks.at(i);
+                    order.setTotalPrice(order.getTotalPrice() + drinks.at(i).getPrice());
+                    order.setNumberOfDrinks(order.getNumberOfDrinks() + 1);
+                    c++;
+                }
+            }
+            
+            cout << endl <<"Would you like do add another drink? y: yes ";
+            cin >> input;
+        }
+        
+    }
+}
 
 /*
  Bráðabirgðaföll til að sjá hvort það virki að vista pizzur í skrár

@@ -91,13 +91,3 @@ ostream& operator << (ostream& out, const Pizza& pizza){
     return out;
 }
 
-istream& operator >> (istream& in, Pizza& pizza){
-    Bizniz bizniz;
-    bizniz.chooseSizeForPizza(pizza);
-    bizniz.chooseBaseForPizza(pizza);
-    bizniz.chooseToppingsOnPizza(pizza);
-    bizniz.fixNameOfPizza(pizza);
-   
-    return in;
-}
-

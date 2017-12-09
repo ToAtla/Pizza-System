@@ -49,7 +49,6 @@ public:
     
     
     friend ostream& operator << (ostream& out, const Order&);
-    friend istream& operator >> (istream& in, Order&);
 private:
     Pizza pizzaList[MAXSTUFFSINORDER];
     Side sideList[MAXSTUFFSINORDER];
