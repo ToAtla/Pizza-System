@@ -17,13 +17,11 @@ Drink::Drink(){
     name[0] = '\0';
 }
 
-Drink::Drink(string name, int price){
+Drink::Drink(char inName[MAXCHARINDRINKNAME], int price){
     
     this->price = price;
     
-    for(int i = 0; i < name.length(); i++){
-        this->name[i] = name[i];
-    }
+    strcpy(name, inName);
     
 }
 

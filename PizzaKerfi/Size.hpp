@@ -22,7 +22,7 @@ class Size{
     
     public:
         Size();
-        Size(string name, int price);
+        Size(char inName[MAXCHARINSIDENAME], int price);
         int getPrice();
         void setPrice(int inPrice);
         char* getName();

@@ -23,7 +23,7 @@ class Side{
 
 public:
     Side();
-    Side(string name, int price);
+    Side(char inName[MAXCHARINSIDENAME], int price);
     int getPrice();
     void setPrice(int inPrice);
     char* getName();

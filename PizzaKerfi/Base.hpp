@@ -22,7 +22,7 @@ class Base{
 
     public:
         Base();
-        Base(string name, int price);
+        Base(char inName[MAXCHARINBASENAME], int price);
         int getPrice();
         void setPrice(int inPrice);
         char* getName();

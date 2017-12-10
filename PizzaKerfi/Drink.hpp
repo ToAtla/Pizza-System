@@ -22,7 +22,7 @@ class Drink{
     
     public:
         Drink();
-    Drink(string name, int price);
+        Drink(char inName[MAXCHARINDRINKNAME], int price);
         int getPrice();
         void setPrice(int inPrice);
         char* getName();

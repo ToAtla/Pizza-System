@@ -13,13 +13,11 @@ Size::Size(){
     price = 0;
 }
 
-Size::Size(string name, int price){
+Size::Size(char inName[MAXCHARINSIZENAME], int price){
     
     this->price = price;
     
-    for(int i = 0; i < name.length(); i++){
-        this->name[i] = name[i];
-    }
+    strcpy(name, inName);
     
 }
 

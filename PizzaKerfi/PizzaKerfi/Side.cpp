@@ -14,13 +14,11 @@ Side::Side(){
     name[0] = '\0';
 }
 
-Side::Side(string name, int price){
+Side::Side(char inName[MAXCHARINSIDENAME], int price){
     
     this->price = price;
     
-    for(int i = 0; i < name.length(); i++){
-        this->name[i] = name[i];
-    }
+    strcpy(name, inName);
     
 }
 

@@ -144,8 +144,9 @@ void AdminUI::addTopping(){
     if(bizniz.isValidName(name) && bizniz.isPriceDigit(price) && bizniz.isValidNameLength(name, MAXCHARINTOPPINGNAME)){
             
         int intPrice = stoi(price);
-        
-        Topping temp(name, intPrice);
+        char tempName[MAXCHARINTOPPINGNAME];
+        strcpy(tempName, name.c_str());
+        Topping temp(tempName, intPrice);
             
         bizniz.addTopping(temp);
         
@@ -213,10 +214,11 @@ void AdminUI::removeTopping(){
 
         vector<Topping> toppings = bizniz.getVectorOfToppings();
         cout << endl;
+    
+        cout << endl << "----------------------------List of all toppings------------------------------" << endl;
         if(toppings.size() < 1){
-            
-        } else {
-            cout << endl << "----------------------------List of all toppings------------------------------" << endl;
+                cout << "The file is empty :(" << endl << endl;
+        }  else {
             for(int i = 0; i < toppings.size(); i++){
                 Topping temp = toppings.at(i);
                 cout << "Topping number: " << i+1 << endl;
@@ -482,7 +484,9 @@ void AdminUI::addSide(){
     if(bizniz.isValidName(name) && bizniz.isPriceDigit(price) && bizniz.isValidNameLength(name, MAXCHARINSIDENAME)){
        
         int intPrice = stoi(price);
-        Side temp(name, intPrice);
+        char tempName[MAXCHARINSIDENAME];
+        strcpy(tempName, name.c_str());
+        Side temp(tempName, intPrice);
         bizniz.addSide(temp);
         cout << endl << "Side added!" << endl << endl;
     }
@@ -685,7 +689,9 @@ void AdminUI::addDrink(){
     if(bizniz.isValidName(name) && bizniz.isPriceDigit(price) && bizniz.isValidNameLength(name, MAXCHARINDRINKNAME)){
         
         int intPrice = stoi(price);
-        Drink temp(name, intPrice);
+        char tempName[MAXCHARINDRINKNAME];
+        strcpy(tempName, name.c_str());
+        Drink temp(tempName, intPrice);
         bizniz.addDrink(temp);
         cout << endl << "Drink added!" << endl << endl;
     }
@@ -846,7 +852,9 @@ void AdminUI::addSize(){
     if(bizniz.isValidName(name) && bizniz.isPriceDigit(price) && bizniz.isValidNameLength(name, MAXCHARINSIZENAME-1)){
         
         int intPrice = stoi(price);
-        Size temp(name, intPrice);
+        char tempName[MAXCHARINSIZENAME];
+        strcpy(tempName, name.c_str());
+        Size temp(tempName, intPrice);
         bizniz.addSize(temp);
         cout << endl << "Size added!" << endl << endl;
     }

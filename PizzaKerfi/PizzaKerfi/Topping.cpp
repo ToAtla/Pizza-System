@@ -17,12 +17,10 @@ Topping::Topping(){
     name[0] = '\0';
 }
 
-Topping::Topping(string inName, int inPrice){
+Topping::Topping(char inName[MAXCHARINTOPPINGNAME], int inPrice){
     this->price = inPrice;
     
-    for(int i = 0; i < inName.length(); i++){
-        name[i] = inName[i];
-    }
+    strcpy(name, inName);
 }
 
 //Returns the private variable name.

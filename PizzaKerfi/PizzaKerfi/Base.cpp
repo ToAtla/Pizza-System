@@ -13,13 +13,11 @@ Base::Base(){
     price = 0;
 }
 
-Base::Base(string name, int inPrice){
+Base::Base(char inName[MAXCHARINBASENAME], int inPrice){
     
     price = inPrice;
     
-    for(int i = 0; i < name.length(); i++){
-        this->name[i] = name[i];
-    }
+    strcpy(name, inName);
     
 }
 
