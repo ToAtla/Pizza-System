@@ -71,7 +71,7 @@ void AdminUI::displayToppingMenu(){
     
     char input = '\0';
     while(input != 'b'){
-        cout << setfill(CHARFORSUBACTION) << setw(30) << "+" << "    Toppings    " << setfill(CHARFORSUBACTION) << setw(30) << "+" << endl << endl;
+        cout << setfill(CHARFORSETFILL) << setw(30) << "-" << "    Toppings    " << setfill(CHARFORSETFILL) << setw(30) << "-" << endl << endl;
         cout << setfill(' ') << setw(20) << "1: " << setw(32) << "List toppings" << endl;
         uiItemSeparator();
         cout << setw(20) << "2: " << setw(32) << "Change a topping" << endl;
@@ -232,29 +232,29 @@ void AdminUI::removeTopping(){
         vector<Topping> toppings = bizniz.getVectorOfToppings();
         cout << endl;
     
-        cout << endl << "----------------------------List of all toppings----------------------------" << endl;
+        cout << endl << setfill(CHARFORSETFILL) << setw(24) << "-" << "    List of all toppings    " << setfill(CHARFORSETFILL) << setw(24) << "-" << endl << endl;
         if(toppings.size() < 1){
-                cout << endl << "The file is empty :(" << endl << endl;
+                cout << endl << setfill(' ') << setw(48) << "The file is empty :(" << endl << endl;
         }  else {
             for(int i = 0; i < toppings.size(); i++){
                 Topping temp = toppings.at(i);
-                cout << "Topping number: " << i+1 << endl;
-                cout <<  temp;
-                cout << setfill(CHARFORSETFILL) << setw(SIZEOFSETW) << "-" << endl;
+                cout << setfill(' ') << setw(30) << "Topping number: " << i+1 << endl;
+                cout << setw(17) << temp.getName() << setw(40) << temp.getPrice() << endl;
+                cout << setw(14) << " " << setfill(CHARFORSETFILL) << setw(43) << "-" << endl;
             }
 
             string input;
-            cout << "Choose a topping to remove: ";
+            cout << setfill(' ') << setw(42) << "Choose a topping to remove: ";
             cin >> input;
         
             if(bizniz.isInputDigit(input) && bizniz.isValidInput(stoi(input), toppings.size())){
                 int intInput = stoi(input);
 
                 if(intInput < 1 ||intInput > (toppings.size())){
-                    cout << endl << "No topping chosen" << endl << endl;
+                    cout << endl << setw(36) << "No topping chosen" << endl << endl;
                 } else {
                     bizniz.removeTopping(toppings, intInput);
-                    cout << endl << "Topping removed" << endl << endl;
+                    cout << endl << setw(29) << "Topping removed" << endl << endl;
                 }
             }
         }
