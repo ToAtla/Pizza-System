@@ -551,7 +551,7 @@ bool Bizniz::isValidInput(int input, unsigned long sizeOfList){
     unsigned long unsignedInput = input;
     
     if(unsignedInput < 1 || unsignedInput > sizeOfList){
-        throw InvalidInputException("Invalid input! (Input does not match any index on the list)");
+        throw InvalidInputException("Invalid input! (Input does not match any index on the list) Please try again");
     }
     
     return true;
@@ -561,7 +561,7 @@ bool Bizniz::isInputDigit(string input){
     
     for(int i = 0; i < input.length(); i++){
         if(!isdigit(input[i])){
-            throw InvalidInputException("Invalid input! (Input does not match any index on the list)");
+            throw InvalidInputException("Invalid input! (Input does not match any index on the list) Please try again");
         }
     }
     
@@ -604,8 +604,6 @@ bool Bizniz::isValidBaseSizeFile(){
         throw InvalidFileSizeBaseException("Can't order a pizza because there are no bases available");
     }
     
-    
-    
-    
     return true;
 }
+
