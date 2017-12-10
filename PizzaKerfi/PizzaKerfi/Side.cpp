@@ -50,6 +50,7 @@ void Side::setName(char inName[]){
 void Side::setStatus(enum status inStatus){
     status = inStatus;
 }
+
 status Side::getStatus(){
     return status;
 }
@@ -57,7 +58,7 @@ status Side::getStatus(){
 //Overloads the ostream operator so one can use the '<<' operator to print the contents of a topping instance.
 ostream& operator << (ostream& out, const Side& side){
     
-    out << side.name << TABSTRING << side.price;
+    out <<  setw(SIZEOFSETWBIG-6) << left << side.name << side.price << endl;
     
     return out;
 }

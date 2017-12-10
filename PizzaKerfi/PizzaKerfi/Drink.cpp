@@ -55,7 +55,8 @@ void Drink::setName(char inName[]){
 ostream& operator << (ostream& out, const Drink& drink){
     
     
-    out << drink.name << TABSTRING << drink.price;
+    out <<  setw(SIZEOFSETWBIG-6) << left << drink.name << drink.price << endl;
+    
     return out;
 }
 
