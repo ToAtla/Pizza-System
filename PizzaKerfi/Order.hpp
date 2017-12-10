@@ -23,14 +23,12 @@ using namespace std;
 class Order {
 public:
     Order();
-    void setPaid(bool value);
-    bool isPaid();
-    void setDelivered(bool v);
-    bool isDelivered();
     
     void setLocation(Location inLocation);
     int getID();
     void setID(int inID);
+    orderStatus getStatusOfOrder();
+    void setStatusOfOrder(orderStatus oStatus);
     void setNumberOfPizzas(int inNumberOfPizzas);
     Pizza* getPizzasInOrder();
     int getNumberOfPizzas();
@@ -55,9 +53,8 @@ private:
     int numberOfDrinks;
     int totalPrice;
     int ID;
-    bool paid = false;
+    orderStatus statusOfOrder;
     bool ready = false;
-    bool delievered = false;
 };
 
 #endif /* Order_hpp */

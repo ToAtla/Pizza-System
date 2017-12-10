@@ -78,9 +78,10 @@ public:
     
     
     //Order
-    void setOrderPaidValue(string fileName, int pureIndex, bool value);
-    void setOrderDeliveredValue(string fileName, int pureIndex, bool value);
-    bool isEverythingInOrderReady(Order order);
+    void setOrderStatus(string fileName, int orderNum, orderStatus newOrderStatus);
+    bool allPizzasInOrderReady(Order order);
+    char* orderStatusToString(orderStatus status);
+    Order getOrderNumber(int orderNumber);
     int getNumberForNextOrder();
     void storeOrder(Order order);
     Order* getArrayOfOrders(string fileName, int& tellMeHowManyOrders);
@@ -88,6 +89,7 @@ public:
     void changeStatusOfPizzaInOrder(int orderNum, int pizzaNumber, status status);
     Order* getArrayOfOrdersAtLocationWithApplicablePizzas(status status, Location location, bool onlyWith, int& sizeOfReturnOrderList);
     bool thereExistsOrderAtLocationWithApplicablePizza(status status, Location location, bool onlyWith);
+    
     
     //Exceptions(Bool functions)
     bool isValidName(string name);

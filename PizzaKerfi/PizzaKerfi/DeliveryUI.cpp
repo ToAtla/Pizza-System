@@ -89,14 +89,14 @@ void DeliveryUI::displayAllOrders(){
     //þarf núna að sigta út virkar pantanir þeas þær sem er ekki búið að afgreiða
     int amountOfUndeliveredOrdersAtThisLocation = 0;
     for (int i = 0; i < sizeOfOrderList; i++) {
-        if(locationOfDelivery.getLocation() == orders[i].getLocation().getLocation() && !orders[i].isDelivered()){
+        if(locationOfDelivery.getLocation() == orders[i].getLocation().getLocation() && orders[i].getStatusOfOrder() != DELIVERED){
             amountOfUndeliveredOrdersAtThisLocation++;
         }
     }
     cout << " - - - - - - - - - - Listing All Active Orders in " << locationOfDelivery << " - - - - - - - - - - " << endl;
     if(ordRep.fileExists(orderFile) && amountOfUndeliveredOrdersAtThisLocation != 0){
         for (int i = 0; i < sizeOfOrderList; i++) {
-            if(locationOfDelivery.getLocation() == orders[i].getLocation().getLocation() && !orders[i].isDelivered()){
+            if(locationOfDelivery.getLocation() == orders[i].getLocation().getLocation() && orders[i].getStatusOfOrder() != DELIVERED){
                 cout << orders[i] << endl;
             }
         }
@@ -118,14 +118,14 @@ void DeliveryUI::displayUnpaidOrders(){
     //þarf núna að sigta út ógreiddar
     int amountOfUnpaidUndeliveredOrdersAtThisLocation = 0;
     for (int i = 0; i < sizeOfOrderList; i++) {
-        if(locationOfDelivery.getLocation() == orders[i].getLocation().getLocation() && !orders[i].isPaid() && !orders[i].isDelivered()){
+        if(locationOfDelivery.getLocation() == orders[i].getLocation().getLocation() && orders[i].getStatusOfOrder() != PAID && orders[i].getStatusOfOrder() != DELIVERED){
             amountOfUnpaidUndeliveredOrdersAtThisLocation++;
         }
     }
     cout << " - - - - - - - - - - Listing Unpaid Orders in " << locationOfDelivery << " - - - - - - - - - - " << endl;
     if(ordRep.fileExists(orderFile) && amountOfUnpaidUndeliveredOrdersAtThisLocation != 0){
         for (int i = 0; i < sizeOfOrderList; i++) {
-            if(locationOfDelivery.getLocation() == orders[i].getLocation().getLocation() && !orders[i].isPaid() && !orders[i].isDelivered()){
+            if(locationOfDelivery.getLocation() == orders[i].getLocation().getLocation() && orders[i].getStatusOfOrder() != PAID && orders[i].getStatusOfOrder() != DELIVERED){
                 cout << orders[i] << endl;
             }
         }
@@ -134,11 +134,11 @@ void DeliveryUI::displayUnpaidOrders(){
     
         int input = '\0';
         while(input != '0'){
-            cout << "Pick a number to mark for paid or 0 to exit: ";
+            cout << "Enter order number to paid or 0 to exit: ";
             cin >> input;
             if(input != 0){
                 if(input <= sizeOfOrderList && input > 0){
-                    bizniz.setOrderPaidValue(orderFile, input-1, true);
+                    bizniz.setOrderStatus(ORDERFILE, input, PAID);
                     cout << "Order number " << input << " has been marked paid" << endl;
                 }
             }else{
@@ -162,7 +162,7 @@ void DeliveryUI::displayPaidOrders(){
     //þarf núna að sigta út greiddar
     int amountOfPaidUndeliveredOrdersAtThisLocation = 0;
     for (int i = 0; i < sizeOfOrderList; i++) {
-        if(locationOfDelivery.getLocation() == orders[i].getLocation().getLocation() && orders[i].isPaid() && !orders[i].isDelivered()){
+        if(locationOfDelivery.getLocation() == orders[i].getLocation().getLocation() && orders[i].getStatusOfOrder() == PAID && orders[i].getStatusOfOrder() != DELIVERED){
             cout << "Hér er ég" << endl;
             amountOfPaidUndeliveredOrdersAtThisLocation++;
         }
@@ -170,7 +170,7 @@ void DeliveryUI::displayPaidOrders(){
     cout << " - - - - - - - - - - Listing Paid Orders in " << locationOfDelivery << " - - - - - - - - - - " << endl;
     if(ordRep.fileExists(orderFile) && amountOfPaidUndeliveredOrdersAtThisLocation != 0){
         for (int i = 0; i < sizeOfOrderList; i++) {
-            if(locationOfDelivery.getLocation() == orders[i].getLocation().getLocation() && orders[i].isPaid() && !orders[i].isDelivered()){
+            if(locationOfDelivery.getLocation() == orders[i].getLocation().getLocation() && orders[i].getStatusOfOrder() == PAID && orders[i].getStatusOfOrder() != DELIVERED){
                 cout << orders[i] << endl;
             }
         }
@@ -179,13 +179,16 @@ void DeliveryUI::displayPaidOrders(){
     
         int input = '\0';
         while(input != '0'){
-            cout << "Pick a number to mark for delivery or 0 to exit: ";
+            cout << "Enter number of order to mark delivered 0 to exit: ";
             cin >> input;
             if(input != 0){
                 if(input <= sizeOfOrderList && input > 0){
-                    if(bizniz.isEverythingInOrderReady(orders[input-1]))
-                        bizniz.setOrderDeliveredValue(orderFile, input-1, true);
+                    //PASSA SIG HÉR ÞARF AÐ BÆTA VIÐ EXCEPTION EF NOTANDINN
+                    //SLÆR INN PANTANANÚMER SEM ER EKKI Á LISTANUM
+                    if(bizniz.allPizzasInOrderReady(bizniz.getOrderNumber(input))){
+                        bizniz.setOrderStatus(orderFile, input, DELIVERED);
                         cout << "Order number " << input << " has been marked delivered" << endl;
+                    }
                 }else{
                     cout << "Not all items in that order are ready" << endl;
                 }
@@ -212,14 +215,15 @@ void DeliveryUI::displayLegacyOrders(){
     //þarf núna að sigta út óvirkar pantanir þeas þær sem er  bið að afgreiða
     int amountOfDeliveredOrdersAtThisLocation = 0;
     for (int i = 0; i < sizeOfOrderList; i++) {
-        if(locationOfDelivery.getLocation() == orders[i].getLocation().getLocation() && orders[i].isDelivered()){
+        if(locationOfDelivery.getLocation() == orders[i].getLocation().getLocation() && orders[i].getStatusOfOrder() != DELIVERED){
             amountOfDeliveredOrdersAtThisLocation++;
         }
     }
+    
     cout << " - - - - - - - - - - Listing All Legacy Orders in " << locationOfDelivery << " - - - - - - - - - - " << endl;
     if(ordRep.fileExists(orderFile) && amountOfDeliveredOrdersAtThisLocation != 0){
         for (int i = 0; i < sizeOfOrderList; i++) {
-            if(locationOfDelivery.getLocation() == orders[i].getLocation().getLocation() && orders[i].isDelivered()){
+            if(locationOfDelivery.getLocation() == orders[i].getLocation().getLocation() && orders[i].getStatusOfOrder() != DELIVERED){
                 cout << orders[i] << endl;
             }
         }
