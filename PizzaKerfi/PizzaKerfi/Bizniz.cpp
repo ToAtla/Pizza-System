@@ -255,8 +255,8 @@ char* Bizniz::statusToString(status status){
         strcpy(statusString, "PREPPING ");
     }else if(status == READY){
         strcpy(statusString, "READY    ");
-    }else if(status == DELIVERED){
-        strcpy(statusString, "DELIVERED");
+    }else if(status == OUTOFSHOP){
+        strcpy(statusString, "OUTOFSHOP");
     }
     return statusString;
 }
@@ -356,27 +356,53 @@ Pizza* Bizniz::extractApplicablePizzasFromOrder(Order order, status status, bool
  ***************************************************************************************/
 
 
-
-void Bizniz::setOrderPaidValue(string fileName, int pureIndex, bool value){
+void Bizniz::setOrderStatus(string fileName, int orderNum, orderStatus newOrderStatus){
     int size;
-    Order* orders = orderRepo.retrieveOrderArray(fileName, size);
-    orders[pureIndex].setPaid(value);
-    orderRepo.clearOrderFile(fileName);
+    Order* allOrders = orderRepo.retrieveOrderArray(fileName, size);
     for (int i = 0; i < size; i++) {
-        orderRepo.storeOrder(orders[i]);
+        if(allOrders[i].getID() == orderNum){
+            //eitthvað gerist
+            allOrders[i].setStatusOfOrder(newOrderStatus);
+            i = size;
+        }
     }
-    delete [] orders;
+    for (int i = 0; i < size; i++) {
+        orderRepo.clearOrderFile(ORDERFILE);
+        storeOrder(allOrders[i]);
+    }
+    delete [] allOrders;
+}
+bool Bizniz::allPizzasInOrderReady(Order order){
+    for (int i = 0; i < order.getNumberOfPizzas(); i++) {
+        if(order.getPizzasInOrder()[i].getStatus() != READY){
+            return false;
+        }
+    }
+    return true;
 }
 
-void Bizniz::setOrderDeliveredValue(string fileName, int pureIndex, bool value){
-    int size;
-    Order* orders = orderRepo.retrieveOrderArray(fileName, size);
-    orders[pureIndex].setDelivered(value);
-    orderRepo.clearOrderFile(fileName);
-    for (int i = 0; i < size; i++) {
-        orderRepo.storeOrder(orders[i]);
+char* Bizniz::orderStatusToString(orderStatus status){
+    char* statusString = new char[MAXCHARINORDERSTATUSSTRING];
+    if(status == UNPAID){
+        strcpy(statusString, "UNPAID   ");
+    }if(status == PAID){
+        strcpy(statusString, "PAiD     ");
+    }if(status == DELIVERED){
+        strcpy(statusString, "DELIVERED");
     }
-    delete [] orders;
+    return statusString;
+}
+
+Order Bizniz::getOrderNumber(int orderNumber){
+    int size;
+    Order* allOrders = orderRepo.retrieveOrderArray(ORDERFILE, size);
+    for (int i = 0; i < size; i++) {
+        if(allOrders[i].getID() == orderNumber){
+            return allOrders[i];
+        }
+    }
+    Order kukaorder;
+    return kukaorder;
 }
 
 int Bizniz::getNumberForNextOrder(){
@@ -390,15 +416,6 @@ int Bizniz::getNumberForNextOrder(){
     orderCnt++;
     delete [] tempOrderArray;
     return orderCnt;
-}
-bool Bizniz::isEverythingInOrderReady(Order order){
-    
-    for (int i = 0; i <order.getNumberOfPizzas(); i++) {
-        if(order.getPizzasInOrder()[i].getStatus() != READY){
-            return false;
-        }
-    }
-    return true;
 }
 
 

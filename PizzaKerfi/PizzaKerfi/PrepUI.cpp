@@ -46,7 +46,7 @@ void PrepUI::startPrepUI(){
 
 
 void PrepUI::allActiveOverview(){
-    status currentStatus = DELIVERED;
+    status currentStatus = OUTOFSHOP;
     //Fylki af öllum
     //ýtra í gegnum það og birta þær
     string input;
@@ -54,8 +54,8 @@ void PrepUI::allActiveOverview(){
     magic.clearScreen();
     while(input != "0"){
         cout << " - - - - Pizzas without status " << bizniz.statusToString(currentStatus) << " in " << locationOfPrep.getLocation() <<  " - - - - " << endl;
-        if (bizniz.thereExistsOrderAtLocationWithApplicablePizza(DELIVERED, locationOfPrep, false)) {
-            displayOrdersAtLocationWithApplicablePizzas(locationOfPrep, DELIVERED, false);
+        if (bizniz.thereExistsOrderAtLocationWithApplicablePizza(OUTOFSHOP, locationOfPrep, false)) {
+            displayOrdersAtLocationWithApplicablePizzas(locationOfPrep, OUTOFSHOP, false);
         }else{
             cout << endl;
             cout << "List is empty" << endl;
@@ -84,9 +84,7 @@ void PrepUI::waitingOverview(){
                 int orderNum;
                 int pizzaNum;
                 bizniz.locateFirstOrderWithPizzaWithStatusAtLocation(currentStatus, locationOfPrep, orderNum, pizzaNum);
-                cout << "Fundum tölurnar, þær eru: O: " << orderNum << " og P: " << pizzaNum << endl;
                 bizniz.changeStatusOfPizzaInOrder(orderNum, pizzaNum, nextStatus);
-                cout << "Breyttum þessari pizzu" << endl;
                 cout << "Top pizza marked in preparation" << endl;
                 magic.clearScreen();
             }else{
@@ -167,7 +165,6 @@ void PrepUI::readyOverview(){
 void PrepUI::displayOrdersAtLocationWithApplicablePizzas(Location location, status status, bool onlyWith){
     int size;
     Order* orderList = bizniz.getArrayOfOrdersAtLocationWithApplicablePizzas(status, location, onlyWith, size);
-    cout << "Við fundum " << size << " pizzur sem uppfylla skilyrðin: " << bizniz.statusToString(status) << " "<<  location << onlyWith << endl;
     for (int i = 0; i < size; i++) {
         cout << "#" << orderList[i].getID() << endl;
         int howManyPizzasApply;
