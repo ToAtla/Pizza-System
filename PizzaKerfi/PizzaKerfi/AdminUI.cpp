@@ -250,12 +250,10 @@ void AdminUI::removeTopping(){
             if(bizniz.isInputDigit(input) && bizniz.isValidInput(stoi(input), toppings.size())){
                 int intInput = stoi(input);
 
-                if(intInput < 1 ||intInput > (toppings.size())){
-                    cout << endl << "No topping chosen" << endl << endl;
-                } else {
-                    bizniz.removeTopping(toppings, intInput);
-                    cout << endl << "Topping removed" << endl << endl;
-                }
+                
+                bizniz.removeTopping(toppings, intInput);
+                cout << endl << "Topping removed" << endl << endl;
+                
             }
         }
 }
@@ -411,12 +409,8 @@ void AdminUI::removeLocation(){
         if(bizniz.isInputDigit(input) && bizniz.isValidInput(stoi(input), locations.size())){
             int intInput = stoi(input);
             
-            if(intInput < 1 ||intInput > (locations.size())){
-                cout << endl << "No location chosen" << endl << endl;
-            } else {
-                bizniz.removeLocation(locations, intInput);
-                cout << endl << "Location removed" << endl << endl;
-            }
+            bizniz.removeLocation(locations, intInput);
+            cout << endl << "Location removed" << endl << endl;
         }
     }
 }
@@ -590,12 +584,9 @@ void AdminUI::removeSide(){
         
             int intInput = stoi(input);
             
-            if(intInput < 1 ||intInput > (sides.size())){
-                cout << "No side chosen" << endl << endl;
-            } else {
-                bizniz.removeSide(sides, intInput);
-                cout << endl << "Side removed!" << endl << endl;
-            }
+            
+            bizniz.removeSide(sides, intInput);
+            cout << endl << "Side removed!" << endl << endl;
         }
     }
 }
@@ -762,12 +753,8 @@ void AdminUI::removeDrink(){
             
             int intInput = stoi(input);
             
-            if(intInput < 1 ||intInput > (drinks.size())){
-                cout << "No drink chosen" << endl << endl;
-            } else {
-                bizniz.removeDrink(drinks, intInput);
-                cout << endl << "Drink removed!" << endl << endl;
-            }
+            bizniz.removeDrink(drinks, intInput);
+            cout << endl << "Drink removed!" << endl << endl;
         }
     }
 }
@@ -938,12 +925,8 @@ void AdminUI::removeSize(){
             
             int intInput = stoi(input);
             
-            if(intInput < 1 ||intInput > (sizes.size())){
-                cout << "No size chosen" << endl << endl;
-            } else {
-                bizniz.removeSize(sizes, intInput);
-                cout << endl << "Size removed!" << endl << endl;
-            }
+            bizniz.removeSize(sizes, intInput);
+            cout << endl << "Size removed!" << endl << endl;
         }
     }
 }
@@ -1110,12 +1093,8 @@ void AdminUI::removeBase(){
             
             int intInput = stoi(input);
             
-            if(intInput < 1 ||intInput > (bases.size())){
-                cout << "No base chosen" << endl << endl;
-            } else {
-                bizniz.removeBase(bases, intInput);
-                cout << endl << "Base removed!" << endl << endl;
-            }
+            bizniz.removeBase(bases, intInput);
+            cout << endl << "Base removed!" << endl << endl;
         }
     }
 }
