@@ -23,9 +23,7 @@ Order::Order(){
     ID = 0;
     locationOfOrder = Location();
     totalPrice = 0;
-    paid = false;
-    ready = false;
-    delievered = false;
+    statusOfOrder = UNPAID;
 }
 
 Pizza* Order::getPizzasInOrder(){
@@ -39,20 +37,6 @@ Location Order::getLocation(){
     return this->locationOfOrder;
 }
 
-void Order::setPaid(bool input){
-    this->paid = input;
-}
-
-bool Order::isPaid(){
-    return paid;
-}
-
-void Order::setDelivered(bool v){
-    delievered = v;
-}
-bool Order::isDelivered(){
-    return delievered;
-}
 
 
 void Order::setLocation(Location inLocation){
@@ -63,6 +47,14 @@ int Order::getID(){
 }
 void Order::setID(int inID){
     ID = inID;
+}
+
+orderStatus Order::getStatusOfOrder(){
+    return statusOfOrder;
+}
+
+void Order::setStatusOfOrder(orderStatus oStatus){
+    statusOfOrder = oStatus;
 }
 void Order::setNumberOfPizzas(int inNumberOfPizzas){
     numberOfPizzas =  inNumberOfPizzas;
@@ -95,11 +87,8 @@ Drink* Order::getDrinkList(){
 }
 
 ostream& operator << (ostream& out, const Order& order){
-    out << "#" << order.ID << "\t\t\t\t\t\t\t\t\t\t\t   " << order.locationOfOrder << "  \t\t\t\t\t\t\t\t";
-    if(!order.paid){
-        cout << "NOT ";
-    }
-    out << "PAID" << endl;
+    Bizniz bizniz;
+    out << "#" << order.ID << "\t\t\t\t\t\t\t\t\t\t\t   " << order.locationOfOrder << "  \t\t\t\t\t\t\t\t" << bizniz.orderStatusToString(order.statusOfOrder) << endl;
     out << setfill(CHARFORSETFILL) << setw(SIZEOFSETWBIG) << "-" << endl;
     out << setfill(CHARFORSETFILL) << setw(SIZEOFSETWBIG) << "-" << endl;
     

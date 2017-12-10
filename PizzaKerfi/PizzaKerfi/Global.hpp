@@ -33,6 +33,7 @@ const int MAXCHARINLOCATIONNAME = 15;
 const int MAXCHARINTOPPINGNAME = 4;
 const int MAXSTUFFSINORDER = 20;
 const int MAXCHARINSTATUSSTRING = 10;
+const int MAXCHARINORDERSTATUSSTRING = 10;
 const int MAXCHARINPRICESTRING = 5;
 const int MAXCHARINSTATUSANDPRICESTRING = 40;
 const int SIZEOFSPACEBETWEENPIZZASTATUSANDPRICE = 10;
@@ -52,7 +53,8 @@ const string TABSTRING = "\t\t\t\t\t\t\t\t\t\t\t\t\t";
 const string HALFTABSTRING = "\t\t\t\t\t";
 const string NINETABSTRING = "\t\t\t\t\t\t\t\t\t";
 const string LONGLINE = "---------------------------------------------------------------------------";
-enum status {WAITING, PREPPING, READY, DELIVERED};
+enum status {WAITING, PREPPING, READY, OUTOFSHOP};
+enum orderStatus {UNPAID, PAID, DELIVERED};
 
 const string PIZZAFILE = "pizzas.dat";
 const string ORDERFILE = "orders.dat";
