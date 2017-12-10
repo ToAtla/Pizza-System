@@ -27,8 +27,6 @@ public:
         
     Pizza();
     Pizza(Size size, Base base, Location location);
-    void createPizza();
-    
     
     string getName();
     void setName(char inName[MAXCHARSINPIZZANAME]);

@@ -33,9 +33,6 @@ Pizza::Pizza(Size size, Base base, Location location){
     status = WAITING;
 }
 
-void Pizza::createPizza(){
-    
-}
 
 string Pizza::getName(){
     return name;
