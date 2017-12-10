@@ -41,6 +41,9 @@ public:
     status getStatus();
     void setStatus(status inStatus);
     
+    int getParentID();
+    void setParentID(int inParentID);
+    
     Base getBase();
     Size getSize();
     Topping* getToppings();
@@ -57,6 +60,7 @@ private:
     int price;
     int toppingCount;
     status status;
+    int parentID;
     
     
     

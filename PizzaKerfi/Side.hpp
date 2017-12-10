@@ -21,19 +21,22 @@ using namespace std;
 
 class Side{
 
-    public:
-        Side();
-        Side(string name, int price);
-        int getPrice();
-        void setPrice(int inPrice);
-        char* getName();
-        void setName(char inName[]);
-        friend istream& operator >> (istream& in, Side& side);
-        friend ostream& operator << (ostream& out, const Side& side);
-    private:
-        char name[MAXCHARINSIDENAME];
-        int price;
-    
+public:
+    Side();
+    Side(string name, int price);
+    int getPrice();
+    void setPrice(int inPrice);
+    char* getName();
+    void setName(char inName[]);
+    void setStatus(status inStatus);
+    status getStatus();
+
+    friend istream& operator >> (istream& in, Side& side);
+    friend ostream& operator << (ostream& out, const Side& side);
+private:
+    char name[MAXCHARINSIDENAME];
+    int price;
+    status status;
 };
 
 
