@@ -33,6 +33,8 @@
 		E974CD341FD194110005D0F9 /* Size.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E974CD321FD194110005D0F9 /* Size.cpp */; };
 		E974CD371FD1BC510005D0F9 /* Base.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E974CD351FD1BC510005D0F9 /* Base.cpp */; };
 		E974CD3A1FD1BC5D0005D0F9 /* BaseRepo.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E974CD381FD1BC5D0005D0F9 /* BaseRepo.cpp */; };
+		E9A4DD171FDD6C0D00B27AC2 /* InvalidFileLocationException.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E9A4DD151FDD6C0D00B27AC2 /* InvalidFileLocationException.cpp */; };
+		E9A4DD1A1FDD6EC100B27AC2 /* InvalidFileSizeBaseException.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E9A4DD181FDD6EC100B27AC2 /* InvalidFileSizeBaseException.cpp */; };
 		E9C456D21FCEF1D700A93407 /* AdminUI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E9C456D01FCEF1D700A93407 /* AdminUI.cpp */; };
 		E9C456D51FCEF6BC00A93407 /* MainUI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E9C456D31FCEF6BC00A93407 /* MainUI.cpp */; };
 /* End PBXBuildFile section */
@@ -104,6 +106,10 @@
 		E974CD361FD1BC510005D0F9 /* Base.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Base.hpp; sourceTree = "<group>"; };
 		E974CD381FD1BC5D0005D0F9 /* BaseRepo.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = BaseRepo.cpp; sourceTree = "<group>"; };
 		E974CD391FD1BC5D0005D0F9 /* BaseRepo.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = BaseRepo.hpp; sourceTree = "<group>"; };
+		E9A4DD151FDD6C0D00B27AC2 /* InvalidFileLocationException.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = InvalidFileLocationException.cpp; sourceTree = "<group>"; };
+		E9A4DD161FDD6C0D00B27AC2 /* InvalidFileLocationException.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = InvalidFileLocationException.hpp; sourceTree = "<group>"; };
+		E9A4DD181FDD6EC100B27AC2 /* InvalidFileSizeBaseException.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = InvalidFileSizeBaseException.cpp; sourceTree = "<group>"; };
+		E9A4DD191FDD6EC100B27AC2 /* InvalidFileSizeBaseException.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = InvalidFileSizeBaseException.hpp; sourceTree = "<group>"; };
 		E9C456D01FCEF1D700A93407 /* AdminUI.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = AdminUI.cpp; sourceTree = "<group>"; };
 		E9C456D11FCEF1D700A93407 /* AdminUI.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = AdminUI.hpp; sourceTree = "<group>"; };
 		E9C456D31FCEF6BC00A93407 /* MainUI.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = MainUI.cpp; sourceTree = "<group>"; };
@@ -152,6 +158,8 @@
 				E950F3CE1FDC104F00B0ABDF /* InvalidNameException.hpp */,
 				E950F3D11FDC157000B0ABDF /* InvalidPriceException.hpp */,
 				E950F3D41FDC20B400B0ABDF /* InvalidInputException.hpp */,
+				E9A4DD161FDD6C0D00B27AC2 /* InvalidFileLocationException.hpp */,
+				E9A4DD191FDD6EC100B27AC2 /* InvalidFileSizeBaseException.hpp */,
 				7BDA6A5C1FCDC2F200247376 /* PizzaKerfi */,
 				7B804D341FD875D60005EBA8 /* PizzaKerfi */,
 				7BDA6A5B1FCDC2F200247376 /* Products */,
@@ -197,6 +205,8 @@
 				E950F3CD1FDC104F00B0ABDF /* InvalidNameException.cpp */,
 				E950F3D01FDC157000B0ABDF /* InvalidPriceException.cpp */,
 				E950F3D31FDC20B400B0ABDF /* InvalidInputException.cpp */,
+				E9A4DD151FDD6C0D00B27AC2 /* InvalidFileLocationException.cpp */,
+				E9A4DD181FDD6EC100B27AC2 /* InvalidFileSizeBaseException.cpp */,
 			);
 			path = PizzaKerfi;
 			sourceTree = "<group>";
@@ -286,6 +296,8 @@
 				7BDA6A5E1FCDC2F200247376 /* main.cpp in Sources */,
 				E974CD221FD087B40005D0F9 /* Side.cpp in Sources */,
 				E974CD031FCF1EF50005D0F9 /* DeliveryUI.cpp in Sources */,
+				E9A4DD1A1FDD6EC100B27AC2 /* InvalidFileSizeBaseException.cpp in Sources */,
+				E9A4DD171FDD6C0D00B27AC2 /* InvalidFileLocationException.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

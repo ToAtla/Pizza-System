@@ -22,6 +22,8 @@
 #include "InvalidNameException.hpp"
 #include "InvalidPriceException.hpp"
 #include "InvalidInputException.hpp"
+#include "InvalidFileLocationException.hpp"
+#include "InvalidFileSizeBaseException.hpp"
 #include <string>
 #include <stdio.h>
 class Bizniz {
@@ -90,13 +92,15 @@ public:
     bool thereExistsOrderWithPizzaWithStatusAtLocation(status status, Location location);
     bool thereExistsOrderWithPizzaWithoutStatusAtLocation(status status, Location location);
     
-    //Exceptions
+    //Exceptions(Bool functions)
     bool isValidName(string name);
     bool isValidPrice(int price);
     bool isValidInput(int input, unsigned long sizeOfList);
     bool isPriceDigit(string price);
     bool isInputDigit(string input);
     bool isValidNameLength(string name, int lenght);
+    bool isValidLocationFile();
+    bool isValidBaseSizeFile();
     
 private:
     ToppingRepo toppingRepo;

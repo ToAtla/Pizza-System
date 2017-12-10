@@ -585,3 +585,36 @@ bool Bizniz::isValidNameLength(string name, int lenght){
         
     return true;
 }
+
+bool Bizniz::isValidLocationFile(){
+    
+    vector<Location> locations;
+    locations = locationRepo.getVectorOfLocations();
+    
+    if(locations.size() < 1){
+        throw InvalidFileLocationException();
+    }
+    
+    return true;
+}
+
+bool Bizniz::isValidBaseSizeFile(){
+    
+    vector<Size> sizes;
+    sizes = sizeRepo.getVectorOfSizes();
+    vector<Base> bases;
+    bases = baseRepo.getVectorOfBases();
+    
+    if(sizes.size() < 1){
+        throw InvalidFileSizeBaseException("Can't order a pizza because there are no sizes available");
+    }
+    
+    if(bases.size() < 1) {
+        throw InvalidFileSizeBaseException("Can't order a pizza because there are no bases available");
+    }
+    
+    
+    
+    
+    return true;
+}

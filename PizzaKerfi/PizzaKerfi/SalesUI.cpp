@@ -28,7 +28,11 @@ void SalesUI::startSalesUI(){
         clearScreen();
         
         if(input == '1'){
-            createOrder();
+            try {
+                createOrder();
+            } catch (InvalidFileLocationException) {
+                cout << endl << "No locations available!" << endl << endl;
+            }
         }
         else if(input == '2'){
             displayOrders();
@@ -45,22 +49,29 @@ void SalesUI::startSalesUI(){
 //Býr til pöntun og vistar hana
 //vistar svo pizzurnar sérstaklega í pizzuskjal
 void SalesUI::createOrder(){
-    Order order;
-    cout << setfill(CHARFORSUBACTION) << setw(36) << "+" << "    Creating a new Order    " <<  setfill(CHARFORSUBACTION) << setw(36) << "+" << endl << endl;
-    
-    order.setLocation(locationPickingProcess());
-
-    
-    order.setID(bizniz.getNumberForNextOrder());
    
-    pizzaListCreationProcess(order);
+    if(bizniz.isValidLocationFile()){
     
-    sideListCreationProcess(order);
-    
-    drinkListCreationProcess(order);
-    
-    bizniz.storeOrder(order);
-    //bizniz.extractPizzasForPrepUI(order);
+        Order order;
+        cout << setfill(CHARFORSUBACTION) << setw(36) << "+" << "    Creating a new Order    " <<  setfill(CHARFORSUBACTION) << setw(36) << "+" << endl << endl;
+        
+        order.setLocation(locationPickingProcess());
+        
+        order.setID(bizniz.getNumberForNextOrder());
+       
+        try {
+            pizzaListCreationProcess(order);
+        } catch (InvalidFileSizeBaseException e) {
+            cout << endl << e.getMessage() << endl << endl;
+        }
+        
+        sideListCreationProcess(order);
+        
+        drinkListCreationProcess(order);
+        
+        bizniz.storeOrder(order);
+        //bizniz.extractPizzasForPrepUI(order);
+    }
 }
 
 
@@ -222,16 +233,18 @@ Location SalesUI::locationPickingProcess(){
 
 void SalesUI::pizzaListCreationProcess(Order& order){
     
-    cout << endl << "Enter number of pizzas to add to order: ";
-    int inNumPizz;
-    cin >> inNumPizz;
-    order.setNumberOfPizzas(inNumPizz);
-    
-    for (int i = 0; i < order.getNumberOfPizzas(); i++) {
-        cout << endl << "Pizza number: " << i+1 << endl;
-        order.getPizzasInOrder()[i] = pizzaCreationProcess(order.getLocation());
-        order.getPizzasInOrder()[i].setParentID(order.getID());
-        order.setTotalPrice(order.getTotalPrice() + order.getPizzasInOrder()[i].getPrice());
+    if(bizniz.isValidBaseSizeFile()){
+        cout << endl << "Enter number of pizzas to add to order: ";
+        int inNumPizz;
+        cin >> inNumPizz;
+        order.setNumberOfPizzas(inNumPizz);
+        
+        for (int i = 0; i < order.getNumberOfPizzas(); i++) {
+            cout << endl << "Pizza number: " << i+1 << endl;
+            order.getPizzasInOrder()[i] = pizzaCreationProcess(order.getLocation());
+            order.getPizzasInOrder()[i].setParentID(order.getID());
+            order.setTotalPrice(order.getTotalPrice() + order.getPizzasInOrder()[i].getPrice());
+        }
     }
 }
 
