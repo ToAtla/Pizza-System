@@ -26,12 +26,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "PizzaKerfi/SalesUI.cpp"
-            timestampString = "534596638.546677"
+            timestampString = "534598545.759154"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "136"
-            endingLineNumber = "136"
-            landmarkName = "SalesUI::toppingPickingProcess(int&amp; toppingCount)"
+            startingLineNumber = "127"
+            endingLineNumber = "127"
+            landmarkName = "SalesUI::basePickingProcess()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

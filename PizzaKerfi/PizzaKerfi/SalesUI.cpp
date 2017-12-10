@@ -14,39 +14,30 @@
 void SalesUI::startSalesUI(){
     
     char input = 0;
-    while(input != 'b')
-    {
+    while(input != 'b'){
         
         cout << setfill(CHARFORSETFILL) << setw(SIZEOFSETWBIG) << "-" << endl;
         cout << "\t\t\t\t\t\t\t\t\t\t\t" << "Sales" << endl;
         cout << setfill(CHARFORSETFILL) << setw(SIZEOFSETWBIG) << "-" << endl << endl;
         cout << NINETABSTRING << "1: New order" << endl;
         cout << NINETABSTRING << "2: View all orders" << endl;
-        cout << NINETABSTRING << "3: Change a order BROKEN" << endl;
-        cout << NINETABSTRING << "4: delete a order BROKEN" << endl;
-        cout << NINETABSTRING << "5: (temporary)add one pizza directly to pizzas.dat with status WAITING" << endl;
+        cout << NINETABSTRING << "3: Change an order BROKEN" << endl;
+        cout << NINETABSTRING << "4: delete an order BROKEN" << endl;
         cout << NINETABSTRING << "b: back" << endl << endl << NINETABSTRING;
         cin >> input;
         clearScreen();
         
-        if(input == '1')
-        {
+        if(input == '1'){
             createOrder();
         }
-        else if(input == '2')
-        {
+        else if(input == '2'){
             displayOrders();
         }
-        else if(input == '3')
-        {
+        else if(input == '3'){
             
         }
-        else if(input == '4')
-        {
+        else if(input == '4'){
             
-        }
-        else if(input == '5'){
-            createASinglePizzaToTest();
         }
     }
 }
@@ -354,7 +345,7 @@ void SalesUI::clearScreen(){
 /*
  Bráðabirgðaföll til að sjá hvort það virki að vista pizzur í skrár
 */
-
+/*
 void SalesUI::createASinglePizzaToTest(){
     //Also saves to file
     
@@ -368,6 +359,6 @@ void SalesUI::createASinglePizzaToTest(){
     delete [] pizzaToppings;
     bizniz.appendPizzaToFile(PIZZAFILE, newPizza);
 }
-
+*/
 
 

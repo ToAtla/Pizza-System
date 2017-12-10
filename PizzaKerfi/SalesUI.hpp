@@ -50,7 +50,8 @@ private:
     
     
     //Bráðabirgða
-    void createASinglePizzaToTest();
+    //Útfærsla hefur verið kommentuð út
+    //void createASinglePizzaToTest();
     
     
 };
