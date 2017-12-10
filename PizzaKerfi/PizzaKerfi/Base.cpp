@@ -53,7 +53,7 @@ istream& operator >> (istream& in, Base& base){
 }
 
 ostream& operator << (ostream& out, const Base& base){
-    out << base.name << "\t\t\t\t\t\t\t\t" << base.price << endl;
+    out << base.name << TABSTRING << base.price << endl;
     
     return out;
 }

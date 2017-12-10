@@ -23,6 +23,7 @@
 #include "Global.hpp"
 #include "Size.hpp"
 #include "Bizniz.hpp"
+#include "ConsoleMagic.hpp"
 
 using namespace std;
 
@@ -40,6 +41,7 @@ private:
     Location locationPickingProcess();
     Pizza pizzaCreationProcess(Location locationOfOrderForPizzaToFollow);
     void pizzaListCreationProcess(Order& order);
+    void clearScreen();
     
     //Skiptið um staði
     

@@ -21,6 +21,8 @@ using namespace std;
 
 
 const char CHARFORSETFILL = '-';
+const char CHARFORSUBACTION = '+';
+const int SIZEOFTABSTRING = 48;
 const int SIZEOFSETW = 76;
 const int SIZEOFSETWBIG = 100;
 const int MAXCHARINBASENAME = 5;
@@ -42,6 +44,7 @@ const int MAXPIZZASINPIZZAFILE = 20;
 
 const string TABSTRING = "\t\t\t\t\t\t\t\t\t\t\t\t\t";
 const string HALFTABSTRING = "\t\t\t\t\t";
+const string NINETABSTRING = "\t\t\t\t\t\t\t\t\t";
 const string LONGLINE = "---------------------------------------------------------------------------";
 enum status {WAITING, PREPPING, READY, DELIVERED};
 
