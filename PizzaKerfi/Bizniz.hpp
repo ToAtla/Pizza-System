@@ -63,8 +63,7 @@ public:
     void removeBase(vector<Base>, int index);
    
     //Pizza
-    Pizza* getArrayOfPizzasAtLocationWithSomeStatus(status status, Location location, int& sizeOfReturnPizzaList);
-    Pizza* getArrayOfPizzasAtLocationWithoutSomeStatus(status status, Location location, int& sizeOfReturnPizzaList);
+    
     void savePizzaArrayInFile(Pizza pizzaArray[], int sizeOfArray);
     void storePizza(Pizza pizza, string fileName);
     char* statusToString(status status);
@@ -73,6 +72,8 @@ public:
     Pizza assemblePizza(Size size, Base base, Topping *toppings, int amountOfToppings, Location location);
     void appendPizzaToFile(string fileName, Pizza pizza);
     void extractPizzasForPrepUI(Order order);
+    Pizza* extractAllPizzasWithStatusFromOrder(Order order, status status, int& tellMeHowMany);
+    Pizza* extractAllPizzasWithoutStatusFromOrder(Order order, status status, int& tellMeHowMany);
     
     
     //Order
@@ -82,6 +83,12 @@ public:
     int getNumberForNextOrder();
     void storeOrder(Order order);
     Order* getArrayOfOrders(string fileName, int& tellMeHowManyOrders);
+    void locateFirstOrderWithPizzaWithStatusAtLocation(status status, Location location, int& orderNum, int& pizzaNum);
+    void changeStatusOfPizzaInOrder(int orderNum, int pizzaNumber, status status);
+    Order* getArrayOfOrdersAtLocationWithPizzasWithStatus(status status, Location location, int& sizeOfReturnPizzaList);
+    Order* getArrayOfOrdersAtLocationWithPizzasWithoutSomeStatus(status status, Location location, int& sizeOfReturnPizzaList);
+    bool thereExistsOrderWithPizzaWithStatusAtLocation(status status, Location location);
+    bool thereExistsOrderWithPizzaWithoutStatusAtLocation(status status, Location location);
     
     //Exceptions
     bool isValidName(string name);
