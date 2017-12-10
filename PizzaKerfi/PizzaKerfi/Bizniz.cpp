@@ -566,7 +566,6 @@ bool Bizniz::isValidInput(int input, unsigned long sizeOfList){
 
 bool Bizniz::isInputDigit(string input){
     
-    cout << "IS IT DIGIT?" << endl << endl;
     for(int i = 0; i < input.length(); i++){
         if(!isdigit(input[i])){
             throw InvalidInputException("Invalid input! (Input does not match any index on the list)");
