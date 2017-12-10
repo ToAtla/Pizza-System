@@ -114,7 +114,7 @@ void AdminUI::displayAllToppings(){
 
     ToppingRepo toppingRepo;
     vector<Topping> toppings = bizniz.getVectorOfToppings();
-    cout << endl << "----------------------------List of all toppings------------------------------" << endl;
+    cout << endl << "----------------------------List of all toppings----------------------------" << endl;
     if(toppings.size() < 1){
         cout << endl << "The file is empty :(" << endl;
     }
@@ -161,7 +161,7 @@ void AdminUI::changeTopping(){
 
     vector<Topping> toppings = bizniz.getVectorOfToppings();
     cout << endl;
-    cout << endl << "----------------------------List of all toppings------------------------------" << endl;
+    cout << endl << "----------------------------List of all toppings----------------------------" << endl;
     if(toppings.size() < 1){
         cout << endl << "The file is empty :(" << endl << endl;
     }
@@ -216,7 +216,7 @@ void AdminUI::removeTopping(){
         vector<Topping> toppings = bizniz.getVectorOfToppings();
         cout << endl;
     
-        cout << endl << "----------------------------List of all toppings------------------------------" << endl;
+        cout << endl << "----------------------------List of all toppings----------------------------" << endl;
         if(toppings.size() < 1){
                 cout << endl << "The file is empty :(" << endl << endl;
         }  else {
@@ -295,7 +295,7 @@ void AdminUI::displayLocationMenu(){
 void AdminUI::displayAllLocations(){
     
     vector<Location> locations = bizniz.getVectorOfLocations();
-    cout << endl << "----------------------------List of all locations------------------------------" << endl;
+    cout << endl << "----------------------------List of all locations---------------------------" << endl;
     if(locations.size() < 1){
         cout << endl << "The file is empty :("  << endl;
     }
@@ -330,7 +330,7 @@ void AdminUI::changeLocation(){
    
     vector<Location> locations = bizniz.getVectorOfLocations();
     cout << endl;
-    cout << endl << "----------------------------List of all locations------------------------------" << endl;
+    cout << endl << "----------------------------List of all locations----------------------------" << endl;
     
     if(locations.size() > 0){
     for(int i = 0; i < locations.size(); i++){
@@ -377,7 +377,7 @@ void AdminUI::removeLocation(){
     
     vector<Location> locations = bizniz.getVectorOfLocations();
     cout << endl;
-    cout << endl << "----------------------------List of all locations------------------------------" << endl;
+    cout << endl << "----------------------------List of all locations---------------------------" << endl;
     if(locations.size() < 1){
         cout << endl << "The file is empty :(" << endl << endl;
     } else {
@@ -460,7 +460,7 @@ void AdminUI::displayAllSides(){
     
     vector<Side> sides = bizniz.getVectorOfSides();
     
-    cout << endl << "----------------------------List of all sides------------------------------" << endl;
+    cout << endl << "----------------------------List of all sides-------------------------------" << endl;
     
     if(sides.size() < 1){
         cout << endl << "The file is empty :(" << endl;
@@ -505,7 +505,7 @@ void AdminUI::changeSide(){
 
     vector<Side> sides = bizniz.getVectorOfSides();
     cout << endl;
-    cout << endl << "----------------------------List of all sides------------------------------" << endl;
+    cout << endl << "----------------------------List of all sides-------------------------------" << endl;
     
     if(sides.size() < 1){
         cout << endl <<"The file is empty :(" << endl << endl;
@@ -554,7 +554,7 @@ void AdminUI::removeSide(){
     
     vector<Side> sides = bizniz.getVectorOfSides();
     cout << endl;
-    cout << endl << "----------------------------List of all sides------------------------------" << endl;
+    cout << endl << "----------------------------List of all sides-------------------------------" << endl;
     
     if(sides.size() < 1){
         cout << endl << "The file is empty :(" << endl << endl;
@@ -809,7 +809,7 @@ void AdminUI::displaySizeMenu(){
 void AdminUI::displayAllSizes(){
     
     vector<Size> sizes = bizniz.getVectorOfSizes();
-    cout << endl << "----------------------------List of all sizes------------------------------" << endl;
+    cout << endl << "----------------------------List of all sizes-------------------------------" << endl;
     
     if(sizes.size() < 1){
         cout << endl << "The file is empty :(" << endl;
@@ -828,7 +828,7 @@ void AdminUI::changeSize(){
     
     vector<Size> sizes = bizniz.getVectorOfSizes();
     cout << endl;
-    cout << endl << "----------------------------List of all sizes------------------------------" << endl;
+    cout << endl << "----------------------------List of all sizes-------------------------------" << endl;
     
     if(sizes.size() < 1){
         cout << endl << "The file is empty :(" << endl << endl;
@@ -901,7 +901,7 @@ void AdminUI::removeSize(){
     
     vector<Size> sizes = bizniz.getVectorOfSizes();
     cout << endl;
-    cout << endl << "----------------------------List of all sizes------------------------------" << endl;
+    cout << endl << "----------------------------List of all sizes-------------------------------" << endl;
     
     if(sizes.size() < 1){
         cout << endl << "The file is empty :(" << endl << endl;
@@ -985,7 +985,7 @@ void AdminUI::displayBaseMenu(){
 void AdminUI::displayAllBases(){
     
     vector<Base> bases = bizniz.getVectorOfBases();
-    cout << endl << "----------------------------List of all bases------------------------------" << endl;
+    cout << endl << "----------------------------List of all bases-------------------------------" << endl;
     if(bases.size() < 1){
         cout << endl << "The file is empty :("<< endl;
     } else {
@@ -1002,7 +1002,7 @@ void AdminUI::changeBase(){
     
     vector<Base> bases = bizniz.getVectorOfBases();
     cout << endl;
-    cout << endl << "----------------------------List of all bases------------------------------" << endl;
+    cout << endl << "----------------------------List of all bases-------------------------------" << endl;
     
     if(bases.size() < 1){
         cout << endl << "The file is empty :(" << endl << endl;
@@ -1073,7 +1073,7 @@ void AdminUI::removeBase(){
     
     vector<Base> bases = bizniz.getVectorOfBases();
     cout << endl;
-    cout << endl << "----------------------------List of all bases------------------------------" << endl;
+    cout << endl << "----------------------------List of all bases-------------------------------" << endl;
     
     if(bases.size() < 1){
         cout << endl << "The file is empty :(" << endl << endl;
