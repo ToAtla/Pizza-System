@@ -213,26 +213,30 @@ void AdminUI::removeTopping(){
 
         vector<Topping> toppings = bizniz.getVectorOfToppings();
         cout << endl;
-        cout << endl << "----------------------------List of all toppings------------------------------" << endl;
-        for(int i = 0; i < toppings.size(); i++){
-            Topping temp = toppings.at(i);
-            cout << "Topping number: " << i+1 << endl;
-            cout <<  temp;
-            cout << setfill(CHARFORSETFILL) << setw(SIZEOFSETW) << "-" << endl;
-        }
+        if(toppings.size() < 1){
+            
+        } else {
+            cout << endl << "----------------------------List of all toppings------------------------------" << endl;
+            for(int i = 0; i < toppings.size(); i++){
+                Topping temp = toppings.at(i);
+                cout << "Topping number: " << i+1 << endl;
+                cout <<  temp;
+                cout << setfill(CHARFORSETFILL) << setw(SIZEOFSETW) << "-" << endl;
+            }
 
-        string input;
-        cout << "Choose a topping to remove: ";
-        cin >> input;
-    
-        if(bizniz.isInputDigit(input) && bizniz.isValidInput(stoi(input), toppings.size())){
-            int intInput = stoi(input);
+            string input;
+            cout << "Choose a topping to remove: ";
+            cin >> input;
+        
+            if(bizniz.isInputDigit(input) && bizniz.isValidInput(stoi(input), toppings.size())){
+                int intInput = stoi(input);
 
-            if(intInput < 1 ||intInput > (toppings.size())){
-                cout << endl << "No topping chosen" << endl << endl;
-            } else {
-                bizniz.removeTopping(toppings, intInput);
-                cout << endl << "Topping removed" << endl << endl;
+                if(intInput < 1 ||intInput > (toppings.size())){
+                    cout << endl << "No topping chosen" << endl << endl;
+                } else {
+                    bizniz.removeTopping(toppings, intInput);
+                    cout << endl << "Topping removed" << endl << endl;
+                }
             }
         }
 }
@@ -500,7 +504,7 @@ void AdminUI::changeSide(){
     cout << "Choose a side to change: ";
     cin >> input;
 
-    if(bizniz.isValidInput(stoi(input), sides.size())){
+    if(bizniz.isInputDigit(input) && bizniz.isValidInput(stoi(input), sides.size())){
     
         int intInput = stoi(input);
         
@@ -638,7 +642,7 @@ void AdminUI::changeDrink(){
     cout << "Choose a drink to change: ";
     cin >> input;
     
-    if(bizniz.isValidInput(stoi(input), drinks.size())){
+    if(bizniz.isInputDigit(input) && bizniz.isValidInput(stoi(input), drinks.size())){
         
         int intInput = stoi(input);
         
@@ -799,7 +803,7 @@ void AdminUI::changeSize(){
     cout << "Choose a size to change: ";
     cin >> input;
     
-    if(bizniz.isValidInput(stoi(input), sizes.size())){
+    if(bizniz.isInputDigit(input) && bizniz.isValidInput(stoi(input), sizes.size())){
         
         int intInput = stoi(input);
         
@@ -961,7 +965,7 @@ void AdminUI::changeBase(){
     cout << "Choose a base to change: ";
     cin >> input;
     
-    if(bizniz.isValidInput(stoi(input), bases.size())){
+    if(bizniz.isInputDigit(input) && bizniz.isValidInput(stoi(input), bases.size())){
         
         int intInput = stoi(input);
         
