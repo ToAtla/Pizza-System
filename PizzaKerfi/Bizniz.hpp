@@ -22,6 +22,8 @@
 #include "InvalidNameException.hpp"
 #include "InvalidPriceException.hpp"
 #include "InvalidInputException.hpp"
+#include "InvalidFileLocationException.hpp"
+#include "InvalidFileSizeBaseException.hpp"
 #include <string>
 #include <stdio.h>
 class Bizniz {
@@ -87,13 +89,15 @@ public:
     Order* getArrayOfOrdersAtLocationWithApplicablePizzas(status status, Location location, bool onlyWith, int& sizeOfReturnOrderList);
     bool thereExistsOrderAtLocationWithApplicablePizza(status status, Location location, bool onlyWith);
     
-    //Exceptions
+    //Exceptions(Bool functions)
     bool isValidName(string name);
     bool isValidPrice(int price);
     bool isValidInput(int input, unsigned long sizeOfList);
     bool isPriceDigit(string price);
     bool isInputDigit(string input);
     bool isValidNameLength(string name, int lenght);
+    bool isValidLocationFile();
+    bool isValidBaseSizeFile();
     
 private:
     ToppingRepo toppingRepo;
