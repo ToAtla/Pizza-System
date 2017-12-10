@@ -328,6 +328,7 @@ Pizza* Bizniz::extractAllPizzasWithStatusFromOrder(Order order, status status, i
     for (int i = 0; i < order.getNumberOfPizzas(); i++) {
         if(order.getPizzasInOrder()[i].getStatus() == status){
             returnPizzas[tellMeHowMany] = order.getPizzasInOrder()[i];
+            tellMeHowMany++;
         }
     }
     return returnPizzas;
@@ -339,6 +340,7 @@ Pizza* Bizniz::extractAllPizzasWithoutStatusFromOrder(Order order, status status
     for (int i = 0; i < order.getNumberOfPizzas(); i++) {
         if(order.getPizzasInOrder()[i].getStatus() != status){
             returnPizzas[tellMeHowMany] = order.getPizzasInOrder()[i];
+            tellMeHowMany++;
         }
     }
     return returnPizzas;
@@ -476,8 +478,38 @@ Order* Bizniz::getArrayOfOrdersAtLocationWithPizzasWithoutSomeStatus(status stat
     delete [] allOrders;
     return returnOrders;
 }
-               
-            
+
+bool Bizniz::thereExistsOrderWithPizzaWithStatusAtLocation(status status, Location location){
+    int ordersInFile = 0;
+    Order* allOrders = getArrayOfOrders(ORDERFILE, ordersInFile);
+    for (int i = 0; i < ordersInFile; i++) {
+        if(allOrders[i].getLocation().getLocation() == location.getLocation()){
+            for (int c = 0; c < allOrders[i].getNumberOfPizzas(); i++) {
+                if(allOrders[i].getPizzasInOrder()[c].getStatus() == status){
+                    return true;
+                }
+            }
+        }
+    }
+    delete [] allOrders;
+    return false;
+}
+
+bool Bizniz::thereExistsOrderWithPizzaWithoutStatusAtLocation(status status, Location location){
+    int ordersInFile = 0;
+    Order* allOrders = getArrayOfOrders(ORDERFILE, ordersInFile);
+    for (int i = 0; i < ordersInFile; i++) {
+        if(allOrders[i].getLocation().getLocation() == location.getLocation()){
+            for (int c = 0; c < allOrders[i].getNumberOfPizzas(); i++) {
+                if(allOrders[i].getPizzasInOrder()[c].getStatus() != status){
+                    return true;
+                }
+            }
+        }
+    }
+    delete [] allOrders;
+    return false;
+}
 /**************************************************************************************
  
                               Exceptions(Bool functions)

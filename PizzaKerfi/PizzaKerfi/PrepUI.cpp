@@ -142,7 +142,7 @@ bool PrepUI::canPrintPizzaListWithStatusAtCurrentLocationAndDoes(status status){
             cout << "#" << orderList[i].getID() << endl;
             int howManyPizzasApply;
             Pizza* pizzasThatApply = bizniz.extractAllPizzasWithStatusFromOrder(orderList[i], status, howManyPizzasApply);
-            for (int c = 0; c < howManyPizzasApply; i++) {
+            for (int c = 0; c < howManyPizzasApply; c++) {
                 cout << pizzasThatApply[c];
             }
             delete [] pizzasThatApply;
@@ -169,15 +169,16 @@ bool PrepUI::canPrintPizzaListWithStatusAtCurrentLocationAndDoes(status status){
 bool PrepUI::canPrintPizzaListWithoutStatusAtCurrentLocationAndDoes(status status){
     int size;
     Order* orderList = bizniz.getArrayOfOrdersAtLocationWithPizzasWithoutSomeStatus(status, locationOfPrep, size);
-    cout << " - - - - Pizzas without status " << bizniz.statusToString(status) << " - - - - " << endl;
     
-    if(size != 0){
+    cout << "Hér er ég" << endl;
+    cout << " - - - - Pizzas without status " << bizniz.statusToString(status) << " - - - - " << endl;
+    if(bizniz.thereExistsOrderWithPizzaWithoutStatusAtLocation(DELIVERED, locationOfPrep)){
         for (int i = 0; i < size; i++) {
             cout << "#" << orderList[i].getID() << endl;
             int howManyPizzasApply;
-            Pizza* pizzasThatApply = bizniz.extractAllPizzasWithStatusFromOrder(orderList[i], status, howManyPizzasApply);
-            cout << "Amount " << howManyPizzasApply;
-            for (int c = 0; c < howManyPizzasApply; i++) {
+            Pizza* pizzasThatApply = bizniz.extractAllPizzasWithoutStatusFromOrder(orderList[i], status, howManyPizzasApply);
+            cout << "Amount of pizzas" << howManyPizzasApply << endl;;
+            for (int c = 0; c < howManyPizzasApply; c++) {
                 cout << pizzasThatApply[c];
             }
             delete [] pizzasThatApply;

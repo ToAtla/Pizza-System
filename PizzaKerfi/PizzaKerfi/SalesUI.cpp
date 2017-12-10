@@ -61,7 +61,7 @@ void SalesUI::createOrder(){
     drinkListCreationProcess(order);
     
     bizniz.storeOrder(order);
-    bizniz.extractPizzasForPrepUI(order);
+    //bizniz.extractPizzasForPrepUI(order);
 }
 
 

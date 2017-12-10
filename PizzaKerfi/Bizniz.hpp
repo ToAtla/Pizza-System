@@ -87,6 +87,8 @@ public:
     void changeStatusOfPizzaInOrder(int orderNum, int pizzaNumber, status status);
     Order* getArrayOfOrdersAtLocationWithPizzasWithStatus(status status, Location location, int& sizeOfReturnPizzaList);
     Order* getArrayOfOrdersAtLocationWithPizzasWithoutSomeStatus(status status, Location location, int& sizeOfReturnPizzaList);
+    bool thereExistsOrderWithPizzaWithStatusAtLocation(status status, Location location);
+    bool thereExistsOrderWithPizzaWithoutStatusAtLocation(status status, Location location);
     
     //Exceptions
     bool isValidName(string name);
