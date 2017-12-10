@@ -386,7 +386,7 @@ int Bizniz::getNumberForNextOrder(){
     int orderCnt = 0;
     OrderRepo ordRep;
     Order* tempOrderArray = ordRep.retrieveOrderArray(ORDERFILE, orderCnt);
-    if(orderCnt <= 0){
+    if(orderCnt == 0){
         orderCnt = 1;
         return orderCnt;
     }
@@ -455,6 +455,7 @@ Order* Bizniz::getArrayOfOrdersAtLocationWithPizzasWithStatus(status status, Loc
                 if(allOrders[i].getPizzasInOrder()[c].getStatus() == status){
                     returnOrders[sizeOfReturnOrderList] = allOrders[i];
                     sizeOfReturnOrderList++;
+                    c = allOrders[i].getNumberOfPizzas();
                 }
             }
         }
@@ -476,6 +477,7 @@ Order* Bizniz::getArrayOfOrdersAtLocationWithPizzasWithoutSomeStatus(status stat
                 if(allOrders[i].getPizzasInOrder()[c].getStatus() != status){
                     returnOrders[sizeOfReturnOrderList] = allOrders[i];
                     sizeOfReturnOrderList++;
+                    c = allOrders[i].getNumberOfPizzas();
                 }
             }
         }

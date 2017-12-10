@@ -18,7 +18,6 @@ class OrderRepo{
 public:
     OrderRepo();
     void storeOrder(const Order& order);
-    Order retrieveOrder();
     Order* retrieveOrderArray(string fileName, int& tellMeHowManyOrders);
     bool fileExists(string fileName);
     void clearOrderFile(string fileName);
