@@ -115,7 +115,7 @@ void AdminUI::displayAllToppings(){
     vector<Topping> toppings = bizniz.getVectorOfToppings();
     cout << endl << "----------------------------List of all toppings------------------------------" << endl;
     if(toppings.size() < 1){
-        cout << "The file is empty :(" << endl << endl;
+        cout << endl << "The file is empty :(" << endl;
     }
     else{
         for (int i = 0; i < toppings.size(); i++) {
@@ -162,7 +162,7 @@ void AdminUI::changeTopping(){
     cout << endl;
     cout << endl << "----------------------------List of all toppings------------------------------" << endl;
     if(toppings.size() < 1){
-        cout << "The file is empty :(" << endl << endl;
+        cout << endl << "The file is empty :(" << endl << endl;
     }
     else{
         for(int i = 0; i < toppings.size(); i++){
@@ -217,7 +217,7 @@ void AdminUI::removeTopping(){
     
         cout << endl << "----------------------------List of all toppings------------------------------" << endl;
         if(toppings.size() < 1){
-                cout << "The file is empty :(" << endl << endl;
+                cout << endl << "The file is empty :(" << endl << endl;
         }  else {
             for(int i = 0; i < toppings.size(); i++){
                 Topping temp = toppings.at(i);
@@ -296,7 +296,7 @@ void AdminUI::displayAllLocations(){
     vector<Location> locations = bizniz.getVectorOfLocations();
     cout << endl << "----------------------------List of all locations------------------------------" << endl;
     if(locations.size() < 1){
-        cout << "The file is empty :(" << endl << endl;
+        cout << endl << "The file is empty :("  << endl;
     }
     
     for (int i = 0; i < locations.size(); i++) {
@@ -330,6 +330,7 @@ void AdminUI::changeLocation(){
     vector<Location> locations = bizniz.getVectorOfLocations();
     cout << endl;
     cout << endl << "----------------------------List of all locations------------------------------" << endl;
+    
     if(locations.size() > 0){
     for(int i = 0; i < locations.size(); i++){
         Location temp = locations.at(i);
@@ -376,25 +377,29 @@ void AdminUI::removeLocation(){
     vector<Location> locations = bizniz.getVectorOfLocations();
     cout << endl;
     cout << endl << "----------------------------List of all locations------------------------------" << endl;
-    for(int i = 0; i < locations.size(); i++){
-        Location temp = locations.at(i);
-        cout << "Location number: " << i+1 << endl;
-        cout <<  temp << endl;
-        cout << setfill(CHARFORSETFILL) << setw(SIZEOFSETW) << "-" << endl;
-    }
+    if(locations.size() < 1){
+        cout << endl << "The file is empty :(" << endl << endl;
+    } else {
+        for(int i = 0; i < locations.size(); i++){
+            Location temp = locations.at(i);
+            cout << "Location number: " << i+1 << endl;
+            cout <<  temp << endl;
+            cout << setfill(CHARFORSETFILL) << setw(SIZEOFSETW) << "-" << endl;
+        }
 
-    string input;
-    cout << "Choose a location to remove: ";
-    cin >> input;
-    
-    if(bizniz.isInputDigit(input) && bizniz.isValidInput(stoi(input), locations.size())){
-        int intInput = stoi(input);
+        string input;
+        cout << "Choose a location to remove: ";
+        cin >> input;
         
-        if(intInput < 1 ||intInput > (locations.size())){
-            cout << endl << "No location chosen" << endl << endl;
-        } else {
-            bizniz.removeLocation(locations, intInput);
-            cout << endl << "Location removed" << endl << endl;
+        if(bizniz.isInputDigit(input) && bizniz.isValidInput(stoi(input), locations.size())){
+            int intInput = stoi(input);
+            
+            if(intInput < 1 ||intInput > (locations.size())){
+                cout << endl << "No location chosen" << endl << endl;
+            } else {
+                bizniz.removeLocation(locations, intInput);
+                cout << endl << "Location removed" << endl << endl;
+            }
         }
     }
 }
@@ -457,14 +462,16 @@ void AdminUI::displayAllSides(){
     cout << endl << "----------------------------List of all sides------------------------------" << endl;
     
     if(sides.size() < 1){
-        cout << "The file is empty :(" << endl << endl;
+        cout << endl << "The file is empty :(" << endl;
     }
-    
-    for (int i = 0; i < sides.size(); i++) {
+    else {
+        for (int i = 0; i < sides.size(); i++) {
+            
+            Side temp = sides.at(i);
+            cout << temp << endl;
+            cout << setfill(CHARFORSETFILL) << setw(SIZEOFSETW) << "-" << endl;
+        }
         
-        Side temp = sides.at(i);
-        cout << temp << endl;
-        cout << setfill(CHARFORSETFILL) << setw(SIZEOFSETW) << "-" << endl;
     }
     cout << endl;
 }
@@ -498,41 +505,46 @@ void AdminUI::changeSide(){
     vector<Side> sides = bizniz.getVectorOfSides();
     cout << endl;
     cout << endl << "----------------------------List of all sides------------------------------" << endl;
-    for(int i = 0; i < sides.size(); i++){
-        Side temp = sides.at(i);
-        cout << "Side number: " << i+1 << endl;
-        cout <<  temp << endl;
-        cout << setfill(CHARFORSETFILL) << setw(SIZEOFSETW) << "-" << endl;
-    }
-    string input;
-    cout << "Choose a side to change: ";
-    cin >> input;
-
-    if(bizniz.isInputDigit(input) && bizniz.isValidInput(stoi(input), sides.size())){
     
-        int intInput = stoi(input);
-        
+    if(sides.size() < 1){
+        cout << endl <<"The file is empty :(" << endl << endl;
+    } else {
         for(int i = 0; i < sides.size(); i++){
-            if(intInput == i+1){
-                cout << "Enter side name (Max " << MAXCHARINSIDENAME-1 << " letters): ";
-                string name;
-                cin.ignore();
-                getline(cin, name);
-                cout << "Enter price: ";
-                string price;
-                cin >> price;
-                
-                if(bizniz.isValidName(name) && bizniz.isPriceDigit(price) && bizniz.isValidNameLength(name, MAXCHARINSIDENAME)){
-                    int intPrice = stoi(price);
-                    char tempName[MAXCHARINSIDENAME];
-                    strcpy(tempName, name.c_str());
-                    Side temp(tempName, intPrice);
-                    sides.at(i) = temp;
-                    cout << endl << "Side changed" << endl << endl;
+            Side temp = sides.at(i);
+            cout << "Side number: " << i+1 << endl;
+            cout <<  temp << endl;
+            cout << setfill(CHARFORSETFILL) << setw(SIZEOFSETW) << "-" << endl;
+        }
+        string input;
+        cout << "Choose a side to change: ";
+        cin >> input;
+
+        if(bizniz.isInputDigit(input) && bizniz.isValidInput(stoi(input), sides.size())){
+        
+            int intInput = stoi(input);
+            
+            for(int i = 0; i < sides.size(); i++){
+                if(intInput == i+1){
+                    cout << "Enter side name (Max " << MAXCHARINSIDENAME-1 << " letters): ";
+                    string name;
+                    cin.ignore();
+                    getline(cin, name);
+                    cout << "Enter price: ";
+                    string price;
+                    cin >> price;
+                    
+                    if(bizniz.isValidName(name) && bizniz.isPriceDigit(price) && bizniz.isValidNameLength(name, MAXCHARINSIDENAME)){
+                        int intPrice = stoi(price);
+                        char tempName[MAXCHARINSIDENAME];
+                        strcpy(tempName, name.c_str());
+                        Side temp(tempName, intPrice);
+                        sides.at(i) = temp;
+                        cout << endl << "Side changed" << endl << endl;
+                    }
                 }
             }
+            bizniz.storeVectorOfSides(sides);
         }
-        bizniz.storeVectorOfSides(sides);
     }
 }
 
@@ -542,26 +554,31 @@ void AdminUI::removeSide(){
     vector<Side> sides = bizniz.getVectorOfSides();
     cout << endl;
     cout << endl << "----------------------------List of all sides------------------------------" << endl;
-    for(int i = 0; i < sides.size(); i++){
-        Side temp = sides.at(i);
-        cout << "Side number: " << i+1 << endl;
-        cout <<  temp << endl;
-        cout << setfill(CHARFORSETFILL) << setw(SIZEOFSETW) << "-" << endl;
-    }
-
-    string input;
-    cout << "Choose a side to remove: ";
-    cin >> input;
-
-    if(bizniz.isInputDigit(input) && bizniz.isValidInput(stoi(input), sides.size())){
     
-        int intInput = stoi(input);
+    if(sides.size() < 1){
+        cout << endl << "The file is empty :(" << endl << endl;
+    } else {
+        for(int i = 0; i < sides.size(); i++){
+            Side temp = sides.at(i);
+            cout << "Side number: " << i+1 << endl;
+            cout <<  temp << endl;
+            cout << setfill(CHARFORSETFILL) << setw(SIZEOFSETW) << "-" << endl;
+        }
+
+        string input;
+        cout << "Choose a side to remove: ";
+        cin >> input;
+
+        if(bizniz.isInputDigit(input) && bizniz.isValidInput(stoi(input), sides.size())){
         
-        if(intInput < 1 ||intInput > (sides.size())){
-            cout << "No side chosen" << endl << endl;
-        } else {
-            bizniz.removeSide(sides, intInput);
-            cout << endl << "Side removed!" << endl << endl;
+            int intInput = stoi(input);
+            
+            if(intInput < 1 ||intInput > (sides.size())){
+                cout << "No side chosen" << endl << endl;
+            } else {
+                bizniz.removeSide(sides, intInput);
+                cout << endl << "Side removed!" << endl << endl;
+            }
         }
     }
 }
@@ -620,13 +637,14 @@ void AdminUI::displayAllDrinks(){
     vector<Drink> drinks = bizniz.getVectorOfDrinks();
     cout << endl << "----------------------------List of all drinks------------------------------" << endl;
     if(drinks.size() < 1){
-        cout << "The file is empty :(" << endl << endl;
+        cout << endl << "The file is empty :(" << endl;
     }
-    
-    for (int i = 0; i < drinks.size(); i++) {
-        Drink temp = drinks.at(i);
-        cout << temp << endl;
-        cout << setfill(CHARFORSETFILL) << setw(SIZEOFSETW) << "-" << endl;
+    else {
+        for (int i = 0; i < drinks.size(); i++) {
+            Drink temp = drinks.at(i);
+            cout << temp << endl;
+            cout << setfill(CHARFORSETFILL) << setw(SIZEOFSETW) << "-" << endl;
+        }
     }
     cout << endl;
 }
@@ -636,41 +654,46 @@ void AdminUI::changeDrink(){
     vector<Drink> drinks = bizniz.getVectorOfDrinks();
     cout << endl;
     cout << endl << "----------------------------List of all drinks------------------------------" << endl;
-    for(int i = 0; i < drinks.size(); i++){
-        Drink temp = drinks.at(i);
-        cout << "Drink number: " << i+1 << endl;
-        cout <<  temp << endl;
-        cout << setfill(CHARFORSETFILL) << setw(SIZEOFSETW) << "-" << endl;
-    }
-    string input;
-    cout << "Choose a drink to change: ";
-    cin >> input;
     
-    if(bizniz.isInputDigit(input) && bizniz.isValidInput(stoi(input), drinks.size())){
-        
-        int intInput = stoi(input);
-        
+    if(drinks.size() < 1){
+        cout << endl << "The file is empty :(" << endl << endl;
+    } else {
         for(int i = 0; i < drinks.size(); i++){
-            if(intInput == i+1){
-                cout << "Enter drink name (Max " << MAXCHARINDRINKNAME-1 << " letters): ";
-                string name;
-                cin.ignore();
-                getline(cin, name);
-                cout << "Enter price: ";
-                string price;
-                cin >> price;
-                
-                if(bizniz.isValidName(name) && bizniz.isPriceDigit(price) && bizniz.isValidNameLength(name, MAXCHARINDRINKNAME)){
-                    int intPrice = stoi(price);
-                    char tempName[MAXCHARINDRINKNAME];
-                    strcpy(tempName, name.c_str());
-                    Drink temp(tempName, intPrice);
-                    drinks.at(i) = temp;
-                    cout << endl << "Drink changed" << endl << endl;
+            Drink temp = drinks.at(i);
+            cout << "Drink number: " << i+1 << endl;
+            cout <<  temp << endl;
+            cout << setfill(CHARFORSETFILL) << setw(SIZEOFSETW) << "-" << endl;
+        }
+        string input;
+        cout << "Choose a drink to change: ";
+        cin >> input;
+        
+        if(bizniz.isInputDigit(input) && bizniz.isValidInput(stoi(input), drinks.size())){
+            
+            int intInput = stoi(input);
+            
+            for(int i = 0; i < drinks.size(); i++){
+                if(intInput == i+1){
+                    cout << "Enter drink name (Max " << MAXCHARINDRINKNAME-1 << " letters): ";
+                    string name;
+                    cin.ignore();
+                    getline(cin, name);
+                    cout << "Enter price: ";
+                    string price;
+                    cin >> price;
+                    
+                    if(bizniz.isValidName(name) && bizniz.isPriceDigit(price) && bizniz.isValidNameLength(name, MAXCHARINDRINKNAME)){
+                        int intPrice = stoi(price);
+                        char tempName[MAXCHARINDRINKNAME];
+                        strcpy(tempName, name.c_str());
+                        Drink temp(tempName, intPrice);
+                        drinks.at(i) = temp;
+                        cout << endl << "Drink changed" << endl << endl;
+                    }
                 }
             }
+            bizniz.storeVectorOfDrinks(drinks);
         }
-        bizniz.storeVectorOfDrinks(drinks);
     }
 }
 
@@ -703,26 +726,31 @@ void AdminUI::removeDrink(){
     vector<Drink> drinks = bizniz.getVectorOfDrinks();
     cout << endl;
     cout << endl << "----------------------------List of all drinks------------------------------" << endl;
-    for(int i = 0; i < drinks.size(); i++){
-        Drink temp = drinks.at(i);
-        cout << "Drink number: " << i+1 << endl;
-        cout <<  temp << endl;
-        cout << setfill(CHARFORSETFILL) << setw(SIZEOFSETW) << "-" << endl;
-    }
     
-    string input;
-    cout << "Choose a drink to remove: ";
-    cin >> input;
-    
-    if(bizniz.isInputDigit(input) && bizniz.isValidInput(stoi(input), drinks.size())){
+    if(drinks.size() < 1){
+        cout << endl << "The file is empyt :(" << endl << endl;
+    } else {
+        for(int i = 0; i < drinks.size(); i++){
+            Drink temp = drinks.at(i);
+            cout << "Drink number: " << i+1 << endl;
+            cout <<  temp << endl;
+            cout << setfill(CHARFORSETFILL) << setw(SIZEOFSETW) << "-" << endl;
+        }
         
-        int intInput = stoi(input);
+        string input;
+        cout << "Choose a drink to remove: ";
+        cin >> input;
         
-        if(intInput < 1 ||intInput > (drinks.size())){
-            cout << "No drink chosen" << endl << endl;
-        } else {
-            bizniz.removeDrink(drinks, intInput);
-            cout << endl << "Drink removed!" << endl << endl;
+        if(bizniz.isInputDigit(input) && bizniz.isValidInput(stoi(input), drinks.size())){
+            
+            int intInput = stoi(input);
+            
+            if(intInput < 1 ||intInput > (drinks.size())){
+                cout << "No drink chosen" << endl << endl;
+            } else {
+                bizniz.removeDrink(drinks, intInput);
+                cout << endl << "Drink removed!" << endl << endl;
+            }
         }
     }
 }
@@ -781,15 +809,17 @@ void AdminUI::displayAllSizes(){
     
     vector<Size> sizes = bizniz.getVectorOfSizes();
     cout << endl << "----------------------------List of all sizes------------------------------" << endl;
-    if(sizes.size() < 1){
-        cout << "The file is empty :(" << endl << endl;
-    }
     
-    for (int i = 0; i < sizes.size(); i++) {
-        Size temp = sizes.at(i);
-        cout << temp;
-        cout << setfill(CHARFORSETFILL) << setw(SIZEOFSETW) << "-" << endl;
+    if(sizes.size() < 1){
+        cout << endl << "The file is empty :(" << endl;
+    } else {
+        for (int i = 0; i < sizes.size(); i++) {
+            Size temp = sizes.at(i);
+            cout << temp;
+            cout << setfill(CHARFORSETFILL) << setw(SIZEOFSETW) << "-" << endl;
+        }
     }
+    cout << endl;
 }
 
 
@@ -798,42 +828,47 @@ void AdminUI::changeSize(){
     vector<Size> sizes = bizniz.getVectorOfSizes();
     cout << endl;
     cout << endl << "----------------------------List of all sizes------------------------------" << endl;
-    for(int i = 0; i < sizes.size(); i++){
-        Size temp = sizes.at(i);
-        cout << "Size number: " << i+1 << endl;
-        cout <<  temp;
-        cout << setfill(CHARFORSETFILL) << setw(SIZEOFSETW) << "-" << endl;
-    }
     
-    string input;
-    cout << "Choose a size to change: ";
-    cin >> input;
-    
-    if(bizniz.isInputDigit(input) && bizniz.isValidInput(stoi(input), sizes.size())){
-        
-        int intInput = stoi(input);
-        
+    if(sizes.size() < 1){
+        cout << endl << "The file is empty :(" << endl << endl;
+    } else {
         for(int i = 0; i < sizes.size(); i++){
-            if(intInput == i+1){
-                cout << "Enter size name (Max " << MAXCHARINSIZENAME-1-1 << " letters): ";
-                string name;
-                cin.ignore();
-                getline(cin, name);
-                cout << "Enter price: ";
-                string price;
-                cin >> price;
-                
-                if(bizniz.isValidName(name) && bizniz.isPriceDigit(price) && bizniz.isValidNameLength(name, MAXCHARINSIZENAME-1)){
-                    int intPrice = stoi(price);
-                    char tempName[MAXCHARINSIZENAME];
-                    strcpy(tempName, name.c_str());
-                    Size temp(tempName, intPrice);
-                    sizes.at(i) = temp;
-                    cout << endl << "Size changed" << endl << endl;
+            Size temp = sizes.at(i);
+            cout << "Size number: " << i+1 << endl;
+            cout <<  temp;
+            cout << setfill(CHARFORSETFILL) << setw(SIZEOFSETW) << "-" << endl;
+        }
+        
+        string input;
+        cout << "Choose a size to change: ";
+        cin >> input;
+        
+        if(bizniz.isInputDigit(input) && bizniz.isValidInput(stoi(input), sizes.size())){
+            
+            int intInput = stoi(input);
+            
+            for(int i = 0; i < sizes.size(); i++){
+                if(intInput == i+1){
+                    cout << "Enter size name (Max " << MAXCHARINSIZENAME-1-1 << " letters): ";
+                    string name;
+                    cin.ignore();
+                    getline(cin, name);
+                    cout << "Enter price: ";
+                    string price;
+                    cin >> price;
+                    
+                    if(bizniz.isValidName(name) && bizniz.isPriceDigit(price) && bizniz.isValidNameLength(name, MAXCHARINSIZENAME-1)){
+                        int intPrice = stoi(price);
+                        char tempName[MAXCHARINSIZENAME];
+                        strcpy(tempName, name.c_str());
+                        Size temp(tempName, intPrice);
+                        sizes.at(i) = temp;
+                        cout << endl << "Size changed" << endl << endl;
+                    }
                 }
             }
+            bizniz.storeVectorOfSizes(sizes);
         }
-        bizniz.storeVectorOfSizes(sizes);
     }
 }
 
@@ -866,27 +901,32 @@ void AdminUI::removeSize(){
     vector<Size> sizes = bizniz.getVectorOfSizes();
     cout << endl;
     cout << endl << "----------------------------List of all sizes------------------------------" << endl;
-    for(int i = 0; i < sizes.size(); i++){
-        Size temp = sizes.at(i);
-        cout << "Size number: " << i+1 << endl;
-        cout <<  temp;
-        cout << setfill(CHARFORSETFILL) << setw(SIZEOFSETW) << "-" << endl;
-    }
+    
+    if(sizes.size() < 1){
+        cout << endl << "The file is empty :(" << endl << endl;
+    } else {
+        for(int i = 0; i < sizes.size(); i++){
+            Size temp = sizes.at(i);
+            cout << "Size number: " << i+1 << endl;
+            cout <<  temp;
+            cout << setfill(CHARFORSETFILL) << setw(SIZEOFSETW) << "-" << endl;
+        }
 
-    
-    string input;
-    cout << "Choose a size to remove: ";
-    cin >> input;
-    
-    if(bizniz.isInputDigit(input) && bizniz.isValidInput(stoi(input), sizes.size())){
         
-        int intInput = stoi(input);
+        string input;
+        cout << "Choose a size to remove: ";
+        cin >> input;
         
-        if(intInput < 1 ||intInput > (sizes.size())){
-            cout << "No size chosen" << endl << endl;
-        } else {
-            bizniz.removeSize(sizes, intInput);
-            cout << endl << "Size removed!" << endl << endl;
+        if(bizniz.isInputDigit(input) && bizniz.isValidInput(stoi(input), sizes.size())){
+            
+            int intInput = stoi(input);
+            
+            if(intInput < 1 ||intInput > (sizes.size())){
+                cout << "No size chosen" << endl << endl;
+            } else {
+                bizniz.removeSize(sizes, intInput);
+                cout << endl << "Size removed!" << endl << endl;
+            }
         }
     }
 }
@@ -946,15 +986,15 @@ void AdminUI::displayAllBases(){
     vector<Base> bases = bizniz.getVectorOfBases();
     cout << endl << "----------------------------List of all bases------------------------------" << endl;
     if(bases.size() < 1){
-        cout << "The file is empty :(" << endl << endl;
+        cout << endl << "The file is empty :("<< endl;
+    } else {
+        for (unsigned int i = 0; i < bases.size(); i++) {
+            Base temp = bases.at(i);
+            cout << temp;
+            cout << setfill(CHARFORSETFILL) << setw(SIZEOFSETW) << "-" << endl;
+        }
     }
-    
-    for (unsigned int i = 0; i < bases.size(); i++) {
-        Base temp = bases.at(i);
-        cout << temp;
-        cout << setfill(CHARFORSETFILL) << setw(SIZEOFSETW) << "-" << endl;
-    }
-    
+    cout << endl;
 }
 
 void AdminUI::changeBase(){
@@ -962,42 +1002,47 @@ void AdminUI::changeBase(){
     vector<Base> bases = bizniz.getVectorOfBases();
     cout << endl;
     cout << endl << "----------------------------List of all bases------------------------------" << endl;
-    for(int i = 0; i < bases.size(); i++){
-        Base temp = bases.at(i);
-        cout << "Base number: " << i+1 << endl;
-        cout <<  temp;
-        cout << setfill(CHARFORSETFILL) << setw(SIZEOFSETW) << "-" << endl;
-    }
     
-    string input;
-    cout << "Choose a base to change: ";
-    cin >> input;
-    
-    if(bizniz.isInputDigit(input) && bizniz.isValidInput(stoi(input), bases.size())){
-        
-        int intInput = stoi(input);
-        
+    if(bases.size() < 1){
+        cout << endl << "The file is empty :(" << endl << endl;
+    } else {
         for(int i = 0; i < bases.size(); i++){
-            if(intInput == i+1){
-                cout << "Enter size name (Max " << MAXCHARINBASENAME-1-1 << " letters): ";
-                string name;
-                cin.ignore();
-                getline(cin, name);
-                cout << "Enter price: ";
-                string price;
-                cin >> price;
-                
-                if(bizniz.isValidName(name) && bizniz.isPriceDigit(price) && bizniz.isValidNameLength(name, MAXCHARINBASENAME-1)){
-                    int intPrice = stoi(price);
-                    char tempName[MAXCHARINBASENAME];
-                    strcpy(tempName, name.c_str());
-                    Base temp(tempName, intPrice);
-                    bases.at(i) = temp;
-                    cout << endl << "Size changed" << endl << endl;
+            Base temp = bases.at(i);
+            cout << "Base number: " << i+1 << endl;
+            cout <<  temp;
+            cout << setfill(CHARFORSETFILL) << setw(SIZEOFSETW) << "-" << endl;
+        }
+        
+        string input;
+        cout << "Choose a base to change: ";
+        cin >> input;
+        
+        if(bizniz.isInputDigit(input) && bizniz.isValidInput(stoi(input), bases.size())){
+            
+            int intInput = stoi(input);
+            
+            for(int i = 0; i < bases.size(); i++){
+                if(intInput == i+1){
+                    cout << "Enter size name (Max " << MAXCHARINBASENAME-1-1 << " letters): ";
+                    string name;
+                    cin.ignore();
+                    getline(cin, name);
+                    cout << "Enter price: ";
+                    string price;
+                    cin >> price;
+                    
+                    if(bizniz.isValidName(name) && bizniz.isPriceDigit(price) && bizniz.isValidNameLength(name, MAXCHARINBASENAME-1)){
+                        int intPrice = stoi(price);
+                        char tempName[MAXCHARINBASENAME];
+                        strcpy(tempName, name.c_str());
+                        Base temp(tempName, intPrice);
+                        bases.at(i) = temp;
+                        cout << endl << "Size changed" << endl << endl;
+                    }
                 }
             }
+            bizniz.storeVectorOfBases(bases);
         }
-        bizniz.storeVectorOfBases(bases);
     }
 }
 
@@ -1028,27 +1073,32 @@ void AdminUI::removeBase(){
     vector<Base> bases = bizniz.getVectorOfBases();
     cout << endl;
     cout << endl << "----------------------------List of all bases------------------------------" << endl;
-    for(int i = 0; i < bases.size(); i++){
-        Base temp = bases.at(i);
-        cout << "Base number: " << i+1 << endl;
-        cout <<  temp;
-        cout << setfill(CHARFORSETFILL) << setw(SIZEOFSETW) << "-" << endl;
-    }
-    cout << endl;
-
-    string input;
-    cout << "Choose a base to remove: ";
-    cin >> input;
     
-    if(bizniz.isInputDigit(input) && bizniz.isValidInput(stoi(input), bases.size())){
+    if(bases.size() < 1){
+        cout << endl << "The file is empty :(" << endl << endl;
+    } else {
+        for(int i = 0; i < bases.size(); i++){
+            Base temp = bases.at(i);
+            cout << "Base number: " << i+1 << endl;
+            cout <<  temp;
+            cout << setfill(CHARFORSETFILL) << setw(SIZEOFSETW) << "-" << endl;
+        }
+        cout << endl;
+
+        string input;
+        cout << "Choose a base to remove: ";
+        cin >> input;
         
-        int intInput = stoi(input);
-        
-        if(intInput < 1 ||intInput > (bases.size())){
-            cout << "No base chosen" << endl << endl;
-        } else {
-            bizniz.removeBase(bases, intInput);
-            cout << endl << "Base removed!" << endl << endl;
+        if(bizniz.isInputDigit(input) && bizniz.isValidInput(stoi(input), bases.size())){
+            
+            int intInput = stoi(input);
+            
+            if(intInput < 1 ||intInput > (bases.size())){
+                cout << "No base chosen" << endl << endl;
+            } else {
+                bizniz.removeBase(bases, intInput);
+                cout << endl << "Base removed!" << endl << endl;
+            }
         }
     }
 }

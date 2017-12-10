@@ -26,6 +26,7 @@ class SizeRepo{
         void storeVectorOfSizes(vector<Size> sizes);
     private:
         void clearSizes();
+        void createSizes();
 };
 
 #endif /* SizeRepo_hpp */

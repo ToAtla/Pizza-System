@@ -23,6 +23,9 @@ void SizeRepo::addSize(Size& size){
 
 //Skilar vector af öllum meðlætum sem eru í "sizes.txt"
 vector<Size> SizeRepo::getVectorOfSizes(){
+    
+    createSizes();
+    
     vector<Size> sizes;
     ifstream fin;
     fin.open("sizes.dat", ios::binary);
@@ -66,4 +69,12 @@ void SizeRepo::clearSizes()
     ofstream fout;
     fout.open("sizes.dat", ios::binary);
     fout.close();
+}
+
+void SizeRepo::createSizes(){
+    
+    ofstream fout;
+    fout.open("sizes.dat", ios::binary|ios::app);
+    fout.close();
+    
 }
