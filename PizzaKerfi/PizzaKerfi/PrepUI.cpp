@@ -14,32 +14,44 @@ using namespace std;
 
 void PrepUI::startPrepUI(){
     char input = '\0';
+    string sInput;
+    bool cont = true;
     magic.clearScreen();
-    cout << "++++++++++++++++ Preperation +++++++++++++++++++" << endl << endl;;
-    chooseYourLocation();
+    cout << "++++++++++++++++ Preperation +++++++++++++++++++" << endl << endl;
+    try {
+        chooseYourLocation();
+    } catch (InvalidInputException) {
+        cout << endl << "Invalid input! (input can't be a character and has to match a number on the list) Try again" << endl << endl;
+        cout << "Press any key to continue: ";
+        cin.ignore();
+        getline(cin, sInput);
+        cont = false;
+    }
     
-    while(input != 'b'){
-        magic.clearScreen();
-        cout << "Preparation line in " << locationOfPrep << endl;
-        cout << "1: List all pizzas in house" << endl;
-        cout << "2: List waiting pizzas and sides" << endl;
-        cout << "3: List pizzas and sides in preparation" << endl;
-        cout << "4: List ready pizzas and sides" << endl;
-        cout << "b: back" << endl;
-        cin >> input;
-        cout << endl;
-        
-        if(input == '1'){
-            allActiveOverview();
-        }
-        else if(input == '2'){
-            waitingOverview();
-        }
-        else if(input == '3'){
-            preppingOverview();
-        }
-        else if(input == '4'){
-            readyOverview();
+    if(cont){
+        while(input != 'b'){
+            magic.clearScreen();
+            cout << "Preparation line in " << locationOfPrep << endl;
+            cout << "1: List all pizzas in house" << endl;
+            cout << "2: List waiting pizzas and sides" << endl;
+            cout << "3: List pizzas and sides in preparation" << endl;
+            cout << "4: List ready pizzas and sides" << endl;
+            cout << "b: back" << endl;
+            cin >> input;
+            cout << endl;
+            
+            if(input == '1'){
+                allActiveOverview();
+            }
+            else if(input == '2'){
+                waitingOverview();
+            }
+            else if(input == '3'){
+                preppingOverview();
+            }
+            else if(input == '4'){
+                readyOverview();
+            }
         }
     }
 }
@@ -182,33 +194,24 @@ void PrepUI::chooseYourLocation(){
     vector<Location> locations;
     LocationRepo lr;
     locations = lr.getVectorOfLocations();
-    bool goodInput = true;
     
-    while(goodInput) {
-        cout << "- - - - - - Choose your location - - - - - - -" << endl;
+    cout << "- - - - - - Choose your location - - - - - - -" << endl;
+    for(int i = 0; i < locations.size(); i++){
+        cout << "Location number: " << i+1 << endl;
+        cout << locations[i] << endl << endl;
+    }
+    cout << "Choose location (no whitespaces): ";
+    string input;
+    cin >> input;
+    
+    
+    if(bizniz.isInputDigit(input) && bizniz.isValidInput(stoi(input), locations.size())){
+    
+        int intInput = stoi(input);
+        
         for(int i = 0; i < locations.size(); i++){
-            cout << "Location number: " << i+1 << endl;
-            cout << locations[i] << endl << endl;
-        }
-        cout << "Choose location: ";
-        char input = 0;
-        cin >> input;
-        
-        //Herna athuga eg hvort að input se bokstafur og ef það er bokstafur þa breyti eg good input i false.
-        if(!isdigit(input)){
-            cout << "Please enter a valid input" << endl;
-            goodInput = false;
-        }
-        
-        //Ef að inputið er ekki bokstafur þa fer fer maður í for loopuna og gefur private breytunni locationOfPrep gildid sem þu valdir.
-        //Og goodInput er sett false og while loopan hættir að loopa.
-        if(goodInput)
-        {
-            for(int i = 0; i < locations.size(); i++){
-                if(input-48 == i+1){
-                    this->locationOfPrep = locations[i];
-                    goodInput = false;
-                }
+            if(intInput == i+1){
+                this->locationOfPrep = locations[i];
             }
         }
     }

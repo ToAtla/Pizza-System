@@ -15,29 +15,40 @@ using namespace std;
 
 void DeliveryUI::startDeliveryUI(){
     char input = '\0';
+    string sInput;
+    bool cont = true;
+    try {
+        chooseYourLocation();
+    } catch (InvalidInputException) {
+        cout << endl << "Invalid input! (input can't be a character and has to match a number on the list) Try again" << endl << endl;
+        cout << "Press any key to continue: ";
+        cin.ignore();
+        getline(cin, sInput);
+        cont = false;
+    }
     
-    chooseYourLocation();
-    
-    while(input != 'b'){
-        cout << "1: List all orders" << endl;
-        cout << "2: List all unpaid orders" << endl;
-        cout << "3: List all paid orders" << endl;
-        cout << "4: List all legacy orders" << endl;
-        cout << "b: back" << endl;
-        cin >> input;
-        cout << endl;
-        
-        if(input == '1'){
-            displayAllOrders();
-        }
-        else if(input == '2'){
-            displayUnpaidOrders();
-        }
-        else if(input == '3'){
-            displayPaidOrders();
-        }
-        else if(input == '4'){
-            displayLegacyOrders();
+    if(cont){
+        while(input != 'b'){
+            cout << "1: List all orders" << endl;
+            cout << "2: List all unpaid orders" << endl;
+            cout << "3: List all paid orders" << endl;
+            cout << "4: List all legacy orders" << endl;
+            cout << "b: back" << endl;
+            cin >> input;
+            cout << endl;
+            
+            if(input == '1'){
+                displayAllOrders();
+            }
+            else if(input == '2'){
+                displayUnpaidOrders();
+            }
+            else if(input == '3'){
+                displayPaidOrders();
+            }
+            else if(input == '4'){
+                displayLegacyOrders();
+            }
         }
     }
 }
@@ -47,37 +58,26 @@ void DeliveryUI::chooseYourLocation(){
     vector<Location> locations;
     LocationRepo lr;
     locations = lr.getVectorOfLocations();
-    bool goodInput = true;
     
-    while(goodInput) {
-        cout << "- - - - - - Choose your location - - - - - - -" << endl;
+    cout << "- - - - - - Choose your location - - - - - - -" << endl;
+    for(int i = 0; i < locations.size(); i++){
+        cout << "Location number: " << i+1 << endl;
+        cout << locations[i] << endl << endl;
+    }
+    cout << "Choose location (no whitespaces): ";
+    string input;
+    cin >> input;
+    
+    if(bizniz.isInputDigit(input) && bizniz.isValidInput(stoi(input), locations.size())){
+        
+        int intInput = stoi(input);
+    
         for(int i = 0; i < locations.size(); i++){
-            cout << "Location number: " << i+1 << endl;
-            cout << locations[i] << endl << endl;
-        }
-        cout << "Choose location: ";
-        char input = 0;
-        cin >> input;
-        
-        //Herna athuga eg hvort að input se bokstafur og ef það er bokstafur þa breyti eg good input i false.
-        if(!isdigit(input)){
-            cout << "Please enter a valid input" << endl;
-            goodInput = false;
-        }
-        
-        //Ef að inputið er ekki bokstafur þa fer fer maður í for loopuna og gefur private breytunni locationOfDelivery gildid sem þu valdir.
-        //Og goodInput er sett false og while loopan hættir að loopa.
-        if(goodInput)
-        {
-            for(int i = 0; i < locations.size(); i++){
-                if(input-48 == i+1){
-                    this->locationOfDelivery = locations[i];
-                    goodInput = false;
-                }
+            if(intInput == i+1){
+                this->locationOfDelivery = locations[i];
             }
         }
     }
-    
 }
 
 void DeliveryUI::displayAllOrders(){

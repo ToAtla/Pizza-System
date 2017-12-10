@@ -39,12 +39,10 @@ void MainUI::startUI(){
         else if(input == '3'){
             PrepUI prepUI;
             prepUI.startPrepUI();
-            //branchLocation();
         }
         else if(input == '4'){
             DeliveryUI deliveryUI;
             deliveryUI.startDeliveryUI();
-            //branchLocation();
         }
         else if(input == 'q'){
             break;
