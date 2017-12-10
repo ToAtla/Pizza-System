@@ -82,7 +82,7 @@ void SalesUI::createOrder(){
             cout << endl << "Invalid input! (input can't be a character and has to match a number on the list) Try again" << endl << endl;
         }
         
-        if(order.getNumberOfSides() != 0 && order.getPizzasInOrder() != 0 && order.getNumberOfDrinks() != 0){
+        if(order.getNumberOfSides() != 0 || order.getPizzasInOrder() != 0 || order.getNumberOfDrinks() != 0){
             bizniz.storeOrder(order);
         }
         //bizniz.extractPizzasForPrepUI(order);
