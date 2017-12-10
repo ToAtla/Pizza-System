@@ -74,8 +74,7 @@ public:
     Pizza assemblePizza(Size size, Base base, Topping *toppings, int amountOfToppings, Location location);
     void appendPizzaToFile(string fileName, Pizza pizza);
     void extractPizzasForPrepUI(Order order);
-    Pizza* extractAllPizzasWithStatusFromOrder(Order order, status status, int& tellMeHowMany);
-    Pizza* extractAllPizzasWithoutStatusFromOrder(Order order, status status, int& tellMeHowMany);
+    Pizza* extractApplicablePizzasFromOrder(Order order, status status, bool onlyWith, int& tellMeHowMany);
     
     
     //Order
@@ -87,10 +86,8 @@ public:
     Order* getArrayOfOrders(string fileName, int& tellMeHowManyOrders);
     void locateFirstOrderWithPizzaWithStatusAtLocation(status status, Location location, int& orderNum, int& pizzaNum);
     void changeStatusOfPizzaInOrder(int orderNum, int pizzaNumber, status status);
-    Order* getArrayOfOrdersAtLocationWithPizzasWithStatus(status status, Location location, int& sizeOfReturnPizzaList);
-    Order* getArrayOfOrdersAtLocationWithPizzasWithoutSomeStatus(status status, Location location, int& sizeOfReturnPizzaList);
-    bool thereExistsOrderWithPizzaWithStatusAtLocation(status status, Location location);
-    bool thereExistsOrderWithPizzaWithoutStatusAtLocation(status status, Location location);
+    Order* getArrayOfOrdersAtLocationWithApplicablePizzas(status status, Location location, bool onlyWith, int& sizeOfReturnOrderList);
+    bool thereExistsOrderAtLocationWithApplicablePizza(status status, Location location, bool onlyWith);
     
     //Exceptions(Bool functions)
     bool isValidName(string name);

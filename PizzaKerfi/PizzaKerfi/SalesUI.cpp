@@ -78,8 +78,16 @@ void SalesUI::createOrder(){
 void SalesUI::displayOrders(){
     int orderCnt = 0;
     Order* orderList = bizniz.getArrayOfOrders(ORDERFILE, orderCnt);
-    for (int i = 0; i < orderCnt; i++) {
-        cout << orderList[i];
+    if(orderCnt  == 0){
+        cout << endl;
+        cout << "List is empty" << endl;
+        cout << endl;
+        cout << "Press any key to continue" << endl;
+        cin >> ws;
+    }else{
+        for (int i = 0; i < orderCnt; i++) {
+            cout << orderList[i];
+        }
     }
     delete [] orderList;
 }

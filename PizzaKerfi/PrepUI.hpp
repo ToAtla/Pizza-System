@@ -18,14 +18,16 @@
 class PrepUI{
 public:
     void startPrepUI();
-    void chooseYourLocation();
 private:
-    bool canPrintPizzaListWithStatusAtCurrentLocationAndDoes(status status);
-    bool canPrintPizzaListWithoutStatusAtCurrentLocationAndDoes(status status);
+    
     void allActiveOverview();
     void waitingOverview();
     void preppingOverview();
     void readyOverview();
+    
+    void displayOrdersAtLocationWithApplicablePizzas(Location location, status status, bool onlyWith);
+    void chooseYourLocation();
+    
     Location locationOfPrep;
     Bizniz bizniz;
     ConsoleMagic magic;

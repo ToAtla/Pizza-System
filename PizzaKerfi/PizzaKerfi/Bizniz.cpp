@@ -327,26 +327,23 @@ void Bizniz::extractPizzasForPrepUI(Order order){
     }
 }
 
-Pizza* Bizniz::extractAllPizzasWithStatusFromOrder(Order order, status status, int& tellMeHowMany){
-    tellMeHowMany = 0;
-    Pizza* returnPizzas = new Pizza[order.getNumberOfPizzas()];
-    for (int i = 0; i < order.getNumberOfPizzas(); i++) {
-        if(order.getPizzasInOrder()[i].getStatus() == status){
-            returnPizzas[tellMeHowMany] = order.getPizzasInOrder()[i];
-            tellMeHowMany++;
-        }
-    }
-    return returnPizzas;
-}
 
-Pizza* Bizniz::extractAllPizzasWithoutStatusFromOrder(Order order, status status, int& tellMeHowMany){
+Pizza* Bizniz::extractApplicablePizzasFromOrder(Order order, status status, bool onlyWith, int& tellMeHowMany){
     tellMeHowMany = 0;
     Pizza* returnPizzas = new Pizza[order.getNumberOfPizzas()];
     for (int i = 0; i < order.getNumberOfPizzas(); i++) {
-        if(order.getPizzasInOrder()[i].getStatus() != status){
-            returnPizzas[tellMeHowMany] = order.getPizzasInOrder()[i];
-            tellMeHowMany++;
+        if(onlyWith){
+            if(order.getPizzasInOrder()[i].getStatus() == status){
+                returnPizzas[tellMeHowMany] = order.getPizzasInOrder()[i];
+                tellMeHowMany++;
+            }
+        }else{
+            if(order.getPizzasInOrder()[i].getStatus() != status){
+                returnPizzas[tellMeHowMany] = order.getPizzasInOrder()[i];
+                tellMeHowMany++;
+            }
         }
+        
     }
     return returnPizzas;
 }
@@ -430,33 +427,55 @@ void Bizniz::locateFirstOrderWithPizzaWithStatusAtLocation(status status, Locati
     }
     delete [] allOrders;
 }
+
 void Bizniz::changeStatusOfPizzaInOrder(int orderNum, int pizzaNumber, status status){
+//    cout << "Changing status of pizza in order" << endl;
+//    cout << "O: " << orderNum << " and P: " << pizzaNumber << " and New Status: " << statusToString(status) << endl;
+    
     int ordersInFile = 0;
     Order* allOrders = getArrayOfOrders(ORDERFILE, ordersInFile);
+//    cout << "Printing said pizza in said order before change: " << endl << allOrders[orderNum].getPizzasInOrder()[pizzaNumber] << endl;
     allOrders[orderNum].getPizzasInOrder()[pizzaNumber].setStatus(status);
-    
     //Hér á eftir að setja inn að hann visti dæmið í skrána
     for (int i = 0; i < ordersInFile; i++) {
         orderRepo.clearOrderFile(ORDERFILE);
         storeOrder(allOrders[i]);
     }
     delete [] allOrders;
+    
+    //PRUFUVIÐBÓT
+//    int newOrdersInFile = 0;
+//    Order* newAllOrders = getArrayOfOrders(ORDERFILE, newOrdersInFile);
+//    cout << "Printing said pizza in said order after change: " << endl << newAllOrders[orderNum].getPizzasInOrder()[pizzaNumber] << endl;
+//    delete [] newAllOrders;
+    
 }
 
-Order* Bizniz::getArrayOfOrdersAtLocationWithPizzasWithStatus(status status, Location location, int &sizeOfReturnOrderList){
-    
+
+Order* Bizniz::getArrayOfOrdersAtLocationWithApplicablePizzas(status status, Location location, bool onlyWith, int& sizeOfReturnOrderList){
     int ordersInFile = 0;
     Order* allOrders = getArrayOfOrders(ORDERFILE, ordersInFile);
     sizeOfReturnOrderList = 0;
     Order* returnOrders = new Order[ordersInFile];
+    
+    
     for (int i = 0; i < ordersInFile; i++) {
         if(allOrders[i].getLocation().getLocation() == location.getLocation()){
-            for (int c = 0; c < allOrders[i].getNumberOfPizzas(); i++) {
-                if(allOrders[i].getPizzasInOrder()[c].getStatus() == status){
-                    returnOrders[sizeOfReturnOrderList] = allOrders[i];
-                    sizeOfReturnOrderList++;
-                    c = allOrders[i].getNumberOfPizzas();
+            for (int c = 0; c < allOrders[i].getNumberOfPizzas(); c++) {
+                if(onlyWith){
+                    if(allOrders[i].getPizzasInOrder()[c].getStatus() == status){
+                        returnOrders[sizeOfReturnOrderList] = allOrders[i];
+                        sizeOfReturnOrderList++;
+                        c = allOrders[i].getNumberOfPizzas();
+                    }
+                }else{
+                    if(allOrders[i].getPizzasInOrder()[c].getStatus() != status){
+                        returnOrders[sizeOfReturnOrderList] = allOrders[i];
+                        sizeOfReturnOrderList++;
+                        c = allOrders[i].getNumberOfPizzas();
+                    }
                 }
+                
             }
         }
     }
@@ -465,36 +484,23 @@ Order* Bizniz::getArrayOfOrdersAtLocationWithPizzasWithStatus(status status, Loc
 }
 
 
-Order* Bizniz::getArrayOfOrdersAtLocationWithPizzasWithoutSomeStatus(status status, Location location, int& sizeOfReturnOrderList){
-    
-    int ordersInFile = 0;
-    Order* allOrders = getArrayOfOrders(ORDERFILE, ordersInFile);
-    sizeOfReturnOrderList = 0;
-    Order* returnOrders = new Order[ordersInFile];
-    for (int i = 0; i < ordersInFile; i++) {
-        if(allOrders[i].getLocation().getLocation() == location.getLocation()){
-            for (int c = 0; c < allOrders[i].getNumberOfPizzas(); i++) {
-                if(allOrders[i].getPizzasInOrder()[c].getStatus() != status){
-                    returnOrders[sizeOfReturnOrderList] = allOrders[i];
-                    sizeOfReturnOrderList++;
-                    c = allOrders[i].getNumberOfPizzas();
-                }
-            }
-        }
-    }
-    delete [] allOrders;
-    return returnOrders;
-}
 
-bool Bizniz::thereExistsOrderWithPizzaWithStatusAtLocation(status status, Location location){
+bool Bizniz::thereExistsOrderAtLocationWithApplicablePizza(status status, Location location, bool onlyWith){
     int ordersInFile = 0;
     Order* allOrders = getArrayOfOrders(ORDERFILE, ordersInFile);
     for (int i = 0; i < ordersInFile; i++) {
         if(allOrders[i].getLocation().getLocation() == location.getLocation()){
             for (int c = 0; c < allOrders[i].getNumberOfPizzas(); i++) {
-                if(allOrders[i].getPizzasInOrder()[c].getStatus() == status){
-                    return true;
+                if(onlyWith){
+                    if(allOrders[i].getPizzasInOrder()[c].getStatus() == status){
+                        return true;
+                    }
+                }else{
+                    if(allOrders[i].getPizzasInOrder()[c].getStatus() != status){
+                        return true;
+                    }
                 }
+                
             }
         }
     }
@@ -502,21 +508,6 @@ bool Bizniz::thereExistsOrderWithPizzaWithStatusAtLocation(status status, Locati
     return false;
 }
 
-bool Bizniz::thereExistsOrderWithPizzaWithoutStatusAtLocation(status status, Location location){
-    int ordersInFile = 0;
-    Order* allOrders = getArrayOfOrders(ORDERFILE, ordersInFile);
-    for (int i = 0; i < ordersInFile; i++) {
-        if(allOrders[i].getLocation().getLocation() == location.getLocation()){
-            for (int c = 0; c < allOrders[i].getNumberOfPizzas(); i++) {
-                if(allOrders[i].getPizzasInOrder()[c].getStatus() != status){
-                    return true;
-                }
-            }
-        }
-    }
-    delete [] allOrders;
-    return false;
-}
 /**************************************************************************************
  
                               Exceptions(Bool functions)
