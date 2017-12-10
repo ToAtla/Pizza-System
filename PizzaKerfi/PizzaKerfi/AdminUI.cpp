@@ -26,6 +26,7 @@ void AdminUI::startAdminUI(){
         cout << "6: Add/change the base list" << endl;
         cout << "b: back" << endl;
         cin >> input;
+        magic.clearScreen();
         cout << endl;
 
         if(input == '1'){
