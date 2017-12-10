@@ -49,6 +49,13 @@ void Side::setName(char inName[]){
     }
 }
 
+void Side::setStatus(enum status inStatus){
+    status = inStatus;
+}
+status Side::getStatus(){
+    return status;
+}
+
 //Overloads the ostream operator so one can use the '<<' operator to print the contents of a topping instance.
 ostream& operator << (ostream& out, const Side& side){
     

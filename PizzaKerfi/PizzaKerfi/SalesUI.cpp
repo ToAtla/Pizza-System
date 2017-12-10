@@ -69,7 +69,7 @@ void SalesUI::createOrder(){
     drinkListCreationProcess(order);
     
     bizniz.storeOrder(order);
-    bizniz.extractPizzasForPrepUI(order);
+    //bizniz.extractPizzasForPrepUI(order);
 }
 
 
@@ -239,6 +239,7 @@ void SalesUI::pizzaListCreationProcess(Order& order){
     for (int i = 0; i < order.getNumberOfPizzas(); i++) {
         cout << endl << "Pizza number: " << i+1 << endl;
         order.getPizzasInOrder()[i] = pizzaCreationProcess(order.getLocation());
+        order.getPizzasInOrder()[i].setParentID(order.getID());
         order.setTotalPrice(order.getTotalPrice() + order.getPizzasInOrder()[i].getPrice());
     }
 }
@@ -248,7 +249,7 @@ Pizza SalesUI::pizzaCreationProcess(Location locationOfOrderForPizzaToFollow){
    
     Size pizzaSize = sizePickingProcess();
     Base pizzaBase = basePickingProcess();
-    int toppingCount;
+    int toppingCount = 0;
     Topping* pizzaToppings = toppingPickingProcess(toppingCount);
     Pizza returnPizza = bizniz.assemblePizza(pizzaSize, pizzaBase, pizzaToppings, toppingCount, locationOfOrderForPizzaToFollow);
     delete [] pizzaToppings;
