@@ -250,10 +250,8 @@ void AdminUI::removeTopping(){
             if(bizniz.isInputDigit(input) && bizniz.isValidInput(stoi(input), toppings.size())){
                 int intInput = stoi(input);
 
-                
-                bizniz.removeTopping(toppings, intInput);
-                cout << endl << "Topping removed" << endl << endl;
-                
+                    bizniz.removeTopping(toppings, intInput);
+                    cout << endl << setw(29) << "Topping removed" << endl << endl;
             }
         }
 }
