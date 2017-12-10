@@ -18,13 +18,23 @@ void AdminUI::startAdminUI(){
     char input = 0;
     while(input != 'b'){
         magic.clearScreen();
-        cout << "1: Add/change the topping list" << endl;
-        cout << "2: Add/change the location list" << endl;
-        cout << "3: Add/change the side list" << endl;
-        cout << "4: Add/change the drink list" << endl;
-        cout << "5: Add/change the size list" << endl;
-        cout << "6: Add/change the base list" << endl;
-        cout << "b: back" << endl;
+        cout << setfill(CHARFORSETFILL) << setw(SIZEOFSETW) << "-" << endl;
+        cout << setfill (' ') << setw(40) << "Admin" << endl;
+        cout << setfill(CHARFORSETFILL) << setw(SIZEOFSETW) << "-" << setfill(' ') << endl << endl;
+        cout << setw(SIZEOFNUMBERLISTADMINUI) << "1: " << setw(SIZEOFLISTNAMEADMINUI) << "Add/change the topping list" << endl;
+        uiItemSeparator();
+        cout << setw(SIZEOFNUMBERLISTADMINUI) << "2: " << setw(SIZEOFLISTNAMEADMINUI) << "Add/change the location list" << endl;
+        uiItemSeparator();
+        cout << setw(SIZEOFNUMBERLISTADMINUI) << "3: " << setw(SIZEOFLISTNAMEADMINUI) << "Add/change the side list" << endl;
+        uiItemSeparator();
+        cout << setw(SIZEOFNUMBERLISTADMINUI) << "4: " << setw(SIZEOFLISTNAMEADMINUI) << "Add/change the drink list" << endl;
+        uiItemSeparator();
+        cout << setw(SIZEOFNUMBERLISTADMINUI) << "5: " << setw(SIZEOFLISTNAMEADMINUI) << "Add/change the size list" << endl;
+        uiItemSeparator();
+        cout << setw(SIZEOFNUMBERLISTADMINUI) << "6: " << setw(SIZEOFLISTNAMEADMINUI) << "Add/change the base list" << endl;
+        uiItemSeparator();
+        cout << setw(SIZEOFNUMBERLISTADMINUI) << "b: " << setw(SIZEOFLISTNAMEADMINUI) << "back" << endl;
+        uiItemSeparator();
         cin >> input;
         magic.clearScreen();
         cout << endl;
@@ -58,16 +68,20 @@ void AdminUI::startAdminUI(){
 
 //Prentar út valmynd sem býður notandanum uppá að velja það sem hann vill gera með topping listann.
 void AdminUI::displayToppingMenu(){
-   
-    
     
     char input = '\0';
     while(input != 'b'){
-        cout << "1: List toppings" << endl;
-        cout << "2: Change a topping" << endl;
-        cout << "3: Add a topping" << endl;
-        cout << "4: Remove a topping" << endl;
-        cout << "b: back" << endl;
+        cout << setfill(CHARFORSUBACTION) << setw(30) << "+" << "    Toppings    " << setfill(CHARFORSUBACTION) << setw(30) << "+" << endl << endl;
+        cout << setfill(' ') << setw(20) << "1: " << setw(32) << "List toppings" << endl;
+        uiItemSeparator();
+        cout << setw(20) << "2: " << setw(32) << "Change a topping" << endl;
+        uiItemSeparator();
+        cout << setw(20) << "3: " << setw(32) << "Add a topping" << endl;
+        uiItemSeparator();
+        cout << setw(20) << "4: " << setw(32) << "Remove a topping" << endl;
+        uiItemSeparator();
+        cout << setw(20) << "b: " << setw(32) << "back" << endl;
+        uiItemSeparator();
         cin >> input;
         cout << endl;
 
@@ -114,9 +128,9 @@ void AdminUI::displayAllToppings(){
 
     ToppingRepo toppingRepo;
     vector<Topping> toppings = bizniz.getVectorOfToppings();
-    cout << endl << "----------------------------List of all toppings----------------------------" << endl;
+    cout << endl << setfill(CHARFORSETFILL)<< setw(24) << "-" << "    List of all toppings    " << setfill(CHARFORSETFILL) << setw(24) << "-" << endl << endl;
     if(toppings.size() < 1){
-        cout << endl << "The file is empty :(" << endl;
+        cout << endl << setfill(' ') << setw(48) << "The file is empty :(" << endl << endl;
     }
     else{
         for (int i = 0; i < toppings.size(); i++) {
@@ -137,10 +151,10 @@ void AdminUI::addTopping(){
     string price;
 
     
-    cout << "Adding a topping!" << endl << endl;
-    cout << "Enter topping name (Max " << MAXCHARINTOPPINGNAME-1 << " letters): ";
+    cout << setfill(CHARFORSETFILL) << setw(25) << "-" << "    Adding a topping!    " << setfill(CHARFORSETFILL) << setw(26) << "-" << endl << endl;
+    cout << setfill(' ') << setw(SIZEOFADDTOPPINGSPACES) << "Enter topping name (Max " << MAXCHARINTOPPINGNAME-1 << " letters): ";
     cin >> name;
-    cout << "Enter topping price: ";
+    cout << setw(SIZEOFADDTOPPINGSPACES-3) << "Enter topping price: ";
     cin >> price;
     if(bizniz.isValidName(name) && bizniz.isPriceDigit(price) && bizniz.isValidNameLength(name, MAXCHARINTOPPINGNAME)){
             
@@ -152,7 +166,7 @@ void AdminUI::addTopping(){
         bizniz.addTopping(temp);
         
     }
-    cout << endl << "Topping added!" << endl << endl;
+    cout << endl << setw(SIZEOFADDTOPPINGSPACES-10) << "Topping added!" << endl << endl;
 }
 
 //Tekur á móti vector af öllum áleggjum úr toppings.txt skránni og birtir það sem lista.
@@ -161,19 +175,21 @@ void AdminUI::changeTopping(){
 
     vector<Topping> toppings = bizniz.getVectorOfToppings();
     cout << endl;
-    cout << endl << "----------------------------List of all toppings----------------------------" << endl;
+    cout << endl << setfill(CHARFORSETFILL) << setw(24) << "-" << "    List of all toppings    " << setfill(CHARFORSETFILL) << setw(24) << "-" << endl << endl;
+    cout << setfill(' ') << setw(58) << "Price" << endl;
+    cout << setw(58) << "-----" << endl;
     if(toppings.size() < 1){
-        cout << endl << "The file is empty :(" << endl << endl;
+        cout << endl << setfill(' ') << setw(48) << "The file is empty :(" << endl << endl;
     }
     else{
         for(int i = 0; i < toppings.size(); i++){
             Topping temp = toppings.at(i);
-            cout << "Topping number: " << i+1 << endl;
-            cout <<  temp;
-            cout << setfill(CHARFORSETFILL) << setw(SIZEOFSETW) << "-" << endl;
+            cout << setfill(' ') << setw(30) << "Topping number: " << i+1 << endl;
+            cout << setw(17) << temp.getName() << setw(40) << temp.getPrice() << endl;
+            cout << setw(14) << " " << setfill(CHARFORSETFILL) << setw(43) << "-" << endl;
         }
         string input;
-        cout << "Choose a topping to change: ";
+        cout << setfill(' ') << setw(42) << "Choose a topping to change: ";
         cin >> input;
         
         
@@ -183,10 +199,10 @@ void AdminUI::changeTopping(){
             
             for(int i = 0; i < toppings.size(); i++){
                 if(intInput == i+1){
-                    cout << "Enter topping name (Max " << MAXCHARINTOPPINGNAME-1 << " letters): ";
+                    cout << setw(SIZEOFADDTOPPINGSPACES-4) << "Enter topping name (Max " << MAXCHARINTOPPINGNAME-1 << " letters): ";
                     string name;
                     cin >> name;
-                    cout << "Enter toppine price: ";
+                    cout << setw(SIZEOFADDTOPPINGSPACES-7) << "Enter toppine price: ";
                     string price;
                     cin >> price;
                     if(bizniz.isValidName(name) && bizniz.isPriceDigit(price) && bizniz.isValidNameLength(name, MAXCHARINTOPPINGNAME)){
@@ -199,7 +215,7 @@ void AdminUI::changeTopping(){
                             
                             Topping temp(tempName, intPrice);
                             toppings.at(i) = temp;
-                            cout << endl << "Topping changed" << endl << endl;
+                            cout << endl << setw(SIZEOFADDTOPPINGSPACES-12) << "Topping changed!" << endl << endl;
                         }
                     }
                 }
@@ -1102,4 +1118,9 @@ void AdminUI::removeBase(){
             }
         }
     }
+}
+
+void AdminUI::uiItemSeparator () {
+    cout << setw(17) << " " << setfill(CHARFORSETFILL) << setw(SIZEOFSETW-41) << "-" << endl << endl;
+    cout << setfill(' ');
 }
