@@ -160,46 +160,50 @@ void AdminUI::changeTopping(){
     vector<Topping> toppings = bizniz.getVectorOfToppings();
     cout << endl;
     cout << endl << "----------------------------List of all toppings------------------------------" << endl;
-    
-    for(int i = 0; i < toppings.size(); i++){
-        Topping temp = toppings.at(i);
-        cout << "Topping number: " << i+1 << endl;
-        cout <<  temp;
-        cout << setfill(CHARFORSETFILL) << setw(SIZEOFSETW) << "-" << endl;
+    if(toppings.size() < 1){
+        cout << "The file is empty :(" << endl << endl;
     }
-    string input;
-    cout << "Choose a topping to change: ";
-    cin >> input;
-    
-    
-    
-    if(bizniz.isInputDigit(input) && bizniz.isValidInput(stoi(input), toppings.size())){
-        int intInput = stoi(input);
-        
+    else{
         for(int i = 0; i < toppings.size(); i++){
-            if(intInput == i+1){
-                cout << "Enter topping name (Max " << MAXCHARINTOPPINGNAME-1 << " letters): ";
-                string name;
-                cin >> name;
-                cout << "Enter toppine price: ";
-                string price;
-                cin >> price;
-                if(bizniz.isValidName(name) && bizniz.isPriceDigit(price) && bizniz.isValidNameLength(name, MAXCHARINTOPPINGNAME)){
-                    
-                    int intPrice = stoi(price);
+            Topping temp = toppings.at(i);
+            cout << "Topping number: " << i+1 << endl;
+            cout <<  temp;
+            cout << setfill(CHARFORSETFILL) << setw(SIZEOFSETW) << "-" << endl;
+        }
+        string input;
+        cout << "Choose a topping to change: ";
+        cin >> input;
+        
+        
+        
+        if(bizniz.isInputDigit(input) && bizniz.isValidInput(stoi(input), toppings.size())){
+            int intInput = stoi(input);
+            
+            for(int i = 0; i < toppings.size(); i++){
+                if(intInput == i+1){
+                    cout << "Enter topping name (Max " << MAXCHARINTOPPINGNAME-1 << " letters): ";
+                    string name;
+                    cin >> name;
+                    cout << "Enter toppine price: ";
+                    string price;
+                    cin >> price;
+                    if(bizniz.isValidName(name) && bizniz.isPriceDigit(price) && bizniz.isValidNameLength(name, MAXCHARINTOPPINGNAME)){
                         
-                    if(bizniz.isValidPrice(intPrice)){
-                        char tempName[MAXCHARINTOPPINGNAME];
-                        strcpy(tempName, name.c_str());
+                        int intPrice = stoi(price);
                         
-                        Topping temp(tempName, intPrice);
-                        toppings.at(i) = temp;
-                        cout << endl << "Topping changed" << endl << endl;
+                        if(bizniz.isValidPrice(intPrice)){
+                            char tempName[MAXCHARINTOPPINGNAME];
+                            strcpy(tempName, name.c_str());
+                            
+                            Topping temp(tempName, intPrice);
+                            toppings.at(i) = temp;
+                            cout << endl << "Topping changed" << endl << endl;
+                        }
                     }
                 }
             }
+            bizniz.storeVectorOfToppings(toppings);
         }
-        bizniz.storeVectorOfToppings(toppings);
     }
 }
 
