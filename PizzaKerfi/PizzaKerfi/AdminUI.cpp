@@ -137,11 +137,11 @@ void AdminUI::addTopping(){
 
     
     cout << "Adding a topping!" << endl << endl;
-    cout << "Enter topping name (Max " << MAXCHARSINTOPPINGNAME-1 << " letters): ";
+    cout << "Enter topping name (Max " << MAXCHARINTOPPINGNAME-1 << " letters): ";
     cin >> name;
     cout << "Enter topping price: ";
     cin >> price;
-    if(bizniz.isValidName(name) && bizniz.isPriceDigit(price) && bizniz.isValidNameLength(name, MAXCHARSINTOPPINGNAME)){
+    if(bizniz.isValidName(name) && bizniz.isPriceDigit(price) && bizniz.isValidNameLength(name, MAXCHARINTOPPINGNAME)){
             
         int intPrice = stoi(price);
         
@@ -178,20 +178,22 @@ void AdminUI::changeTopping(){
         
         for(int i = 0; i < toppings.size(); i++){
             if(intInput == i+1){
-                cout << "Enter topping name (Max " << MAXCHARSINTOPPINGNAME-1 << " letters): ";
+                cout << "Enter topping name (Max " << MAXCHARINTOPPINGNAME-1 << " letters): ";
                 string name;
                 cin >> name;
                 cout << "Enter toppine price: ";
                 string price;
                 cin >> price;
-                if(bizniz.isValidName(name) && bizniz.isPriceDigit(price) && bizniz.isValidNameLength(name, MAXCHARSINTOPPINGNAME)){
+                if(bizniz.isValidName(name) && bizniz.isPriceDigit(price) && bizniz.isValidNameLength(name, MAXCHARINTOPPINGNAME)){
                     
                     int intPrice = stoi(price);
                         
                     if(bizniz.isValidPrice(intPrice)){
-                        Topping temp(name, intPrice);
-                        toppings.at(i).setName(temp.getName());
-                        toppings.at(i).setPrice(temp.getPrice());
+                        char tempName[MAXCHARINTOPPINGNAME];
+                        strcpy(tempName, name.c_str());
+                        
+                        Topping temp(tempName, intPrice);
+                        toppings.at(i) = temp;
                         cout << endl << "Topping changed" << endl << endl;
                     }
                 }
@@ -510,7 +512,9 @@ void AdminUI::changeSide(){
                 
                 if(bizniz.isValidName(name) && bizniz.isPriceDigit(price) && bizniz.isValidNameLength(name, MAXCHARINSIDENAME)){
                     int intPrice = stoi(price);
-                    Side temp(name, intPrice);
+                    char tempName[MAXCHARINSIDENAME];
+                    strcpy(tempName, name.c_str());
+                    Side temp(tempName, intPrice);
                     sides.at(i) = temp;
                     cout << endl << "Side changed" << endl << endl;
                 }
@@ -646,7 +650,9 @@ void AdminUI::changeDrink(){
                 
                 if(bizniz.isValidName(name) && bizniz.isPriceDigit(price) && bizniz.isValidNameLength(name, MAXCHARINDRINKNAME)){
                     int intPrice = stoi(price);
-                    Drink temp(name, intPrice);
+                    char tempName[MAXCHARINDRINKNAME];
+                    strcpy(tempName, name.c_str());
+                    Drink temp(tempName, intPrice);
                     drinks.at(i) = temp;
                     cout << endl << "Drink changed" << endl << endl;
                 }
@@ -795,7 +801,7 @@ void AdminUI::changeSize(){
         
         for(int i = 0; i < sizes.size(); i++){
             if(intInput == i+1){
-                cout << "Enter size name (Max " << MAXCHARINSIZENAME-1 << " letters): ";
+                cout << "Enter size name (Max " << MAXCHARINSIZENAME-1-1 << " letters): ";
                 string name;
                 cin.ignore();
                 getline(cin, name);
@@ -803,9 +809,11 @@ void AdminUI::changeSize(){
                 string price;
                 cin >> price;
                 
-                if(bizniz.isValidName(name) && bizniz.isPriceDigit(price) && bizniz.isValidNameLength(name, MAXCHARINDRINKNAME)){
+                if(bizniz.isValidName(name) && bizniz.isPriceDigit(price) && bizniz.isValidNameLength(name, MAXCHARINSIZENAME-1)){
                     int intPrice = stoi(price);
-                    Size temp(name, intPrice);
+                    char tempName[MAXCHARINSIZENAME];
+                    strcpy(tempName, name.c_str());
+                    Size temp(tempName, intPrice);
                     sizes.at(i) = temp;
                     cout << endl << "Size changed" << endl << endl;
                 }
@@ -819,7 +827,7 @@ void AdminUI::changeSize(){
 void AdminUI::addSize(){
 
     cout << "Adding a size!" << endl << endl;
-    cout << "Enter size name (Max " << MAXCHARINSIZENAME-1 << " letters): ";
+    cout << "Enter size name (Max " << MAXCHARINSIZENAME-1-1 << " letters): ";
     string name;
     cin.ignore();
     getline(cin, name);
@@ -827,7 +835,7 @@ void AdminUI::addSize(){
     string price;
     cin >> price;
     
-    if(bizniz.isValidName(name) && bizniz.isPriceDigit(price) && bizniz.isValidNameLength(name, MAXCHARINSIZENAME)){
+    if(bizniz.isValidName(name) && bizniz.isPriceDigit(price) && bizniz.isValidNameLength(name, MAXCHARINSIZENAME-1)){
         
         int intPrice = stoi(price);
         Size temp(name, intPrice);
@@ -955,7 +963,7 @@ void AdminUI::changeBase(){
         
         for(int i = 0; i < bases.size(); i++){
             if(intInput == i+1){
-                cout << "Enter size name (Max " << MAXCHARINSIZENAME-1 << " letters): ";
+                cout << "Enter size name (Max " << MAXCHARINBASENAME-1-1 << " letters): ";
                 string name;
                 cin.ignore();
                 getline(cin, name);
@@ -963,9 +971,11 @@ void AdminUI::changeBase(){
                 string price;
                 cin >> price;
                 
-                if(bizniz.isValidName(name) && bizniz.isPriceDigit(price) && bizniz.isValidNameLength(name, MAXCHARINDRINKNAME)){
+                if(bizniz.isValidName(name) && bizniz.isPriceDigit(price) && bizniz.isValidNameLength(name, MAXCHARINBASENAME-1)){
                     int intPrice = stoi(price);
-                    Base temp(name, intPrice);
+                    char tempName[MAXCHARINBASENAME];
+                    strcpy(tempName, name.c_str());
+                    Base temp(tempName, intPrice);
                     bases.at(i) = temp;
                     cout << endl << "Size changed" << endl << endl;
                 }
@@ -978,7 +988,7 @@ void AdminUI::changeBase(){
 void AdminUI::addBase(){
     
     cout << "Adding a base!" << endl << endl;
-    cout << "Enter base name (Max " << MAXCHARSINBASENAME-1 << " letters): ";
+    cout << "Enter base name (Max " << MAXCHARINBASENAME-1-1 << " letters): ";
     string name;
     cin.ignore();
     getline(cin, name);
@@ -986,10 +996,12 @@ void AdminUI::addBase(){
     string price;
     cin >> price;
     
-    if(bizniz.isValidName(name) && bizniz.isPriceDigit(price) && bizniz.isValidNameLength(name, MAXCHARSINBASENAME)){
+    if(bizniz.isValidName(name) && bizniz.isPriceDigit(price) && bizniz.isValidNameLength(name, MAXCHARINBASENAME-1)){
         
         int intPrice = stoi(price);
-        Base temp(name, intPrice);
+        char tempName[MAXCHARINBASENAME];
+        strcpy(tempName, name.c_str());
+        Base temp(tempName, intPrice);
         bizniz.addBase(temp);
         cout << endl << "Base added!" << endl << endl;
     }

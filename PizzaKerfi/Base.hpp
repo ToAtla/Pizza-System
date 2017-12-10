@@ -30,7 +30,7 @@ class Base{
         friend istream& operator >> (istream& in, Base& base);
         friend ostream& operator << (ostream& out, const Base& base);
     private:
-        char name[MAXCHARSINBASENAME];
+        char name[MAXCHARINBASENAME];
         int price;
 };
 

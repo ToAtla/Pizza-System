@@ -37,7 +37,7 @@ char* Base::getName(){
 
 void Base::setName(char inName[]){
     
-    for(int i = 0; i < MAXCHARSINBASENAME; i++){
+    for(int i = 0; i < MAXCHARINBASENAME; i++){
         name[i] = inName[i];
     }
     
