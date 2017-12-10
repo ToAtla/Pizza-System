@@ -20,14 +20,21 @@ void AdminUI::startAdminUI(){
         magic.clearScreen();
         cout << setfill(CHARFORSETFILL) << setw(SIZEOFSETW) << "-" << endl;
         cout << setfill (' ') << setw(40) << "Admin" << endl;
-        cout << setfill(CHARFORSETFILL) << setw(SIZEOFSETW) << "-" << endl;
-        cout << setfill(' ') << setw(SIZEOFNUMBERLISTADMINUI) << "1: " << setw(SIZEOFLISTNAMEADMINUI) << "Add/change the topping list" << endl << endl;
-        cout << setw(SIZEOFNUMBERLISTADMINUI) << "2: " << setw(SIZEOFLISTNAMEADMINUI) << "Add/change the location list" << endl << endl;
-        cout << setw(SIZEOFNUMBERLISTADMINUI) << "3: " << setw(SIZEOFLISTNAMEADMINUI) << "Add/change the side list" << endl << endl;
-        cout << setw(SIZEOFNUMBERLISTADMINUI) << "4: " << setw(SIZEOFLISTNAMEADMINUI) << "Add/change the drink list" << endl << endl;
-        cout << setw(SIZEOFNUMBERLISTADMINUI) << "5: " << setw(SIZEOFLISTNAMEADMINUI) << "Add/change the size list" << endl << endl;
-        cout << setw(SIZEOFNUMBERLISTADMINUI) << "6: " << setw(SIZEOFLISTNAMEADMINUI) << "Add/change the base list" << endl << endl;
+        cout << setfill(CHARFORSETFILL) << setw(SIZEOFSETW) << "-" << setfill(' ') << endl << endl;
+        cout << setw(SIZEOFNUMBERLISTADMINUI) << "1: " << setw(SIZEOFLISTNAMEADMINUI) << "Add/change the topping list" << endl;
+        uiItemSeparator();
+        cout << setw(SIZEOFNUMBERLISTADMINUI) << "2: " << setw(SIZEOFLISTNAMEADMINUI) << "Add/change the location list" << endl;
+        uiItemSeparator();
+        cout << setw(SIZEOFNUMBERLISTADMINUI) << "3: " << setw(SIZEOFLISTNAMEADMINUI) << "Add/change the side list" << endl;
+        uiItemSeparator();
+        cout << setw(SIZEOFNUMBERLISTADMINUI) << "4: " << setw(SIZEOFLISTNAMEADMINUI) << "Add/change the drink list" << endl;
+        uiItemSeparator();
+        cout << setw(SIZEOFNUMBERLISTADMINUI) << "5: " << setw(SIZEOFLISTNAMEADMINUI) << "Add/change the size list" << endl;
+        uiItemSeparator();
+        cout << setw(SIZEOFNUMBERLISTADMINUI) << "6: " << setw(SIZEOFLISTNAMEADMINUI) << "Add/change the base list" << endl;
+        uiItemSeparator();
         cout << setw(SIZEOFNUMBERLISTADMINUI) << "b: " << setw(SIZEOFLISTNAMEADMINUI) << "back" << endl;
+        uiItemSeparator();
         cin >> input;
         magic.clearScreen();
         cout << endl;
@@ -65,16 +72,16 @@ void AdminUI::displayToppingMenu(){
     char input = '\0';
     while(input != 'b'){
         cout << setfill(CHARFORSUBACTION) << setw(30) << "+" << "    Toppings    " << setfill(CHARFORSUBACTION) << setw(30) << "+" << endl << endl;
-        cout << setfill(' ') << setw(20) << "1: " << setw(32) << "List toppings" << endl << endl;
-        cout << setfill(CHARFORSETFILL) << setw(SIZEOFSETW) << "-" << endl;
-        cout << setfill(' ') << setw(20) << "2: " << setw(SIZEOFTOPPINGSUBMENUCHAR) << "Change a topping" << endl << endl;
-        cout << setfill(CHARFORSETFILL) << setw(SIZEOFSETW) << "-" << endl;
-        cout << setfill(' ') << setw(20) << "3: " << setw(SIZEOFTOPPINGSUBMENUCHAR) << "Add a topping" << endl << endl;
-        cout << setfill(CHARFORSETFILL) << setw(SIZEOFSETW) << "-" << endl;
-        cout << setfill(' ') << setw(20) << "4: " << setw(SIZEOFTOPPINGSUBMENUCHAR) << "Remove a topping" << endl << endl;
-        cout << setfill(CHARFORSETFILL) << setw(SIZEOFSETW) << "-" << endl;
-        cout << setfill(' ') << setw(20) << "b: " << setw(SIZEOFTOPPINGSUBMENUCHAR) << "back" << endl << endl;
-        cout << setfill(CHARFORSETFILL) << setw(SIZEOFSETW) << "-" << endl;
+        cout << setfill(' ') << setw(20) << "1: " << setw(32) << "List toppings" << endl;
+        uiItemSeparator();
+        cout << setw(20) << "2: " << setw(32) << "Change a topping" << endl;
+        uiItemSeparator();
+        cout << setw(20) << "3: " << setw(32) << "Add a topping" << endl;
+        uiItemSeparator();
+        cout << setw(20) << "4: " << setw(32) << "Remove a topping" << endl;
+        uiItemSeparator();
+        cout << setw(20) << "b: " << setw(32) << "back" << endl;
+        uiItemSeparator();
         cin >> input;
         cout << endl;
 
@@ -1114,6 +1121,6 @@ void AdminUI::removeBase(){
 }
 
 void AdminUI::uiItemSeparator () {
-    cout << setfill(CHARFORSETFILL) << setw(SIZEOFSETW) << endl;
+    cout << setw(17) << " " << setfill(CHARFORSETFILL) << setw(SIZEOFSETW-41) << "-" << endl << endl;
     cout << setfill(' ');
 }
