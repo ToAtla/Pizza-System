@@ -134,15 +134,12 @@ void DeliveryUI::displayUnpaidOrders(){
     
         int input = '\0';
         while(input != '0'){
-            cout << "Enter order number to paid or 0 to exit: ";
+            cout << "Enter order number to mark as paid or 0 to exit: ";
             cin >> input;
-            if(input != 0){
-                if(input <= sizeOfOrderList && input > 0){
-                    bizniz.setOrderStatus(ORDERFILE, input, PAID);
-                    cout << "Order number " << input << " has been marked paid" << endl;
-                }
-            }else{
-                break;
+            if(bizniz.getOrderNumber(input).getStatusOfOrder() == UNPAID){
+                bizniz.setOrderStatus(ORDERFILE, input, PAID);
+                input = 0;
+                cout << "Order number " << input << " has been marked as ready" << endl;
             }
         }
     }else{
@@ -182,15 +179,14 @@ void DeliveryUI::displayPaidOrders(){
             cout << "Enter number of order to mark delivered 0 to exit: ";
             cin >> input;
             if(input != 0){
-                if(input <= sizeOfOrderList && input > 0){
-                    //PASSA SIG HÉR ÞARF AÐ BÆTA VIÐ EXCEPTION EF NOTANDINN
-                    //SLÆR INN PANTANANÚMER SEM ER EKKI Á LISTANUM
-                    if(bizniz.allPizzasInOrderReady(bizniz.getOrderNumber(input))){
-                        bizniz.setOrderStatus(orderFile, input, DELIVERED);
+                if(bizniz.getOrderNumber(input).getStatusOfOrder() == PAID){
+                    if(!bizniz.allPizzasInOrderReady(bizniz.getOrderNumber(input))){
+                        cout << "Not all items in that order are ready" << endl;
+                    }else{
+                        bizniz.setOrderStatus(ORDERFILE, input, DELIVERED);
+                        input = 0;
                         cout << "Order number " << input << " has been marked delivered" << endl;
                     }
-                }else{
-                    cout << "Not all items in that order are ready" << endl;
                 }
             }
             else{
