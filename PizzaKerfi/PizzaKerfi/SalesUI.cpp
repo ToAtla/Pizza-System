@@ -82,8 +82,14 @@ void SalesUI::createOrder(){
             cout << endl << "Invalid input! (input can't be a character and has to match a number on the list) Try again" << endl << endl;
         }
         
+        cout << "HOW MANY PIZZAS" << order.getNumberOfPizzas() << endl;
+        cout << "HOW MANY SIDES" << order.getNumberOfSides() << endl;
+        cout << "HOW MANY DRINKS" << order.getNumberOfDrinks() << endl;
+        
         //Passar að þú bætir ekki við tómri pöntun í skránna.
-        if(order.getNumberOfSides() != 0 && order.getNumberOfPizzas() != 0 && order.getNumberOfDrinks() != 0){
+        if(order.getNumberOfSides() == 0 && order.getNumberOfPizzas() == 0 && order.getNumberOfDrinks() == 0){
+            return;
+        } else {
             bizniz.storeOrder(order);
         }
     }
@@ -217,7 +223,7 @@ Topping* SalesUI::toppingPickingProcess(int& toppingCount){
                 string input;
                 cin >> input;
                 
-                if(bizniz.isInputDigit(input) && bizniz.isValidInput(stoi(input), allToppings.size())){
+                if(bizniz.isInputDigit(input) && bizniz.isValidToppingInput(stoi(input), allToppings.size())){
                 
                     int intInput = stoi(input);
                     

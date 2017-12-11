@@ -574,6 +574,18 @@ bool Bizniz::isValidInput(int input, unsigned long sizeOfList){
     return true;
 }
 
+bool Bizniz::isValidToppingInput(int input, unsigned long sizeOflist){
+    
+    unsigned long unsignedInput = input;
+    
+    if(unsignedInput > sizeOflist){
+        throw InvalidInputException("Invalid input! (Input does not match any index on the list) Please try again");
+    }
+    
+    return true;
+    
+}
+
 bool Bizniz::isInputDigit(string input){
     
     for(int i = 0; i < input.length(); i++){

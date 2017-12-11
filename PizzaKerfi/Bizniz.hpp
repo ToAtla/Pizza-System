@@ -95,6 +95,7 @@ public:
     bool isValidName(string name);
     bool isValidPrice(int price);
     bool isValidInput(int input, unsigned long sizeOfList);
+    bool isValidToppingInput(int input, unsigned long sizeOflist);
     bool isPriceDigit(string price);
     bool isInputDigit(string input);
     bool isValidNameLength(string name, int lenght);
