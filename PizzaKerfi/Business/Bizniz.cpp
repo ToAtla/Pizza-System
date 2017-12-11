@@ -16,7 +16,7 @@
  
  ***************************************************************************************/
 
-//Skila vector af öllum toppings í "toppings.txt".
+//Return a vector of all toppings from the "toppings.dat" file.
 vector<Topping> Bizniz::getVectorOfToppings(){
     
     vector<Topping> toppings;
@@ -25,7 +25,7 @@ vector<Topping> Bizniz::getVectorOfToppings(){
     return toppings;
 }
 
-//Bætir við topping í "toppings.txt" skránna.
+//Adds a topping to the "toppings.dat" file.
 void Bizniz::addTopping(Topping& topping){
     
     if(isValidPrice(topping.getPrice())){
@@ -33,12 +33,14 @@ void Bizniz::addTopping(Topping& topping){
     }
 }
 
-//
+//Takes a vector of toppings as a parameter and overwrites it into the "toppings.dat" file
 void Bizniz::storeVectorOfToppings(vector<Topping> toppings){
     
     toppingRepo.storeVectorOfToppings(toppings);
 }
 
+//Takes a vector of toppings as a parameter and a int index and erases the topping at that index
+//and overwrites it into the "toppings.dat" file
 void Bizniz::removeTopping(vector<Topping> toppings, int index){
     
     toppings.erase(toppings.begin() + (index-1));
@@ -55,6 +57,7 @@ void Bizniz::removeTopping(vector<Topping> toppings, int index){
  
  ***************************************************************************************/
 
+//Return a vector of all locations from the "locations.dat" file.
 vector<Location> Bizniz::getVectorOfLocations(){
     vector<Location> locations;
     locations = locationRepo.getVectorOfLocations();
@@ -62,17 +65,23 @@ vector<Location> Bizniz::getVectorOfLocations(){
     return locations;
     
 }
+
+//Adds a location to the "location.dat" file.
 void Bizniz::addLocation(Location& location){
     
         locationRepo.addLocation(location);
     
 }
+
+//Takes a vector of locations as a parameter and overwrites it into the "locations.dat" file
 void Bizniz::storeVectorOfLocations(vector<Location> locations){
     
     locationRepo.storeVectorOfLocations(locations);
     
 }
 
+//Takes a vector of locations as a parameter and a int index and erases the location at that index
+//and overwrites it into the "locations.dat" file
 void Bizniz::removeLocation(vector<Location> locations, int index){
     
     locations.erase(locations.begin() + (index-1));
@@ -90,6 +99,7 @@ void Bizniz::removeLocation(vector<Location> locations, int index){
  
  ***************************************************************************************/
 
+//Return a vector of all sides from the "sides.dat" file.
 vector<Side> Bizniz::getVectorOfSides(){
     
     vector<Side> sides;
@@ -98,6 +108,8 @@ vector<Side> Bizniz::getVectorOfSides(){
     return sides;
     
 }
+
+//Adds a side to the "sides.dat" file.
 void Bizniz::addSide(Side& side){
     
     if(isValidPrice(side.getPrice())){
@@ -105,12 +117,16 @@ void Bizniz::addSide(Side& side){
     }
     
 }
+
+//Takes a vector of sides as a parameter and overwrites it into the "sides.dat" file
 void Bizniz::storeVectorOfSides(vector<Side> sides){
     
     sideRepo.storeVectorOfSides(sides);
     
 }
 
+//Takes a vector of sides as a parameter and a int index and erases the side at that index
+//and overwrites it into the "sides.dat" file
 void Bizniz::removeSide(vector<Side> sides, int index){
     
     sides.erase(sides.begin() + (index-1));
@@ -126,6 +142,7 @@ void Bizniz::removeSide(vector<Side> sides, int index){
  
  ***************************************************************************************/
 
+//Return a vector of all drinks from the "drinks.dat" file.
 vector<Drink> Bizniz::getVectorOfDrinks(){
     vector<Drink> drinks;
     drinks = drinkRepo.getVectorOfDrinks();
@@ -134,6 +151,7 @@ vector<Drink> Bizniz::getVectorOfDrinks(){
     
 }
 
+//Adds a drink to the "drinks.dat" file.
 void Bizniz::addDrink(Drink& drink){
     
     if(isValidPrice(drink.getPrice()))
@@ -141,12 +159,15 @@ void Bizniz::addDrink(Drink& drink){
     
 }
 
+//Takes a vector of drinks as a parameter and overwrites it into the "drinks.dat" file
 void Bizniz::storeVectorOfDrinks(vector<Drink> drinks){
     
     drinkRepo.storeVectorOfDrinks(drinks);
     
 }
 
+//Takes a vector of drinks as a parameter and a int index and erases the drink at that index
+//and overwrites it into the "drinks.dat" file
 void Bizniz::removeDrink(vector<Drink> drinks, int index){
     
     drinks.erase(drinks.begin() + (index-1));
@@ -161,6 +182,7 @@ void Bizniz::removeDrink(vector<Drink> drinks, int index){
  
  ***************************************************************************************/
 
+//Return a vector of all sizes from the "sizes.dat" file.
 vector<Size> Bizniz::getVectorOfSizes(){
     
     vector<Size> sizes;
@@ -170,6 +192,7 @@ vector<Size> Bizniz::getVectorOfSizes(){
     
 }
 
+//Adds a sizes to the "sizes.dat" file.
 void Bizniz::addSize(Size& size){
    
     if(isValidPrice(size.getPrice()))
@@ -177,12 +200,15 @@ void Bizniz::addSize(Size& size){
     
 }
 
+//Takes a vector of sizes as a parameter and overwrites it into the "sizes.dat" file
 void Bizniz::storeVectorOfSizes(vector<Size> sizes){
     
     sizeRepo.storeVectorOfSizes(sizes);
     
 }
 
+//Takes a vector of sizes as a parameter and a int index and erases the size at that index
+//and overwrites it into the "sizes.dat" file
 void Bizniz::removeSize(vector<Size> sizes, int index){
     
     sizes.erase(sizes.begin() + (index-1));
@@ -196,6 +222,8 @@ void Bizniz::removeSize(vector<Size> sizes, int index){
                                     BASES
  
  ***************************************************************************************/
+
+//Return a vector of all bases from the "bases.dat" file.
 vector<Base> Bizniz::getVectorOfBases(){
     
     vector<Base> bases;
@@ -205,6 +233,7 @@ vector<Base> Bizniz::getVectorOfBases(){
     
 }
 
+//Adds a base to the "bases.dat" file.
 void Bizniz::addBase(Base& base){
     
     if(isValidPrice(base.getPrice()))
@@ -212,12 +241,15 @@ void Bizniz::addBase(Base& base){
     
 }
 
+//Takes a vector of bases as a parameter and overwrites it into the "bases.dat" file
 void Bizniz::storeVectorOfBases(vector<Base> bases){
     
     baseRepo.storeVectorOfBases(bases);
     
 }
 
+//Takes a vector of bases as a parameter and a int index and erases the base at that index
+//and overwrites it into the "bases.dat" file
 void Bizniz::removeBase(vector<Base> bases, int index){
    
     bases.erase(bases.begin() + (index-1));
@@ -233,10 +265,6 @@ void Bizniz::removeBase(vector<Base> bases, int index){
                                     PIZZA
  
  ***************************************************************************************/
-
-
-
-
 
 
 void Bizniz::savePizzaArrayInFile(Pizza *pizzaArray, int sizeOfArray){
