@@ -37,7 +37,7 @@ void SalesUI::startSalesUI(){
             displayOrders();
         }
         else if(input == '3'){
-            
+            deleteOrder();
         }
     }
 }
@@ -82,8 +82,8 @@ void SalesUI::createOrder(){
             cout << endl << "Invalid input! (input can't be a character and has to match a number on the list) Try again" << endl << endl;
         }
         
-        if(order.getNumberOfSides() != 0 && order.getPizzasInOrder() != 0 && order.getNumberOfDrinks() != 0){
-            cout << endl << "I AM HERE PRINTING A EMPTY ORDER" << endl << endl;
+        //Passar að þú bætir ekki við tómri pöntun í skránna.
+        if(order.getNumberOfSides() != 0 && order.getNumberOfPizzas() != 0 && order.getNumberOfDrinks() != 0){
             bizniz.storeOrder(order);
         }
     }
@@ -91,6 +91,24 @@ void SalesUI::createOrder(){
 
 
 void SalesUI::displayOrders(){
+    int orderCnt = 0;
+    Order* orderList = bizniz.getArrayOfOrders(ORDERFILE, orderCnt);
+    if(orderCnt  == 0){
+        cout << endl;
+        cout << "List is empty" << endl;
+        cout << endl;
+        cout << "Press any key to continue" << endl;
+        cin >> ws;
+    }else{
+        for (int i = 0; i < orderCnt; i++) {
+            cout << orderList[i];
+        }
+    }
+    delete [] orderList;
+}
+
+void SalesUI::deleteOrder(){
+    
     int orderCnt = 0;
     Order* orderList = bizniz.getArrayOfOrders(ORDERFILE, orderCnt);
     if(orderCnt  == 0){
@@ -199,7 +217,7 @@ Topping* SalesUI::toppingPickingProcess(int& toppingCount){
                 string input;
                 cin >> input;
                 
-                if(bizniz.isInputDigit(input)){
+                if(bizniz.isInputDigit(input) && bizniz.isValidInput(stoi(input), allToppings.size())){
                 
                     int intInput = stoi(input);
                     
