@@ -21,7 +21,6 @@ void SalesUI::startSalesUI(){
         cout << setfill(CHARFORSETFILL) << setw(SIZEOFSETWBIG) << "-" << endl << endl;
         cout << NINETABSTRING << "1: New order" << endl;
         cout << NINETABSTRING << "2: View all orders" << endl;
-        cout << NINETABSTRING << "3: delete an order DO WE REALLY NEED THIS OPTION?" << endl;
         cout << NINETABSTRING << "b: back" << endl << endl << NINETABSTRING;
         cin >> input;
         clearScreen();
@@ -36,16 +35,14 @@ void SalesUI::startSalesUI(){
         else if(input == '2'){
             displayOrders();
         }
-        else if(input == '3'){
-            deleteOrder();
-        }
     }
 }
 
 //Býr til pöntun og vistar hana
-//vistar svo pizzurnar sérstaklega í pizzuskjal
+//vistar svo pizzurnar sérstaklega í pizzuskjal svo PrepUI getur unnið með þær.
 void SalesUI::createOrder(){
    
+    //Throws an exception if the location file is empty (YOU CAN'T ORDER A PIZZA IF THERE ARE NO LOACTIONS AVAILABLE).
     if(bizniz.isValidLocationFile()){
         
         Order order;
@@ -81,7 +78,6 @@ void SalesUI::createOrder(){
             cout << endl << "Invalid input! (input can't be a character and has to match a number on the list)" << endl << endl;
         }
         
-        
         try{
             commentCreationProcess(order);
         }catch(InvalidNameException){
@@ -101,7 +97,7 @@ void SalesUI::createOrder(){
     }
 }
 
-
+//Displays all orders from the orders list.
 void SalesUI::displayOrders(){
     int orderCnt = 0;
     Order* orderList = bizniz.getArrayOfOrders(ORDERFILE, orderCnt);
@@ -119,25 +115,8 @@ void SalesUI::displayOrders(){
     delete [] orderList;
 }
 
-void SalesUI::deleteOrder(){
-    
-    int orderCnt = 0;
-    Order* orderList = bizniz.getArrayOfOrders(ORDERFILE, orderCnt);
-    if(orderCnt  == 0){
-        cout << endl;
-        cout << "List is empty" << endl;
-        cout << endl;
-        cout << "Press any key to continue" << endl;
-        cin >> ws;
-    }else{
-        for (int i = 0; i < orderCnt; i++) {
-            cout << orderList[i];
-        }
-    }
-    delete [] orderList;
-}
-
-
+//Prints out a list of all available sizes from the "sizes.dat" and lets the user choose a size from the list by taking in an input from him
+//and gives that pizza the size chosen.
 Size SalesUI::sizePickingProcess(){
    
     Size sizeForPizza;
@@ -170,9 +149,8 @@ Size SalesUI::sizePickingProcess(){
     return sizeForPizza;
 }
 
-
-
-
+//Prints out a list of all available bases from the "sizes.dat" and lets the user choose a base from the list by taking in an input from him
+//and gives that pizza the base chosen.
 Base SalesUI::basePickingProcess(){
     Base baseForPizza;
     
@@ -277,6 +255,7 @@ Location SalesUI::locationPickingProcess(){
     }
     return returnLocation;
 }
+
 
 void SalesUI::pizzaListCreationProcess(Order& order){
     

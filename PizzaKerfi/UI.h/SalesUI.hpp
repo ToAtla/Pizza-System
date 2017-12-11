@@ -34,8 +34,7 @@ private:
     Bizniz bizniz;
     void createOrder();
     void displayOrders();
-    void deleteOrder();
-    
+
     Size sizePickingProcess();
     Base basePickingProcess();
     Topping* toppingPickingProcess(int& toppingCount);

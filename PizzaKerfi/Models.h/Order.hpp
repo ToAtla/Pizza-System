@@ -22,8 +22,8 @@ using namespace std;
 
 class Order {
 public:
-    Order();
     
+    Order();
     void setLocation(Location inLocation);
     int getID();
     void setID(int inID);
@@ -44,6 +44,7 @@ public:
     char* getOrdercComment();
     void setOrderComment(char inComment[]);
     friend ostream& operator << (ostream& out, const Order&);
+    
 private:
     Pizza pizzaList[MAXSTUFFSINORDER];
     Side sideList[MAXSTUFFSINORDER];

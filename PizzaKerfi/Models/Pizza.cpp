@@ -64,24 +64,31 @@ status Pizza::getStatus(){
 void Pizza::setStatus(enum status inStatus){
     status = inStatus;
 }
+
 int Pizza::getParentID(){
     return parentID;
 }
+
 void Pizza::setParentID(int inParentID){
     parentID = inParentID;
 }
+
 Base Pizza::getBase(){
     return baseOfPizza;
 }
+
 Size Pizza::getSize(){
     return sizeOfPizza;
 }
+
 Topping* Pizza::getToppings(){
     return toppings;
 }
+
 int Pizza::getToppingCount(){
     return toppingCount;
 }
+
 void Pizza::setToppingCount(int inToppingCount){
     toppingCount = inToppingCount;
 }
