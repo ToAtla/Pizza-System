@@ -26,11 +26,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "PizzaKerfi/SalesUI.cpp"
-            timestampString = "534608323.210319"
+            timestampString = "534692847.228152"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "135"
-            endingLineNumber = "135"
+            startingLineNumber = "141"
+            endingLineNumber = "141"
             landmarkName = "SalesUI::sizePickingProcess()"
             landmarkType = "7">
          </BreakpointContent>

@@ -41,6 +41,7 @@ private:
     Topping* toppingPickingProcess(int& toppingCount);
     Location locationPickingProcess();
     Pizza pizzaCreationProcess(Location locationOfOrderForPizzaToFollow);
+    void commentCreationProcess(Order& order);
     void pizzaListCreationProcess(Order& order);
     void clearScreen();
     
@@ -49,10 +50,6 @@ private:
     void sideListCreationProcess(Order& order);
     void drinkListCreationProcess(Order& order);
     
-    
-    //Bráðabirgða
-    //Útfærsla hefur verið kommentuð út
-    //void createASinglePizzaToTest();
     
     
 };

@@ -24,6 +24,7 @@ Order::Order(){
     locationOfOrder = Location();
     totalPrice = 0;
     statusOfOrder = UNPAID;
+    comment[0] = '\0';
 }
 
 Pizza* Order::getPizzasInOrder(){
@@ -86,16 +87,27 @@ Drink* Order::getDrinkList(){
     return drinkList;
 }
 
+char* Order::getOrdercComment(){
+    return comment;
+}
+void Order::setOrderComment(char *inComment){
+    strcpy(comment, inComment);
+}
+
 ostream& operator << (ostream& out, const Order& order){
     Bizniz bizniz;
     out << "#" << order.ID << "\t\t\t\t\t\t\t\t\t\t\t   " << order.locationOfOrder << "  \t\t\t\t\t\t\t\t" << bizniz.orderStatusToString(order.statusOfOrder) << endl;
     out << setfill(CHARFORSETFILL) << setw(SIZEOFSETWBIG) << "-" << endl;
+    if(order.comment[0] != '\0'){
+        cout << "Comment:" << order.comment << endl;
+    }
     out << setfill(CHARFORSETFILL) << setw(SIZEOFSETWBIG) << "-" << endl;
     
     out << setfill(' ') <<  endl;
     //Millilýsingar
     
     out << setw(SIZEOFSETW) << left << "ITEM" << "STATUS              PRICE" << endl;
+    
     out << setw(SIZEOFSETW) << left << "----" << "----------          -----" << endl;
     
     for(int i = 0; i < order.numberOfPizzas; i++) {
