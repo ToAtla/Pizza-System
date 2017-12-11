@@ -21,7 +21,7 @@ void SalesUI::startSalesUI(){
         cout << setfill(CHARFORSETFILL) << setw(SIZEOFSETWBIG) << "-" << endl << endl;
         cout << NINETABSTRING << "1: New order" << endl;
         cout << NINETABSTRING << "2: View all orders" << endl;
-        cout << NINETABSTRING << "3: delete an order BROKEN" << endl;
+        cout << NINETABSTRING << "3: delete an order DO WE REALLY NEED THIS OPTION?" << endl;
         cout << NINETABSTRING << "b: back" << endl << endl << NINETABSTRING;
         cin >> input;
         clearScreen();
@@ -65,7 +65,7 @@ void SalesUI::createOrder(){
         } catch (InvalidFileSizeBaseException e) {
             cout << endl << e.getMessage() << endl << endl;
         } catch (InvalidInputException) {
-            cout << endl << "Invalid input! (input can't be a character) Try again" << endl << endl;
+            cout << endl << "Invalid input! (input can't be a character and has to match a number on the list) Try again" << endl << endl;
             return;
         }
         

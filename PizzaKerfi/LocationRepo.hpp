@@ -26,9 +26,11 @@ class LocationRepo{
         vector<Location>getVectorOfLocations();
         void storeVectorOfLocations(vector<Location> locations);
         void addLocation(Location& location);
+    
 
     private:
         void clearLocations();
+        void createLocations();
 
 
 };

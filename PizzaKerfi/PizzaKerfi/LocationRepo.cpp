@@ -26,6 +26,8 @@ void LocationRepo::addLocation(Location& location){
 
 vector<Location> LocationRepo::getVectorOfLocations(){
     
+    createLocations();
+    
     vector<Location> locations;
     ifstream fin;
     fin.open("locations.dat", ios::binary);
@@ -66,7 +68,13 @@ void LocationRepo::clearLocations(){
     fout.close();
 }
 
-
+void LocationRepo::createLocations(){
+    
+    ofstream fout;
+    fout.open("locations.dat", ios::binary|ios::app);
+    fout.close();
+    
+}
 
 
 
