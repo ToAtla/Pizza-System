@@ -578,6 +578,8 @@ bool Bizniz::orderExist(int orderNum){
  
  ***************************************************************************************/
 
+//Takes a string as a parameter and throws an exception if it contains a digit
+//if it does not it returns true.
 bool Bizniz::isValidName(string name){
     
     for(int i = 0; i < name.length(); i++){
@@ -590,6 +592,8 @@ bool Bizniz::isValidName(string name){
     return true;
 }
 
+//Takes an int as a parameter and throws an exception if it's lower than 0
+//if it is not it returns true.
 bool Bizniz::isValidPrice(int price){
     
     if(price < 0){
@@ -599,6 +603,8 @@ bool Bizniz::isValidPrice(int price){
     return true;
 }
 
+//Takes in a string as a parameter and throws an exception if it contains a character that is not a number
+//if it does not it returns true.
 bool Bizniz::isPriceDigit(string price){
     
     for(int i = 0; i < price.length(); i++){
@@ -610,6 +616,9 @@ bool Bizniz::isPriceDigit(string price){
     return true;
 }
 
+
+//Takes an int and an unsigned long as parameters and if the int is lower than 1
+//or higher than the unsigned long it throws an exception otherwise it returns true.
 bool Bizniz::isValidInput(int input, unsigned long sizeOfList){
     
     unsigned long unsignedInput = input;
@@ -621,6 +630,8 @@ bool Bizniz::isValidInput(int input, unsigned long sizeOfList){
     return true;
 }
 
+//Takes an int and an unsigned long as parameters and if the int is higher than the unsigned lon
+//otherwise it returns true.
 bool Bizniz::isValidToppingInput(int input, unsigned long sizeOflist){
     
     unsigned long unsignedInput = input;
@@ -633,6 +644,8 @@ bool Bizniz::isValidToppingInput(int input, unsigned long sizeOflist){
     
 }
 
+//Takes a string as a parameter an if it contains a character that is not a number
+//it throws an exception otherwise it returns true.
 bool Bizniz::isInputDigit(string input){
     
     for(int i = 0; i < input.length(); i++){
@@ -644,6 +657,7 @@ bool Bizniz::isInputDigit(string input){
     return true;
 }
 
+//Takes in a string and an int as parameters and if the integ
 bool Bizniz::isValidNameLength(string name, int lenght){
     
     if(name.length() > lenght-1){
@@ -653,6 +667,8 @@ bool Bizniz::isValidNameLength(string name, int lenght){
     return true;
 }
 
+//Throws an exception if the "locations.dat" file is empty
+//otherwise returns true
 bool Bizniz::isValidLocationFile(){
     
     vector<Location> locations;
@@ -665,6 +681,8 @@ bool Bizniz::isValidLocationFile(){
     return true;
 }
 
+//Throws an exception if the "base.dat" file is empty or if the "size.dat" file is empty
+//otherwise it returns true.
 bool Bizniz::isValidBaseSizeFile(){
     
     vector<Size> sizes;
