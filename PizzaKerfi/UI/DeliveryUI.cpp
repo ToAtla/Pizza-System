@@ -135,8 +135,11 @@ void DeliveryUI::displayUnpaidOrders(){
         int input = 1;
         while(input != 0){
             cout << "Enter order number to mark as paid or 0 to exit (no whitespaces): ";
-            cin >> input;
-            if(input != 0 && bizniz.getOrderNumber(input).getStatusOfOrder() == UNPAID){
+            char charInput;
+            cin >> charInput;
+            input = charInput-48;
+            if(input != 0 && bizniz.orderExist(input) && bizniz.getOrderNumber(input).getStatusOfOrder() == UNPAID){
+                
                 bizniz.setOrderStatus(ORDERFILE, input, PAID);
                 cout << "Order number " << input << " has been marked as ready" << endl;
                 input = 0;
@@ -176,8 +179,11 @@ void DeliveryUI::displayPaidOrders(){
         int input = 1;
         while(input != 0){
             cout << "Enter number of order to mark delivered or 0 to exit (no whitespaces): ";
-            cin >> input;
-            if((input != 0) && bizniz.getOrderNumber(input).getStatusOfOrder() == PAID){
+            char charInput;
+            cin >> charInput;
+            input = charInput-48;
+            if((input != 0) && bizniz.orderExist(input) && bizniz.getOrderNumber(input).getStatusOfOrder() == PAID){
+                
                 if(!bizniz.allPizzasInOrderReady(bizniz.getOrderNumber(input))){
                     cout << "Not all items in that order are ready" << endl;
                 }else{

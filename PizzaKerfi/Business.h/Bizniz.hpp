@@ -89,6 +89,7 @@ public:
     void changeStatusOfPizzaInOrder(int orderNum, int pizzaNumber, status status);
     Order* getArrayOfOrdersAtLocationWithApplicablePizzas(status status, Location location, bool onlyWith, int& sizeOfReturnOrderList);
     bool thereExistsOrderAtLocationWithApplicablePizza(status status, Location location, bool onlyWith);
+    bool orderExist(int orderNum);
     
     
     //Exceptions(Bool functions)

@@ -13,7 +13,6 @@
 		7B9F681F1FCF0079006C9167 /* PizzaRepo.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7B9F681D1FCF0079006C9167 /* PizzaRepo.cpp */; };
 		7BAF73FF1FD9A6250011B799 /* Bizniz.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7BAF73FD1FD9A6250011B799 /* Bizniz.cpp */; };
 		7BC4854C1FD4415A00D2390D /* ConsoleMagic.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7BC4854A1FD4415A00D2390D /* ConsoleMagic.cpp */; };
-		7BD557F91FD8706F005FBDE5 /* MenuItem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7BD557F71FD8706F005FBDE5 /* MenuItem.cpp */; };
 		7BDA6A5E1FCDC2F200247376 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7BDA6A5D1FCDC2F200247376 /* main.cpp */; };
 		7BECD2B21FCDCC1600A0384A /* Pizza.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7BECD2B01FCDCC1600A0384A /* Pizza.cpp */; };
 		7BECD2B51FCDCE6400A0384A /* Topping.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7BECD2B31FCDCE6400A0384A /* Topping.cpp */; };
@@ -56,7 +55,7 @@
 		7B22C0A51FD012330055EE3D /* LocationRepo.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = LocationRepo.hpp; sourceTree = "<group>"; };
 		7B2CCE1F1FCF0FB10076A5EB /* ToppingRepo.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ToppingRepo.hpp; sourceTree = "<group>"; };
 		7B804D341FD875D60005EBA8 /* PizzaKerfi */ = {isa = PBXFileReference; lastKnownFileType = folder; path = PizzaKerfi; sourceTree = "<group>"; };
-		7B92F5A01FD87788004FECE1 /* Global.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; name = Global.hpp; path = PizzaKerfi/Global.hpp; sourceTree = "<group>"; };
+		7B92F5A01FD87788004FECE1 /* Global.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Global.hpp; sourceTree = "<group>"; };
 		7B97BCF01FCF368D00A24411 /* Location.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Location.cpp; sourceTree = "<group>"; };
 		7B97BCF11FCF368D00A24411 /* Location.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Location.hpp; sourceTree = "<group>"; };
 		7B9F681A1FCEFC06006C9167 /* ToppingRepo.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ToppingRepo.cpp; sourceTree = "<group>"; };
@@ -66,8 +65,6 @@
 		7BAF73FE1FD9A6250011B799 /* Bizniz.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Bizniz.hpp; sourceTree = "<group>"; };
 		7BC4854A1FD4415A00D2390D /* ConsoleMagic.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ConsoleMagic.cpp; sourceTree = "<group>"; };
 		7BC4854D1FD4425100D2390D /* ConsoleMagic.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ConsoleMagic.hpp; sourceTree = "<group>"; };
-		7BD557F71FD8706F005FBDE5 /* MenuItem.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = MenuItem.cpp; sourceTree = "<group>"; };
-		7BD557F81FD8706F005FBDE5 /* MenuItem.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = MenuItem.hpp; sourceTree = "<group>"; };
 		7BDA6A5A1FCDC2F200247376 /* PizzaKerfi */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = PizzaKerfi; sourceTree = BUILT_PRODUCTS_DIR; };
 		7BDA6A5D1FCDC2F200247376 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		7BECD2B01FCDCC1600A0384A /* Pizza.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Pizza.cpp; sourceTree = "<group>"; };
@@ -130,39 +127,20 @@
 		7BDA6A511FCDC2F200247376 = {
 			isa = PBXGroup;
 			children = (
-				7B92F5A01FD87788004FECE1 /* Global.hpp */,
-				7BC4854D1FD4425100D2390D /* ConsoleMagic.hpp */,
-				E9C456D41FCEF6BC00A93407 /* MainUI.hpp */,
-				E9C456D11FCEF1D700A93407 /* AdminUI.hpp */,
-				E974CCFF1FCF1EBF0005D0F9 /* SalesUI.hpp */,
-				E974CD051FCF1F0D0005D0F9 /* PrepUI.hpp */,
-				E974CD021FCF1EF50005D0F9 /* DeliveryUI.hpp */,
-				7BAF73FE1FD9A6250011B799 /* Bizniz.hpp */,
-				7B2CCE1F1FCF0FB10076A5EB /* ToppingRepo.hpp */,
-				7B22C0A51FD012330055EE3D /* LocationRepo.hpp */,
-				E974CD2D1FD0B2390005D0F9 /* DrinkRepo.hpp */,
-				E974CD081FCF28520005D0F9 /* OrderRepo.hpp */,
-				E974CD301FD193660005D0F9 /* SizeRepo.hpp */,
-				E974CD391FD1BC5D0005D0F9 /* BaseRepo.hpp */,
-				7B9F681E1FCF0079006C9167 /* PizzaRepo.hpp */,
-				E974CD2A1FD09A110005D0F9 /* SideRepo.hpp */,
-				7BECD2B41FCDCE6400A0384A /* Topping.hpp */,
-				7B97BCF11FCF368D00A24411 /* Location.hpp */,
-				E974CD271FD097560005D0F9 /* Drink.hpp */,
-				E974CD211FD087B40005D0F9 /* Side.hpp */,
-				E974CD331FD194110005D0F9 /* Size.hpp */,
-				E974CD361FD1BC510005D0F9 /* Base.hpp */,
-				7BD557F81FD8706F005FBDE5 /* MenuItem.hpp */,
-				7BECD2B11FCDCC1600A0384A /* Pizza.hpp */,
-				7BECD2B71FCDCE8100A0384A /* Order.hpp */,
-				E950F3CE1FDC104F00B0ABDF /* InvalidNameException.hpp */,
-				E950F3D11FDC157000B0ABDF /* InvalidPriceException.hpp */,
-				E950F3D41FDC20B400B0ABDF /* InvalidInputException.hpp */,
-				E9A4DD161FDD6C0D00B27AC2 /* InvalidFileLocationException.hpp */,
-				E9A4DD191FDD6EC100B27AC2 /* InvalidFileSizeBaseException.hpp */,
 				7BDA6A5C1FCDC2F200247376 /* PizzaKerfi */,
+				E9A4DD291FDEEDA500B27AC2 /* Extras */,
+				E9A4DD271FDEECB600B27AC2 /* UI */,
+				E9A4DD261FDEECAF00B27AC2 /* Repo */,
+				E9A4DD251FDEECA900B27AC2 /* Business */,
+				E9A4DD1F1FDEE69600B27AC2 /* Models */,
+				E9A4DD281FDEED2000B27AC2 /* Exceptions */,
 				7B804D341FD875D60005EBA8 /* PizzaKerfi */,
 				7BDA6A5B1FCDC2F200247376 /* Products */,
+				E9A4DD221FDEEC5900B27AC2 /* UI.h */,
+				E9A4DD241FDEEC9B00B27AC2 /* Business.h */,
+				E9A4DD211FDEE71200B27AC2 /* Repo.h */,
+				E9A4DD201FDEE6D500B27AC2 /* Models.h */,
+				E9A4DD231FDEEC6D00B27AC2 /* Exceptions.h */,
 			);
 			sourceTree = "<group>";
 		};
@@ -178,20 +156,13 @@
 			isa = PBXGroup;
 			children = (
 				7BDA6A5D1FCDC2F200247376 /* main.cpp */,
-				E9C456D31FCEF6BC00A93407 /* MainUI.cpp */,
-				E9C456D01FCEF1D700A93407 /* AdminUI.cpp */,
-				E974CCFE1FCF1EBF0005D0F9 /* SalesUI.cpp */,
-				E974CD041FCF1F0D0005D0F9 /* PrepUI.cpp */,
-				E974CD011FCF1EF50005D0F9 /* DeliveryUI.cpp */,
-				7BAF73FD1FD9A6250011B799 /* Bizniz.cpp */,
-				E974CD381FD1BC5D0005D0F9 /* BaseRepo.cpp */,
-				E974CD071FCF28520005D0F9 /* OrderRepo.cpp */,
-				E974CD2C1FD0B2390005D0F9 /* DrinkRepo.cpp */,
-				7B9F681A1FCEFC06006C9167 /* ToppingRepo.cpp */,
-				7B22C0A41FD012330055EE3D /* LocationRepo.cpp */,
-				7B9F681D1FCF0079006C9167 /* PizzaRepo.cpp */,
-				E974CD291FD09A110005D0F9 /* SideRepo.cpp */,
-				E974CD2F1FD193660005D0F9 /* SizeRepo.cpp */,
+			);
+			path = PizzaKerfi;
+			sourceTree = "<group>";
+		};
+		E9A4DD1F1FDEE69600B27AC2 /* Models */ = {
+			isa = PBXGroup;
+			children = (
 				7BECD2B31FCDCE6400A0384A /* Topping.cpp */,
 				7B97BCF01FCF368D00A24411 /* Location.cpp */,
 				E974CD261FD097560005D0F9 /* Drink.cpp */,
@@ -200,15 +171,127 @@
 				E974CD351FD1BC510005D0F9 /* Base.cpp */,
 				7BECD2B01FCDCC1600A0384A /* Pizza.cpp */,
 				7BECD2B61FCDCE8100A0384A /* Order.cpp */,
-				7BD557F71FD8706F005FBDE5 /* MenuItem.cpp */,
-				7BC4854A1FD4415A00D2390D /* ConsoleMagic.cpp */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		E9A4DD201FDEE6D500B27AC2 /* Models.h */ = {
+			isa = PBXGroup;
+			children = (
+				7BECD2B41FCDCE6400A0384A /* Topping.hpp */,
+				7B97BCF11FCF368D00A24411 /* Location.hpp */,
+				E974CD271FD097560005D0F9 /* Drink.hpp */,
+				E974CD211FD087B40005D0F9 /* Side.hpp */,
+				E974CD331FD194110005D0F9 /* Size.hpp */,
+				E974CD361FD1BC510005D0F9 /* Base.hpp */,
+				7BECD2B11FCDCC1600A0384A /* Pizza.hpp */,
+				7BECD2B71FCDCE8100A0384A /* Order.hpp */,
+			);
+			path = Models.h;
+			sourceTree = "<group>";
+		};
+		E9A4DD211FDEE71200B27AC2 /* Repo.h */ = {
+			isa = PBXGroup;
+			children = (
+				7B2CCE1F1FCF0FB10076A5EB /* ToppingRepo.hpp */,
+				7B22C0A51FD012330055EE3D /* LocationRepo.hpp */,
+				E974CD2D1FD0B2390005D0F9 /* DrinkRepo.hpp */,
+				E974CD081FCF28520005D0F9 /* OrderRepo.hpp */,
+				E974CD301FD193660005D0F9 /* SizeRepo.hpp */,
+				E974CD391FD1BC5D0005D0F9 /* BaseRepo.hpp */,
+				7B9F681E1FCF0079006C9167 /* PizzaRepo.hpp */,
+				E974CD2A1FD09A110005D0F9 /* SideRepo.hpp */,
+			);
+			path = Repo.h;
+			sourceTree = "<group>";
+		};
+		E9A4DD221FDEEC5900B27AC2 /* UI.h */ = {
+			isa = PBXGroup;
+			children = (
+				E9C456D41FCEF6BC00A93407 /* MainUI.hpp */,
+				E9C456D11FCEF1D700A93407 /* AdminUI.hpp */,
+				E974CCFF1FCF1EBF0005D0F9 /* SalesUI.hpp */,
+				E974CD051FCF1F0D0005D0F9 /* PrepUI.hpp */,
+				E974CD021FCF1EF50005D0F9 /* DeliveryUI.hpp */,
+			);
+			path = UI.h;
+			sourceTree = "<group>";
+		};
+		E9A4DD231FDEEC6D00B27AC2 /* Exceptions.h */ = {
+			isa = PBXGroup;
+			children = (
+				E950F3CE1FDC104F00B0ABDF /* InvalidNameException.hpp */,
+				E950F3D11FDC157000B0ABDF /* InvalidPriceException.hpp */,
+				E950F3D41FDC20B400B0ABDF /* InvalidInputException.hpp */,
+				E9A4DD161FDD6C0D00B27AC2 /* InvalidFileLocationException.hpp */,
+				E9A4DD191FDD6EC100B27AC2 /* InvalidFileSizeBaseException.hpp */,
+			);
+			path = Exceptions.h;
+			sourceTree = "<group>";
+		};
+		E9A4DD241FDEEC9B00B27AC2 /* Business.h */ = {
+			isa = PBXGroup;
+			children = (
+				7BAF73FE1FD9A6250011B799 /* Bizniz.hpp */,
+			);
+			path = Business.h;
+			sourceTree = "<group>";
+		};
+		E9A4DD251FDEECA900B27AC2 /* Business */ = {
+			isa = PBXGroup;
+			children = (
+				7BAF73FD1FD9A6250011B799 /* Bizniz.cpp */,
+			);
+			path = Business;
+			sourceTree = "<group>";
+		};
+		E9A4DD261FDEECAF00B27AC2 /* Repo */ = {
+			isa = PBXGroup;
+			children = (
+				E974CD381FD1BC5D0005D0F9 /* BaseRepo.cpp */,
+				E974CD071FCF28520005D0F9 /* OrderRepo.cpp */,
+				E974CD2C1FD0B2390005D0F9 /* DrinkRepo.cpp */,
+				7B9F681A1FCEFC06006C9167 /* ToppingRepo.cpp */,
+				7B22C0A41FD012330055EE3D /* LocationRepo.cpp */,
+				7B9F681D1FCF0079006C9167 /* PizzaRepo.cpp */,
+				E974CD291FD09A110005D0F9 /* SideRepo.cpp */,
+				E974CD2F1FD193660005D0F9 /* SizeRepo.cpp */,
+			);
+			path = Repo;
+			sourceTree = "<group>";
+		};
+		E9A4DD271FDEECB600B27AC2 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				E9C456D31FCEF6BC00A93407 /* MainUI.cpp */,
+				E9C456D01FCEF1D700A93407 /* AdminUI.cpp */,
+				E974CCFE1FCF1EBF0005D0F9 /* SalesUI.cpp */,
+				E974CD041FCF1F0D0005D0F9 /* PrepUI.cpp */,
+				E974CD011FCF1EF50005D0F9 /* DeliveryUI.cpp */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
+		E9A4DD281FDEED2000B27AC2 /* Exceptions */ = {
+			isa = PBXGroup;
+			children = (
 				E950F3CD1FDC104F00B0ABDF /* InvalidNameException.cpp */,
 				E950F3D01FDC157000B0ABDF /* InvalidPriceException.cpp */,
 				E950F3D31FDC20B400B0ABDF /* InvalidInputException.cpp */,
 				E9A4DD151FDD6C0D00B27AC2 /* InvalidFileLocationException.cpp */,
 				E9A4DD181FDD6EC100B27AC2 /* InvalidFileSizeBaseException.cpp */,
 			);
-			path = PizzaKerfi;
+			path = Exceptions;
+			sourceTree = "<group>";
+		};
+		E9A4DD291FDEEDA500B27AC2 /* Extras */ = {
+			isa = PBXGroup;
+			children = (
+				7B92F5A01FD87788004FECE1 /* Global.hpp */,
+				7BC4854D1FD4425100D2390D /* ConsoleMagic.hpp */,
+				7BC4854A1FD4415A00D2390D /* ConsoleMagic.cpp */,
+			);
+			path = Extras;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -292,7 +375,6 @@
 				7BECD2B21FCDCC1600A0384A /* Pizza.cpp in Sources */,
 				7BECD2B81FCDCE8100A0384A /* Order.cpp in Sources */,
 				E9C456D51FCEF6BC00A93407 /* MainUI.cpp in Sources */,
-				7BD557F91FD8706F005FBDE5 /* MenuItem.cpp in Sources */,
 				7BDA6A5E1FCDC2F200247376 /* main.cpp in Sources */,
 				E974CD221FD087B40005D0F9 /* Side.cpp in Sources */,
 				E974CD031FCF1EF50005D0F9 /* DeliveryUI.cpp in Sources */,

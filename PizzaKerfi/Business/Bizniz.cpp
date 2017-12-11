@@ -402,6 +402,7 @@ Order Bizniz::getOrderNumber(int orderNumber){
         }
     }
     Order kukaorder;
+    kukaorder.setStatusOfOrder(DELIVERED);
     return kukaorder;
 }
 
@@ -525,6 +526,18 @@ bool Bizniz::thereExistsOrderAtLocationWithApplicablePizza(status status, Locati
         }
     }
     delete [] allOrders;
+    return false;
+}
+
+
+bool Bizniz::orderExist(int orderNum){
+    int ordersInFile = 0;
+    Order* allOrders = getArrayOfOrders(ORDERFILE, ordersInFile);
+    for (int i = 0; i < ordersInFile; i++) {
+        if(allOrders[i].getID() == orderNum){
+            return true;
+        }
+    }
     return false;
 }
 
