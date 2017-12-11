@@ -15,7 +15,8 @@
                                     TOPPINGS
  
  ***************************************************************************************/
- 
+
+//Skila vector af öllum toppings í "toppings.txt".
 vector<Topping> Bizniz::getVectorOfToppings(){
     
     vector<Topping> toppings;
@@ -24,6 +25,7 @@ vector<Topping> Bizniz::getVectorOfToppings(){
     return toppings;
 }
 
+//Bætir við topping í "toppings.txt" skránna.
 void Bizniz::addTopping(Topping& topping){
     
     if(isValidPrice(topping.getPrice())){
@@ -31,6 +33,7 @@ void Bizniz::addTopping(Topping& topping){
     }
 }
 
+//
 void Bizniz::storeVectorOfToppings(vector<Topping> toppings){
     
     toppingRepo.storeVectorOfToppings(toppings);
