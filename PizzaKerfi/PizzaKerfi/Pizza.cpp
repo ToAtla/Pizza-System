@@ -90,7 +90,7 @@ void Pizza::setToppingCount(int inToppingCount){
 ostream& operator << (ostream& out, const Pizza& pizza){
     Bizniz bizniz;
     string statusAndPriceString = bizniz.getStatusAndPriceCharArr(pizza);
-    out << setw(SIZEOFSETW) << left << pizza.name << statusAndPriceString << endl;
+    out << setw(SIZEOFSETW) << left << pizza.name << setfill(' ') <<  statusAndPriceString << endl;
     return out;
 }
 
