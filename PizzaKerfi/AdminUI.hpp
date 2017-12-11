@@ -77,6 +77,7 @@ class AdminUI{
         void removeBase();
     
         void uiItemSeparator();
+        void locationUIItemSeperator();
 };
 
 #endif /* AdminUI_hpp */
