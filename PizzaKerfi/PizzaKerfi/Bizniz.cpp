@@ -386,7 +386,7 @@ char* Bizniz::orderStatusToString(orderStatus status){
     if(status == UNPAID){
         strcpy(statusString, "UNPAID   ");
     }if(status == PAID){
-        strcpy(statusString, "PAiD     ");
+        strcpy(statusString, "PAID     ");
     }if(status == DELIVERED){
         strcpy(statusString, "DELIVERED");
     }

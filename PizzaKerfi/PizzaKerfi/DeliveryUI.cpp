@@ -205,7 +205,7 @@ void DeliveryUI::displayLegacyOrders(){
     //þarf núna að sigta út óvirkar pantanir þeas þær sem er  bið að afgreiða
     int amountOfDeliveredOrdersAtThisLocation = 0;
     for (int i = 0; i < sizeOfOrderList; i++) {
-        if(locationOfDelivery.getLocation() == orders[i].getLocation().getLocation() && orders[i].getStatusOfOrder() != DELIVERED){
+        if(locationOfDelivery.getLocation() == orders[i].getLocation().getLocation() && orders[i].getStatusOfOrder() == DELIVERED){
             amountOfDeliveredOrdersAtThisLocation++;
         }
     }
