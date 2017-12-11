@@ -257,7 +257,7 @@ Location SalesUI::locationPickingProcess(){
         cout << NINETABSTRING << " Location number: " << i+1 << endl;
         cout << NINETABSTRING << " " << locations.at(i) << endl << endl;
     }
-    cout << "Choose a location for your order: ";
+    cout << "Choose a number corresponding to location: ";
     cin.ignore();
     getline(cin, locationNumber);
             
@@ -337,7 +337,7 @@ void SalesUI::sideListCreationProcess(Order &order){
                 cout << HALFTABSTRING << "Side number: " << i+1 << endl;
                 cout << HALFTABSTRING << sides.at(i) << endl << endl;
             }
-            cout << "Choose a side you want to add to your order (no whitespaces): ";
+            cout << "Choose a number corresponding to side (no whitespaces): ";
             string sideNumber;
             cin >> sideNumber;
             
@@ -389,7 +389,7 @@ void SalesUI::drinkListCreationProcess(Order &order){
                 cout << "Drink number: " << i+1 << endl;
                 cout << drinks.at(i) << endl << endl;
             }
-            cout << "Choose a drink you want to add to your order (no whitespaces): ";
+            cout << "Choose a number corresponding to drink (no whitespaces): ";
             string drinkNumber;
             cin >> drinkNumber;
             

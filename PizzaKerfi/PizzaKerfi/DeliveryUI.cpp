@@ -132,14 +132,14 @@ void DeliveryUI::displayUnpaidOrders(){
         cout << endl;
     
     
-        int input = '\0';
-        while(input != '0'){
+        int input = 1;
+        while(input != 0){
             cout << "Enter order number to mark as paid or 0 to exit (no whitespaces): ";
             cin >> input;
-            if(bizniz.getOrderNumber(input).getStatusOfOrder() == UNPAID){
+            if(input != 0 && bizniz.getOrderNumber(input).getStatusOfOrder() == UNPAID){
                 bizniz.setOrderStatus(ORDERFILE, input, PAID);
-                input = 0;
                 cout << "Order number " << input << " has been marked as ready" << endl;
+                input = 0;
             }
         }
     }else{
@@ -173,23 +173,18 @@ void DeliveryUI::displayPaidOrders(){
         cout << endl;
     
     
-        int input = '\0';
-        while(input != '0'){
-            cout << "Enter number of order to mark delivered 0 to exit (no whitespaces): ";
+        int input = 1;
+        while(input != 0){
+            cout << "Enter number of order to mark delivered or 0 to exit (no whitespaces): ";
             cin >> input;
-            if(input != 0){
-                if(bizniz.getOrderNumber(input).getStatusOfOrder() == PAID){
-                    if(!bizniz.allPizzasInOrderReady(bizniz.getOrderNumber(input))){
-                        cout << "Not all items in that order are ready" << endl;
-                    }else{
-                        bizniz.setOrderStatus(ORDERFILE, input, DELIVERED);
-                        input = 0;
-                        cout << "Order number " << input << " has been marked delivered" << endl;
-                    }
+            if((input != 0) && bizniz.getOrderNumber(input).getStatusOfOrder() == PAID){
+                if(!bizniz.allPizzasInOrderReady(bizniz.getOrderNumber(input))){
+                    cout << "Not all items in that order are ready" << endl;
+                }else{
+                    bizniz.setOrderStatus(ORDERFILE, input, DELIVERED);
+                    cout << "Order number " << input << " has been marked delivered" << endl;
+                    input = 0;
                 }
-            }
-            else{
-                break;
             }
         }
     }else{
@@ -210,7 +205,7 @@ void DeliveryUI::displayLegacyOrders(){
     //þarf núna að sigta út óvirkar pantanir þeas þær sem er  bið að afgreiða
     int amountOfDeliveredOrdersAtThisLocation = 0;
     for (int i = 0; i < sizeOfOrderList; i++) {
-        if(locationOfDelivery.getLocation() == orders[i].getLocation().getLocation() && orders[i].getStatusOfOrder() != DELIVERED){
+        if(locationOfDelivery.getLocation() == orders[i].getLocation().getLocation() && orders[i].getStatusOfOrder() == DELIVERED){
             amountOfDeliveredOrdersAtThisLocation++;
         }
     }
@@ -218,7 +213,7 @@ void DeliveryUI::displayLegacyOrders(){
     cout << " - - - - - - - - - - Listing All Legacy Orders in " << locationOfDelivery << " - - - - - - - - - - " << endl;
     if(ordRep.fileExists(orderFile) && amountOfDeliveredOrdersAtThisLocation != 0){
         for (int i = 0; i < sizeOfOrderList; i++) {
-            if(locationOfDelivery.getLocation() == orders[i].getLocation().getLocation() && orders[i].getStatusOfOrder() != DELIVERED){
+            if(locationOfDelivery.getLocation() == orders[i].getLocation().getLocation() && orders[i].getStatusOfOrder() == DELIVERED){
                 cout << orders[i] << endl;
             }
         }
