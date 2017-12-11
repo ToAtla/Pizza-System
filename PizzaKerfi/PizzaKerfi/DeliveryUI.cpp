@@ -134,7 +134,7 @@ void DeliveryUI::displayUnpaidOrders(){
     
         int input = '\0';
         while(input != '0'){
-            cout << "Enter order number to mark as paid or 0 to exit: ";
+            cout << "Enter order number to mark as paid or 0 to exit (no whitespaces): ";
             cin >> input;
             if(bizniz.getOrderNumber(input).getStatusOfOrder() == UNPAID){
                 bizniz.setOrderStatus(ORDERFILE, input, PAID);
@@ -176,7 +176,7 @@ void DeliveryUI::displayPaidOrders(){
     
         int input = '\0';
         while(input != '0'){
-            cout << "Enter number of order to mark delivered 0 to exit: ";
+            cout << "Enter number of order to mark delivered 0 to exit (no whitespaces): ";
             cin >> input;
             if(input != 0){
                 if(bizniz.getOrderNumber(input).getStatusOfOrder() == PAID){
