@@ -72,19 +72,25 @@ void SalesUI::createOrder(){
         try {
             sideListCreationProcess(order);
         } catch (InvalidInputException) {
-            cout << endl << "Invalid input! (input can't be a character and has to match a number on the list) Try again" << endl << endl;
-            return;
+            cout << endl << "Invalid input! (input can't be a character and has to match a number on the list)" << endl << endl;
         }
         
         try {
             drinkListCreationProcess(order);
         } catch (InvalidInputException) {
-            cout << endl << "Invalid input! (input can't be a character and has to match a number on the list) Try again" << endl << endl;
+            cout << endl << "Invalid input! (input can't be a character and has to match a number on the list)" << endl << endl;
         }
         
-        cout << "HOW MANY PIZZAS" << order.getNumberOfPizzas() << endl;
-        cout << "HOW MANY SIDES" << order.getNumberOfSides() << endl;
-        cout << "HOW MANY DRINKS" << order.getNumberOfDrinks() << endl;
+        
+        try{
+            commentCreationProcess(order);
+        }catch(InvalidNameException){
+            cout << endl << "Hey there! I said only " << MAXCHARINORDERCOMMENT-1 << " characters" << endl << endl;
+            char comment[MAXCHARINORDERCOMMENT];
+            comment[0] = '\0';
+            order.setOrderComment(comment);
+        }
+        
         
         //Passar að þú bætir ekki við tómri pöntun í skránna.
         if(order.getNumberOfSides() == 0 && order.getNumberOfPizzas() == 0 && order.getNumberOfDrinks() == 0){
@@ -250,9 +256,7 @@ Location SalesUI::locationPickingProcess(){
     cout << endl << setfill(CHARFORSETFILL) << setw(36) << "-" << "    Locations available    " << setfill(CHARFORSETFILL) << setw(37) << "-" << endl << endl;
         
     string locationNumber;
-        
-    bool invalidInput = true;
-            
+
     for(unsigned int i = 0; i < locations.size(); i++){
         cout << NINETABSTRING << " Location number: " << i+1 << endl;
         cout << NINETABSTRING << " " << locations.at(i) << endl << endl;
@@ -268,7 +272,6 @@ Location SalesUI::locationPickingProcess(){
         for(unsigned int i = 0; i < locations.size(); i++){
                 if(intLocationNumber == i+1){
                     returnLocation = locations.at(i);
-                    invalidInput = false;
                 }
         }
     }
@@ -413,29 +416,30 @@ void SalesUI::drinkListCreationProcess(Order &order){
         
     }
 }
+void SalesUI::commentCreationProcess(Order& order){
+    char input = '\0';
+    cout << "Any special comments?(y/n)";
+    cin >> input;
+    string commentString;
+    char* comment = new char[MAXCHARINORDERCOMMENT];
+    if(input == 'y'){
+        cout << "Write out the comment(max " << MAXCHARINORDERCOMMENT-1 << " characters):";
+        cin.ignore();
+        getline(cin, commentString);
+        if(bizniz.isValidNameLength(commentString, MAXCHARINORDERCOMMENT)){
+           strcpy(comment, commentString.c_str());
+        }
+    }
+    else{
+        comment[0] = '\0';
+    }
+    order.setOrderComment(comment);
+    delete [] comment;
+}
 
 void SalesUI::clearScreen(){
     ConsoleMagic consoleMagic;
     consoleMagic.clearScreen();
 }
-
-/*
- Bráðabirgðaföll til að sjá hvort það virki að vista pizzur í skrár
-*/
-/*
-void SalesUI::createASinglePizzaToTest(){
-    //Also saves to file
-    
-    Size pizzaSize = sizePickingProcess();
-    Base pizzaBase = basePickingProcess();
-    int toppingCount;
-    Topping* pizzaToppings = toppingPickingProcess(toppingCount);
-    Location pizzaLocation = locationPickingProcess();
-    
-    Pizza newPizza = bizniz.assemblePizza(pizzaSize, pizzaBase, pizzaToppings, toppingCount, pizzaLocation);
-    delete [] pizzaToppings;
-    bizniz.appendPizzaToFile(PIZZAFILE, newPizza);
-}
-*/
 
 

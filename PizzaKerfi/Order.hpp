@@ -41,7 +41,8 @@ public:
     void setNumberOfDrinks(int inNumberOfDrinks);
     Side* getSideList();
     Drink* getDrinkList();
-    
+    char* getOrdercComment();
+    void setOrderComment(char inComment[]);
     friend ostream& operator << (ostream& out, const Order&);
 private:
     Pizza pizzaList[MAXSTUFFSINORDER];
@@ -54,7 +55,7 @@ private:
     int totalPrice;
     int ID;
     orderStatus statusOfOrder;
-    bool ready = false;
+    char comment[MAXCHARINORDERCOMMENT];
 };
 
 #endif /* Order_hpp */

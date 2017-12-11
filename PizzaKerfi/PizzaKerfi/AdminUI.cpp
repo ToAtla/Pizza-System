@@ -340,7 +340,7 @@ void AdminUI::addLocation(){
     if(bizniz.isValidNameLength(name, MAXCHARINLOCATIONNAME)){
         Location temp(tempName);
         bizniz.addLocation(temp);
-        cout << endl << "Location added!" << endl << endl;
+        cout << endl << setw(SIZEOFADDTOPPINGSPACES-10) << "Location added!" << endl << endl;
     }
 }
 
@@ -354,11 +354,11 @@ void AdminUI::changeLocation(){
     for(int i = 0; i < locations.size(); i++){
         Location temp = locations.at(i);
         cout << setfill(' ') << setw(31) << "Location number: " << i+1 << endl;
-        cout << setw(23) << temp << endl;
+        cout << "\t\t\t " << temp << endl;
         cout << setw(14) << " " << setfill(CHARFORSETFILL) << setw(43) << "-" << endl;
     }
     string input;
-    cout << endl << "Choose a location to change: ";
+    cout << endl << setfill(' ') << setw(43) << "Choose a location to change: ";
     cin >> input;
     
     
@@ -367,7 +367,7 @@ void AdminUI::changeLocation(){
             
         for(int i = 0; i < locations.size(); i++){
             if(intInput == i+1){
-                cout << "Enter location name (Max " << MAXCHARINLOCATIONNAME-1 << " letters): ";
+                cout << setw(SIZEOFADDTOPPINGSPACES-3) << "Enter location name (Max " << MAXCHARINLOCATIONNAME-1 << " letters): ";
                 string name;
                 cin.ignore();
                 getline(cin, name);
@@ -378,7 +378,7 @@ void AdminUI::changeLocation(){
                 if(bizniz.isValidNameLength(name, MAXCHARINLOCATIONNAME)){
                     Location temp(tempName);
                     locations.at(i) = temp;
-                    cout << endl << "Location changed" << endl << endl;
+                    cout << endl << setw(SIZEOFADDTOPPINGSPACES-11) << "Location changed!" << endl << endl;
                 }
             }
         }
@@ -386,7 +386,7 @@ void AdminUI::changeLocation(){
     }
     }
     else{
-        cout << endl << "The file is empty :(" << endl << endl;
+        cout << endl << setfill(' ') << setw(48) << "The file is empty :(" << endl << endl;
     }
 }
 
@@ -395,26 +395,26 @@ void AdminUI::removeLocation(){
     
     vector<Location> locations = bizniz.getVectorOfLocations();
     cout << endl;
-    cout << endl << "----------------------------List of all locations---------------------------" << endl;
+    cout << endl << setfill(CHARFORSETFILL)<< setw(24) << "-" << "    List of all locations    " << setfill(CHARFORSETFILL) << setw(23) << "-" << endl << endl;
     if(locations.size() < 1){
-        cout << endl << "The file is empty :(" << endl << endl;
+        cout << endl << setfill(' ') << setw(48) << "The file is empty :(" << endl << endl;
     } else {
         for(int i = 0; i < locations.size(); i++){
             Location temp = locations.at(i);
-            cout << "Location number: " << i+1 << endl;
-            cout <<  temp << endl;
-            cout << setfill(CHARFORSETFILL) << setw(SIZEOFSETW) << "-" << endl;
+            cout << setfill(' ') << setw(31) << "Location number: " << i+1 << endl;
+            cout <<  "\t\t\t " << temp << endl;
+            cout << setw(14) << " " << setfill(CHARFORSETFILL) << setw(43) << "-" << endl;
         }
 
         string input;
-        cout << "Choose a location to remove: ";
+        cout << setfill(' ') << setw(43) << "Choose a location to remove: ";
         cin >> input;
         
         if(bizniz.isInputDigit(input) && bizniz.isValidInput(stoi(input), locations.size())){
             int intInput = stoi(input);
             
             bizniz.removeLocation(locations, intInput);
-            cout << endl << "Location removed" << endl << endl;
+            cout << endl << setw(31) << "Location removed!" << endl << endl;
         }
     }
 }
@@ -423,11 +423,17 @@ void AdminUI::removeLocation(){
 void AdminUI::displaySideMenu(){
     char input = '\0';
     while(input != 'b'){
-        cout << "1: List sides" << endl;
-        cout << "2: Change a side" << endl;
-        cout << "3: Add a side" << endl;
-        cout << "4: Remove a side" << endl;
-        cout << "b: back" << endl;
+        cout << setfill(CHARFORSETFILL) << setw(32) << "-" << "    Sides    " << setfill(CHARFORSETFILL) << setw(31) << "-" << endl << endl;
+        cout << setfill(' ') << setw(20) << "1: " << "List sides" << endl;
+        uiItemSeparator();
+        cout << setw(20) << "2: " << "Change a side" << endl;
+        uiItemSeparator();
+        cout << setw(20) << "3: " << "Add a side" << endl;
+        uiItemSeparator();
+        cout << setw(20) << "4: " << "Remove a side" << endl;
+        uiItemSeparator();
+        cout << setw(20) << "b: " << "back" << endl;
+        uiItemSeparator();
         cin >> input;
         cout << endl;
 
@@ -474,10 +480,10 @@ void AdminUI::displayAllSides(){
     
     vector<Side> sides = bizniz.getVectorOfSides();
     
-    cout << endl << "----------------------------List of all sides-------------------------------" << endl;
+    cout << endl << setfill(CHARFORSETFILL)<< setw(26) << "-" << "    List of all sides    " << setfill(CHARFORSETFILL) << setw(25) << "-" << endl << endl;
     
     if(sides.size() < 1){
-        cout << endl << "The file is empty :(" << endl;
+          cout << endl << setfill(' ') << setw(48) << "The file is empty :("  << endl;
     }
     else {
         for (int i = 0; i < sides.size(); i++) {
@@ -494,12 +500,12 @@ void AdminUI::displayAllSides(){
 
 void AdminUI::addSide(){
     
-    cout << "Adding a side!" << endl << endl;
-    cout << "Enter side name (Max " << MAXCHARINSIDENAME-1 << " letters): ";
+    cout << setfill(CHARFORSETFILL) << setw(27) << "-" <<  "    Adding a side!    " << setfill(CHARFORSETFILL) << setw(27) << "-" << endl << endl;
+    cout << setfill(' ') << setw(SIZEOFADDTOPPINGSPACES-4) << "Enter side name (Max " << MAXCHARINSIDENAME-1 << " letters): ";
     string name;
     cin.ignore();
     getline(cin, name);
-    cout << "Enter price: ";
+    cout << setw(30) << "Enter price: ";
     string price;
     cin >> price;
     
@@ -510,7 +516,7 @@ void AdminUI::addSide(){
         strcpy(tempName, name.c_str());
         Side temp(tempName, intPrice);
         bizniz.addSide(temp);
-        cout << endl << "Side added!" << endl << endl;
+        cout << endl << setw(28) << "Side added!" << endl << endl;
     }
 }
 
@@ -519,16 +525,18 @@ void AdminUI::changeSide(){
 
     vector<Side> sides = bizniz.getVectorOfSides();
     cout << endl;
-    cout << endl << "----------------------------List of all sides-------------------------------" << endl;
+    cout << endl << setfill(CHARFORSETFILL)<< setw(26) << "-" << "    List of all sides    " << setfill(CHARFORSETFILL) << setw(25) << "-" << endl << endl;
+    cout << setfill(' ') << setw(58) << "Price" << endl;
+    cout << setw(58) << "-----" << endl;
     
     if(sides.size() < 1){
-        cout << endl <<"The file is empty :(" << endl << endl;
+        cout << endl << setfill(' ') << setw(48) << "The file is empty :("  << endl;
     } else {
         for(int i = 0; i < sides.size(); i++){
             Side temp = sides.at(i);
-            cout << "Side number: " << i+1 << endl;
-            cout <<  temp << endl;
-            cout << setfill(CHARFORSETFILL) << setw(SIZEOFSETW) << "-" << endl;
+            cout << setfill(' ') << setw(28) << "Side number: " << i+1 << endl;
+            cout << setw(17) << right << temp.getName() << setw(40) << temp.getPrice() << endl;
+            cout << setw(14) << " " << setfill(CHARFORSETFILL) << setw(43) << "-" << endl;
         }
         string input;
         cout << "Choose a side to change: ";
@@ -1105,5 +1113,10 @@ void AdminUI::removeBase(){
 
 void AdminUI::uiItemSeparator () {
     cout << setw(17) << " " << setfill(CHARFORSETFILL) << setw(SIZEOFSETW-41) << "-" << endl << endl;
+    cout << setfill(' ');
+}
+
+void AdminUI::locationUIItemSeperator(){
+    cout << setw(14) << " " << setfill(CHARFORSETFILL) << setw(43) << "-" << endl;
     cout << setfill(' ');
 }
