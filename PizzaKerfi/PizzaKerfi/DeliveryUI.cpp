@@ -160,7 +160,6 @@ void DeliveryUI::displayPaidOrders(){
     int amountOfPaidUndeliveredOrdersAtThisLocation = 0;
     for (int i = 0; i < sizeOfOrderList; i++) {
         if(locationOfDelivery.getLocation() == orders[i].getLocation().getLocation() && orders[i].getStatusOfOrder() == PAID && orders[i].getStatusOfOrder() != DELIVERED){
-            cout << "Hér er ég" << endl;
             amountOfPaidUndeliveredOrdersAtThisLocation++;
         }
     }
