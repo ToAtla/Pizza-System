@@ -261,11 +261,17 @@ void AdminUI::displayLocationMenu(){
    
     char input = '\0';
     while(input != 'b'){
-        cout << "1: List locations" << endl;
-        cout << "2: Change a location" << endl;
-        cout << "3: Add a location" << endl;
-        cout << "4: Remove a location" << endl;
-        cout << "b: back" << endl;
+        cout << setfill(CHARFORSETFILL) << setw(30) << "-" << "    Locations    " << setfill(CHARFORSETFILL) << setw(29) << "-" << endl << endl;
+        cout << setfill(' ') << setw(20) << "1: " << setw(32) << "List locations" << endl;
+        uiItemSeparator();
+        cout << setw(20) << "2: " << setw(32) << "Change a location" << endl;
+        uiItemSeparator();
+        cout << setw(20) << "3: " << setw(32) << "Add a location" << endl;
+        uiItemSeparator();
+        cout << setw(20) <<"4: " << setw(32) << "Remove a location" << endl;
+        uiItemSeparator();
+        cout << setw(20) << "b: " << setw(32) << "back" << endl;
+        uiItemSeparator();
         cin >> input;
         cout << endl;
 
@@ -307,15 +313,15 @@ void AdminUI::displayLocationMenu(){
 void AdminUI::displayAllLocations(){
     
     vector<Location> locations = bizniz.getVectorOfLocations();
-    cout << endl << "----------------------------List of all locations---------------------------" << endl;
+    cout << endl << setfill(CHARFORSETFILL)<< setw(24) << "-" << "    List of all locations    " << setfill(CHARFORSETFILL) << setw(23) << "-" << endl << endl;
     if(locations.size() < 1){
-        cout << endl << "The file is empty :("  << endl;
+        cout << endl << setfill(' ') << setw(48) << "The file is empty :("  << endl;
     }
     
     for (int i = 0; i < locations.size(); i++) {
         Location temp = locations.at(i);
         cout << temp << endl;
-        cout << setfill(CHARFORSETFILL) << setw(SIZEOFSETW) << "-" << endl;
+        cout << setfill(CHARFORSETFILL) << setw(SIZEOFSETW) << "-" << endl << endl;
     }
     cout << endl;
 }
