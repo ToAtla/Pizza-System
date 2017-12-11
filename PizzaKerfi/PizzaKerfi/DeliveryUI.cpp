@@ -138,8 +138,8 @@ void DeliveryUI::displayUnpaidOrders(){
             cin >> input;
             if(bizniz.getOrderNumber(input).getStatusOfOrder() == UNPAID){
                 bizniz.setOrderStatus(ORDERFILE, input, PAID);
-                input = 0;
                 cout << "Order number " << input << " has been marked as ready" << endl;
+                input = 0;
             }
         }
     }else{
@@ -178,19 +178,14 @@ void DeliveryUI::displayPaidOrders(){
         while(input != '0'){
             cout << "Enter number of order to mark delivered 0 to exit: ";
             cin >> input;
-            if(input != 0){
-                if(bizniz.getOrderNumber(input).getStatusOfOrder() == PAID){
-                    if(!bizniz.allPizzasInOrderReady(bizniz.getOrderNumber(input))){
-                        cout << "Not all items in that order are ready" << endl;
-                    }else{
-                        bizniz.setOrderStatus(ORDERFILE, input, DELIVERED);
-                        input = 0;
-                        cout << "Order number " << input << " has been marked delivered" << endl;
-                    }
+            if(bizniz.getOrderNumber(input).getStatusOfOrder() == PAID){
+                if(!bizniz.allPizzasInOrderReady(bizniz.getOrderNumber(input))){
+                    cout << "Not all items in that order are ready" << endl;
+                }else{
+                    bizniz.setOrderStatus(ORDERFILE, input, DELIVERED);
+                    cout << "Order number " << input << " has been marked delivered" << endl;
+                    input = 0;
                 }
-            }
-            else{
-                break;
             }
         }
     }else{
@@ -219,7 +214,7 @@ void DeliveryUI::displayLegacyOrders(){
     cout << " - - - - - - - - - - Listing All Legacy Orders in " << locationOfDelivery << " - - - - - - - - - - " << endl;
     if(ordRep.fileExists(orderFile) && amountOfDeliveredOrdersAtThisLocation != 0){
         for (int i = 0; i < sizeOfOrderList; i++) {
-            if(locationOfDelivery.getLocation() == orders[i].getLocation().getLocation() && orders[i].getStatusOfOrder() != DELIVERED){
+            if(locationOfDelivery.getLocation() == orders[i].getLocation().getLocation() && orders[i].getStatusOfOrder() == DELIVERED){
                 cout << orders[i] << endl;
             }
         }

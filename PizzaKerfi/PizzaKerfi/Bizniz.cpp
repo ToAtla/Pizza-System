@@ -432,8 +432,11 @@ void Bizniz::locateFirstOrderWithPizzaWithStatusAtLocation(status status, Locati
     Order* allOrders = getArrayOfOrders(ORDERFILE, ordersInFile);
     for (int i = 0; i < ordersInFile; i++) {
         if(allOrders[i].getLocation().getLocation() == location.getLocation()){
-            for (int c = 0; c < allOrders[i].getNumberOfPizzas(); i++) {
+            for (int c = 0; c < allOrders[i].getNumberOfPizzas(); c++) {
                 if(allOrders[i].getPizzasInOrder()[c].getStatus() == status){
+//                    cout << "first instance of pizza that applies O:" << orderNum << " P:" << pizzaNum << endl;
+//                    cout << "printing that pizza:" << endl;
+//                    cout << allOrders[orderNum].getPizzasInOrder()[pizzaNum]
                     orderNum = i;
                     pizzaNum = c;
                     i = ordersInFile;
