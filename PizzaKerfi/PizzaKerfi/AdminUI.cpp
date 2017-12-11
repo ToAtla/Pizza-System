@@ -329,8 +329,8 @@ void AdminUI::displayAllLocations(){
 void AdminUI::addLocation(){
 
     string name;
-    cout << "Adding a location!" << endl << endl;
-    cout << "Enter location name (Max " << MAXCHARINLOCATIONNAME-1 << " letters): ";
+    cout << setfill(CHARFORSETFILL) << setw(25) << "-" <<  "    Adding a location!    " << setfill(CHARFORSETFILL) << setw(25) << "-" << endl << endl;
+    cout << setfill(' ') << setw(SIZEOFADDTOPPINGSPACES) << "Enter location name (Max " << MAXCHARINLOCATIONNAME-1 << " letters): ";
     cin.ignore();
     getline(cin, name);
     char tempName[MAXCHARINLOCATIONNAME];
@@ -348,17 +348,17 @@ void AdminUI::changeLocation(){
    
     vector<Location> locations = bizniz.getVectorOfLocations();
     cout << endl;
-    cout << endl << "----------------------------List of all locations----------------------------" << endl;
+    cout << endl << setfill(CHARFORSETFILL)<< setw(24) << "-" << "    List of all locations    " << setfill(CHARFORSETFILL) << setw(23) << "-" << endl << endl;
     
     if(locations.size() > 0){
     for(int i = 0; i < locations.size(); i++){
         Location temp = locations.at(i);
-        cout << "Location number: " << i+1 << endl;
-        cout <<  temp << endl;
-        cout << setfill(CHARFORSETFILL) << setw(SIZEOFSETW) << "-" << endl;
+        cout << setfill(' ') << setw(31) << "Location number: " << i+1 << endl;
+        cout << setw(23) << temp << endl;
+        cout << setw(14) << " " << setfill(CHARFORSETFILL) << setw(43) << "-" << endl;
     }
     string input;
-    cout << "Choose a location to change: ";
+    cout << endl << "Choose a location to change: ";
     cin >> input;
     
     
