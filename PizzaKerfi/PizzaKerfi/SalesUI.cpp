@@ -82,10 +82,10 @@ void SalesUI::createOrder(){
             cout << endl << "Invalid input! (input can't be a character and has to match a number on the list) Try again" << endl << endl;
         }
         
-        if(order.getNumberOfSides() != 0 || order.getPizzasInOrder() != 0 || order.getNumberOfDrinks() != 0){
+        if(order.getNumberOfSides() != 0 && order.getPizzasInOrder() != 0 && order.getNumberOfDrinks() != 0){
+            cout << endl << "I AM HERE PRINTING A EMPTY ORDER" << endl << endl;
             bizniz.storeOrder(order);
         }
-        //bizniz.extractPizzasForPrepUI(order);
     }
 }
 
@@ -228,33 +228,24 @@ Location SalesUI::locationPickingProcess(){
     string locationNumber;
         
     bool invalidInput = true;
-        
-    while(invalidInput){
-        vector<Location> locations = bizniz.getVectorOfLocations();
             
+    for(unsigned int i = 0; i < locations.size(); i++){
+        cout << NINETABSTRING << " Location number: " << i+1 << endl;
+        cout << NINETABSTRING << " " << locations.at(i) << endl << endl;
+    }
+    cout << "Choose a location for your order: ";
+    cin.ignore();
+    getline(cin, locationNumber);
+            
+    if(bizniz.isInputDigit(locationNumber) && bizniz.isValidInput(stoi(locationNumber), locations.size())){
+            
+        int intLocationNumber = stoi(locationNumber);
+                
         for(unsigned int i = 0; i < locations.size(); i++){
-            cout << NINETABSTRING << " Location number: " << i+1 << endl;
-            cout << NINETABSTRING << " " << locations.at(i) << endl << endl;
-        }
-        cout << "Choose a location for your order: ";
-        cin.ignore();
-        getline(cin, locationNumber);
-            
-        if(bizniz.isInputDigit(locationNumber)){
-            
-            int intLocationNumber = stoi(locationNumber);
-                
-            for(unsigned int i = 0; i < locations.size(); i++){
-                    if(intLocationNumber == i+1){
-                        returnLocation = locations.at(i);
-                        invalidInput = false;
-                    }
-            }
-                
-            if(invalidInput){
-                cout << "Please enter a valid location: " << endl;
-                        
-            }
+                if(intLocationNumber == i+1){
+                    returnLocation = locations.at(i);
+                    invalidInput = false;
+                }
         }
     }
     return returnLocation;
@@ -263,7 +254,7 @@ Location SalesUI::locationPickingProcess(){
 void SalesUI::pizzaListCreationProcess(Order& order){
     
     if(bizniz.isValidBaseSizeFile()){
-        cout << endl << "Enter number of pizzas to add to order: ";
+        cout << endl << "Enter number of pizzas to add to order (no whitespaces): ";
         string sInNumPizz;
         cin >> sInNumPizz;
        
@@ -303,7 +294,7 @@ void SalesUI::sideListCreationProcess(Order &order){
         cout << endl << "There are no sides available at this time." << endl;
     }
     else{
-        cout << endl << "Would you like a side with your order? 'y' for yes, anything else for no. ";
+        cout << endl << endl << "Would you like a side with your order? 'y' for yes, anything else for no. ";
         char input = '0';
         cin >> input;
         cout << endl;
