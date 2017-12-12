@@ -56,6 +56,7 @@ void MainUI::startUI(){
         else if(input == '3'){
            PrepUI prepUI;
             
+            //The catch block catches an exceptions if the Location file is empty so the user can't access the prepUI if there are no locations available.
             try {
                 prepUI.startPrepUI();
             } catch (InvalidFileLocationException) {
@@ -71,6 +72,8 @@ void MainUI::startUI(){
         }
         else if(input == '4'){
             DeliveryUI deliveryUI;
+            
+            //The catch block catches an exceptions if the Location file is empty so the user can't access the deliveryUI if there are no locations available.
             try {
                 deliveryUI.startDeliveryUI();
             } catch (InvalidFileLocationException) {
