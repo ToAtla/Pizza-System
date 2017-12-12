@@ -62,7 +62,7 @@ status Side::getStatus(){
 ///Overloads the ostream operator so one can use the '<<' operator to print the contents of a topping instance.
 ostream& operator << (ostream& out, const Side& side){
     
-    out <<  setw(SIZEOFSETWBIG-6) << left << side.name << side.price << endl;
+    out << setw(19) << left << side.name << setw(81) << right << side.price << endl;
     
     return out;
 }

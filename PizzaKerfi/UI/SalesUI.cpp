@@ -112,7 +112,7 @@ void SalesUI::displayOrders(){
         cin >> ws;
     }else{
         for (int i = 0; i < orderCnt; i++) {
-            cout << orderList[i];
+            cout << orderList[i] << endl << endl;
         }
     }
     delete [] orderList;
@@ -283,6 +283,7 @@ void SalesUI::pizzaListCreationProcess(Order& order){
                 order.getPizzasInOrder()[i] = pizzaCreationProcess(order.getLocation());
                 order.getPizzasInOrder()[i].setParentID(order.getID());
                 order.setTotalPrice(order.getTotalPrice() + order.getPizzasInOrder()[i].getPrice());
+                clearScreen();
             }
         }
     }
@@ -320,12 +321,14 @@ void SalesUI::sideListCreationProcess(Order &order){
             vector<Side> sides = bizniz.getVectorOfSides();
             
             cout << setfill(CHARFORSETFILL) << setw(35) << "-" << "    List of available sides    " << setfill(CHARFORSETFILL) << setw(34) << "-" << endl << endl;
-            cout << HALFTABSTRING << TABSTRING << "Price" << endl;
-            cout << HALFTABSTRING << TABSTRING << "-----" << endl;
+            cout << setfill(' ') << setw(82) << "Price" << endl;
+            cout << setw(82) << "-----" << endl;
             
             for(unsigned int i = 0; i < sides.size(); i++){
-                cout << HALFTABSTRING << "Side number: " << i+1 << endl;
-                cout << HALFTABSTRING << sides.at(i) << endl << endl;
+                Side temp = sides.at(i);
+                cout << setw(31) << "Side number " << i+1 << endl;
+                cout << setfill(' ') << setw(19) << " " << setw(19) << left << temp.getName() << setw(44) << right << temp.getPrice() << endl;
+                uiItemSeparator();
             }
             cout << "Choose a number corresponding to side (no whitespaces): ";
             string sideNumber;
@@ -374,10 +377,15 @@ void SalesUI::drinkListCreationProcess(Order &order){
         while(input == 'y') {
             vector<Drink> drinks = bizniz.getVectorOfDrinks();
             
-            cout << endl;
+            cout << endl << setfill(CHARFORSETFILL) << setw(35) << "-" << "    List of available drinks    " << setfill(CHARFORSETFILL) << setw(34) << "-" << endl << endl;
+            cout << setfill(' ') << setw(82) << "Price" << endl;
+            cout << setw(82) << "-----" << endl;
+            
             for(unsigned int i = 0; i < drinks.size(); i++){
-                cout << "Drink number: " << i+1 << endl;
-                cout << drinks.at(i) << endl << endl;
+                Drink temp = drinks.at(i);
+                cout << setfill(' ') << setw(32) << "Drink number " << i+1 << endl;
+                cout << setfill(' ') << setw(19) << " " << setw(19) << left << temp.getName() << setw(44) << right << temp.getPrice() << endl;
+                uiItemSeparator();
             }
             cout << "Choose a number corresponding to drink (no whitespaces): ";
             string drinkNumber;
@@ -407,6 +415,7 @@ void SalesUI::commentCreationProcess(Order& order){
     char input = '\0';
     cout << endl << "Any special comments?(y/n)";
     cin >> input;
+    clearScreen();
     string commentString;
     char* comment = new char[MAXCHARINORDERCOMMENT];
     if(input == 'y'){

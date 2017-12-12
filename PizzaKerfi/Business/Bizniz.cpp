@@ -300,7 +300,7 @@ string Bizniz::getStatusAndPriceCharArr(Pizza pizza){
     strcpy(statusAndPriceString, statusString);
     delete [] statusString;
     //Hef string BIL
-    strcat(statusAndPriceString, "          ");//Passa að þessi lengd sé sú sama og SIZEOF.. breytan
+    strcat(statusAndPriceString, "           ");//Passa að þessi lengd sé sú sama og SIZEOF.. breytan
    
     //Hef int price
     char* priceString = new char[MAXCHARINPRICESTRING];
