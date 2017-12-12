@@ -30,6 +30,7 @@ Order::Order(){
 Pizza* Order::getPizzasInOrder(){
     return this->pizzaList;
 }
+
 int Order::getNumberOfPizzas(){
     return this->numberOfPizzas;
 }
@@ -38,14 +39,14 @@ Location Order::getLocation(){
     return this->locationOfOrder;
 }
 
-
-
 void Order::setLocation(Location inLocation){
     locationOfOrder = inLocation;
 }
+
 int Order::getID(){
     return ID;
 }
+
 void Order::setID(int inID){
     ID = inID;
 }
@@ -57,6 +58,7 @@ orderStatus Order::getStatusOfOrder(){
 void Order::setStatusOfOrder(orderStatus oStatus){
     statusOfOrder = oStatus;
 }
+
 void Order::setNumberOfPizzas(int inNumberOfPizzas){
     numberOfPizzas =  inNumberOfPizzas;
 }
@@ -71,18 +73,23 @@ void Order::setTotalPrice(int inTotalPrice){
 int Order::getNumberOfSides(){
     return numberOfSides;
 }
+
 void Order::setNumberofSides(int inNumberOfSides){
     numberOfSides = inNumberOfSides;
 }
+
 int Order::getNumberOfDrinks(){
     return numberOfDrinks;
 }
+
 void Order::setNumberOfDrinks(int inNumberOfDrinks){
     numberOfDrinks = inNumberOfDrinks;
 }
+
 Side* Order::getSideList(){
     return sideList;
 }
+
 Drink* Order::getDrinkList(){
     return drinkList;
 }
@@ -90,6 +97,7 @@ Drink* Order::getDrinkList(){
 char* Order::getOrdercComment(){
     return comment;
 }
+
 void Order::setOrderComment(char *inComment){
     strcpy(comment, inComment);
 }

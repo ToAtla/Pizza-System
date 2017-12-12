@@ -397,12 +397,12 @@ void SalesUI::drinkListCreationProcess(Order &order){
 }
 void SalesUI::commentCreationProcess(Order& order){
     char input = '\0';
-    cout << "Any special comments?(y/n)";
+    cout << endl << "Any special comments?(y/n)";
     cin >> input;
     string commentString;
     char* comment = new char[MAXCHARINORDERCOMMENT];
     if(input == 'y'){
-        cout << "Write out the comment(max " << MAXCHARINORDERCOMMENT-1 << " characters):";
+        cout << endl << "Write out the comment(max " << MAXCHARINORDERCOMMENT-1 << " characters):";
         cin.ignore();
         getline(cin, commentString);
         if(bizniz.isValidNameLength(commentString, MAXCHARINORDERCOMMENT)){
