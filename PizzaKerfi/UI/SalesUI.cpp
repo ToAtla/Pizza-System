@@ -17,11 +17,14 @@ void SalesUI::startSalesUI(){
     while(input != 'b'){
         
         cout << setfill(CHARFORSETFILL) << setw(SIZEOFSETWBIG) << "-" << endl;
-        cout << "\t\t\t\t\t\t\t\t\t\t\t" << "Sales" << endl;
+        cout << setfill(' ') << setw(52) << right << "Sales" << endl;
         cout << setfill(CHARFORSETFILL) << setw(SIZEOFSETWBIG) << "-" << endl << endl;
-        cout << NINETABSTRING << "1: New order" << endl;
-        cout << NINETABSTRING << "2: View all orders" << endl;
-        cout << NINETABSTRING << "b: back" << endl << endl << NINETABSTRING;
+        cout << setfill(' ') << setw(22) << "1: " << "New order" << endl;
+        uiItemSeparator();
+        cout << setw(22) << "2: " << "View all orders" << endl;
+        uiItemSeparator();
+        cout << setw(22) << "b: " << "back" << endl;
+        uiItemSeparator();
         cin >> input;
         clearScreen();
         
@@ -29,7 +32,7 @@ void SalesUI::startSalesUI(){
             try {
                 createOrder();
             } catch (InvalidFileLocationException) {
-                cout << endl << "No locations available!" << endl << endl;
+                cout << endl << setw(42) << "No locations available!" << endl << endl;
             }
         }
         else if(input == '2'){
@@ -123,13 +126,14 @@ Size SalesUI::sizePickingProcess(){
     
     cout << endl << setfill(CHARFORSETFILL) << setw(35) << "-" << "    List of available sizes    " << setfill(CHARFORSETFILL) << setw(34) << "-" << endl << endl;
     vector<Size> sizes = bizniz.getVectorOfSizes();
-    cout << HALFTABSTRING << TABSTRING << "Price" << endl;
-    cout << HALFTABSTRING << TABSTRING << "-----" << endl;
+    cout << setfill(' ') << setw(82) << "Price" << endl;
+    cout << setw(82) << "-----" << endl;
         
     for(int i = 0; i < sizes.size(); i++){
         Size temp = sizes.at(i);
-        cout << HALFTABSTRING << "Size number " << i+1 << endl;
-        cout << HALFTABSTRING << temp << endl;
+        cout << setw(31) << "Size number " << i+1 << endl;
+        cout << setw(22) << temp.getName() << setw(60) << right << temp.getPrice() << endl;
+        uiItemSeparator();
     }
     string input;
     cout << "Please choose a size for your pizza (no whitespaces): ";
@@ -154,18 +158,19 @@ Size SalesUI::sizePickingProcess(){
 Base SalesUI::basePickingProcess(){
     Base baseForPizza;
     
-    cout << endl << setfill(CHARFORSETFILL) << setw(35) << "-" << "    List of available bases    " << setfill(CHARFORSETFILL) << setw(34) << "-" << endl << endl;
+    cout << endl << endl << setfill(CHARFORSETFILL) << setw(35) << "-" << "    List of available bases    " << setfill(CHARFORSETFILL) << setw(34) << "-" << endl << endl;
     
     vector<Base> bases = bizniz.getVectorOfBases();
     
-    cout << HALFTABSTRING << TABSTRING << "Price" << endl;
-    cout << HALFTABSTRING << TABSTRING << "-----" << endl;
+    cout << setfill(' ') << setw(82) << "Price" << endl;
+    cout << setw(82) << "-----" << endl;
         
         
     for(int i = 0; i < bases.size(); i++){
         Base temp = bases.at(i);
-        cout << HALFTABSTRING << "Base number " << i+1 << endl;
-        cout << HALFTABSTRING << temp << endl;
+        cout << setw(31) << "Base number " << i+1 << endl;
+        cout << setw(22) << temp.getName() << setw(60) << right << temp.getPrice() << endl;
+        uiItemSeparator();
     }
     string input;
     cout << "Please choose a base for your pizza (no whitespaces): ";
@@ -192,18 +197,19 @@ Topping* SalesUI::toppingPickingProcess(int& toppingCount){
         cout << endl << "No toppings available at this time." << endl;
     }
     else{
-        cout << HALFTABSTRING << TABSTRING << "Price" << endl;
-        cout << HALFTABSTRING << TABSTRING << "-----" << endl;
+        cout << setfill(' ') << setw(82) << "Price" << endl;
+        cout << setw(82) << "-----" << endl;
         
         for (int i = 0; i < allToppings.size(); i++) {
-            cout << HALFTABSTRING << "Topping nr: " << i+1 << endl;
-            cout << HALFTABSTRING << allToppings.at(i) << endl << endl;
+            cout << setfill(' ') << setw(31) << "Topping nr: " << i+1 << endl;
+            cout << setw(22) << allToppings.at(i);
+            uiItemSeparator();
         }
         int c = 0;
         while(true){
             //Veit ekki hvort þarf < eða <= hérna í næstu línu
             if(c <= MAXTOPPINGSONPIZZA){
-                cout << HALFTABSTRING << "Enter an index of topping to add or 0 to exit (no whitespaces): ";
+                cout << setfill(' ') << setw(19) << " "<< "Enter an index of topping to add or 0 to exit (no whitespaces): ";
                 string input;
                 cin >> input;
                 
@@ -214,7 +220,7 @@ Topping* SalesUI::toppingPickingProcess(int& toppingCount){
                     if(intInput != 0){
                         toppingsForPizza[c] = allToppings.at(intInput-1);
                         c++;
-                        cout << "Topping number " << input << " added" << endl;
+                        cout << setw(34) << "Topping number " << input << " added" << endl;
                     }else{
                         break;
                     }
@@ -236,8 +242,9 @@ Location SalesUI::locationPickingProcess(){
     string locationNumber;
 
     for(unsigned int i = 0; i < locations.size(); i++){
-        cout << NINETABSTRING << " Location number: " << i+1 << endl;
-        cout << NINETABSTRING << " " << locations.at(i) << endl << endl;
+        cout << setfill(' ') << setw(19) << " " << "Location number: " << i+1 << endl;
+        cout << setfill(' ') << setw(19) << " " << locations.at(i) << endl;
+        uiItemSeparator();
     }
     cout << "Choose a number corresponding to location: ";
     cin.ignore();
@@ -263,6 +270,7 @@ void SalesUI::pizzaListCreationProcess(Order& order){
         cout << endl << "Enter number of pizzas to add to order (no whitespaces): ";
         string sInNumPizz;
         cin >> sInNumPizz;
+        clearScreen();
        
         if(bizniz.isInputDigit(sInNumPizz)){
             
@@ -421,4 +429,7 @@ void SalesUI::clearScreen(){
     consoleMagic.clearScreen();
 }
 
-
+void SalesUI::uiItemSeparator(){
+    cout << setw(19) << " " << setfill(CHARFORSETFILL) << setw(63) << "-" << endl << endl;
+    cout << setfill(' ');
+}

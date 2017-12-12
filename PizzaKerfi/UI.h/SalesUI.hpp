@@ -42,6 +42,7 @@ private:
     void commentCreationProcess(Order& order);
     void pizzaListCreationProcess(Order& order);
     void clearScreen();
+    void uiItemSeparator();
     
     //Skiptið um staði
     
