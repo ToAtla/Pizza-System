@@ -14,40 +14,44 @@
 using namespace std;
 
 void DeliveryUI::startDeliveryUI(){
-    char input = '\0';
-    string sInput;
-    bool cont = true;
-    try {
-        chooseYourLocation();
-    } catch (InvalidInputException) {
-        cout << endl << "Invalid input! (input can't be a character and has to match a number on the list) Try again" << endl << endl;
-        cout << "Press any key to continue: ";
-        cin.ignore();
-        getline(cin, sInput);
-        cont = false;
-    }
     
-    if(cont){
-        while(input != 'b'){
-            cout << "1: List all orders" << endl;
-            cout << "2: List all unpaid orders" << endl;
-            cout << "3: List all paid orders" << endl;
-            cout << "4: List all legacy orders" << endl;
-            cout << "b: back" << endl;
-            cin >> input;
-            cout << endl;
-            
-            if(input == '1'){
-                displayAllOrders();
-            }
-            else if(input == '2'){
-                displayUnpaidOrders();
-            }
-            else if(input == '3'){
-                displayPaidOrders();
-            }
-            else if(input == '4'){
-                displayLegacyOrders();
+    if(bizniz.isValidLocationFile()){
+    
+        char input = '\0';
+        string sInput;
+        bool cont = true;
+        try {
+            chooseYourLocation();
+        } catch (InvalidInputException) {
+            cout << endl << "Invalid input! (input can't be a character and has to match a number on the list) Try again" << endl << endl;
+            cout << "Press any key to continue: ";
+            cin.ignore();
+            getline(cin, sInput);
+            cont = false;
+        }
+        
+        if(cont){
+            while(input != 'b'){
+                cout << "1: List all orders" << endl;
+                cout << "2: List all unpaid orders" << endl;
+                cout << "3: List all paid orders" << endl;
+                cout << "4: List all legacy orders" << endl;
+                cout << "b: back" << endl;
+                cin >> input;
+                cout << endl;
+                
+                if(input == '1'){
+                    displayAllOrders();
+                }
+                else if(input == '2'){
+                    displayUnpaidOrders();
+                }
+                else if(input == '3'){
+                    displayPaidOrders();
+                }
+                else if(input == '4'){
+                    displayLegacyOrders();
+                }
             }
         }
     }

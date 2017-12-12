@@ -54,12 +54,34 @@ void MainUI::startUI(){
             salesUI.startSalesUI();
         }
         else if(input == '3'){
-            PrepUI prepUI;
-            prepUI.startPrepUI();
+           PrepUI prepUI;
+            
+            try {
+                prepUI.startPrepUI();
+            } catch (InvalidFileLocationException) {
+                magic.clearScreen();
+                cout << endl << "You can't acces the prep menu because there are no locations available at this time!" << endl;
+                cout << endl << "Please contact the manager." << endl << endl;
+                cout << "Press any key to continue: ";
+                string sInput;
+                cin.ignore();
+                getline(cin, sInput);
+            }
+            
         }
         else if(input == '4'){
             DeliveryUI deliveryUI;
-            deliveryUI.startDeliveryUI();
+            try {
+                deliveryUI.startDeliveryUI();
+            } catch (InvalidFileLocationException) {
+                cout << endl << "You can't acces the delivery menu because there are no locations available at this time!" << endl;
+                cout << endl << "Please contact the manager." << endl << endl;
+                cout << "Press any key to continue: ";
+                string sInput;
+                cin.ignore();
+                getline(cin, sInput);
+            }
+            
         }
         else if(input == 'q'){
             break;

@@ -13,44 +13,49 @@
 using namespace std;
 
 void PrepUI::startPrepUI(){
-    char input = '\0';
-    string sInput;
-    bool cont = true;
-    magic.clearScreen();
-    cout << "++++++++++++++++ Preperation +++++++++++++++++++" << endl << endl;
-    try {
-        chooseYourLocation();
-    } catch (InvalidInputException) {
-        cout << endl << "Invalid input! (input can't be a character and has to match a number on the list) Try again" << endl << endl;
-        cout << "Press any key to continue: ";
-        cin.ignore();
-        getline(cin, sInput);
-        cont = false;
-    }
     
-    if(cont){
-        while(input != 'b'){
-            magic.clearScreen();
-            cout << "Preparation line in " << locationOfPrep << endl;
-            cout << "1: List all pizzas in house" << endl;
-            cout << "2: List waiting pizzas and sides" << endl;
-            cout << "3: List pizzas and sides in preparation" << endl;
-            cout << "4: List ready pizzas and sides" << endl;
-            cout << "b: back" << endl;
-            cin >> input;
-            cout << endl;
-            
-            if(input == '1'){
-                allActiveOverview();
-            }
-            else if(input == '2'){
-                waitingOverview();
-            }
-            else if(input == '3'){
-                preppingOverview();
-            }
-            else if(input == '4'){
-                readyOverview();
+    if(bizniz.isValidLocationFile()){
+    
+        char input = '\0';
+        string sInput;
+        bool cont = true;
+        magic.clearScreen();
+        cout << "++++++++++++++++ Preperation +++++++++++++++++++" << endl << endl;
+        try {
+            chooseYourLocation();
+        } catch (InvalidInputException) {
+            cout << endl << "Invalid input! (input can't be a character and has to match a number on the list) Try again" << endl << endl;
+            cout << "Press any key to continue: ";
+            cin.ignore();
+            getline(cin, sInput);
+            cont = false;
+        }
+        
+        
+        if(cont){
+            while(input != 'b'){
+                magic.clearScreen();
+                cout << "Preparation line in " << locationOfPrep << endl;
+                cout << "1: List all pizzas in house" << endl;
+                cout << "2: List waiting pizzas and sides" << endl;
+                cout << "3: List pizzas and sides in preparation" << endl;
+                cout << "4: List ready pizzas and sides" << endl;
+                cout << "b: back" << endl;
+                cin >> input;
+                cout << endl;
+                    
+                if(input == '1'){
+                    allActiveOverview();
+                }
+                else if(input == '2'){
+                    waitingOverview();
+                }
+                else if(input == '3'){
+                    preppingOverview();
+                }
+                else if(input == '4'){
+                    readyOverview();
+                }
             }
         }
     }

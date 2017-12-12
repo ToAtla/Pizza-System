@@ -24,7 +24,6 @@ private:
     void waitingOverview();
     void preppingOverview();
     void readyOverview();
-    
     void displayOrdersAtLocationWithApplicablePizzas(Location location, status status, bool onlyWith);
     void chooseYourLocation();
     
