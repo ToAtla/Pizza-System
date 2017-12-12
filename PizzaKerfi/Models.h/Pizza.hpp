@@ -30,12 +30,10 @@ public:
     Pizza(Size size, Base base, Location location);
     ///A constructor that takes in 3 parameters, an instance of Size, an instance of base and a instance of location
     ///and gives the private variables Size, base and location the values of the parameters.
-    
     string getName();
     ///Return the private variable name of the pizza.
     void setName(char inName[MAXCHARSINPIZZANAME]);
     ///Takes in a character array and gives the private variable name the value of it.
-
     int getPrice();
     ///Returns the value of the private variable price.
     Location getLocation();
@@ -44,17 +42,14 @@ public:
     ///Takes in an int as a parameter and gives the private variable price the value of it.
     void setLocation(Location inLocation);
     ///Takes in a Location as a parameter and gives the private variable locationOfPizza the value of it.
-    
     status getStatus();
-    //Returns the value of the private variable status.
+    ///Returns the value of the private variable status.
     void setStatus(status inStatus);
-    //Takes in a status as a parameter and gives the private variable status the value of it.
-    
+    ///Takes in a status as a parameter and gives the private variable status the value of it.
     int getParentID();
-    //Returns the value of the private variable parentID.
+    ///Returns the value of the private variable parentID.
     void setParentID(int inParentID);
-    //Takes in an int as a parameter and gives the private variable parentID the value of it.
-    
+    ///Takes in an int as a parameter and gives the private variable parentID the value of it.
     Base getBase();
     ///Returns the value of the private variable base.
     Size getSize();
@@ -65,7 +60,6 @@ public:
     ///Return the value of the private variable toppingCount.
     void setToppingCount(int inToppingCount);
     ///Takes in an int as a parameter and gives the private variable toppingCount the value of it.
-    
     friend ostream& operator << (ostream& out, const Pizza&);
     ///Overloads the ostream operator so when one uses the '<<' to print out the contents of an instance of Pizza.
     

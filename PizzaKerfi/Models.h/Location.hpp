@@ -23,7 +23,7 @@ class Location{
         ///A constructor that takes in a character array and an int as parameters and gives the private variables
         ///nane and price the values of them.
         string getLocation();
-        //Returns the value of the private array name.
+        ///Returns the value of the private array name.
         void setName(char inName[]);
         ///Takes in a character array and gives the private array the value of is.
         friend istream& operator >> (istream& in, Location& Location);

@@ -17,6 +17,8 @@ Topping::Topping(){
     name[0] = '\0';
 }
 
+///A constructor that takes in a character array and an int as parameters and gives the private variables
+///nane and price the values of them.
 Topping::Topping(char inName[MAXCHARINTOPPINGNAME], int inPrice){
     this->price = inPrice;
     
