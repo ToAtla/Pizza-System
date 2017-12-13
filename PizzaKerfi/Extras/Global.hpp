@@ -19,6 +19,8 @@ using namespace std;
 
 //MUNA AÐ SKILJA EFTIR PLÁSS FYRIR NULLCHARACTER Í LOKIN
 
+const int SIZEFORSETWSPACE = 20;
+const int SIZEFORSETWBIGSPACE = 22;
 
 const char CHARFORSETFILL = '-';
 const char CHARFORSUBACTION = '+';

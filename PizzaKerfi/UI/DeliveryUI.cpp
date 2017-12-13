@@ -36,15 +36,15 @@ void DeliveryUI::startDeliveryUI(){
                 cout << setfill(CHARFORSETFILL) << setw(SIZEOFSETW) << "-" << setfill(' ') << endl;
                 cout << setfill(' ') << setw(26) << " " << "Delivery for " << locationOfDelivery << endl;
                 cout << setfill(CHARFORSETFILL) << setw(SIZEOFSETW) << "-" << setfill(' ') << endl << endl;
-                cout << setw(20) << "1: " << "List all orders" << endl;
+                cout << setw(SIZEFORSETWSPACE) << right << "1: " << "List all orders" << endl;
                 uiItemSeparator();
-                cout << setw(20) << "2: " << "List all unpaid orders" << endl;
+                cout << setw(SIZEFORSETWSPACE) << right << "2: " << "List all unpaid orders" << endl;
                 uiItemSeparator();
-                cout << setw(20) << "3: " << "List all paid orders" << endl;
+                cout << setw(SIZEFORSETWSPACE) << right << "3: " << "List all paid orders" << endl;
                 uiItemSeparator();
-                cout << setw(20) << "4: " << "List all legacy orders" << endl;
+                cout << setw(SIZEFORSETWSPACE) << right << "4: " << "List all legacy orders" << endl;
                 uiItemSeparator();
-                cout << setw(20) << "b: " << "back" << endl;
+                cout << setw(SIZEFORSETWSPACE) << right << "b: " << "back" << endl;
                 uiItemSeparator();
                 cin >> input;
                 cout << endl;
@@ -170,7 +170,7 @@ void DeliveryUI::displayUnpaidOrders(){
             if(input != 0 && bizniz.orderExist(input) && bizniz.getOrderNumber(input).getStatusOfOrder() == UNPAID){
                 
                 bizniz.setOrderStatus(ORDERFILE, input, PAID);
-                cout << "Order number " << input << " has been marked as PAID" << endl;
+                cout << endl << "Order number " << input << " has been marked as PAID" << endl;
                 input = 0;
             }
         }
@@ -220,7 +220,7 @@ void DeliveryUI::displayPaidOrders(){
                     cout << "Not all items in that order are ready" << endl;
                 }else{
                     bizniz.setOrderStatus(ORDERFILE, input, DELIVERED);
-                    cout << "Order number " << input << " has been marked DELIVERED" << endl;
+                    cout << endl << "Order number " << input << " has been marked DELIVERED" << endl;
                     input = 0;
                 }
             }

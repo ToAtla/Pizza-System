@@ -55,6 +55,7 @@ void BaseRepo::storeVectorOfBases(vector<Base> bases){
         Base tempBase = bases.at(i);
         fout.write((char*)(&tempBase), sizeof(Base));
     }
+    
     fout.close();
 }
 
