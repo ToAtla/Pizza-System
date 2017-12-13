@@ -780,3 +780,17 @@ double Bizniz::calcMeanOrderPrice(){
     return (double)calcTotalTurnover()/(double)calcTotalOrders();
 }
 
+
+
+/**************************************************************************************
+ 
+                                    MenuItem
+ 
+ ***************************************************************************************/
+
+
+MenuItem* Bizniz::getArrayOfMenuItems(string fileName, int& tellMeHowMany){
+//    fileName =
+//    menuItemRepo.getVe();
+
+}

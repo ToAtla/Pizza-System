@@ -341,7 +341,7 @@ Pizza SalesUI::pizzaCreationProcess(Location locationOfOrderForPizzaToFollow){
         return returnPizza;
     }else{
         int tellMeHowMany;
-        MenuItem* entireMenu = bizniz.getArrayOfOrders(MENUITEMFILE, tellMeHowMany);
+        MenuItem* entireMenu = bizniz.getArrayOfMenuItems(MENUITEMFILE, tellMeHowMany);
         
         cout << setfill(CHARFORSETFILL) << setw(35) << "-" << "    List of menu Items    " << setfill(CHARFORSETFILL) << setw(34) << "-" << endl << endl;
         cout << setfill(' ') << setw(82) << "Price" << endl;

@@ -19,6 +19,7 @@
 #include "BaseRepo.hpp"
 #include "PizzaRepo.hpp"
 #include "OrderRepo.hpp"
+#include "MenuItemRepo.hpp"
 #include "InvalidNameException.hpp"
 #include "InvalidPriceException.hpp"
 #include "InvalidInputException.hpp"
@@ -113,6 +114,10 @@ public:
     double calcMeanOrderPrice();
     
     
+    //MenuItem
+    MenuItem* getArrayOfMenuItems(string fileName, int& tellMeHowMany);
+    
+    
 private:
     ToppingRepo toppingRepo;
     LocationRepo locationRepo;
@@ -122,6 +127,7 @@ private:
     BaseRepo baseRepo;
     PizzaRepo pizzaRepo;
     OrderRepo orderRepo;
+    MenuItemRepo menuItemRepo;
 };
 
 #endif /* Bizniz_hpp */
