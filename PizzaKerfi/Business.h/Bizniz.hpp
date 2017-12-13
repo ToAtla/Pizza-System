@@ -103,6 +103,14 @@ public:
     bool isValidLocationFile();
     bool isValidBaseSizeFile();
     
+    
+    //Analysis
+    int calcTotalTurnover();
+    int calcTotalPizzas();
+    int calcTotalOrders();
+    double calcMeanOrderPrice();
+    
+    
 private:
     ToppingRepo toppingRepo;
     LocationRepo locationRepo;

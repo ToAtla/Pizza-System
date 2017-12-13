@@ -106,6 +106,8 @@ class AdminUI{
         void removeBase();
         //Gerir notandanum kleift að velja botn af listanum og eyða honum.
     
+        void displayAnalysis();
+        
         void uiItemSeparator();
         void locationUIItemSeperator();
 };
