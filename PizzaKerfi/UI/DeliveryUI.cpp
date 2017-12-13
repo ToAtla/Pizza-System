@@ -22,6 +22,7 @@ void DeliveryUI::startDeliveryUI(){
         bool cont = true;
         try {
             chooseYourLocation();
+            magic.clearScreen();
         } catch (InvalidInputException) {
             cout << endl << "Invalid input! (input can't be a character and has to match a number on the list) Try again" << endl << endl;
             cout << "Press any key to continue: ";
@@ -32,24 +33,36 @@ void DeliveryUI::startDeliveryUI(){
         
         if(cont){
             while(input != 'b'){
-                cout << "1: List all orders" << endl;
-                cout << "2: List all unpaid orders" << endl;
-                cout << "3: List all paid orders" << endl;
-                cout << "4: List all legacy orders" << endl;
-                cout << "b: back" << endl;
+                cout << setfill(CHARFORSETFILL) << setw(SIZEOFSETW) << "-" << setfill(' ') << endl;
+                cout << setfill(' ') << setw(26) << " " << "Delivery for " << locationOfDelivery << endl;
+                cout << setfill(CHARFORSETFILL) << setw(SIZEOFSETW) << "-" << setfill(' ') << endl << endl;
+                cout << setw(20) << "1: " << "List all orders" << endl;
+                uiItemSeparator();
+                cout << setw(20) << "2: " << "List all unpaid orders" << endl;
+                uiItemSeparator();
+                cout << setw(20) << "3: " << "List all paid orders" << endl;
+                uiItemSeparator();
+                cout << setw(20) << "4: " << "List all legacy orders" << endl;
+                uiItemSeparator();
+                cout << setw(20) << "b: " << "back" << endl;
+                uiItemSeparator();
                 cin >> input;
                 cout << endl;
                 
                 if(input == '1'){
+                    magic.clearScreen();
                     displayAllOrders();
                 }
                 else if(input == '2'){
+                    magic.clearScreen();
                     displayUnpaidOrders();
                 }
                 else if(input == '3'){
+                    magic.clearScreen();
                     displayPaidOrders();
                 }
                 else if(input == '4'){
+                    magic.clearScreen();
                     displayLegacyOrders();
                 }
             }
@@ -63,10 +76,14 @@ void DeliveryUI::chooseYourLocation(){
     LocationRepo lr;
     locations = lr.getVectorOfLocations();
     
-    cout << "- - - - - - Choose your location - - - - - - -" << endl;
+    cout << setfill(CHARFORSUBACTION) << setw(30) << "+" << "    Delivery    " << setfill(CHARFORSUBACTION) << setw(30) << "+" << endl << endl;
+    cout << setfill(CHARFORSETFILL) << setw(24) << "-" << "    Choose your location    " << setfill(CHARFORSETFILL) << setw(24) << "-" << endl << endl;
+    
+    
     for(int i = 0; i < locations.size(); i++){
-        cout << "Location number: " << i+1 << endl;
-        cout << locations[i] << endl << endl;
+        cout << setfill(' ') << setw(17) << " " << "Location number: " << i+1 << endl;
+        cout << setfill(' ') << setw(17) << " " << locations[i] << endl;
+        uiItemSeparator();
     }
     cout << "Choose location (no whitespaces): ";
     string input;
@@ -97,7 +114,11 @@ void DeliveryUI::displayAllOrders(){
             amountOfUndeliveredOrdersAtThisLocation++;
         }
     }
-    cout << " - - - - - - - - - - Listing All Active Orders in " << locationOfDelivery << " - - - - - - - - - - " << endl;
+    
+    cout << setfill(CHARFORSETFILL) << setw(SIZEOFSETWBIG) << "-" << setfill(CHARFORSPACE) << endl;
+    cout << setfill(CHARFORSPACE) << setw(28) << " " << "Listing All Active Orders in " << locationOfDelivery << endl;
+    cout << setfill(CHARFORSETFILL) << setw(SIZEOFSETWBIG) << "-" << setfill(CHARFORSPACE) << endl << endl;
+    
     if(ordRep.fileExists(orderFile) && amountOfUndeliveredOrdersAtThisLocation != 0){
         for (int i = 0; i < sizeOfOrderList; i++) {
             if(locationOfDelivery.getLocation() == orders[i].getLocation().getLocation() && orders[i].getStatusOfOrder() != DELIVERED){
@@ -126,7 +147,11 @@ void DeliveryUI::displayUnpaidOrders(){
             amountOfUnpaidUndeliveredOrdersAtThisLocation++;
         }
     }
-    cout << " - - - - - - - - - - Listing Unpaid Orders in " << locationOfDelivery << " - - - - - - - - - - " << endl;
+    
+    cout << setfill(CHARFORSETFILL) << setw(SIZEOFSETWBIG) << "-" << setfill(CHARFORSPACE) << endl;
+    cout << setfill(CHARFORSPACE) << setw(28) << " " << "Listing All Unpaid Orders in " << locationOfDelivery << endl;
+    cout << setfill(CHARFORSETFILL) << setw(SIZEOFSETWBIG) << "-" << setfill(CHARFORSPACE) << endl << endl;
+    
     if(ordRep.fileExists(orderFile) && amountOfUnpaidUndeliveredOrdersAtThisLocation != 0){
         for (int i = 0; i < sizeOfOrderList; i++) {
             if(locationOfDelivery.getLocation() == orders[i].getLocation().getLocation() && orders[i].getStatusOfOrder() != PAID && orders[i].getStatusOfOrder() != DELIVERED){
@@ -170,7 +195,10 @@ void DeliveryUI::displayPaidOrders(){
             amountOfPaidUndeliveredOrdersAtThisLocation++;
         }
     }
-    cout << " - - - - - - - - - - Listing Paid Orders in " << locationOfDelivery << " - - - - - - - - - - " << endl;
+    cout << setfill(CHARFORSETFILL) << setw(SIZEOFSETWBIG) << "-" << setfill(CHARFORSPACE) << endl;
+    cout << setfill(CHARFORSPACE) << setw(26) << " " << "Listing All Paid Orders in " << locationOfDelivery << endl;
+    cout << setfill(CHARFORSETFILL) << setw(SIZEOFSETWBIG) << "-" << setfill(CHARFORSPACE) << endl << endl;
+    
     if(ordRep.fileExists(orderFile) && amountOfPaidUndeliveredOrdersAtThisLocation != 0){
         for (int i = 0; i < sizeOfOrderList; i++) {
             if(locationOfDelivery.getLocation() == orders[i].getLocation().getLocation() && orders[i].getStatusOfOrder() == PAID && orders[i].getStatusOfOrder() != DELIVERED){
@@ -219,8 +247,10 @@ void DeliveryUI::displayLegacyOrders(){
             amountOfDeliveredOrdersAtThisLocation++;
         }
     }
+    cout << setfill(CHARFORSETFILL) << setw(SIZEOFSETWBIG) << "-" << setfill(CHARFORSPACE) << endl;
+    cout << setfill(CHARFORSPACE) << setw(26) << " " << "Listing All Legacy Orders in " << locationOfDelivery << endl;
+    cout << setfill(CHARFORSETFILL) << setw(SIZEOFSETWBIG) << "-" << setfill(CHARFORSPACE) << endl << endl;
     
-    cout << " - - - - - - - - - - Listing All Legacy Orders in " << locationOfDelivery << " - - - - - - - - - - " << endl;
     if(ordRep.fileExists(orderFile) && amountOfDeliveredOrdersAtThisLocation != 0){
         for (int i = 0; i < sizeOfOrderList; i++) {
             if(locationOfDelivery.getLocation() == orders[i].getLocation().getLocation() && orders[i].getStatusOfOrder() == DELIVERED){
@@ -234,4 +264,9 @@ void DeliveryUI::displayLegacyOrders(){
         cout << endl;
     }
     delete [] orders;
+}
+
+void DeliveryUI::uiItemSeparator () {
+    cout << setw(17) << " " << setfill(CHARFORSETFILL) << setw(SIZEOFSETW-41) << "-" << endl << endl;
+    cout << setfill(' ');
 }
