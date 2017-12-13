@@ -33,6 +33,8 @@ void AdminUI::startAdminUI(){
         uiItemSeparator();
         cout << setw(SIZEFORSETWSPACE) << "6: " << "Add/change the base list" << endl;
         uiItemSeparator();
+        cout << setw(SIZEFORSETWSPACE) << "7: " << "View sales analysis" << endl;
+        uiItemSeparator();
         cout << setw(SIZEFORSETWSPACE) << "b: " << "back" << endl;
         uiItemSeparator();
         cin >> input;

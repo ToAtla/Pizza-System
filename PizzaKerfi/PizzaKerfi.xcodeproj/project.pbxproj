@@ -36,6 +36,7 @@
 		E9A4DD1A1FDD6EC100B27AC2 /* InvalidFileSizeBaseException.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E9A4DD181FDD6EC100B27AC2 /* InvalidFileSizeBaseException.cpp */; };
 		E9C456D21FCEF1D700A93407 /* AdminUI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E9C456D01FCEF1D700A93407 /* AdminUI.cpp */; };
 		E9C456D51FCEF6BC00A93407 /* MainUI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E9C456D31FCEF6BC00A93407 /* MainUI.cpp */; };
+		E9F00A021FE1977B0086412F /* MenuItem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E9F00A001FE1977B0086412F /* MenuItem.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -111,6 +112,8 @@
 		E9C456D11FCEF1D700A93407 /* AdminUI.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = AdminUI.hpp; sourceTree = "<group>"; };
 		E9C456D31FCEF6BC00A93407 /* MainUI.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = MainUI.cpp; sourceTree = "<group>"; };
 		E9C456D41FCEF6BC00A93407 /* MainUI.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = MainUI.hpp; sourceTree = "<group>"; };
+		E9F00A001FE1977B0086412F /* MenuItem.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = MenuItem.cpp; sourceTree = "<group>"; };
+		E9F00A011FE1977B0086412F /* MenuItem.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = MenuItem.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -171,6 +174,7 @@
 				E974CD351FD1BC510005D0F9 /* Base.cpp */,
 				7BECD2B01FCDCC1600A0384A /* Pizza.cpp */,
 				7BECD2B61FCDCE8100A0384A /* Order.cpp */,
+				E9F00A001FE1977B0086412F /* MenuItem.cpp */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -186,6 +190,7 @@
 				E974CD361FD1BC510005D0F9 /* Base.hpp */,
 				7BECD2B11FCDCC1600A0384A /* Pizza.hpp */,
 				7BECD2B71FCDCE8100A0384A /* Order.hpp */,
+				E9F00A011FE1977B0086412F /* MenuItem.hpp */,
 			);
 			path = Models.h;
 			sourceTree = "<group>";
@@ -354,6 +359,7 @@
 				E950F3D51FDC20B400B0ABDF /* InvalidInputException.cpp in Sources */,
 				E974CD281FD097560005D0F9 /* Drink.cpp in Sources */,
 				E974CD091FCF28520005D0F9 /* OrderRepo.cpp in Sources */,
+				E9F00A021FE1977B0086412F /* MenuItem.cpp in Sources */,
 				E974CD061FCF1F0D0005D0F9 /* PrepUI.cpp in Sources */,
 				E9C456D21FCEF1D700A93407 /* AdminUI.cpp in Sources */,
 				E974CD341FD194110005D0F9 /* Size.cpp in Sources */,
