@@ -52,9 +52,7 @@ void SalesUI::createOrder(){
         cout << setfill(CHARFORSUBACTION) << setw(36) << "+" << "    Creating a new Order    " <<  setfill(CHARFORSUBACTION) << setw(36) << "+" << endl << endl;
         
         try{
-            if(decideDelivery()){
-                order.setDeliveryAddress(deliveryProcess());
-            }
+            deliveryCreationProcess(order);
         } catch (InvalidNameException e) {
             e.getMessage();
         }
@@ -112,18 +110,28 @@ void SalesUI::createOrder(){
 }
 
 //Prompts the user for pick up or delivery
-//returns true if delivery false otherwise
-bool SalesUI::decideDelivery(){
-    cout << "Is this a delivery?(y/n)" << endl;
-    char input;
-    cin >> input;
-    return input == 'y';
-}
-
 //Prompts the user to input a delivery destination
 //Then retruns it
-char* SalesUI::deliveryProcess(){
-    
+void SalesUI::deliveryCreationProcess(Order& order){
+    char input = '\0';
+    cout << endl << "Will this order be delivered(y/n)";
+    cin >> input;
+    clearScreen();
+    string addressString;
+    char* address = new char[MAXCHARINORDERCOMMENT];
+    if(input == 'y'){
+        cout << endl << "Write out the address (max " << MAXCHARINORDERCOMMENT-1 << " characters):";
+        cin.ignore();
+        getline(cin, addressString  );
+        if(bizniz.isValidNameLength(addressString, MAXCHARINORDERCOMMENT)){
+            strcpy(address, addressString.c_str());
+        }
+    }
+    else{
+        address[0] = '\0';
+    }
+    order.setOrderComment(address);
+    delete [] address;
 }
 
 //Displays all orders from the orders list.
