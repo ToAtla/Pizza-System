@@ -113,6 +113,16 @@ Drink* Order::getDrinkList(){
     return drinkList;
 }
 
+///Returns true if order is a delivery false if it's a pick up
+bool Order::getDelivery(){
+    return delivery;
+}
+
+///Sets the private bool value of delivery
+void Order::setDelivery(bool d){
+    delivery = d;
+}
+
 ///Return a pointer to the private array comment.
 char* Order::getOrdercComment(){
     return comment;
@@ -122,12 +132,26 @@ char* Order::getOrdercComment(){
 void Order::setOrderComment(char *inComment){
     strcpy(comment, inComment);
 }
+///Return a pointer to the private array comment.
+char* Order::getDeliveryAddress(){
+    return deliveryAddress;
+}
+
+///Return a pointer to the private array deliveryAddress.
+void Order::setDeliveryAddress(char inAddress[]){
+    strcpy(deliveryAddress, inAddress);
+}
 
 ///Overloads the cout operator so one can use '>>' to input the contents of an Order instance.
 ostream& operator << (ostream& out, const Order& order){
     Bizniz bizniz;
     out << "#" << order.ID << setw(56) << right << order.locationOfOrder << setw(45) << right << bizniz.orderStatusToString(order.statusOfOrder) << endl;
     out << setfill(CHARFORSETFILL) << setw(SIZEOFSETWBIG) << "-" << endl;
+    if(order.delivery){
+        cout << "DELIVERY: " << order.deliveryAddress << endl;
+    }else{
+        cout << "PICK UP" << endl;
+    }
     if(order.comment[0] != '\0'){
         cout << "Comment: " << order.comment << endl;
     }

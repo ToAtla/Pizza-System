@@ -58,12 +58,20 @@ class Order {
         ///Returns a pointer to the private array sideList.
         Drink* getDrinkList();
         ///Returns a pointer to the private array drinkList.
+        bool getDelivery();
+        ///Returns true if order is a delivery false if it's a pick up
+        void setDelivery(bool d);
+        ///Sets the private bool value of delivery
         char* getOrdercComment();
         ///Return a pointer to the private array comment.
         void setOrderComment(char inComment[]);
         ///Takes in an char array as a parameter and gives the private array comment the value of it.
+        char* getDeliveryAddress();
+        ///Return a pointer to the private array deliveryAddress.
+        void setDeliveryAddress(char inAddress[]);
+        ///Takes in an char array as a parameter and gives the private array deliveryAddress the value of it.
         friend ostream& operator << (ostream& out, const Order&);
-        ///Overloads the cout operator so one can use '>>' to input the contents of an Order instance.
+        ///Overloads the cout operator so one can use '<<' to output the contents of an Order instance.
     private:
         Pizza pizzaList[MAXSTUFFSINORDER];
         Side sideList[MAXSTUFFSINORDER];
@@ -75,6 +83,8 @@ class Order {
         int totalPrice;
         int ID;
         orderStatus statusOfOrder;
+        bool delivery;
+        char deliveryAddress[MAXCHARINLOCATIONNAME];
         char comment[MAXCHARINORDERCOMMENT];
 };
 
