@@ -85,7 +85,7 @@ public:
     int getNumberForNextOrder();
     void storeOrder(Order order);
     void storeOrder(const Order& order, string fileName);
-    void moveOrderBetween(string sourceFile, string destFile, Order order);
+    void moveOrderBetween(string sourceFile, string destFile, int orderNum);
     Order* getArrayOfOrders(string fileName, int& tellMeHowManyOrders);
     void locateFirstOrderWithPizzaWithStatusAtLocation(status status, Location location, int& orderNum, int& pizzaNum);
     void changeStatusOfPizzaInOrder(int orderNum, int pizzaNumber, status status);

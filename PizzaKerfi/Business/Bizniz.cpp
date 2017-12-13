@@ -459,8 +459,38 @@ void Bizniz::storeOrder(const Order& order, string fileName){
     orderRepo.storeOrder(order, fileName);
 }
 
-void Bizniz::moveOrderBetween(string sourceFile, string destFile, Order order){
+void Bizniz::moveOrderBetween(string sourceFile, string destFile, int orderNum){
+
+    //sækja allar pantanir
+    int sizeOfSourceFile;
+    Order* orderList = getArrayOfOrders(sourceFile, sizeOfSourceFile);
     
+    
+    int index;
+    
+    for (int i = 0; i < sizeOfSourceFile; i++) {
+        if(orderList[i].getID() == orderNum){
+            //eitthvað gerist
+            index = i;
+            i = sizeOfSourceFile;
+        }
+    }
+    
+    
+    //eyða öllu í skjalinu
+    orderRepo.clearOrderFile(sourceFile);
+    //Bæta öllu við fram að index
+    //Og halda áfram eftir index í i+1
+    for (int i = 0; i < sizeOfSourceFile-1; i++) {
+        if(i < index){
+            storeOrder(orderList[i], sourceFile);
+        }else{
+            storeOrder(orderList[i+1], sourceFile);
+        }
+    }
+    //append to dest
+    storeOrder(orderList[index], destFile);
+    delete [] orderList;
 }
 
 Order* Bizniz::getArrayOfOrders(string fileName, int& tellMeHowManyOrders){

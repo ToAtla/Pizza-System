@@ -221,6 +221,7 @@ void DeliveryUI::displayPaidOrders(){
                 }else{
                     
                     bizniz.setOrderStatus(ORDERFILE, input, DELIVERED);
+                    bizniz.moveOrderBetween(ORDERFILE, LEGACYORDERFILE, input);
                     cout << endl << "Order number " << input << " has been marked DELIVERED" << endl;
                     input = 0;
                 }
@@ -236,7 +237,9 @@ void DeliveryUI::displayPaidOrders(){
 
 
 void DeliveryUI::displayLegacyOrders(){
-    string orderFile = "orders.dat";
+    
+    //BREYTA ÞESSU!!
+    string orderFile = LEGACYORDERFILE;
     OrderRepo ordRep;
     int sizeOfOrderList;
     Order* orders = ordRep.retrieveOrderArray(orderFile, sizeOfOrderList);
