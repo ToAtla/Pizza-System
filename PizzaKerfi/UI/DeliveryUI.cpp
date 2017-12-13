@@ -138,7 +138,7 @@ void DeliveryUI::displayUnpaidOrders(){
     
         int input = 1;
         while(input != 0){
-            cout << "Enter order number to mark as paid or 0 to exit (no whitespaces): ";
+            cout << "Enter order number to mark as paid or 0 to exit (order number is in the top left corner, no whitespaces): ";
             char charInput;
             cin >> charInput;
             input = charInput-48;
@@ -182,7 +182,7 @@ void DeliveryUI::displayPaidOrders(){
     
         int input = 1;
         while(input != 0){
-            cout << "Enter number of order to mark delivered or 0 to exit (no whitespaces): ";
+            cout << "Enter number of order to mark delivered or 0 to exit (order number is in the top left corner, no whitespaces): ";
             char charInput;
             cin >> charInput;
             input = charInput-48;

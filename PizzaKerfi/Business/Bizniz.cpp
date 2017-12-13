@@ -609,7 +609,7 @@ bool Bizniz::isPriceDigit(string price){
     
     for(int i = 0; i < price.length(); i++){
         if(!isdigit(price[i])){
-            throw InvalidPriceException("Invalid price!");
+            throw InvalidPriceException("*ERROR* Invalid price! (Price can't contain a character)");
         }
     }
     
@@ -624,7 +624,7 @@ bool Bizniz::isValidInput(int input, unsigned long sizeOfList){
     unsigned long unsignedInput = input;
     
     if(unsignedInput < 1 || unsignedInput > sizeOfList){
-        throw InvalidInputException("Invalid input! (Input does not match any index on the list) Please try again");
+        throw InvalidInputException("*ERROR* Invalid input! (Input does not match any index on the list) Please try again");
     }
     
     return true;
@@ -637,7 +637,7 @@ bool Bizniz::isValidToppingInput(int input, unsigned long sizeOflist){
     unsigned long unsignedInput = input;
     
     if(unsignedInput > sizeOflist){
-        throw InvalidInputException("Invalid input! (Input does not match any index on the list) Please try again");
+        throw InvalidInputException("*ERROR* Invalid input! (Input does not match any index on the list) Please try again");
     }
     
     return true;
@@ -650,7 +650,7 @@ bool Bizniz::isInputDigit(string input){
     
     for(int i = 0; i < input.length(); i++){
         if(!isdigit(input[i])){
-            throw InvalidInputException("Invalid input! (Input does not match any index on the list) Please try again");
+            throw InvalidInputException("*ERROR* Invalid input! (Input does not match any index on the list) Please try again");
         }
     }
     
@@ -661,7 +661,7 @@ bool Bizniz::isInputDigit(string input){
 bool Bizniz::isValidNameLength(string name, int lenght){
     
     if(name.length() > lenght-1){
-        throw InvalidNameException("Invalid name! (Name cant exceed the maximum amount of characters)");
+        throw InvalidNameException("*ERROR* Invalid name! (Name cant exceed the maximum amount of characters)");
     }
         
     return true;
@@ -691,11 +691,11 @@ bool Bizniz::isValidBaseSizeFile(){
     bases = baseRepo.getVectorOfBases();
     
     if(sizes.size() < 1){
-        throw InvalidFileSizeBaseException("Can't order a pizza because there are no sizes available");
+        throw InvalidFileSizeBaseException("*ERROR* Can't order a pizza because there are no sizes available");
     }
     
     if(bases.size() < 1) {
-        throw InvalidFileSizeBaseException("Can't order a pizza because there are no bases available");
+        throw InvalidFileSizeBaseException("*ERROR* Can't order a pizza because there are no bases available");
     }
     
     return true;

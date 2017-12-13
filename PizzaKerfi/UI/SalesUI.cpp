@@ -65,20 +65,20 @@ void SalesUI::createOrder(){
         } catch (InvalidFileSizeBaseException e) {
             cout << endl << e.getMessage() << endl << endl;
         } catch (InvalidInputException) {
-            cout << endl << "Invalid input! (input can't be a character and has to match a number on the list) Try again" << endl << endl;
+            cout << endl << "*ERROR* Invalid input! (input can't be a character and has to match a number on the list) Try again" << endl << endl;
             return;
         }
         
         try {
             sideListCreationProcess(order);
         } catch (InvalidInputException) {
-            cout << endl << "Invalid input! (input can't be a character and has to match a number on the list)" << endl << endl;
+            cout << endl << "*ERROR* Invalid input! (input can't be a character and has to match a number on the list)" << endl << endl;
         }
         
         try {
             drinkListCreationProcess(order);
         } catch (InvalidInputException) {
-            cout << endl << "Invalid input! (input can't be a character and has to match a number on the list)" << endl << endl;
+            cout << endl << "*ERROR* Invalid input! (input can't be a character and has to match a number on the list)" << endl << endl;
         }
         
         try{
