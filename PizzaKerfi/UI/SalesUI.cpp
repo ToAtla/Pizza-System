@@ -57,7 +57,6 @@ void SalesUI::createOrder(){
             e.getMessage();
         }
         
-        
         try {
             order.setLocation(locationPickingProcess());
         } catch (InvalidInputException e) {
@@ -125,12 +124,14 @@ void SalesUI::deliveryCreationProcess(Order& order){
         getline(cin, addressString  );
         if(bizniz.isValidNameLength(addressString, MAXCHARINORDERCOMMENT)){
             strcpy(address, addressString.c_str());
+            order.setDelivery(true);
         }
     }
     else{
         address[0] = '\0';
+        order.setDelivery(false);
     }
-    order.setOrderComment(address);
+    order.setDeliveryAddress(address);
     delete [] address;
 }
 
