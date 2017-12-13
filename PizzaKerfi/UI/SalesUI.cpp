@@ -137,6 +137,7 @@ void SalesUI::deliveryCreationProcess(Order& order){
 
 //Displays all orders from the orders list.
 void SalesUI::displayOrders(){
+    //Displaying all active orders in company
     int orderCnt = 0;
     Order* orderList = bizniz.getArrayOfOrders(ORDERFILE, orderCnt);
     if(orderCnt  == 0){

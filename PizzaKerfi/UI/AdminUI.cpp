@@ -63,6 +63,10 @@ void AdminUI::startAdminUI(){
             magic.clearScreen();
             displayBaseMenu();
         }
+        else if(input == '7'){
+            magic.clearScreen();
+            displayAnalysis();
+        }
     }
 }
 
@@ -1158,6 +1162,15 @@ void AdminUI::removeBase(){
             cout << endl << setw(27) << "Base removed!" << endl << endl;
         }
     }
+}
+
+void AdminUI::displayAnalysis(){
+    cout << "Total turnover: " << bizniz.calcTotalTurnover() << endl;
+    cout << "Total pizzas sold: " << bizniz.calcTotalPizzas() <<endl;
+    cout << "Total orders delivered: " << bizniz.calcTotalOrders() << endl;
+    cout << "Average price of order: " << bizniz.calcMeanOrderPrice() << endl;
+    cout << "Enter anything to continue" << endl;
+    cin >> ws;
 }
 
 void AdminUI::uiItemSeparator () {

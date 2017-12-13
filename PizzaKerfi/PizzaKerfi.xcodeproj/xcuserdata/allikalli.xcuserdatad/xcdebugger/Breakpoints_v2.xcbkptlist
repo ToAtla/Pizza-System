@@ -42,11 +42,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Business/Bizniz.cpp"
-            timestampString = "534872000.326181"
+            timestampString = "534875924.607862"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "557"
-            endingLineNumber = "557"
+            startingLineNumber = "546"
+            endingLineNumber = "546"
             landmarkName = "Bizniz::thereExistsOrderAtLocationWithApplicablePizza(status status, Location location, bool onlyWith)"
             landmarkType = "7">
             <Actions>
