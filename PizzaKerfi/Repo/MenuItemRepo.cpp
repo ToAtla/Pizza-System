@@ -7,3 +7,38 @@
 //
 
 #include "MenuItemRepo.hpp"
+
+void MenuItemRepo::addMenuItem(MenuItem& menuItem){
+    ofstream fout;
+    fout.open(MENUITEMFILE, ios::binary|ios::app);
+    fout.write((char*)(&menuItem), sizeof(MenuItem));
+    fout.close();
+}
+
+MenuItem* MenuItemRepo::getArrayOfMenuItems(int& tellMeHowMany){
+    
+    MenuItem* menuItems = new MenuItem[MAXPIZZASINPIZZAFILE];
+    ifstream fin;
+    fin.open(MENUITEMFILE, ios::binary);
+    fin.seekg(0, fin.end);
+    tellMeHowMany = (int)(fin.tellg()/sizeof(MenuItem));
+    fin.seekg(0, fin.beg);
+    fin.read((char*)(menuItems), sizeof(MenuItem)*tellMeHowMany);
+    fin.close();
+    
+    
+    return menuItems;
+    
+}
+
+void MenuItemRepo::storeArrayOfMenuItems(char menuItems[]){
+    
+}
+
+void MenuItemRepo::clearMenuItems(){
+    
+}
+
+void MenuItemRepo::createMenuItem(){
+    
+}

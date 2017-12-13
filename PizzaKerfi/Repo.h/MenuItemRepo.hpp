@@ -22,8 +22,8 @@ class MenuItemRepo{
 public:
     void addMenuItem(MenuItem& MenuItem);
     void displayMenuItem();
-    MenuItem* getVectorOfMenuItems();
-    void storeVectorOfMenuItems(vector<MenuItem> MenuItems);
+    MenuItem* getArrayOfMenuItems(int& tellMeHowMany);
+    void storeArrayOfMenuItems(char menuItems[]);
 private:
     void clearMenuItems();
     void createMenuItem();
