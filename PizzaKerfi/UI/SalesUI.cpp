@@ -115,15 +115,15 @@ void SalesUI::deliveryCreationProcess(Order& order){
     string input;
     cout << endl << "Will this order be delivered(y/n)";
     cin.ignore();
-     getline(cin, input);
+    getline(cin, input);
     clearScreen();
     string addressString;
-    char* address = new char[MAXCHARINORDERCOMMENT];
+    char* address = new char[MAXCHARINLOCATIONNAME];
     if(input[0] == 'y'){
-        cout << endl << "Write out the address (max " << MAXCHARINORDERCOMMENT-1 << " characters):";
+        cout << endl << "Write out the address (max " << MAXCHARINLOCATIONNAME-1 << " characters):";
         cin.ignore();
-        getline(cin, addressString  );
-        if(bizniz.isValidNameLength(addressString, MAXCHARINORDERCOMMENT)){
+        getline(cin, addressString);
+        if(bizniz.isValidNameLength(addressString, MAXCHARINLOCATIONNAME)){
             strcpy(address, addressString.c_str());
             order.setDelivery(true);
         }
