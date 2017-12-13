@@ -114,8 +114,7 @@ void SalesUI::createOrder(){
 void SalesUI::deliveryCreationProcess(Order& order){
     string input;
     cout << endl << "Will this order be delivered(y/n)";
-    cin.ignore();
-    getline(cin, input);
+    cin >> input;
     clearScreen();
     string addressString;
     char* address = new char[MAXCHARINLOCATIONNAME];
