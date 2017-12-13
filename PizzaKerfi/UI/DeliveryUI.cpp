@@ -149,7 +149,7 @@ void DeliveryUI::displayUnpaidOrders(){
     }
     
     cout << setfill(CHARFORSETFILL) << setw(SIZEOFSETWBIG) << "-" << setfill(CHARFORSPACE) << endl;
-    cout << setfill(CHARFORSPACE) << setw(28) << " " << "Listing All Unpaid Orders in " << locationOfDelivery << endl;
+    cout << setfill(CHARFORSPACE) << setw(28) << " " << "Listing All UNPAID Orders in " << locationOfDelivery << endl;
     cout << setfill(CHARFORSETFILL) << setw(SIZEOFSETWBIG) << "-" << setfill(CHARFORSPACE) << endl << endl;
     
     if(ordRep.fileExists(orderFile) && amountOfUnpaidUndeliveredOrdersAtThisLocation != 0){
@@ -163,14 +163,14 @@ void DeliveryUI::displayUnpaidOrders(){
     
         int input = 1;
         while(input != 0){
-            cout << "Enter order number to mark as paid or 0 to exit (order number is in the top left corner, no whitespaces): ";
+            cout << "Enter order number to mark as PAID or 0 to exit (order number is in the top left corner, no whitespaces): ";
             char charInput = 0;
             cin >> charInput;
             input = charInput-48;
             if(input != 0 && bizniz.orderExist(input) && bizniz.getOrderNumber(input).getStatusOfOrder() == UNPAID){
                 
                 bizniz.setOrderStatus(ORDERFILE, input, PAID);
-                cout << "Order number " << input << " has been marked as ready" << endl;
+                cout << "Order number " << input << " has been marked as PAID" << endl;
                 input = 0;
             }
         }
@@ -196,7 +196,7 @@ void DeliveryUI::displayPaidOrders(){
         }
     }
     cout << setfill(CHARFORSETFILL) << setw(SIZEOFSETWBIG) << "-" << setfill(CHARFORSPACE) << endl;
-    cout << setfill(CHARFORSPACE) << setw(26) << " " << "Listing All Paid Orders in " << locationOfDelivery << endl;
+    cout << setfill(CHARFORSPACE) << setw(26) << " " << "Listing All PAID Orders in " << locationOfDelivery << endl;
     cout << setfill(CHARFORSETFILL) << setw(SIZEOFSETWBIG) << "-" << setfill(CHARFORSPACE) << endl << endl;
     
     if(ordRep.fileExists(orderFile) && amountOfPaidUndeliveredOrdersAtThisLocation != 0){
@@ -220,7 +220,7 @@ void DeliveryUI::displayPaidOrders(){
                     cout << "Not all items in that order are ready" << endl;
                 }else{
                     bizniz.setOrderStatus(ORDERFILE, input, DELIVERED);
-                    cout << "Order number " << input << " has been marked delivered" << endl;
+                    cout << "Order number " << input << " has been marked DELIVERED" << endl;
                     input = 0;
                 }
             }
