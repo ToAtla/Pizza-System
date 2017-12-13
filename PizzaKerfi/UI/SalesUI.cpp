@@ -19,11 +19,11 @@ void SalesUI::startSalesUI(){
         cout << setfill(CHARFORSETFILL) << setw(SIZEOFSETWBIG) << "-" << endl;
         cout << setfill(' ') << setw(52) << right << "Sales" << endl;
         cout << setfill(CHARFORSETFILL) << setw(SIZEOFSETWBIG) << "-" << endl << endl;
-        cout << setfill(' ') << setw(22) << "1: " << "New order" << endl;
+        cout << setfill(' ') << setw(SIZEFORSETWBIGSPACE) << "1: " << "New order" << endl;
         uiItemSeparator();
-        cout << setw(22) << "2: " << "View all orders" << endl;
+        cout << setw(SIZEFORSETWBIGSPACE) << "2: " << "View all orders" << endl;
         uiItemSeparator();
-        cout << setw(22) << "b: " << "back" << endl;
+        cout << setw(SIZEFORSETWBIGSPACE) << "b: " << "back" << endl;
         uiItemSeparator();
         cin >> input;
         clearScreen();
