@@ -330,11 +330,35 @@ Pizza SalesUI::pizzaCreationProcess(Location locationOfOrderForPizzaToFollow){
    
     Size pizzaSize = sizePickingProcess();
     Base pizzaBase = basePickingProcess();
-    int toppingCount = 0;
-    Topping* pizzaToppings = toppingPickingProcess(toppingCount);
-    Pizza returnPizza = bizniz.assemblePizza(pizzaSize, pizzaBase, pizzaToppings, toppingCount, locationOfOrderForPizzaToFollow);
-    delete [] pizzaToppings;
-    return returnPizza;
+    cout << "Assemble off menu pizza?(y/n)";
+    char input = '\0';
+    cin >> input;
+    if(input == 'y'){
+        int toppingCount = 0;
+        Topping* pizzaToppings = toppingPickingProcess(toppingCount);
+        Pizza returnPizza = bizniz.assemblePizza(pizzaSize, pizzaBase, pizzaToppings, toppingCount, locationOfOrderForPizzaToFollow);
+        delete [] pizzaToppings;
+        return returnPizza;
+    }else{
+        int tellMeHowMany;
+        MenuItem* entireMenu = bizniz.getArrayOfOrders(MENUITEMFILE, tellMeHowMany);
+        
+        cout << setfill(CHARFORSETFILL) << setw(35) << "-" << "    List of menu Items    " << setfill(CHARFORSETFILL) << setw(34) << "-" << endl << endl;
+        cout << setfill(' ') << setw(82) << "Price" << endl;
+        cout << setw(82) << "-----" << endl;
+        
+        for(unsigned int i = 0; i < tellMeHowMany; i++){
+            MenuItem temp = entireMenu.[i];
+            cout << setw(31) << "Item number " << i+1 << endl;
+            cout << setfill(' ') << setw(19) << " " << setw(19) << left << temp.getName() << setw(44) << right << temp.getPrice() << endl;
+            uiItemSeparator();
+        }
+        cout << "Choose a number corresponding to side (Þetta á eftir að Exeption hjúpa): ";
+        int input;
+        cin >> input;
+        
+    }
+    
 }
 
 

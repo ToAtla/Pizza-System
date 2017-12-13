@@ -771,7 +771,6 @@ int Bizniz::calcTotalPizzas(){
 
 int Bizniz::calcTotalOrders(){
     int numberOfOrders;
-    int orderSum = 0;
     Order* allOrders = getArrayOfOrders(LEGACYORDERFILE, numberOfOrders);
     delete [] allOrders;
     return numberOfOrders;
