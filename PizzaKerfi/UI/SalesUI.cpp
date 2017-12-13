@@ -123,8 +123,10 @@ void SalesUI::deliveryCreationProcess(Order& order){
         cout << endl << "Write out the address (max " << MAXCHARINLOCATIONNAME-1 << " characters):";
         cin.ignore();
         getline(cin, addressString);
+        cout << "The string was:" << addressString << endl;
         if(bizniz.isValidNameLength(addressString, MAXCHARINLOCATIONNAME)){
             strcpy(address, addressString.c_str());
+            cout << "The string is:" << addressString << endl;
             order.setDelivery(true);
         }
     }
@@ -448,18 +450,21 @@ void SalesUI::drinkListCreationProcess(Order &order){
     }
 }
 void SalesUI::commentCreationProcess(Order& order){
-    char input = '\0';
+    string input;
     cout << endl << "Any special comments?(y/n)";
-    cin >> input;
+    cin.ignore();
+    getline(cin, input);
     clearScreen();
     string commentString;
     char* comment = new char[MAXCHARINORDERCOMMENT];
-    if(input == 'y'){
+    if(input[0] == 'y'){
         cout << endl << "Write out the comment(max " << MAXCHARINORDERCOMMENT-1 << " characters):";
         cin.ignore();
         getline(cin, commentString);
+        cout << "The comment was " << commentString << endl;
         if(bizniz.isValidNameLength(commentString, MAXCHARINORDERCOMMENT)){
            strcpy(comment, commentString.c_str());
+            cout << "The comment is " << commentString << endl;
         }
     }
     else{
