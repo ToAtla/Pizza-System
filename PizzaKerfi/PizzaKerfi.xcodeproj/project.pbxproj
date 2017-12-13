@@ -37,6 +37,7 @@
 		E9C456D21FCEF1D700A93407 /* AdminUI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E9C456D01FCEF1D700A93407 /* AdminUI.cpp */; };
 		E9C456D51FCEF6BC00A93407 /* MainUI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E9C456D31FCEF6BC00A93407 /* MainUI.cpp */; };
 		E9F00A021FE1977B0086412F /* MenuItem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E9F00A001FE1977B0086412F /* MenuItem.cpp */; };
+		E9F00A051FE19A210086412F /* MenuItemRepo.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E9F00A031FE19A210086412F /* MenuItemRepo.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -114,6 +115,8 @@
 		E9C456D41FCEF6BC00A93407 /* MainUI.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = MainUI.hpp; sourceTree = "<group>"; };
 		E9F00A001FE1977B0086412F /* MenuItem.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = MenuItem.cpp; sourceTree = "<group>"; };
 		E9F00A011FE1977B0086412F /* MenuItem.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = MenuItem.hpp; sourceTree = "<group>"; };
+		E9F00A031FE19A210086412F /* MenuItemRepo.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = MenuItemRepo.cpp; sourceTree = "<group>"; };
+		E9F00A041FE19A210086412F /* MenuItemRepo.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = MenuItemRepo.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -206,6 +209,7 @@
 				E974CD391FD1BC5D0005D0F9 /* BaseRepo.hpp */,
 				7B9F681E1FCF0079006C9167 /* PizzaRepo.hpp */,
 				E974CD2A1FD09A110005D0F9 /* SideRepo.hpp */,
+				E9F00A041FE19A210086412F /* MenuItemRepo.hpp */,
 			);
 			path = Repo.h;
 			sourceTree = "<group>";
@@ -261,6 +265,7 @@
 				7B9F681D1FCF0079006C9167 /* PizzaRepo.cpp */,
 				E974CD291FD09A110005D0F9 /* SideRepo.cpp */,
 				E974CD2F1FD193660005D0F9 /* SizeRepo.cpp */,
+				E9F00A031FE19A210086412F /* MenuItemRepo.cpp */,
 			);
 			path = Repo;
 			sourceTree = "<group>";
@@ -377,6 +382,7 @@
 				E974CD2E1FD0B2390005D0F9 /* DrinkRepo.cpp in Sources */,
 				7B22C0A61FD012330055EE3D /* LocationRepo.cpp in Sources */,
 				7BECD2B51FCDCE6400A0384A /* Topping.cpp in Sources */,
+				E9F00A051FE19A210086412F /* MenuItemRepo.cpp in Sources */,
 				7B97BCF21FCF368D00A24411 /* Location.cpp in Sources */,
 				7BECD2B21FCDCC1600A0384A /* Pizza.cpp in Sources */,
 				7BECD2B81FCDCE8100A0384A /* Order.cpp in Sources */,
