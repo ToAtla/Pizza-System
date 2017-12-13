@@ -122,10 +122,8 @@ void SalesUI::deliveryCreationProcess(Order& order){
         cout << endl << "Write out the address (max " << MAXCHARINLOCATIONNAME-1 << " characters):";
         cin.ignore();
         getline(cin, addressString);
-        cout << "The string was:" << addressString << endl;
         if(bizniz.isValidNameLength(addressString, MAXCHARINLOCATIONNAME)){
             strcpy(address, addressString.c_str());
-            cout << "The string is:" << addressString << endl;
             order.setDelivery(true);
         }
     }

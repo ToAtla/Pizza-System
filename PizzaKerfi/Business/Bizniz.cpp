@@ -466,11 +466,11 @@ void Bizniz::locateFirstOrderWithPizzaWithStatusAtLocation(status status, Locati
         if(allOrders[i].getLocation().getLocation() == location.getLocation()){
             for (int c = 0; c < allOrders[i].getNumberOfPizzas(); c++) {
                 if(allOrders[i].getPizzasInOrder()[c].getStatus() == status){
-//                    cout << "first instance of pizza that applies O:" << orderNum << " P:" << pizzaNum << endl;
-//                    cout << "printing that pizza:" << endl;
-//                    cout << allOrders[orderNum].getPizzasInOrder()[pizzaNum]
                     orderNum = i;
                     pizzaNum = c;
+                    cout << "first instance of pizza that applies O:" << orderNum << " P:" << pizzaNum << endl;
+                    cout << "printing that pizza:" << endl;
+                    cout << allOrders[orderNum].getPizzasInOrder()[pizzaNum] << endl;
                     i = ordersInFile;
                     c = allOrders[i].getNumberOfPizzas();
                 }
@@ -481,25 +481,39 @@ void Bizniz::locateFirstOrderWithPizzaWithStatusAtLocation(status status, Locati
 }
 
 void Bizniz::changeStatusOfPizzaInOrder(int orderNum, int pizzaNumber, status status){
-//    cout << "Changing status of pizza in order" << endl;
-//    cout << "O: " << orderNum << " and P: " << pizzaNumber << " and New Status: " << statusToString(status) << endl;
+    cout << "Changing status of pizza in order" << endl;
+    cout << "O: " << orderNum << " and P: " << pizzaNumber << " and New Status: " << statusToString(status) << endl;
     
     int ordersInFile = 0;
     Order* allOrders = getArrayOfOrders(ORDERFILE, ordersInFile);
-//    cout << "Printing said pizza in said order before change: " << endl << allOrders[orderNum].getPizzasInOrder()[pizzaNumber] << endl;
+    
+    
+    
+    cout << "Printing said pizza in said order before change: " << endl << allOrders[orderNum].getPizzasInOrder()[pizzaNumber];
+    cout << "Orders in file " << ordersInFile << endl;
     allOrders[orderNum].getPizzasInOrder()[pizzaNumber].setStatus(status);
+    
+    
     //Hér á eftir að setja inn að hann visti dæmið í skrána
+    orderRepo.clearOrderFile(ORDERFILE);
     for (int i = 0; i < ordersInFile; i++) {
-        orderRepo.clearOrderFile(ORDERFILE);
+        int num;
+        getArrayOfOrders(ORDERFILE, num);
+        cout << "Should be 0: " << num << endl;
         storeOrder(allOrders[i]);
     }
     delete [] allOrders;
     
+    
+    
+    
+    
     //PRUFUVIÐBÓT
-//    int newOrdersInFile = 0;
-//    Order* newAllOrders = getArrayOfOrders(ORDERFILE, newOrdersInFile);
-//    cout << "Printing said pizza in said order after change: " << endl << newAllOrders[orderNum].getPizzasInOrder()[pizzaNumber] << endl;
-//    delete [] newAllOrders;
+    int newOrdersInFile = 0;
+    Order* newAllOrders = getArrayOfOrders(ORDERFILE, newOrdersInFile);
+    cout << "Printing said pizza in said order after change: " << endl << newAllOrders[orderNum].getPizzasInOrder()[pizzaNumber];
+    cout << "Orders in file: " << newOrdersInFile << endl;
+    delete [] newAllOrders;
     
 }
 
