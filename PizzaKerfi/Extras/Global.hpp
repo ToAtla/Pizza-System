@@ -21,6 +21,7 @@ using namespace std;
 
 const int SIZEFORSETWSPACE = 20;
 const int SIZEFORSETWBIGSPACE = 22;
+const int SIZEOFCENTERHEADING = 26;
 
 const char CHARFORSETFILL = '-';
 const char CHARFORSUBACTION = '+';

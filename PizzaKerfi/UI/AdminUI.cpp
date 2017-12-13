@@ -71,7 +71,8 @@ void AdminUI::displayToppingMenu(){
     
     char input = '\0';
     while(input != 'b'){
-        cout << setfill(CHARFORSETFILL) << setw(30) << "-" << "    Toppings    " << setfill(CHARFORSETFILL) << setw(30) << "-" << endl << endl;
+        cout << setfill(CHARFORSETFILL) << setw(SIZEOFCENTERHEADING+4) << "-" << "    Toppings    " << setfill(CHARFORSETFILL) << setw(SIZEOFCENTERHEADING+4);
+        cout << "-" << endl << endl;
         cout << setfill(' ') << setw(SIZEFORSETWSPACE) << "1: " << "List toppings" << endl;
         uiItemSeparator();
         cout << setw(SIZEFORSETWSPACE) << "2: " << "Change a topping" << endl;
@@ -128,7 +129,8 @@ void AdminUI::displayAllToppings(){
 
     vector<Topping> toppings = bizniz.getVectorOfToppings();
     
-    cout << endl << setfill(CHARFORSETFILL)<< setw(24) << "-" << "    List of all toppings    " << setfill(CHARFORSETFILL) << setw(24) << "-" << endl << endl;
+    cout << endl << setfill(CHARFORSETFILL)<< setw(SIZEOFCENTERHEADING-2) << "-" << "    List of all toppings    " << setfill(CHARFORSETFILL);
+    cout << setw(SIZEOFCENTERHEADING-2) << "-" << endl << endl;
     cout << setfill(' ') << setw(58) << "Price" << endl;
     cout << setw(58) << "-----" << endl;
     
@@ -154,8 +156,10 @@ void AdminUI::addTopping(){
     string price;
 
     
-    cout << setfill(CHARFORSETFILL) << setw(25) << "-" << "    Adding a topping!    " << setfill(CHARFORSETFILL) << setw(26) << "-" << endl << endl;
+    cout << setfill(CHARFORSETFILL) << setw(SIZEOFCENTERHEADING-1) << "-" << "    Adding a topping!    " << setfill(CHARFORSETFILL) << setw(SIZEOFCENTERHEADING);
+    cout << "-" << endl << endl;
     cout << setfill(' ') << setw(SIZEOFADDTOPPINGSPACES) << "Enter topping name (Max " << MAXCHARINTOPPINGNAME-1 << " letters): ";
+    
     cin >> name;
     cout << setw(SIZEOFADDTOPPINGSPACES-3) << "Enter topping price: ";
     cin >> price;
@@ -177,10 +181,12 @@ void AdminUI::addTopping(){
 void AdminUI::changeTopping(){
 
     vector<Topping> toppings = bizniz.getVectorOfToppings();
-    cout << endl;
-    cout << endl << setfill(CHARFORSETFILL) << setw(24) << "-" << "    List of all toppings    " << setfill(CHARFORSETFILL) << setw(24) << "-" << endl << endl;
+    
+    cout << endl << endl << setfill(CHARFORSETFILL) << setw(SIZEOFCENTERHEADING-2) << "-" << "    List of all toppings    " << setfill(CHARFORSETFILL);
+    cout << setw(SIZEOFCENTERHEADING-2) << "-" << endl << endl;
     cout << setfill(' ') << setw(58) << "Price" << endl;
     cout << setw(58) << "-----" << endl;
+    
     if(toppings.size() < 1){
         cout << endl << setfill(' ') << setw(48) << "The file is empty :(" << endl << endl;
     }
@@ -235,7 +241,8 @@ void AdminUI::removeTopping(){
         vector<Topping> toppings = bizniz.getVectorOfToppings();
         cout << endl;
     
-        cout << endl << setfill(CHARFORSETFILL) << setw(24) << "-" << "    List of all toppings    " << setfill(CHARFORSETFILL) << setw(24) << "-" << endl << endl;
+    cout << endl << setfill(CHARFORSETFILL) << setw(SIZEOFCENTERHEADING-2) << "-" << "    List of all toppings    " << setfill(CHARFORSETFILL);
+    cout << setw(SIZEOFCENTERHEADING-2) << "-" << endl << endl;
         cout << setfill(' ') << setw(58) << "Price" << endl;
         cout << setw(58) << "-----" << endl;
     
@@ -267,7 +274,8 @@ void AdminUI::displayLocationMenu(){
    
     char input = '\0';
     while(input != 'b'){
-        cout << setfill(CHARFORSETFILL) << setw(30) << "-" << "    Locations    " << setfill(CHARFORSETFILL) << setw(29) << "-" << endl << endl;
+        cout << setfill(CHARFORSETFILL) << setw(SIZEOFCENTERHEADING+4) << "-" << "    Locations    " << setfill(CHARFORSETFILL) << setw(SIZEOFCENTERHEADING+3);
+        cout << "-" << endl << endl;
         cout << setfill(' ') << setw(SIZEFORSETWSPACE) << "1: " << "List locations" << endl;
         uiItemSeparator();
         cout << setw(SIZEFORSETWSPACE) << "2: " << "Change a location" << endl;
@@ -319,7 +327,9 @@ void AdminUI::displayLocationMenu(){
 void AdminUI::displayAllLocations(){
     
     vector<Location> locations = bizniz.getVectorOfLocations();
-    cout << endl << setfill(CHARFORSETFILL)<< setw(24) << "-" << "    List of all locations    " << setfill(CHARFORSETFILL) << setw(23) << "-" << endl << endl;
+    
+    cout << endl << setfill(CHARFORSETFILL)<< setw(SIZEOFCENTERHEADING-2) << "-" << "    List of all locations    " << setfill(CHARFORSETFILL);
+    cout << setw(SIZEOFCENTERHEADING-3) << "-" << endl << endl;
     if(locations.size() < 1){
         cout << endl << setfill(' ') << setw(48) << "The file is empty :("  << endl;
     }
@@ -335,7 +345,8 @@ void AdminUI::displayAllLocations(){
 void AdminUI::addLocation(){
 
     string name;
-    cout << setfill(CHARFORSETFILL) << setw(25) << "-" <<  "    Adding a location!    " << setfill(CHARFORSETFILL) << setw(25) << "-" << endl << endl;
+    cout << setfill(CHARFORSETFILL) << setw(SIZEOFCENTERHEADING-1) << "-" <<  "    Adding a location!    " << setfill(CHARFORSETFILL) <<setw(SIZEOFCENTERHEADING-1);
+    cout << "-" << endl << endl;
     cout << setfill(' ') << setw(SIZEOFADDTOPPINGSPACES) << "Enter location name (Max " << MAXCHARINLOCATIONNAME-1 << " letters): ";
     cin.ignore();
     getline(cin, name);
@@ -354,7 +365,8 @@ void AdminUI::changeLocation(){
    
     vector<Location> locations = bizniz.getVectorOfLocations();
     cout << endl;
-    cout << endl << setfill(CHARFORSETFILL)<< setw(24) << "-" << "    List of all locations    " << setfill(CHARFORSETFILL) << setw(23) << "-" << endl << endl;
+    cout << endl << setfill(CHARFORSETFILL)<< setw(SIZEOFCENTERHEADING-2) << "-" << "    List of all locations    " << setfill(CHARFORSETFILL);
+    cout << setw(SIZEOFCENTERHEADING-3) << "-" << endl << endl;
     
     if(locations.size() > 0){
     for(int i = 0; i < locations.size(); i++){
@@ -401,7 +413,8 @@ void AdminUI::removeLocation(){
     
     vector<Location> locations = bizniz.getVectorOfLocations();
     cout << endl;
-    cout << endl << setfill(CHARFORSETFILL)<< setw(24) << "-" << "    List of all locations    " << setfill(CHARFORSETFILL) << setw(23) << "-" << endl << endl;
+    cout << endl << setfill(CHARFORSETFILL)<< setw(SIZEOFCENTERHEADING-2) << "-" << "    List of all locations    " << setfill(CHARFORSETFILL);
+    cout << setw(SIZEOFCENTERHEADING-3) << "-" << endl << endl;
     if(locations.size() < 1){
         cout << endl << setfill(' ') << setw(48) << "The file is empty :(" << endl << endl;
     } else {
@@ -429,7 +442,8 @@ void AdminUI::removeLocation(){
 void AdminUI::displaySideMenu(){
     char input = '\0';
     while(input != 'b'){
-        cout << setfill(CHARFORSETFILL) << setw(32) << "-" << "    Sides    " << setfill(CHARFORSETFILL) << setw(31) << "-" << endl << endl;
+        cout << setfill(CHARFORSETFILL) << setw(SIZEOFCENTERHEADING+6) << "-" << "    Sides    " << setfill(CHARFORSETFILL) << setw(SIZEOFCENTERHEADING+5);
+        cout << "-" << endl << endl;
         cout << setfill(' ') << setw(SIZEFORSETWSPACE) << "1: " << "List sides" << endl;
         uiItemSeparator();
         cout << setw(SIZEFORSETWSPACE) << "2: " << "Change a side" << endl;
@@ -486,7 +500,8 @@ void AdminUI::displayAllSides(){
     
     vector<Side> sides = bizniz.getVectorOfSides();
     
-    cout << endl << setfill(CHARFORSETFILL)<< setw(26) << "-" << "    List of all sides    " << setfill(CHARFORSETFILL) << setw(25) << "-" << endl << endl;
+    cout << endl << setfill(CHARFORSETFILL)<< setw(SIZEOFCENTERHEADING) << "-" << "    List of all sides    " << setfill(CHARFORSETFILL);
+    cout << setw(SIZEOFCENTERHEADING-1) << "-" << endl << endl;
     cout << setfill(' ') << setw(58) << "Price" << endl;
     cout << setw(58) << "-----" << endl;
     
@@ -508,8 +523,10 @@ void AdminUI::displayAllSides(){
 
 void AdminUI::addSide(){
     
-    cout << setfill(CHARFORSETFILL) << setw(27) << "-" <<  "    Adding a side!    " << setfill(CHARFORSETFILL) << setw(27) << "-" << endl << endl;
+    cout << setfill(CHARFORSETFILL) << setw(SIZEOFCENTERHEADING+1) << "-" <<  "    Adding a side!    " << setfill(CHARFORSETFILL) << setw(SIZEOFCENTERHEADING+1);
+    cout << "-" << endl << endl;
     cout << setfill(' ') << setw(SIZEOFADDTOPPINGSPACES-4) << "Enter side name (Max " << MAXCHARINSIDENAME-1 << " letters): ";
+    
     string name;
     cin.ignore();
     getline(cin, name);
@@ -533,7 +550,8 @@ void AdminUI::changeSide(){
 
     vector<Side> sides = bizniz.getVectorOfSides();
     cout << endl;
-    cout << endl << setfill(CHARFORSETFILL)<< setw(26) << "-" << "    List of all sides    " << setfill(CHARFORSETFILL) << setw(25) << "-" << endl << endl;
+    cout << endl << setfill(CHARFORSETFILL)<< setw(SIZEOFCENTERHEADING) << "-" << "    List of all sides    " << setfill(CHARFORSETFILL);
+    cout << setw(SIZEOFCENTERHEADING-1) << "-" << endl << endl;
     cout << setfill(' ') << setw(58) << "Price" << endl;
     cout << setw(58) << "-----" << endl;
     
@@ -584,7 +602,8 @@ void AdminUI::removeSide(){
     
     vector<Side> sides = bizniz.getVectorOfSides();
     cout << endl;
-    cout << endl << setfill(CHARFORSETFILL)<< setw(26) << "-" << "    List of all sides    " << setfill(CHARFORSETFILL) << setw(25) << "-" << endl << endl;
+    cout << endl << setfill(CHARFORSETFILL)<< setw(SIZEOFCENTERHEADING) << "-" << "    List of all sides    " << setfill(CHARFORSETFILL);
+    cout << setw(SIZEOFCENTERHEADING-1) << "-" << endl << endl;
     cout << setfill(' ') << setw(58) << "Price" << endl;
     cout << setw(58) << "-----" << endl;
     
@@ -617,7 +636,8 @@ void AdminUI::removeSide(){
 void AdminUI::displayDrinkMenu(){
     char input = '\0';
     while(input != 'b'){
-        cout << setfill(CHARFORSETFILL) << setw(32) << "-" << "    Drinks    " << setfill(CHARFORSETFILL) << setw(31) << "-" << endl << endl;
+        cout << setfill(CHARFORSETFILL) << setw(SIZEOFCENTERHEADING+6) << "-" << "    Drinks    " << setfill(CHARFORSETFILL) << setw(SIZEOFCENTERHEADING+5);
+        cout << "-" << endl << endl;
         cout << setfill(' ') << setw(SIZEFORSETWSPACE) << "1: " << "List drinks" << endl;
         uiItemSeparator();
         cout << setw(SIZEFORSETWSPACE) << "2: " << "Change a drink" << endl;
@@ -672,7 +692,8 @@ void AdminUI::displayAllDrinks(){
     
     vector<Drink> drinks = bizniz.getVectorOfDrinks();
     
-    cout << endl << setfill(CHARFORSETFILL)<< setw(25) << "-" << "    List of all drinks    " << setfill(CHARFORSETFILL) << setw(25) << "-" << endl << endl;
+    cout << endl << setfill(CHARFORSETFILL)<< setw(SIZEOFCENTERHEADING-1) << "-" << "    List of all drinks    " << setfill(CHARFORSETFILL);
+    cout << setw(SIZEOFCENTERHEADING-1) << "-" << endl << endl;
     cout << setfill(' ') << setw(58) << "Price" << endl;
     cout << setw(58) << "-----" << endl;
     
@@ -693,7 +714,8 @@ void AdminUI::changeDrink(){
     
     vector<Drink> drinks = bizniz.getVectorOfDrinks();
     
-    cout << endl << setfill(CHARFORSETFILL)<< setw(25) << "-" << "    List of all drinks    " << setfill(CHARFORSETFILL) << setw(25) << "-" << endl << endl;
+    cout << endl << setfill(CHARFORSETFILL)<< setw(SIZEOFCENTERHEADING-1) << "-" << "    List of all drinks    " << setfill(CHARFORSETFILL);
+    cout << setw(SIZEOFCENTERHEADING-1) << "-" << endl << endl;
     cout << setfill(' ') << setw(58) << "Price" << endl;
     cout << setw(58) << "-----" << endl;
     
@@ -742,7 +764,8 @@ void AdminUI::changeDrink(){
 void AdminUI::addDrink(){
     
     
-    cout << setfill(CHARFORSETFILL) << setw(27) << "-" <<  "    Adding a Drink!    " << setfill(CHARFORSETFILL) << setw(26) << "-" << endl << endl;
+    cout << setfill(CHARFORSETFILL) << setw(SIZEOFCENTERHEADING+1) << "-" <<  "    Adding a Drink!    " << setfill(CHARFORSETFILL) << setw(SIZEOFCENTERHEADING);
+    cout << "-" << endl << endl;
     cout << setfill(' ') << setw(SIZEOFADDTOPPINGSPACES-3) << "Enter drink name (Max " << MAXCHARINDRINKNAME-1 << " letters): ";
     string name;
     cin.ignore();
@@ -767,7 +790,8 @@ void AdminUI::removeDrink(){
     
     vector<Drink> drinks = bizniz.getVectorOfDrinks();
 
-    cout << endl << setfill(CHARFORSETFILL)<< setw(25) << "-" << "    List of all drinks    " << setfill(CHARFORSETFILL) << setw(25) << "-" << endl << endl;
+    cout << endl << setfill(CHARFORSETFILL)<< setw(SIZEOFCENTERHEADING-1) << "-" << "    List of all drinks    " << setfill(CHARFORSETFILL);
+    cout << setw(SIZEOFCENTERHEADING-1) << "-" << endl << endl;
     cout << setfill(' ') << setw(58) << "Price" << endl;
     cout << setw(58) << "-----" << endl;
     
@@ -800,7 +824,8 @@ void AdminUI::removeDrink(){
 void AdminUI::displaySizeMenu(){
     char input = '\0';
     while(input != 'b'){
-        cout << setfill(CHARFORSETFILL) << setw(31) << "-" << "    Sizes    " << setfill(CHARFORSETFILL) << setw(31) << "-" << endl << endl;
+        cout << setfill(CHARFORSETFILL) << setw(SIZEOFCENTERHEADING+5) << "-" << "    Sizes    " << setfill(CHARFORSETFILL) << setw(SIZEOFCENTERHEADING+5);
+        cout << "-" << endl << endl;
         cout << setfill(' ') << setw(SIZEFORSETWSPACE) << "1: " << "List sizes" << endl;
         uiItemSeparator();
         cout << setw(SIZEFORSETWSPACE) << "2: " << "Change a size" << endl;
@@ -854,7 +879,8 @@ void AdminUI::displaySizeMenu(){
 void AdminUI::displayAllSizes(){
     
     vector<Size> sizes = bizniz.getVectorOfSizes();
-    cout << endl << setfill(CHARFORSETFILL)<< setw(26) << "-" << "    List of all sizes    " << setfill(CHARFORSETFILL) << setw(25) << "-" << endl << endl;
+    cout << endl << setfill(CHARFORSETFILL)<< setw(SIZEOFCENTERHEADING) << "-" << "    List of all sizes    " << setfill(CHARFORSETFILL);
+    cout << setw(SIZEOFCENTERHEADING-1) << "-" << endl << endl;
     cout << setfill(' ') << setw(58) << "Price" << endl;
     cout << setw(58) << "-----" << endl;
     
@@ -875,7 +901,8 @@ void AdminUI::changeSize(){
     
     vector<Size> sizes = bizniz.getVectorOfSizes();
     
-    cout << endl << setfill(CHARFORSETFILL)<< setw(26) << "-" << "    List of all sizes    " << setfill(CHARFORSETFILL) << setw(25) << "-" << endl << endl;
+    cout << endl << setfill(CHARFORSETFILL)<< setw(SIZEOFCENTERHEADING) << "-" << "    List of all sizes    " << setfill(CHARFORSETFILL);
+    cout << setw(SIZEOFCENTERHEADING-1) << "-" << endl << endl;
     cout << setfill(' ') << setw(58) << "Price" << endl;
     cout << setw(58) << "-----" << endl;
     
@@ -925,7 +952,8 @@ void AdminUI::changeSize(){
 
 void AdminUI::addSize(){
 
-    cout << setfill(CHARFORSETFILL) << setw(26) << "-" <<  "    Adding a size!    " << setfill(CHARFORSETFILL) << setw(26) << "-" << endl << endl;
+    cout << setfill(CHARFORSETFILL) << setw(SIZEOFCENTERHEADING) << "-" <<  "    Adding a size!    " << setfill(CHARFORSETFILL) << setw(SIZEOFCENTERHEADING);
+    cout << "-" << endl << endl;
     cout << setfill(' ') << setw(SIZEOFADDTOPPINGSPACES-4) << "Enter size name (Max " << MAXCHARINSIZENAME-2 << " letters): ";
     string name;
     cin.ignore();
@@ -950,7 +978,8 @@ void AdminUI::removeSize(){
     
     vector<Size> sizes = bizniz.getVectorOfSizes();
     
-    cout << endl << setfill(CHARFORSETFILL)<< setw(26) << "-" << "    List of all sizes    " << setfill(CHARFORSETFILL) << setw(25) << "-" << endl << endl;
+    cout << endl << setfill(CHARFORSETFILL)<< setw(SIZEOFCENTERHEADING) << "-" << "    List of all sizes    " << setfill(CHARFORSETFILL);
+    cout << setw(SIZEOFCENTERHEADING) << "-" << endl << endl;
     cout << setfill(' ') << setw(58) << "Price" << endl;
     cout << setw(58) << "-----" << endl;
     
@@ -983,7 +1012,8 @@ void AdminUI::removeSize(){
 void AdminUI::displayBaseMenu(){
     char input = '\0';
     while(input != 'b'){
-        cout << setfill(CHARFORSETFILL) << setw(31) << "-" << "    Bases    " << setfill(CHARFORSETFILL) << setw(31) << "-" << endl << endl;
+        cout << setfill(CHARFORSETFILL) << setw(SIZEOFCENTERHEADING+5) << "-" << "    Bases    " << setfill(CHARFORSETFILL) << setw(SIZEOFCENTERHEADING+5);
+        cout << "-" << endl << endl;
         cout << setfill(' ') << setw(SIZEFORSETWSPACE) << "1: " << "List bases" << endl;
         uiItemSeparator();
         cout << setw(SIZEFORSETWSPACE) << "2: " << "Change a base" << endl;
@@ -1039,7 +1069,8 @@ void AdminUI::displayAllBases(){
     
     vector<Base> bases = bizniz.getVectorOfBases();
     
-    cout << endl << setfill(CHARFORSETFILL)<< setw(26) << "-" << "    List of all bases    " << setfill(CHARFORSETFILL) << setw(25) << "-" << endl << endl;
+    cout << endl << setfill(CHARFORSETFILL)<< setw(SIZEOFCENTERHEADING) << "-" << "    List of all bases    " << setfill(CHARFORSETFILL);
+    cout << setw(SIZEOFCENTERHEADING-1) << "-" << endl << endl;
     cout << setfill(' ') << setw(58) << "Price" << endl;
     cout << setw(58) << "-----" << endl;
     if(bases.size() < 1){
@@ -1058,7 +1089,8 @@ void AdminUI::changeBase(){
     
     vector<Base> bases = bizniz.getVectorOfBases();
     
-    cout << endl << setfill(CHARFORSETFILL)<< setw(26) << "-" << "    List of all sizes    " << setfill(CHARFORSETFILL) << setw(25) << "-" << endl << endl;
+    cout << endl << setfill(CHARFORSETFILL)<< setw(SIZEOFCENTERHEADING) << "-" << "    List of all sizes    " << setfill(CHARFORSETFILL) << setw(SIZEOFCENTERHEADING);
+    cout << "-" << endl << endl;
     cout << setfill(' ') << setw(58) << "Price" << endl;
     cout << setw(58) << "-----" << endl;
     
@@ -1107,7 +1139,8 @@ void AdminUI::changeBase(){
 
 void AdminUI::addBase(){
     
-    cout << setfill(CHARFORSETFILL) << setw(26) << "-" <<  "    Adding a base!    " << setfill(CHARFORSETFILL) << setw(26) << "-" << endl << endl;
+    cout << setfill(CHARFORSETFILL) << setw(SIZEOFCENTERHEADING) << "-" <<  "    Adding a base!    " << setfill(CHARFORSETFILL) << setw(SIZEOFCENTERHEADING);
+    cout << "-" << endl << endl;
     cout << setfill(' ') << setw(SIZEOFADDTOPPINGSPACES-4) << "Enter base name (Max " << MAXCHARINBASENAME-2 << " letters): ";
     string name;
     cin.ignore();
@@ -1131,7 +1164,8 @@ void AdminUI::removeBase(){
     
     vector<Base> bases = bizniz.getVectorOfBases();
     cout << endl;
-    cout << endl << setfill(CHARFORSETFILL)<< setw(26) << "-" << "    List of all bases    " << setfill(CHARFORSETFILL) << setw(25) << "-" << endl << endl;
+    cout << endl << setfill(CHARFORSETFILL)<< setw(SIZEOFCENTERHEADING) << "-" << "    List of all bases    " << setfill(CHARFORSETFILL);
+    cout << setw(SIZEOFCENTERHEADING-1) << "-" << endl << endl;
     cout << setfill(' ') << setw(58) << "Price" << endl;
     cout << setw(58) << "-----" << endl;
     
