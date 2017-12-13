@@ -114,8 +114,7 @@ void SalesUI::createOrder(){
 void SalesUI::deliveryCreationProcess(Order& order){
     string input;
     cout << endl << "Will this order be delivered(y/n)";
-    cin.ignore();
-    getline(cin, input);
+    cin >> input;
     clearScreen();
     string addressString;
     char* address = new char[MAXCHARINLOCATIONNAME];
@@ -452,8 +451,7 @@ void SalesUI::drinkListCreationProcess(Order &order){
 void SalesUI::commentCreationProcess(Order& order){
     string input;
     cout << endl << "Any special comments?(y/n)";
-    cin.ignore();
-    getline(cin, input);
+    cin >> input;
     clearScreen();
     string commentString;
     char* comment = new char[MAXCHARINORDERCOMMENT];
