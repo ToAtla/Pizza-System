@@ -455,6 +455,14 @@ void Bizniz::storeOrder(Order order){
     orderRepo.storeOrder(order);
 }
 
+void Bizniz::storeOrder(const Order& order, string fileName){
+    orderRepo.storeOrder(order, fileName);
+}
+
+void Bizniz::moveOrderBetween(string sourceFile, string destFile, Order order){
+    
+}
+
 Order* Bizniz::getArrayOfOrders(string fileName, int& tellMeHowManyOrders){
     return orderRepo.retrieveOrderArray(fileName, tellMeHowManyOrders);
 }

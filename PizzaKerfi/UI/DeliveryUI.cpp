@@ -219,6 +219,7 @@ void DeliveryUI::displayPaidOrders(){
                 if(!bizniz.allPizzasInOrderReady(bizniz.getOrderNumber(input))){
                     cout << "Not all items in that order are ready" << endl;
                 }else{
+                    
                     bizniz.setOrderStatus(ORDERFILE, input, DELIVERED);
                     cout << endl << "Order number " << input << " has been marked DELIVERED" << endl;
                     input = 0;

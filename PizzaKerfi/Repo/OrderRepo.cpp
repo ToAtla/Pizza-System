@@ -15,6 +15,13 @@ void OrderRepo::storeOrder(const Order& order){
     fout.close();
 }
 
+void OrderRepo::storeOrder(const Order& order, string fileName){
+    ofstream fout;
+    fout.open(fileName, ios::binary|ios::app);
+    fout.write((char*)(&order), sizeof(Order));
+    fout.close();
+}
+
 
 Order* OrderRepo::retrieveOrderArray(string fileName, int& tellMeHowManyOrders){
     
