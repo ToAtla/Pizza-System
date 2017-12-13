@@ -57,7 +57,6 @@ void SalesUI::createOrder(){
             e.getMessage();
         }
         
-        
         try {
             order.setLocation(locationPickingProcess());
         } catch (InvalidInputException e) {
@@ -113,13 +112,14 @@ void SalesUI::createOrder(){
 //Prompts the user to input a delivery destination
 //Then retruns it
 void SalesUI::deliveryCreationProcess(Order& order){
-    char input = '\0';
+    string input;
     cout << endl << "Will this order be delivered(y/n)";
-    cin >> input;
+    cin.ignore();
+     getline(cin, input);
     clearScreen();
     string addressString;
     char* address = new char[MAXCHARINORDERCOMMENT];
-    if(input == 'y'){
+    if(input[0] == 'y'){
         cout << endl << "Write out the address (max " << MAXCHARINORDERCOMMENT-1 << " characters):";
         cin.ignore();
         getline(cin, addressString  );
@@ -280,9 +280,8 @@ Location SalesUI::locationPickingProcess(){
         cout << setfill(' ') << setw(19) << " " << locations.at(i) << endl;
         uiItemSeparator();
     }
-    cout << "Choose a number corresponding to location: ";
-    cin.ignore();
-    getline(cin, locationNumber);
+    cout << "Choose a number corresponding to location (no whitespaces): ";
+    cin >> locationNumber;
             
     if(bizniz.isInputDigit(locationNumber) && bizniz.isValidInput(stoi(locationNumber), locations.size())){
             
