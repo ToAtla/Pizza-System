@@ -771,13 +771,9 @@ int Bizniz::calcTotalPizzas(){
 
 int Bizniz::calcTotalOrders(){
     int numberOfOrders;
-    int orderSum = 0;
     Order* allOrders = getArrayOfOrders(LEGACYORDERFILE, numberOfOrders);
-    for (int i = 0; i < numberOfOrders ; i++) {
-        orderSum += allOrders[i].getTotalPrice();
-    }
     delete [] allOrders;
-    return orderSum;
+    return numberOfOrders;
 }
 
 double Bizniz::calcMeanOrderPrice(){

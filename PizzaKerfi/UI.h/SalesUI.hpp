@@ -24,6 +24,7 @@
 #include "Size.hpp"
 #include "Bizniz.hpp"
 #include "ConsoleMagic.hpp"
+#include "MenuItem.hpp"
 
 using namespace std;
 

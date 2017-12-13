@@ -65,4 +65,5 @@ const string PIZZAFILE = "pizzas.dat";
 const string ORDERFILE = "orders.dat";
 const string LEGACYORDERFILE = "legacyOrders.dat";
 const string BASEFILE = "bases.dat";
+const string MENUITEMFILE = "menuitems.dat";
 #endif /* Global_hpp */
