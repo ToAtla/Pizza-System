@@ -23,9 +23,11 @@ public:
     void displayUnpaidOrders();
     void displayPaidOrders();
     void displayLegacyOrders();
+    void uiItemSeparator ();
 private:
     Bizniz bizniz;
     Location locationOfDelivery;
+    ConsoleMagic magic;
 };
 
 #endif /* DeliveryUI_hpp */
