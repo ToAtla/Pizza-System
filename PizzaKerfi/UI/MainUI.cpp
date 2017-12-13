@@ -50,11 +50,13 @@ void MainUI::startUI(){
             adminUI.startAdminUI();
         }
         else if(input == '2'){
+            magic.clearScreen();
             SalesUI salesUI;
             salesUI.startSalesUI();
         }
         else if(input == '3'){
-           PrepUI prepUI;
+            magic.clearScreen();
+            PrepUI prepUI;
             
             //The catch block catches an exceptions if the Location file is empty so the user can't access the prepUI if there are no locations available.
             try {
@@ -71,12 +73,14 @@ void MainUI::startUI(){
             
         }
         else if(input == '4'){
+            magic.clearScreen();
             DeliveryUI deliveryUI;
             
             //The catch block catches an exceptions if the Location file is empty so the user can't access the deliveryUI if there are no locations available.
             try {
                 deliveryUI.startDeliveryUI();
             } catch (InvalidFileLocationException) {
+                magic.clearScreen();
                 cout << endl << "You can't acces the delivery menu because there are no locations available at this time!" << endl;
                 cout << endl << "Please contact the manager." << endl << endl;
                 cout << "Press any key to continue: ";

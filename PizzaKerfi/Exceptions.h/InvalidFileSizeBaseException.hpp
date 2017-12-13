@@ -16,12 +16,11 @@ using namespace std;
 
 class InvalidFileSizeBaseException{
     
-public:
-    InvalidFileSizeBaseException(string message);
-    string getMessage();
-private:
-    string message;
-    
+    public:
+        InvalidFileSizeBaseException(string message);
+        string getMessage();
+    private:
+        string message;
 };
 
 #endif /* InvalidFileSizeBaseException_hpp */

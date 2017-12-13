@@ -139,7 +139,7 @@ void DeliveryUI::displayUnpaidOrders(){
         int input = 1;
         while(input != 0){
             cout << "Enter order number to mark as paid or 0 to exit (order number is in the top left corner, no whitespaces): ";
-            char charInput;
+            char charInput = 0;
             cin >> charInput;
             input = charInput-48;
             if(input != 0 && bizniz.orderExist(input) && bizniz.getOrderNumber(input).getStatusOfOrder() == UNPAID){
@@ -183,7 +183,7 @@ void DeliveryUI::displayPaidOrders(){
         int input = 1;
         while(input != 0){
             cout << "Enter number of order to mark delivered or 0 to exit (order number is in the top left corner, no whitespaces): ";
-            char charInput;
+            char charInput = 0;
             cin >> charInput;
             input = charInput-48;
             if((input != 0) && bizniz.orderExist(input) && bizniz.getOrderNumber(input).getStatusOfOrder() == PAID){
@@ -212,7 +212,7 @@ void DeliveryUI::displayLegacyOrders(){
     int sizeOfOrderList;
     Order* orders = ordRep.retrieveOrderArray(orderFile, sizeOfOrderList);
     //Kominn með allar pantanir
-    //þarf núna að sigta út óvirkar pantanir þeas þær sem er  bið að afgreiða
+    //þarf núna að sigta út óvirkar pantanir þeas þær sem er bið að afgreiða
     int amountOfDeliveredOrdersAtThisLocation = 0;
     for (int i = 0; i < sizeOfOrderList; i++) {
         if(locationOfDelivery.getLocation() == orders[i].getLocation().getLocation() && orders[i].getStatusOfOrder() == DELIVERED){

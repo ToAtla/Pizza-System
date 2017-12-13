@@ -12,11 +12,6 @@
 #include <fstream>
 using namespace std;
 
-
-LocationRepo::LocationRepo(){
-}
-
-
 void LocationRepo::addLocation(Location& location){
     ofstream fout;
     fout.open("locations.dat", ios::binary|ios::app);

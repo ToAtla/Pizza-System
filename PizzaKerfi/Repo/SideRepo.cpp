@@ -8,11 +8,6 @@
 
 #include "SideRepo.hpp"
 
-//Færibreytulaus smiður.
-SideRepo::SideRepo(){
-    
-}
-
 //Bætir breytu af taginu Side inní textaskránna "toppings.txt"
 void SideRepo::addSide(Side& side){
     ofstream fout;

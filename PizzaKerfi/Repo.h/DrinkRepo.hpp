@@ -17,8 +17,8 @@
 using namespace std;
 
 class DrinkRepo{
+    
     public:
-        DrinkRepo();
         void addDrink(Drink& drink);
         void displayDrinks();
         vector<Drink> getVectorOfDrinks();

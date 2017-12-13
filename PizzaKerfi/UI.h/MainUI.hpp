@@ -26,7 +26,6 @@ class MainUI{
         void startUI();
     private:
         ConsoleMagic magic;
-
 };
 
 

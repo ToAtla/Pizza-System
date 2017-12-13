@@ -8,10 +8,6 @@
 
 #include "OrderRepo.hpp"
 
-OrderRepo::OrderRepo(){
-    
-}
-
 void OrderRepo::storeOrder(const Order& order){
     ofstream fout;
     fout.open(ORDERFILE, ios::binary|ios::app);

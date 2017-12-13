@@ -8,11 +8,6 @@
 
 #include "DrinkRepo.hpp"
 
-//Færibreytulaus smiður.
-DrinkRepo::DrinkRepo(){
-    
-}
-
 //Bætir breytu af taginu Drink inní textaskránna "drinks.txt"
 void DrinkRepo::addDrink(Drink& drink){
     ofstream fout;

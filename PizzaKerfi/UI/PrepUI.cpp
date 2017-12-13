@@ -19,7 +19,6 @@ void PrepUI::startPrepUI(){
         char input = '\0';
         string sInput;
         bool cont = true;
-        magic.clearScreen();
         cout << setfill(CHARFORSUBACTION) << setw(29) << "+" << "    Preparation    " << setfill(CHARFORSUBACTION) << setw(28) << "+" << endl << endl;
         cout << setfill(' ');
         try {
@@ -133,10 +132,6 @@ void PrepUI::waitingOverview(){
     }
     
 }
-
-
-
-
 
 void PrepUI::preppingOverview(){
     status currentStatus = PREPPING;

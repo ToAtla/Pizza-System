@@ -17,20 +17,20 @@
 #include <iomanip>
 
 class PrepUI{
-public:
-    void startPrepUI();
-private:
+
+    public:
+        void startPrepUI();
+    private:
+        void allActiveOverview();
+        void waitingOverview();
+        void preppingOverview();
+        void readyOverview();
+        void displayOrdersAtLocationWithApplicablePizzas(Location location, status status, bool onlyWith);
+        void chooseYourLocation();
+        void uiItemSeparator ();
     
-    void allActiveOverview();
-    void waitingOverview();
-    void preppingOverview();
-    void readyOverview();
-    void displayOrdersAtLocationWithApplicablePizzas(Location location, status status, bool onlyWith);
-    void chooseYourLocation();
-    void uiItemSeparator ();
-    
-    Location locationOfPrep;
-    Bizniz bizniz;
-    ConsoleMagic magic;
+        Location locationOfPrep;
+        Bizniz bizniz;
+        ConsoleMagic magic;
 };
 #endif /* PrepUI_hpp */

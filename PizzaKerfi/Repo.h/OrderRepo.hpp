@@ -15,13 +15,13 @@
 #include "Global.hpp"
 
 class OrderRepo{
-public:
-    OrderRepo();
+
+    public:
     void storeOrder(const Order& order);
     Order* retrieveOrderArray(string fileName, int& tellMeHowManyOrders);
     bool fileExists(string fileName);
     void clearOrderFile(string fileName);
-private:
+    private:
     
 };
 

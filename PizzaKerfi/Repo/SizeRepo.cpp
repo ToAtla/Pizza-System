@@ -8,11 +8,6 @@
 
 #include "SizeRepo.hpp"
 
-//Færibreytulaus smiður.
-SizeRepo::SizeRepo(){
-    
-}
-
 //Bætir breytu af taginu Size inní textaskránna "sizes.txt"
 void SizeRepo::addSize(Size& size){
     ofstream fout;

@@ -16,13 +16,11 @@ using namespace std;
 
 class InvalidNameException{
     
-public:
-    InvalidNameException(string message);
-    string getMessage();
-private:
-    string message;
-    
-    
+    public:
+        InvalidNameException(string message);
+        string getMessage();
+    private:
+        string message;
 };
 
 

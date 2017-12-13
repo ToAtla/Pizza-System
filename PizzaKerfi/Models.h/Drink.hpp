@@ -16,8 +16,6 @@
 
 using namespace std;
 
-
-
 class Drink{
     
     public:

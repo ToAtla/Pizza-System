@@ -16,11 +16,10 @@ using namespace std;
 
 class InvalidPriceException {
     
-    
-public:
-    InvalidPriceException(string message);
-    string getMessage();
-private:
-    string message;
+    public:
+        InvalidPriceException(string message);
+        string getMessage();
+    private:
+        string message;
 };
 #endif /* InvalidPriceException_hpp */

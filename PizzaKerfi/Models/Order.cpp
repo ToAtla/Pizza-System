@@ -123,7 +123,7 @@ void Order::setOrderComment(char *inComment){
     strcpy(comment, inComment);
 }
 
-///Overloads the cout operator so one can use '>>' to input the contents of a Order instance.
+///Overloads the cout operator so one can use '>>' to input the contents of an Order instance.
 ostream& operator << (ostream& out, const Order& order){
     Bizniz bizniz;
     out << "#" << order.ID << setw(56) << right << order.locationOfOrder << setw(45) << right << bizniz.orderStatusToString(order.statusOfOrder) << endl;

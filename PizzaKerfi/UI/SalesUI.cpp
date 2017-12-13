@@ -62,6 +62,7 @@ void SalesUI::createOrder(){
        
         try {
             pizzaListCreationProcess(order);
+        //Catches an exception if there are no sizes or bases available to make a pizza.
         } catch (InvalidFileSizeBaseException e) {
             cout << endl << e.getMessage() << endl << endl;
         } catch (InvalidInputException) {
@@ -93,6 +94,7 @@ void SalesUI::createOrder(){
         
         //Passar að þú bætir ekki við tómri pöntun í skránna.
         if(order.getNumberOfSides() == 0 && order.getNumberOfPizzas() == 0 && order.getNumberOfDrinks() == 0){
+            cout << endl << "*MESSEGE* Order was not created because an order needs to contain something" << endl << endl;
             return;
         } else {
             bizniz.storeOrder(order);
@@ -266,6 +268,7 @@ Location SalesUI::locationPickingProcess(){
 
 void SalesUI::pizzaListCreationProcess(Order& order){
     
+    //Throws an exception if there are either no bases or no sizes available because you can't make a pizza without those.
     if(bizniz.isValidBaseSizeFile()){
         cout << endl << "Enter number of pizzas to add to order (no whitespaces): ";
         string sInNumPizz;

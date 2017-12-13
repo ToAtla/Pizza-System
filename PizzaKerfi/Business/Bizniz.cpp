@@ -536,7 +536,6 @@ Order* Bizniz::getArrayOfOrdersAtLocationWithApplicablePizzas(status status, Loc
 }
 
 
-
 bool Bizniz::thereExistsOrderAtLocationWithApplicablePizza(status status, Location location, bool onlyWith){
     int ordersInFile = 0;
     Order* allOrders = getArrayOfOrders(ORDERFILE, ordersInFile);

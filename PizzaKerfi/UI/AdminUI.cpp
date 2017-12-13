@@ -126,7 +126,6 @@ void AdminUI::displayToppingMenu(){
 //Prentar út lista yfir öll álegg sem eru í toppings.txt
 void AdminUI::displayAllToppings(){
 
-    ToppingRepo toppingRepo;
     vector<Topping> toppings = bizniz.getVectorOfToppings();
     
     cout << endl << setfill(CHARFORSETFILL)<< setw(24) << "-" << "    List of all toppings    " << setfill(CHARFORSETFILL) << setw(24) << "-" << endl << endl;

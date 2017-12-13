@@ -28,26 +28,27 @@
 using namespace std;
 
 class SalesUI{
-public:
-   void startSalesUI();
-private:
-    Bizniz bizniz;
-    void createOrder();
-    void displayOrders();
-    Size sizePickingProcess();
-    Base basePickingProcess();
-    Topping* toppingPickingProcess(int& toppingCount);
-    Location locationPickingProcess();
-    Pizza pizzaCreationProcess(Location locationOfOrderForPizzaToFollow);
-    void commentCreationProcess(Order& order);
-    void pizzaListCreationProcess(Order& order);
-    void clearScreen();
-    void uiItemSeparator();
     
-    //Skiptið um staði
+    public:
+       void startSalesUI();
+    private:
+        Bizniz bizniz;
+        void createOrder();
+        void displayOrders();
+        Size sizePickingProcess();
+        Base basePickingProcess();
+        Topping* toppingPickingProcess(int& toppingCount);
+        Location locationPickingProcess();
+        Pizza pizzaCreationProcess(Location locationOfOrderForPizzaToFollow);
+        void commentCreationProcess(Order& order);
+        void pizzaListCreationProcess(Order& order);
+        void clearScreen();
+        void uiItemSeparator();
     
-    void sideListCreationProcess(Order& order);
-    void drinkListCreationProcess(Order& order);
+        //Skiptið um staði
+    
+        void sideListCreationProcess(Order& order);
+        void drinkListCreationProcess(Order& order);
     
     
     

@@ -15,11 +15,6 @@
 
 using namespace std;
 
-//Færibreytulaus smiður.
-ToppingRepo::ToppingRepo(){
-    
-}
-
 //Bætir breytu af taginu topping inní textaskránna "toppings.txt"
 void ToppingRepo::addTopping(Topping& topping){
     ofstream fout;

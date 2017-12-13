@@ -16,6 +16,7 @@
 using namespace std;
 
 class Topping {
+    
     public:
         Topping();
         ///Defult constructor that gives all the private variables a value of 0.

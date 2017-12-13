@@ -16,12 +16,11 @@ using namespace std;
 
 class InvalidInputException {
     
-    
-public:
-    InvalidInputException(string message);
-    string getMessage();
-private:
-    string message;
+    public:
+        InvalidInputException(string message);
+        string getMessage();
+    private:
+        string message;
 };
 
 #endif /* InvalidInputException_hpp */

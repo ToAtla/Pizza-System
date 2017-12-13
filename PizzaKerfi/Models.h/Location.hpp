@@ -16,6 +16,7 @@
 using namespace std;
 
 class Location{
+    
     public:
         Location();
         ///Defult constructor that gives all the private variables a value of 0.

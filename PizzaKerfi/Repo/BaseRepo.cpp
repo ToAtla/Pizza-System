@@ -8,11 +8,6 @@
 
 #include "BaseRepo.hpp"
 
-//Færibreytulaus smiður.
-BaseRepo::BaseRepo(){
-    
-}
-
 //Bætir breytu af taginu Base inní textaskránna "bases.txt"
 void BaseRepo::addBase(Base& base){
     ofstream fout;

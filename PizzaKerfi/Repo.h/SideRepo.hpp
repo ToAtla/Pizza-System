@@ -18,8 +18,8 @@
 using namespace std;
 
 class SideRepo{
+    
     public:
-        SideRepo();
         void addSide(Side& Side);
         void displaySides();
         vector<Side> getVectorOfSides();
