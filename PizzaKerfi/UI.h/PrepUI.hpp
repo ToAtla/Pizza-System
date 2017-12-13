@@ -14,6 +14,7 @@
 #include "LocationRepo.hpp"
 #include "Bizniz.hpp"
 #include "ConsoleMagic.hpp"
+#include <iomanip>
 
 class PrepUI{
 public:
@@ -26,6 +27,7 @@ private:
     void readyOverview();
     void displayOrdersAtLocationWithApplicablePizzas(Location location, status status, bool onlyWith);
     void chooseYourLocation();
+    void uiItemSeparator ();
     
     Location locationOfPrep;
     Bizniz bizniz;

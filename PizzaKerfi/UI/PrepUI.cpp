@@ -20,7 +20,8 @@ void PrepUI::startPrepUI(){
         string sInput;
         bool cont = true;
         magic.clearScreen();
-        cout << "++++++++++++++++ Preperation +++++++++++++++++++" << endl << endl;
+        cout << setfill(CHARFORSUBACTION) << setw(29) << "+" << "    Preparation    " << setfill(CHARFORSUBACTION) << setw(28) << "+" << endl << endl;
+        cout << setfill(' ');
         try {
             chooseYourLocation();
         } catch (InvalidInputException) {
@@ -35,12 +36,19 @@ void PrepUI::startPrepUI(){
         if(cont){
             while(input != 'b'){
                 magic.clearScreen();
-                cout << "Preparation line in " << locationOfPrep << endl;
-                cout << "1: List all pizzas in house" << endl;
-                cout << "2: List waiting pizzas and sides" << endl;
-                cout << "3: List pizzas and sides in preparation" << endl;
-                cout << "4: List ready pizzas and sides" << endl;
-                cout << "b: back" << endl;
+                cout << setfill(CHARFORSETFILL) << setw(SIZEOFSETW) << "-" << setfill(' ') << endl;
+                cout << setfill(' ') << setw(23) << " " << "Preparation line in " << locationOfPrep << endl;
+                cout << setfill(CHARFORSETFILL) << setw(SIZEOFSETW) << "-" << setfill(' ') << endl << endl;
+                cout << setw(20) << "1: " << "List all pizzas in house" << endl;
+                uiItemSeparator();
+                cout << setw(20) << "2: " << "List waiting pizzas and sides" << endl;
+                uiItemSeparator();
+                cout << setw(20) << "3: " << "List pizzas and sides in preparation" << endl;
+                uiItemSeparator();
+                cout << setw(20) << "4: " << "List ready pizzas and sides" << endl;
+                uiItemSeparator();
+                cout << setw(20) << "b: " << "back" << endl;
+                uiItemSeparator();
                 cin >> input;
                 cout << endl;
                     
@@ -70,7 +78,10 @@ void PrepUI::allActiveOverview(){
     input[0] = '\0';
     magic.clearScreen();
     while(input != "0"){
-        cout << " - - - - Pizzas without status " << bizniz.statusToString(currentStatus) << " in " << locationOfPrep.getLocation() <<  " - - - - " << endl;
+        cout << setfill(CHARFORSETFILL) << setw(SIZEOFSETWBIG) << "-" << setfill(' ') << endl;
+        cout <<  setfill(CHARFORSPACE) << setw(27) << " " <<  "Pizzas without status " << bizniz.statusToString(currentStatus);
+        cout << " in " << locationOfPrep.getLocation() << endl;
+        cout << setfill(CHARFORSETFILL) << setw(SIZEOFSETWBIG) << "-" << setfill(CHARFORSPACE) << endl << endl;
         if (bizniz.thereExistsOrderAtLocationWithApplicablePizza(OUTOFSHOP, locationOfPrep, false)) {
             displayOrdersAtLocationWithApplicablePizzas(locationOfPrep, OUTOFSHOP, false);
         }else{
@@ -92,7 +103,11 @@ void PrepUI::waitingOverview(){
     magic.clearScreen();
     
     while(input != "0"){
-        cout << " - - - - Pizzas with status " << bizniz.statusToString(currentStatus) << " in " << locationOfPrep.getLocation() <<  " - - - - " << endl;
+         cout << setfill(CHARFORSETFILL) << setw(SIZEOFSETWBIG) << "-" << setfill(CHARFORSPACE) << endl;
+         cout <<  setfill(CHARFORSPACE) << setw(27) << " " << "Pizzas with status " << bizniz.statusToString(currentStatus) << "in "
+         << locationOfPrep.getLocation() << endl;
+         cout << setfill(CHARFORSETFILL) << setw(SIZEOFSETWBIG) << "-" << setfill(CHARFORSPACE) << endl << endl;
+        
         if(bizniz.thereExistsOrderAtLocationWithApplicablePizza(currentStatus, locationOfPrep, true)){
             displayOrdersAtLocationWithApplicablePizzas(locationOfPrep, currentStatus, true);
             cout << "Enter any key to mark top pizza in preparation or 0 to exit: ";
@@ -134,7 +149,13 @@ void PrepUI::preppingOverview(){
     
     
     while(input != "0"){
-        cout << " - - - - Pizzas with status " << bizniz.statusToString(currentStatus) << " in " << locationOfPrep.getLocation() <<  " - - - - " << endl;
+        
+        cout << setfill(CHARFORSETFILL) << setw(SIZEOFSETWBIG) << "-" << setfill(CHARFORSPACE) << endl;
+        cout << setfill(CHARFORSPACE) << setw(27) << " " << "Pizzas with status " << bizniz.statusToString(currentStatus) << " in "
+        << locationOfPrep.getLocation() << endl;
+        cout << setfill(CHARFORSETFILL) << setw(SIZEOFSETWBIG) << "-" << setfill(CHARFORSPACE) << endl << endl;
+        
+        
         if(bizniz.thereExistsOrderAtLocationWithApplicablePizza(currentStatus, locationOfPrep, true)){
             displayOrdersAtLocationWithApplicablePizzas(locationOfPrep, currentStatus, true);
             cout << "Enter any key to mark top pizza ready or 0 to exit: ";
@@ -200,10 +221,12 @@ void PrepUI::chooseYourLocation(){
     LocationRepo lr;
     locations = lr.getVectorOfLocations();
     
-    cout << "- - - - - - Choose your location - - - - - - -" << endl;
+    cout << setfill(CHARFORSETFILL) << setw(24) << "-" << "    Choose your location    " << setfill(CHARFORSETFILL) << setw(24) << "-" << endl << endl;
+    cout << setfill(' ');
     for(int i = 0; i < locations.size(); i++){
-        cout << "Location number: " << i+1 << endl;
-        cout << locations[i] << endl << endl;
+        cout << setfill(' ') << setw(17) << " " << "Location number: " << i+1 << endl;
+        cout << setfill(' ') << setw(17) << " " << locations[i] << endl;
+        uiItemSeparator();
     }
     cout << "Choose location (no whitespaces): ";
     string input;
@@ -220,4 +243,10 @@ void PrepUI::chooseYourLocation(){
             }
         }
     }
+}
+
+
+void PrepUI::uiItemSeparator () {
+    cout << setw(17) << " " << setfill(CHARFORSETFILL) << setw(SIZEOFSETW-41) << "-" << endl << endl;
+    cout << setfill(' ');
 }

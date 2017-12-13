@@ -22,6 +22,7 @@ using namespace std;
 
 const char CHARFORSETFILL = '-';
 const char CHARFORSUBACTION = '+';
+const char CHARFORSPACE = ' ';
 const int SIZEOFTABSTRING = 48;
 const int SIZEOFSETW = 76;
 const int SIZEOFSETWBIG = 100;
