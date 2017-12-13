@@ -33,6 +33,8 @@ class SalesUI{
        void startSalesUI();
     private:
         Bizniz bizniz;
+        bool decideDelivery();
+        char* deliveryProcess();
         void createOrder();
         void displayOrders();
         Size sizePickingProcess();

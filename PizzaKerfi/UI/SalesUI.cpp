@@ -51,6 +51,15 @@ void SalesUI::createOrder(){
         Order order;
         cout << setfill(CHARFORSUBACTION) << setw(36) << "+" << "    Creating a new Order    " <<  setfill(CHARFORSUBACTION) << setw(36) << "+" << endl << endl;
         
+        try{
+            if(decideDelivery()){
+                order.setDeliveryAddress(deliveryProcess());
+            }
+        } catch (InvalidNameException e) {
+            e.getMessage();
+        }
+        
+        
         try {
             order.setLocation(locationPickingProcess());
         } catch (InvalidInputException e) {
@@ -100,6 +109,21 @@ void SalesUI::createOrder(){
             bizniz.storeOrder(order);
         }
     }
+}
+
+//Prompts the user for pick up or delivery
+//returns true if delivery false otherwise
+bool SalesUI::decideDelivery(){
+    cout << "Is this a delivery?(y/n)" << endl;
+    char input;
+    cin >> input;
+    return input == 'y';
+}
+
+//Prompts the user to input a delivery destination
+//Then retruns it
+char* SalesUI::deliveryProcess(){
+    
 }
 
 //Displays all orders from the orders list.
