@@ -181,6 +181,12 @@ void PrepUI::readyOverview(){
     string input;
     input[0] = '\0';
     magic.clearScreen();
+    status currentStatus = READY;
+    
+    cout << setfill(CHARFORSETFILL) << setw(SIZEOFSETWBIG) << "-" << setfill(' ') << endl;
+    cout <<  setfill(CHARFORSPACE) << setw(27) << " " <<  "Pizzas without status " << bizniz.statusToString(currentStatus);
+    cout << " in " << locationOfPrep.getLocation() << endl;
+    cout << setfill(CHARFORSETFILL) << setw(SIZEOFSETWBIG) << "-" << setfill(CHARFORSPACE) << endl << endl;
     while(input != "0"){
         if (bizniz.thereExistsOrderAtLocationWithApplicablePizza(READY, locationOfPrep, true)) {
             displayOrdersAtLocationWithApplicablePizzas(locationOfPrep, READY, true);
@@ -189,7 +195,7 @@ void PrepUI::readyOverview(){
             cout << "List is empty" << endl;
             cout << endl;
         }
-        cout << "Enter any key to continue: ";
+        cout << endl << "Enter any key to continue: ";
         cin >> input;
         input = "0";
     }
