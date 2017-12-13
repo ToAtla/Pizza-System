@@ -109,7 +109,7 @@ void PrepUI::waitingOverview(){
         
         if(bizniz.thereExistsOrderAtLocationWithApplicablePizza(currentStatus, locationOfPrep, true)){
             displayOrdersAtLocationWithApplicablePizzas(locationOfPrep, currentStatus, true);
-            cout << "Enter any key to mark top pizza in preparation or 0 to exit: ";
+            cout << endl << "Enter any key to mark top pizza in preparation or 0 to exit: ";
             cin >> input;
             if(input != "0"){
                 int orderNum;
@@ -153,7 +153,7 @@ void PrepUI::preppingOverview(){
         
         if(bizniz.thereExistsOrderAtLocationWithApplicablePizza(currentStatus, locationOfPrep, true)){
             displayOrdersAtLocationWithApplicablePizzas(locationOfPrep, currentStatus, true);
-            cout << "Enter any key to mark top pizza ready or 0 to exit: ";
+            cout << endl << "Enter any key to mark top pizza ready or 0 to exit: ";
             cin >> input;
             if(input != "0"){
                 int orderNum;
