@@ -631,6 +631,7 @@ Order Bizniz::getOrderByID(int orderNumber){
 }
 
 int Bizniz::getNumberForNextOrder(){
+    
     int orderCntActive = 0;
     OrderRepo ordRep;
     Order* tempOrderArray = ordRep.retrieveOrderArray(ORDERFILE, orderCntActive);
