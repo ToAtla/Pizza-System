@@ -626,6 +626,7 @@ Order Bizniz::getOrderByID(int orderNumber){
     }
     Order kukaorder;
     kukaorder.setStatusOfOrder(DELIVERED);
+    delete [] allOrders;
     return kukaorder;
 }
 
@@ -662,7 +663,6 @@ void Bizniz::moveOrderBetween(string sourceFile, string destFile, int orderNum){
     int sizeOfSourceFile;
     Order* orderList = getArrayOfOrders(sourceFile, sizeOfSourceFile);
     
-    
     int index = 0;
     
     for (int i = 0; i < sizeOfSourceFile; i++) {
@@ -672,8 +672,6 @@ void Bizniz::moveOrderBetween(string sourceFile, string destFile, int orderNum){
             i = sizeOfSourceFile;
         }
     }
-    
-    
     //eyða öllu í skjalinu
     orderRepo.clearOrderFile(sourceFile);
     //Bæta öllu við fram að index
@@ -713,10 +711,10 @@ void Bizniz::locateFirstOrderWithPizzaWithStatusAtLocation(status status, Locati
     delete [] allOrders;
 }
 
-void Bizniz::changeStatusOfPizzaInOrder(int orderNum, int pizzaNumber, status status){
+void Bizniz::changeStatusOfPizzaInOrder(int orderIndex, int pizzaIndex, status status){
     int ordersInFile = 0;
     Order* allOrders = getArrayOfOrders(ORDERFILE, ordersInFile);
-     allOrders[orderNum].getPizzasInOrder()[pizzaNumber].setStatus(status);
+     allOrders[orderIndex].getPizzasInOrder()[pizzaIndex].setStatus(status);
     orderRepo.clearOrderFile(ORDERFILE);
     for (int i = 0; i < ordersInFile; i++) {
         storeOrder(allOrders[i]);
@@ -799,6 +797,19 @@ char* Bizniz::getTimeNow(){
     memcpy(subTimeText, &allTimeText[4], 12);
     subTimeText[12] = '\0';
     return subTimeText;
+}
+
+
+int Bizniz::getOrderIndexByID(int inputID){
+    int size;
+    Order* allOrders = orderRepo.retrieveOrderArray(ORDERFILE, size);
+    for (int i = 0; i < size; i++) {
+        if(allOrders[i].getID() == inputID){
+            return i;
+        }
+    }
+    delete [] allOrders;
+    return -1;
 }
 /**************************************************************************************
  

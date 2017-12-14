@@ -111,6 +111,8 @@ public:
     bool thereExistsOrderAtLocationWithApplicablePizza(status status, Location location, bool onlyWith);
     bool orderExist(int orderNum);
     char* getTimeNow();
+    int getOrderIndexByID(int inputID);
+    
     
     
     //Exceptions(Bool functions)
