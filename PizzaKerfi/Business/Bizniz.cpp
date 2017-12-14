@@ -823,14 +823,20 @@ void Bizniz::tvennalyzer(Order& order){
     int groups = 0;
     int pizzas = tempOrder.getNumberOfPizzas();
     int sides = tempOrder.getNumberOfSides();
-    do{
+    while(pizzas > 1){
         if(pizzas> 1 && sides >0){
             pizzas--;
             pizzas--;
             sides--;
             groups++;
         }
-    }while(pizzaPairs > 0);
+    }
+    
+    //Pizza* pizzas = order.getPizzasInOrder();
+    
+    for (int i = 0; i < groups; i++) {
+        //
+    }
 }
 
 /**************************************************************************************
