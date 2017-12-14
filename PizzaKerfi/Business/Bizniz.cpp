@@ -331,11 +331,11 @@ MenuItem Bizniz::recognizeMenuItem(Topping* pizzaToppings, int toppingCount, boo
 
 
 bool Bizniz::getOfferStatus(){
-    return offerRepo.retrieveOrderStatus();
+    return offerRepo.readOfferStatus();
 }
 
 void Bizniz::setOfferStatus(bool o){
-    orderRepo.storeOfferStatus(o);
+    offerRepo.writeOfferStatus(o);
 }
 
 /**************************************************************************************
@@ -639,8 +639,7 @@ Order Bizniz::getOrderByID(int orderNumber){
     return kukaorder;
 }
 
-int Bizniz::getNumberForNextOrder(){
-    
+int Bizniz::getIDForNextOrder(){
     int orderCntActive = 0;
     OrderRepo ordRep;
     Order* tempOrderArray = ordRep.retrieveOrderArray(ORDERFILE, orderCntActive);
