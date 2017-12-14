@@ -266,7 +266,7 @@ void Bizniz::removeBase(vector<Base> bases, int index){
 
 MenuItem* Bizniz::getArrayOfMenuItems(string fileName, int& tellMeHowMany){
     
-    MenuItem menuItems[MAXPIZZASINPIZZAFILE];
+    MenuItem* menuItems = new MenuItem[MAXPIZZASINPIZZAFILE];
     
     menuItemRepo.getArrayOfMenuItems(tellMeHowMany);
     
@@ -281,6 +281,18 @@ void Bizniz::addMenuItem(MenuItem& menuItem){
     
     menuItemRepo.addMenuItem(menuItem);
     
+}
+
+MenuItem Bizniz::recognizeMenuItem(Topping* pizzaToppings, int toppingCount, bool isMenuitem){
+    MenuItem returnMenuItem;
+    int sizeOfMenu;
+    MenuItem* allMenuItems = getArrayOfMenuItems(MENUITEMFILE, sizeOfMenu);
+    for (int i = 0; i < sizeOfMenu; i++) {
+        if(allMenuItems[i].getToppingCount() == toppingCount){
+            
+        }
+    }
+    return returnMenuItem;
 }
 
 /**************************************************************************************

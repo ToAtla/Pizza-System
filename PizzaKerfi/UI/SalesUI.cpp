@@ -338,12 +338,18 @@ Pizza SalesUI::pizzaCreationProcess(Location locationOfOrderForPizzaToFollow){
     if(input == 'y'){
         int toppingCount = 0;
         Topping* pizzaToppings = toppingPickingProcess(toppingCount);
-        Pizza returnPizza = bizniz.assemblePizza(pizzaSize, pizzaBase, pizzaToppings, toppingCount, locationOfOrderForPizzaToFollow);
+        bool isMenuItem = false;
+        MenuItem  tempMenuItem = bizniz.recognizeMenuItem(pizzaToppings, toppingCount, isMenuItem);
+        if(isMenuItem){
+            cout << "Your choice is on the menu.  Name of pizza: " << tempMenuItem.getName() << endl;
+            Pizza returnPizza = bizniz.assemblePizzaWithMenuItem(pizzaSize, pizzaBase, tempMenuItem, locationOfOrderForPizzaToFollow);
+            return returnPizza;
+        }else{
+            Pizza  returnPizza = bizniz.assemblePizza(pizzaSize, pizzaBase, pizzaToppings, toppingCount, locationOfOrderForPizzaToFollow);
+            return returnPizza;
+        }
         delete [] pizzaToppings;
-        return returnPizza;
     }else{
-       
-        
         cout << setfill(CHARFORSETFILL) << setw(35) << "-" << "    List of menu Items    " << setfill(CHARFORSETFILL) << setw(34) << "-" << endl << endl;
         cout << setfill(' ') << setw(82) << "Price" << endl;
         cout << setw(82) << "-----" << endl;
