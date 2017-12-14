@@ -37,6 +37,8 @@ void AdminUI::startAdminUI(){
         uiItemSeparator();
         cout << setfill(' ') << setw(SIZEFORSETWSPACE) << " "  << "8: View sales analysis" << endl;
         uiItemSeparator();
+        cout << setfill(' ') << setw(SIZEFORSETWSPACE) << " " << "9: Manage offers" << endl;
+        uiItemSeparator();
         cout << setfill(' ') << setw(SIZEFORSETWSPACE) << " "  << "b: back" << endl;
         uiItemSeparator();
         cin >> input;
@@ -388,7 +390,7 @@ void AdminUI::changeLocation(){
     for(int i = 0; i < locations.size(); i++){
         Location temp = locations.at(i);
         cout << setfill(' ') << setw(SIZEFORSETWSPACE-3) << " " << "Location number: " << i+1 << endl;
-        cout << "\t\t\t " << temp << endl;
+        cout << setw(SIZEFORSETWSPACE-3) << " " << temp << endl;
         longerUISeparator();
     }
     string input;
@@ -412,7 +414,7 @@ void AdminUI::changeLocation(){
                 if(bizniz.isValidNameLength(name, MAXCHARINLOCATIONNAME)){
                     Location temp(tempName);
                     locations.at(i) = temp;
-                    cout << endl << setw(SIZEOFADDTOPPINGSPACES-11) << "Location changed!" << endl << endl;
+                    cout << endl << setw(SIZEFORSETWSPACE-3) << " " << "Location changed!" << endl << endl;
                 }
             }
         }
@@ -436,8 +438,8 @@ void AdminUI::removeLocation(){
     } else {
         for(int i = 0; i < locations.size(); i++){
             Location temp = locations.at(i);
-            cout << setfill(' ') << setw(31) << "Location number: " << i+1 << endl;
-            cout <<  "\t\t\t " << temp << endl;
+             cout << setfill(' ') << setw(SIZEFORSETWSPACE-3) << " " << "Location number: " << i+1 << endl;
+            cout << setw(SIZEFORSETWSPACE-3) << " " << temp << endl;
             longerUISeparator();
         }
 
@@ -449,7 +451,7 @@ void AdminUI::removeLocation(){
             int intInput = stoi(input);
             
             bizniz.removeLocation(locations, intInput);
-            cout << endl << setw(31) << "Location removed!" << endl << endl;
+            cout << endl << setw(SIZEFORSETWSPACE-3) << " " << "Location removed!" << endl << endl;
         }
     }
 }
@@ -528,7 +530,7 @@ void AdminUI::displayAllSides(){
         for (int i = 0; i < sides.size(); i++) {
             
             Side temp = sides.at(i);
-            cout << setfill(' ') << setw(SIZEFORSETWSPACE-3) << " " << setw(19) << left << temp.getName() << setw(24) << setfill(' ') << right << temp.getPrice() << endl;
+            cout << setfill(' ') << setw(SIZEFORSETWSPACE-3) << " " << setw(SIZEFORSETWSPACE+2) << left << temp.getName() << setw(SIZEFORSETWSPACE+7) << setfill(' ') << right << temp.getPrice() << endl;
             longerUISeparator();
         }
         
@@ -546,7 +548,7 @@ void AdminUI::addSide(){
     string name;
     cin.ignore();
     getline(cin, name);
-    cout << setw(30) << "Enter price: ";
+    cout << setw(SIZEFORSETWSPACE) << " " << "Enter price: ";
     string price;
     cin >> price;
     
@@ -557,7 +559,7 @@ void AdminUI::addSide(){
         strcpy(tempName, name.c_str());
         Side temp(tempName, intPrice);
         bizniz.addSide(temp);
-        cout << endl << setw(28) << "Side added!" << endl << endl;
+        cout << endl << setw(SIZEFORSETWSPACE) << " " << "Side added!" << endl << endl;
     }
 }
 
@@ -581,7 +583,7 @@ void AdminUI::changeSide(){
             longerUISeparator();
         }
         string input;
-        cout << setfill(' ') << setw(39) << "Choose a side to change: ";
+        cout << setfill(' ') << setw(SIZEFORSETWSPACE-3) << " " << "Choose a side to change: ";
         cin >> input;
 
         if(bizniz.isInputDigit(input) && bizniz.isValidInput(stoi(input), sides.size())){
@@ -594,7 +596,7 @@ void AdminUI::changeSide(){
                     string name;
                     cin.ignore();
                     getline(cin, name);
-                    cout << setw(27) << "Enter price: ";
+                    cout << setw(SIZEFORSETWSPACE-3) << " " << "Enter price: ";
                     string price;
                     cin >> price;
                     
@@ -604,7 +606,7 @@ void AdminUI::changeSide(){
                         strcpy(tempName, name.c_str());
                         Side temp(tempName, intPrice);
                         sides.at(i) = temp;
-                        cout << endl << setw(27) << "Side changed!" << endl << endl;
+                        cout << endl << setw(SIZEFORSETWSPACE-3) << " " << "Side changed!" << endl << endl;
                     }
                 }
             }
@@ -768,7 +770,7 @@ void AdminUI::changeDrink(){
                         strcpy(tempName, name.c_str());
                         Drink temp(tempName, intPrice);
                         drinks.at(i) = temp;
-                        cout << endl << setw(28) << "Drink changed!" << endl << endl;
+                        cout << endl << setw(SIZEFORSETWSPACE-3) << " " << "Drink changed!" << endl << endl;
                     }
                 }
             }
@@ -830,7 +832,7 @@ void AdminUI::removeDrink(){
             int intInput = stoi(input);
             
             bizniz.removeDrink(drinks, intInput);
-            cout << endl << setw(28) << "Drink removed!" << endl << endl;
+            cout << endl << setw(SIZEFORSETWSPACE-3) << " " << "Drink removed!" << endl << endl;
         }
     }
 }
@@ -942,7 +944,7 @@ void AdminUI::changeSize(){
             
             for(int i = 0; i < sizes.size(); i++){
                 if(intInput == i+1){
-                    cout << setw(35) << "Enter size name (Max " << MAXCHARINSIZENAME-2 << " letters): ";
+                    cout << setw(SIZEFORSETWSPACE-3) << " " << "Enter size name (Max " << MAXCHARINSIZENAME-2 << " letters): ";
                     string name;
                     cin.ignore();
                     getline(cin, name);
@@ -970,7 +972,7 @@ void AdminUI::addSize(){
 
     cout << setfill(CHARFORSETFILL) << setw(SIZEOFCENTERHEADING) << "-" <<  "    Adding a size!    " << setfill(CHARFORSETFILL) << setw(SIZEOFCENTERHEADING);
     cout << "-" << endl << endl;
-    cout << setfill(' ') << setw(SIZEOFADDTOPPINGSPACES-4) << "Enter size name (Max " << MAXCHARINSIZENAME-2 << " letters): ";
+    cout << setw(SIZEFORSETWSPACE-3) << " " << "Enter size name (Max " << MAXCHARINSIZENAME-2 << " letters): ";
     string name;
     cin.ignore();
     getline(cin, name);
@@ -1261,7 +1263,8 @@ void AdminUI::displayAllMenuItems(){
             MenuItem temp = menuItems[i];
             cout << setfill(' ') << setw(SIZEFORSETWSPACE-3) << " " << setw(SIZEFORSETWSPACE+2) << left << temp.getName() << setw(SIZEFORSETWSPACE+7) << setfill(' ') << right << temp.getPrice() << endl;
             for(int i = 0; i < temp.getToppingCount(); i++){
-                cout << setfill(' ') << setw(SIZEFORSETWSPACE-3) << " " << setw(SIZEFORSETWSPACE+2) << left << temp.getCertainTopping(i).getName() << setw(SIZEFORSETWSPACE+7) << setfill(' ') << right << endl;
+                cout << setfill(' ') << setw(SIZEFORSETWSPACE-3) << " " << setw(SIZEFORSETWSPACE+2) << left << temp.getCertainTopping(i).getName() << setw(SIZEFORSETWSPACE+7) << setfill(' ');
+                cout << right << endl;
             }
             longerUISeparator();
         }
@@ -1292,7 +1295,7 @@ void AdminUI::addMenuItem(){
         for (int i = 0; i < allToppings.size(); i++) {
             Topping temp = allToppings.at(i);
             cout << setfill(' ') << setw(SIZEFORSETWSPACE) << " " << "Topping nr: " << i+1 << endl;
-            cout << setfill(' ') << setw(SIZEFORSETWSPACE+3) << temp.getName() << setw(38) << temp.getPrice() << endl;
+            cout << setfill(' ') << setw(SIZEFORSETWSPACE+3) << temp.getName() << setw(SIZEFORSETWSPACE+21) << temp.getPrice() << endl;
             uiItemSeparator();
         }
         int c = 0;
