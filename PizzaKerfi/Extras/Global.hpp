@@ -22,6 +22,8 @@ using namespace std;
 const int SIZEFORSETWSPACE = 20;
 const int SIZEFORSETWBIGSPACE = 22;
 const int SIZEOFCENTERHEADING = 26;
+const int SIZEOFBIGCENTERHEADING = 35;
+const int SIZEOFPRICESPACE = 82;
 
 const char CHARFORSETFILL = '-';
 const char CHARFORSUBACTION = '+';

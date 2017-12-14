@@ -49,7 +49,7 @@ void SalesUI::createOrder(){
     if(bizniz.isValidLocationFile()){
         
         Order order;
-        cout << setfill(CHARFORSUBACTION) << setw(36) << "+" << "    Creating a new Order    " <<  setfill(CHARFORSUBACTION) << setw(36) << "+" << endl << endl;
+        cout << setfill(CHARFORSUBACTION) << setw(SIZEOFBIGCENTERHEADING+1) << "+" << "    Creating a new Order    " <<  setfill(CHARFORSUBACTION) << setw(SIZEOFBIGCENTERHEADING+1) << "+" << endl << endl;
         
         try{
             deliveryCreationProcess(order);
@@ -160,15 +160,15 @@ Size SalesUI::sizePickingProcess(){
    
     Size sizeForPizza;
     
-    cout << endl << setfill(CHARFORSETFILL) << setw(35) << "-" << "    List of available sizes    " << setfill(CHARFORSETFILL) << setw(34) << "-" << endl << endl;
+    cout << endl << setfill(CHARFORSETFILL) << setw(SIZEOFBIGCENTERHEADING) << "-" << "    List of available sizes    " << setfill(CHARFORSETFILL) << setw(SIZEOFBIGCENTERHEADING-1) << "-" << endl << endl;
     vector<Size> sizes = bizniz.getVectorOfSizes();
-    cout << setfill(' ') << setw(82) << "Price" << endl;
-    cout << setw(82) << "-----" << endl;
+    cout << setfill(' ') << setw(SIZEOFPRICESPACE) << "Price" << endl;
+    cout << setw(SIZEOFPRICESPACE) << "-----" << endl;
         
     for(int i = 0; i < sizes.size(); i++){
         Size temp = sizes.at(i);
         cout << setw(31) << "Size number " << i+1 << endl;
-        cout << setw(22) << temp.getName() << setw(60) << right << temp.getPrice() << endl;
+        cout << setw(SIZEFORSETWBIGSPACE) << temp.getName() << setw(60) << right << temp.getPrice() << endl;
         uiItemSeparator();
     }
     string input;
@@ -194,18 +194,19 @@ Size SalesUI::sizePickingProcess(){
 Base SalesUI::basePickingProcess(){
     Base baseForPizza;
     
-    cout << endl << endl << setfill(CHARFORSETFILL) << setw(35) << "-" << "    List of available bases    " << setfill(CHARFORSETFILL) << setw(34) << "-" << endl << endl;
+    cout << endl << endl;
+    cout << setfill(CHARFORSETFILL) << setw(SIZEOFBIGCENTERHEADING) << "-" << "    List of available bases    " << setfill(CHARFORSETFILL) << setw(SIZEOFBIGCENTERHEADING-1) << "-" << endl << endl;
     
     vector<Base> bases = bizniz.getVectorOfBases();
     
-    cout << setfill(' ') << setw(82) << "Price" << endl;
-    cout << setw(82) << "-----" << endl;
+    cout << setfill(' ') << setw(SIZEOFPRICESPACE) << "Price" << endl;
+    cout << setw(SIZEOFPRICESPACE) << "-----" << endl;
         
         
     for(int i = 0; i < bases.size(); i++){
         Base temp = bases.at(i);
         cout << setw(31) << "Base number " << i+1 << endl;
-        cout << setw(22) << temp.getName() << setw(60) << right << temp.getPrice() << endl;
+        cout << setw(SIZEFORSETWBIGSPACE) << temp.getName() << setw(60) << right << temp.getPrice() << endl;
         uiItemSeparator();
     }
     string input;
@@ -225,7 +226,8 @@ Base SalesUI::basePickingProcess(){
 Topping* SalesUI::toppingPickingProcess(int& toppingCount){
     
     Topping* toppingsForPizza = new Topping[MAXTOPPINGSONPIZZA];
-    cout << endl << setfill(CHARFORSETFILL) << setw(33) << "-" << "    List of available toppings    " << setfill(CHARFORSETFILL) << setw(33) << "-" << endl << endl;
+    cout << endl;
+    cout << setfill(CHARFORSETFILL) << setw(SIZEOFBIGCENTERHEADING-2) << "-" << "    List of available toppings    " << setfill(CHARFORSETFILL) << setw(SIZEOFBIGCENTERHEADING-2) << "-" << endl << endl;
     
     vector<Topping> allToppings = bizniz.getVectorOfToppings();
     
@@ -233,19 +235,19 @@ Topping* SalesUI::toppingPickingProcess(int& toppingCount){
         cout << endl << "*NOTE* No toppings available at this time." << endl;
     }
     else{
-        cout << setfill(' ') << setw(82) << "Price" << endl;
-        cout << setw(82) << "-----" << endl;
+        cout << setfill(' ') << setw(SIZEOFPRICESPACE) << "Price" << endl;
+        cout << setw(SIZEOFPRICESPACE) << "-----" << endl;
         
         for (int i = 0; i < allToppings.size(); i++) {
             cout << setfill(' ') << setw(31) << "Topping nr: " << i+1 << endl;
-            cout << setw(22) << allToppings.at(i);
+            cout << setw(SIZEFORSETWBIGSPACE) << allToppings.at(i);
             uiItemSeparator();
         }
         int c = 0;
         while(true){
             //Veit ekki hvort þarf < eða <= hérna í næstu línu
             if(c <= MAXTOPPINGSONPIZZA){
-                cout << setfill(' ') << setw(19) << " "<< "Enter an index of topping to add or 0 to exit (no whitespaces): ";
+                cout << setfill(' ') << setw(SIZEFORSETWBIGSPACE-3) << " "<< "Enter an index of topping to add or 0 to exit (no whitespaces): ";
                 string input;
                 cin >> input;
                 
@@ -256,7 +258,7 @@ Topping* SalesUI::toppingPickingProcess(int& toppingCount){
                     if(intInput != 0){
                         toppingsForPizza[c] = allToppings.at(intInput-1);
                         c++;
-                        cout << setw(34) << "Topping number " << input << " added" << endl;
+                        cout << setw(SIZEOFBIGCENTERHEADING-1) << "Topping number " << input << " added" << endl;
                     }else{
                         break;
                     }
@@ -273,13 +275,13 @@ Location SalesUI::locationPickingProcess(){
     Location returnLocation;
     vector<Location> locations = bizniz.getVectorOfLocations();
     
-    cout << endl << setfill(CHARFORSETFILL) << setw(36) << "-" << "    Locations available    " << setfill(CHARFORSETFILL) << setw(37) << "-" << endl << endl;
+    cout << endl << setfill(CHARFORSETFILL) << setw(SIZEOFBIGCENTERHEADING+1) << "-" << "    Locations available    " << setfill(CHARFORSETFILL) << setw(SIZEOFBIGCENTERHEADING+2) << "-" << endl << endl;
         
     string locationNumber;
 
     for(unsigned int i = 0; i < locations.size(); i++){
-        cout << setfill(' ') << setw(19) << " " << "Location number: " << i+1 << endl;
-        cout << setfill(' ') << setw(19) << " " << locations.at(i) << endl;
+        cout << setfill(' ') << setw(SIZEFORSETWBIGSPACE-3) << " " << "Location number: " << i+1 << endl;
+        cout << setfill(' ') << setw(SIZEFORSETWBIGSPACE-3) << " " << locations.at(i) << endl;
         uiItemSeparator();
     }
     cout << "Choose a number corresponding to location (no whitespaces): ";
@@ -354,9 +356,9 @@ Pizza SalesUI::pizzaCreationProcess(Location locationOfOrderForPizzaToFollow){
             delete [] pizzaToppings;
             return returnPizza;
         }else{
-            cout << setfill(CHARFORSETFILL) << setw(35) << "-" << "    List of menu Items    " << setfill(CHARFORSETFILL) << setw(34) << "-" << endl << endl;
-            cout << setfill(' ') << setw(82) << "Price" << endl;
-            cout << setw(82) << "-----" << endl;
+            cout << setfill(CHARFORSETFILL) << setw(SIZEOFBIGCENTERHEADING) << "-" << "    List of menu Items    " << setfill(CHARFORSETFILL) << setw(SIZEOFBIGCENTERHEADING-1) << "-" << endl << endl;
+            cout << setfill(' ') << setw(SIZEOFPRICESPACE) << "Price" << endl;
+            cout << setw(SIZEOFPRICESPACE) << "-----" << endl;
                 
             for (unsigned int i = 0; i < tellMeHowMany; i++) {
                 MenuItem temp = menuItems[i];
@@ -407,14 +409,14 @@ void SalesUI::sideListCreationProcess(Order &order){
         while(input == 'y') {
             vector<Side> sides = bizniz.getVectorOfSides();
             
-            cout << setfill(CHARFORSETFILL) << setw(35) << "-" << "    List of available sides    " << setfill(CHARFORSETFILL) << setw(34) << "-" << endl << endl;
-            cout << setfill(' ') << setw(82) << "Price" << endl;
-            cout << setw(82) << "-----" << endl;
+            cout << setfill(CHARFORSETFILL) << setw(SIZEOFBIGCENTERHEADING) << "-" << "    List of available sides    " << setfill(CHARFORSETFILL) << setw(SIZEOFBIGCENTERHEADING-1) << "-" << endl << endl;
+            cout << setfill(' ') << setw(SIZEOFPRICESPACE) << "Price" << endl;
+            cout << setw(SIZEOFPRICESPACE) << "-----" << endl;
             
             for(unsigned int i = 0; i < sides.size(); i++){
                 Side temp = sides.at(i);
                 cout << setw(31) << "Side number " << i+1 << endl;
-                cout << setfill(' ') << setw(19) << " " << setw(19) << left << temp.getName() << setw(44) << right << temp.getPrice() << endl;
+                cout << setfill(' ') << setw(SIZEFORSETWBIGSPACE-3) << " " << setw(SIZEFORSETWBIGSPACE-3) << left << temp.getName() << setw(44) << right << temp.getPrice() << endl;
                 uiItemSeparator();
             }
             cout << "Choose a number corresponding to side (no whitespaces): ";
@@ -464,14 +466,15 @@ void SalesUI::drinkListCreationProcess(Order &order){
         while(input == 'y') {
             vector<Drink> drinks = bizniz.getVectorOfDrinks();
             
-            cout << endl << setfill(CHARFORSETFILL) << setw(35) << "-" << "    List of available drinks    " << setfill(CHARFORSETFILL) << setw(34) << "-" << endl << endl;
-            cout << setfill(' ') << setw(82) << "Price" << endl;
-            cout << setw(82) << "-----" << endl;
+            cout << endl << setfill(CHARFORSETFILL) << setw(SIZEOFBIGCENTERHEADING) << "-" << "    List of available drinks    " << setfill(CHARFORSETFILL) << setw(SIZEOFBIGCENTERHEADING-1) << "-";
+            cout << endl << endl;
+            cout << setfill(' ') << setw(SIZEOFPRICESPACE) << "Price" << endl;
+            cout << setw(SIZEOFPRICESPACE) << "-----" << endl;
             
             for(unsigned int i = 0; i < drinks.size(); i++){
                 Drink temp = drinks.at(i);
-                cout << setfill(' ') << setw(32) << "Drink number " << i+1 << endl;
-                cout << setfill(' ') << setw(19) << " " << setw(19) << left << temp.getName() << setw(44) << right << temp.getPrice() << endl;
+                cout << setfill(' ') << setw(SIZEOFBIGCENTERHEADING-3) << "Drink number " << i+1 << endl;
+                cout << setfill(' ') << setw(SIZEFORSETWBIGSPACE-3) << " " << setw(SIZEFORSETWBIGSPACE-3) << left << temp.getName() << setw(44) << right << temp.getPrice() << endl;
                 uiItemSeparator();
             }
             cout << "Choose a number corresponding to drink (no whitespaces): ";
@@ -528,6 +531,6 @@ void SalesUI::clearScreen(){
 }
 
 void SalesUI::uiItemSeparator(){
-    cout << setw(19) << " " << setfill(CHARFORSETFILL) << setw(63) << "-" << endl << endl;
+    cout << setw(SIZEFORSETWBIGSPACE-3) << " " << setfill(CHARFORSETFILL) << setw(63) << "-" << endl << endl;
     cout << setfill(' ');
 }
