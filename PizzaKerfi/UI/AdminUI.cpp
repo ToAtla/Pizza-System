@@ -1276,7 +1276,7 @@ void AdminUI::addMenuItem(){
 
     
     if(allToppings.size() < 1){
-        cout << endl << "No toppings available at this time." << endl;
+        cout << endl << "No toppings available to create a menu item :("  << endl << endl;
     }
     else{
         cout << setfill(' ') << setw(82) << "Price" << endl;
@@ -1309,24 +1309,25 @@ void AdminUI::addMenuItem(){
             }
         }
         numberOfToppings = c;
+    
+    
+        cout << endl << "Please enter the name of the new menu item (MAX " << MAXCHARSINPIZZANAME-1 << "): ";
+        string name;
+        cin.ignore();
+        getline(cin, name);
+        cout << endl << "Enter the price of the menu item: ";
+        string price;
+        cin >> price;
+        int intPrice = stoi(price);
+        
+        MenuItem temp(toppingsForMenuItem, name, numberOfToppings, intPrice);
+        
+        bizniz.addMenuItem(temp);
+        
+        cout << endl << setw(27) << "Menu item added!" << endl << endl;
+        
+        delete[] toppingsForMenuItem;
     }
-    
-    cout << endl << "Please enter the name of the new menu item (MAX " << MAXCHARSINPIZZANAME-1 << "): ";
-    string name;
-    cin.ignore();
-    getline(cin, name);
-    cout << endl << "Enter the price of the menu item: ";
-    string price;
-    cin >> price;
-    int intPrice = stoi(price);
-    
-    MenuItem temp(toppingsForMenuItem, name, numberOfToppings, intPrice);
-    
-    bizniz.addMenuItem(temp);
-    
-    cout << endl << setw(27) << "Menu item added!" << endl << endl;
-    
-    delete[] toppingsForMenuItem;
 }
 
 void AdminUI::displayAnalysis(){
