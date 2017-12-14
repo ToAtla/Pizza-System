@@ -294,22 +294,26 @@ MenuItem Bizniz::recognizeMenuItem(Topping* pizzaToppings, int toppingCount, boo
     int pizzaCounter = 0;
     for (int i = 0; i < sizeOfMenu; i++) {
         if(allMenuItems[i].getToppingCount() == toppingCount){
-            menuCounter = 0;
-            pizzaCounter = 0;
             for (int c = 0; c < sizeOfToppingList; c++) {
-                
+                menuCounter = 0;
+                pizzaCounter = 0;
                 for (int j = 0; j < toppingCount; j++) {
-                    if(allToppings.at(c).getName() == pizzaToppings[j].getName()){
+//                    cout << "PizzaTopping: " << pizzaToppings[j].getName() << endl;
+//                    cout << "MenuTopping: " << allMenuItems[i].getToppings()[j].getName() << endl;
+//                    cout << "Alltoppings af c: " << allToppings.at(c).getName() << endl;
+                    if((string)allToppings.at(c).getName() == (string)pizzaToppings[j].getName()){
+//                        cout << "sést ég?" << endl;
                         pizzaCounter++;
                     }
-                    if(allToppings.at(c).getName() == allMenuItems[i].getToppings()[j].getName()){
+                    if((string)allToppings.at(c).getName() == (string)allMenuItems[i].getToppings()[j].getName()){
                         menuCounter++;
                     }
+                    
                 }
+                cout << "Erum i topping: " << allToppings.at(c).getName() << " Nu a pC ad vera 3 og er " <<pizzaCounter << " og mC ad vera 2 og er " << menuCounter << endl;
                 if(menuCounter != pizzaCounter){
-                    isMenuitem = false;
-                    delete [] allMenuItems;
-                    return returnMenuItem;
+                    c = sizeOfToppingList;
+                    //Þetta er í raun break
                 }
             }
             if(menuCounter == pizzaCounter){
