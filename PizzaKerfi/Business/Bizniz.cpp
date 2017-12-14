@@ -408,6 +408,23 @@ Pizza Bizniz::assemblePizza(Size size, Base base, Topping *toppings, int amountO
     return returnPizza;
 }
 
+Pizza Bizniz::assemblePizzaWithMenuItem(Size size, Base base, MenuItem menuItem, Location location){
+    
+    int pizzaPrice = menuItem.getPrice() + size.getPrice() + base.getPrice();
+    Pizza returnPizza = Pizza(size, base, location);
+    
+    for (int i = 0; i < menuItem.getToppingCount(); i++) {
+        
+        returnPizza.getToppings()[i] = menuItem.getCertainTopping(i);
+        
+    }
+    
+    returnPizza.setToppingCount(menuItem.getToppingCount());
+    returnPizza.setName(menuItem.getName());
+    returnPizza.setPrice(pizzaPrice);
+    return returnPizza;
+    
+}
 
 void Bizniz::appendPizzaToFile(string fileName, Pizza pizza){
     pizzaRepo.storePizza(pizza, fileName);

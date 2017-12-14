@@ -28,7 +28,7 @@ MenuItem::MenuItem(Topping toppings[], string name, int numberOfToppings, int pr
     
 }
 
-string MenuItem::getName(){
+char* MenuItem::getName(){
     return nameOfMenuItem;
 }
 

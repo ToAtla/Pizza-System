@@ -83,6 +83,7 @@ public:
     string getStatusAndPriceCharArr(Pizza pizza);
     void fixNameOfPizza(Pizza& pizza);
     Pizza assemblePizza(Size size, Base base, Topping *toppings, int amountOfToppings, Location location);
+    Pizza assemblePizzaWithMenuItem(Size size, Base base, MenuItem menuItem, Location location);
     void appendPizzaToFile(string fileName, Pizza pizza);
     void extractPizzasForPrepUI(Order order);
     Pizza* extractApplicablePizzasFromOrder(Order order, status status, bool onlyWith, int& tellMeHowMany);

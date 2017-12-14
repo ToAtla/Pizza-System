@@ -27,7 +27,7 @@ public:
     ///Defult constructor that gives all the private variables a value of 0.
     MenuItem(Topping toppings[], string name, int numberOfToppings, int price);
     
-    string getName();
+    char* getName();
     ///Return the private variable name of the pizza.
     void setName(char inName[MAXCHARSINPIZZANAME]);
     ///Takes in a character array and gives the private variable name the value of it.

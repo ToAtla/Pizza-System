@@ -1215,8 +1215,6 @@ void AdminUI::displayMenuItemMenu(){
         uiItemSeparator();
         cout << setw(SIZEFORSETWSPACE) << "2: " << "Add a menu item" << endl;
         uiItemSeparator();
-        cout << setw(SIZEFORSETWSPACE) << "3: " << "Remove a menu item" << endl;
-        uiItemSeparator();
         cout << setw(SIZEFORSETWSPACE) << "b: " << "back" << endl;
         uiItemSeparator();
         cin >> input;

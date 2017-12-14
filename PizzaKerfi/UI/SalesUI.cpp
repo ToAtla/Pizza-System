@@ -363,16 +363,9 @@ Pizza SalesUI::pizzaCreationProcess(Location locationOfOrderForPizzaToFollow){
         
         int intInput = stoi(input);
         
-        Topping pizzaToppings[menuItems[intInput-1].getToppingCount()];
+        Pizza returnPizza = bizniz.assemblePizzaWithMenuItem(pizzaSize, pizzaBase, menuItems[intInput-1], locationOfOrderForPizzaToFollow);
         
-        for(int i = 0; i < menuItems[intInput-1].getToppingCount(); i++){
-            pizzaToppings[i] = menuItems[intInput-1].getCertainTopping(i);
-        }
-        
-        int toppingCount = 0;
-        Pizza returnPizza = bizniz.assemblePizza(pizzaSize, pizzaBase, pizzaToppings, toppingCount, locationOfOrderForPizzaToFollow);
         return returnPizza;
-        
         
     }
     
