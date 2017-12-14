@@ -138,16 +138,16 @@ void DeliveryUI::displayAllOrders(){
 }
 
 void DeliveryUI::displayUnpaidOrders(){
-    string orderFile = "orders.dat";
+    
     OrderRepo ordRep;
     int sizeOfOrderList;
-    Order* orders = ordRep.retrieveOrderArray(orderFile, sizeOfOrderList);
+    Order* orders = ordRep.retrieveOrderArray(ORDERFILE, sizeOfOrderList);
     //Kominn með allar pantanir
     //þarf núna að sigta út ógreiddar
-    int amountOfUnpaidUndeliveredOrdersAtThisLocation = 0;
+    int amountOfUnpaidOrdersAtThisLocation = 0;
     for (int i = 0; i < sizeOfOrderList; i++) {
-        if(locationOfDelivery.getLocation() == orders[i].getLocation().getLocation() && orders[i].getStatusOfOrder() != PAID && orders[i].getStatusOfOrder() != DELIVERED){
-            amountOfUnpaidUndeliveredOrdersAtThisLocation++;
+        if(locationOfDelivery.getLocation() == orders[i].getLocation().getLocation() && orders[i].getStatusOfOrder() == UNPAID){
+            amountOfUnpaidOrdersAtThisLocation++;
         }
     }
     
@@ -155,9 +155,9 @@ void DeliveryUI::displayUnpaidOrders(){
     cout << setfill(CHARFORSPACE) << setw(SIZEOFCENTERHEADING+2) << " " << "Listing All UNPAID Orders in " << locationOfDelivery << endl;
     cout << setfill(CHARFORSETFILL) << setw(SIZEOFSETWBIG) << "-" << setfill(CHARFORSPACE) << endl << endl;
     
-    if(ordRep.fileExists(orderFile) && amountOfUnpaidUndeliveredOrdersAtThisLocation != 0){
+    if(ordRep.fileExists(ORDERFILE) && amountOfUnpaidOrdersAtThisLocation != 0){
         for (int i = 0; i < sizeOfOrderList; i++) {
-            if(locationOfDelivery.getLocation() == orders[i].getLocation().getLocation() && orders[i].getStatusOfOrder() != PAID && orders[i].getStatusOfOrder() != DELIVERED){
+            if(locationOfDelivery.getLocation() == orders[i].getLocation().getLocation() && orders[i].getStatusOfOrder() == UNPAID){
                 cout << orders[i] << endl;
             }
         }
@@ -258,7 +258,7 @@ void DeliveryUI::displayLegacyOrders(){
         }
     }
     cout << setfill(CHARFORSETFILL) << setw(SIZEOFSETWBIG) << "-" << setfill(CHARFORSPACE) << endl;
-    cout << setfill(CHARFORSPACE) << setw(26) << " " << "Listing All Legacy Orders in " << locationOfDelivery << endl;
+    cout << setfill(CHARFORSPACE) << setw(SIZEOFCENTERHEADING) << " " << "Listing All Legacy Orders in " << locationOfDelivery << endl;
     cout << setfill(CHARFORSETFILL) << setw(SIZEOFSETWBIG) << "-" << setfill(CHARFORSPACE) << endl << endl;
     
     if(ordRep.fileExists(orderFile) && amountOfDeliveredOrdersAtThisLocation != 0){

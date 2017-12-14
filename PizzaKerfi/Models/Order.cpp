@@ -169,9 +169,9 @@ ostream& operator << (ostream& out, const Order& order){
     out << setfill(' ') <<  endl;
     //Millilýsingar
     
-    out << setw(SIZEOFSETW) << left << "ITEM" << "STATUS" << setw(18) << right << "PRICE" << endl;
+    out << setw(SIZEOFSETW) << left << "ITEM" << "STATUS" << setw(SIZEFORSETWSPACE+1) << right << "PRICE" << endl;
     
-    out << setw(SIZEOFSETW) << left << "----" << "-------" << setw(17) << right << "-----" << endl;
+    out << setw(SIZEOFSETW) << left << "----" << "-------" << setw(SIZEFORSETWSPACE) << right << "-----" << endl;
     
     for(int i = 0; i < order.numberOfPizzas; i++) {
         out << order.pizzaList[i];
@@ -192,10 +192,8 @@ ostream& operator << (ostream& out, const Order& order){
     string totalPriceString = totalPriceCA;
     
     //cout << LONGLINE << endl;
-    out << "HJÁLP ANDRÉS! SETW ÞARF HÉRNA" << endl;
-    out << order.time << endl;
-    out << setw(SIZEOFSETWBIG-8) << right << "TOTAL: " << setw(8) << right << totalPriceString << endl;
-    out << setfill(' ') << setw(85) << " " << setfill(CHARFORSETFILL) << setw(15) << "-" << endl;
+    out << setw(SIZEFORSETWSPACE) << left << order.time << setw(SIZEOFSETW-1) << right << "TOTAL: " << setw(SIZEOFPRICECHARACTERS) << right << totalPriceString << endl;
+    out << setfill(' ') << setw(SIZEOFSETWBIG-15) << " " << setfill(CHARFORSETFILL) << setw(SIZEOFSETWBIG-(SIZEOFSETWBIG-15)) << "-" << endl;
     out << setfill(' ');
     out << endl;
     

@@ -329,6 +329,15 @@ MenuItem Bizniz::recognizeMenuItem(Topping* pizzaToppings, int toppingCount, boo
     return returnMenuItem;
 }
 
+
+bool Bizniz::getOfferStatus(){
+    return offerRepo.retrieveOrderStatus();
+}
+
+void Bizniz::setOfferStatus(bool o){
+    orderRepo.storeOfferStatus(o);
+}
+
 /**************************************************************************************
  
                                     Analysis
@@ -589,8 +598,8 @@ void Bizniz::setOrderStatus(string fileName, int orderNum, orderStatus newOrderS
             i = size;
         }
     }
+    orderRepo.clearOrderFile(ORDERFILE);
     for (int i = 0; i < size; i++) {
-        orderRepo.clearOrderFile(ORDERFILE);
         storeOrder(allOrders[i]);
     }
     delete [] allOrders;
@@ -637,12 +646,8 @@ int Bizniz::getNumberForNextOrder(){
     Order* tempOrderArray = ordRep.retrieveOrderArray(ORDERFILE, orderCntActive);
     
     int orderCntLegacy = 0;
-    Order* tempLegacyOrderArray = ordRep.retrieveOrderArray(ORDERFILE, orderCntLegacy);
+    Order* tempLegacyOrderArray = ordRep.retrieveOrderArray(LEGACYORDERFILE, orderCntLegacy);
     int orderCnt = orderCntActive + orderCntLegacy;
-    if(orderCnt == 0){
-        orderCnt = 1;
-        return orderCnt;
-    }
     orderCnt++;
     delete [] tempOrderArray;
     delete [] tempLegacyOrderArray;
@@ -812,6 +817,11 @@ int Bizniz::getOrderIndexByID(int inputID){
     delete [] allOrders;
     return -1;
 }
+
+void Bizniz::tvennalyzer(Order& order){
+    
+}
+
 /**************************************************************************************
  
                               Exceptions(Bool functions)
