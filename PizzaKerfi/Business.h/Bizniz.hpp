@@ -100,7 +100,7 @@ public:
     bool allPizzasInOrderReady(Order order);
     char* orderStatusToString(orderStatus status);
     Order getOrderByID(int orderNumber);
-    int getNumberForNextOrder();
+    int getIDForNextOrder();
     void storeOrder(Order order);
     void storeOrder(const Order& order, string fileName);
     void moveOrderBetween(string sourceFile, string destFile, int orderNum);

@@ -64,7 +64,7 @@ void SalesUI::createOrder(){
             return;
         }
         
-        order.setID(bizniz.getNumberForNextOrder());
+        order.setID(bizniz.getIDForNextOrder());
        
         try {
             pizzaListCreationProcess(order);

@@ -589,8 +589,8 @@ void Bizniz::setOrderStatus(string fileName, int orderNum, orderStatus newOrderS
             i = size;
         }
     }
+    orderRepo.clearOrderFile(ORDERFILE);
     for (int i = 0; i < size; i++) {
-        orderRepo.clearOrderFile(ORDERFILE);
         storeOrder(allOrders[i]);
     }
     delete [] allOrders;
@@ -630,18 +630,14 @@ Order Bizniz::getOrderByID(int orderNumber){
     return kukaorder;
 }
 
-int Bizniz::getNumberForNextOrder(){
+int Bizniz::getIDForNextOrder(){
     int orderCntActive = 0;
     OrderRepo ordRep;
     Order* tempOrderArray = ordRep.retrieveOrderArray(ORDERFILE, orderCntActive);
     
     int orderCntLegacy = 0;
-    Order* tempLegacyOrderArray = ordRep.retrieveOrderArray(ORDERFILE, orderCntLegacy);
+    Order* tempLegacyOrderArray = ordRep.retrieveOrderArray(LEGACYORDERFILE, orderCntLegacy);
     int orderCnt = orderCntActive + orderCntLegacy;
-    if(orderCnt == 0){
-        orderCnt = 1;
-        return orderCnt;
-    }
     orderCnt++;
     delete [] tempOrderArray;
     delete [] tempLegacyOrderArray;
