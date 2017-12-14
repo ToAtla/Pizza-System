@@ -68,7 +68,7 @@ public:
     //MenuItem
     MenuItem* getArrayOfMenuItems(string fileName, int& tellMeHowMany);
     void addMenuItem(MenuItem& menuItem);
-    MenuItem recognizeMenuItem(Topping* pizzaToppings, int toppingCount, bool isMenuitem);
+    MenuItem recognizeMenuItem(Topping* pizzaToppings, int toppingCount, bool& isMenuitem);
     
     //Analysis
     int calcTotalTurnover();
