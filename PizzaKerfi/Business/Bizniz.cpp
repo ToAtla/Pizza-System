@@ -616,9 +616,9 @@ bool Bizniz::allPizzasInOrderReady(Order order){
 char* Bizniz::orderStatusToString(orderStatus status){
     char* statusString = new char[MAXCHARINORDERSTATUSSTRING];
     if(status == UNPAID){
-        strcpy(statusString, "UNPAID   ");
+        strcpy(statusString, "UNPAID");
     }if(status == PAID){
-        strcpy(statusString, "PAID     ");
+        strcpy(statusString, "PAID");
     }if(status == DELIVERED){
         strcpy(statusString, "DELIVERED");
     }
