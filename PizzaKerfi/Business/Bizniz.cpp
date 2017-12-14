@@ -820,21 +820,22 @@ int Bizniz::getOrderIndexByID(int inputID){
 void Bizniz::tvennalyzer(Order& order){
     Order tempOrder = order;
     int groups = 0;
-    int pizzas = tempOrder.getNumberOfPizzas();
-    int sides = tempOrder.getNumberOfSides();
-    while(pizzas > 1){
-        if(pizzas> 1 && sides >0){
-            pizzas--;
-            pizzas--;
-            sides--;
+    int pizzaAmount = tempOrder.getNumberOfPizzas();
+    int sideAmount = tempOrder.getNumberOfSides();
+    while(pizzaAmount > 1){
+        if(pizzaAmount > 1 && sideAmount >0){
+            pizzaAmount--;
+            pizzaAmount--;
+            sideAmount--;
             groups++;
         }
     }
     
-    //Pizza* pizzas = order.getPizzasInOrder();
+    Pizza* pizzas = order.getPizzasInOrder();
+    Pizza* rePizzas = new Pizza[MAXSTUFFSINORDER];
     
-    for (int i = 0; i < groups; i++) {
-        //
+    for (int i = 0; i < tempOrder.getNumberOfPizzas(); i++) {
+        
     }
 }
 
