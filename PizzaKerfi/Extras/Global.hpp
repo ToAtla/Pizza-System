@@ -30,7 +30,7 @@ const int SIZEOFSMALLPRICESPACE = 58;
 const char CHARFORSETFILL = '-';
 const char CHARFORSUBACTION = '+';
 const char CHARFORSPACE = ' ';
-const int SIZEOFTABSTRING = 48;
+
 const int SIZEOFSETW = 76;
 const int SIZEOFSETWBIG = 100;
 const int MAXCHARINBASENAME = 5;
@@ -44,25 +44,16 @@ const int MAXCHARINSTATUSSTRING = 10;
 const int MAXCHARINORDERSTATUSSTRING = 10;
 const int MAXCHARINPRICESTRING = 5;
 const int MAXCHARINSTATUSANDPRICESTRING = 40;
-const int SIZEOFSPACEBETWEENPIZZASTATUSANDPRICE = 10;
 
-const int SIZEOFTOPPINGSUBMENUNUM = 30;
-const int SIZEOFTOPPINGSUBMENUCHAR = 24;
-const int SIZEOFNUMBERLISTADMINUI = 20;
-const int SIZEOFLISTNAMEADMINUI = 32;
 const int SIZEOFADDTOPPINGSPACES = 42;
 
 const int MAXTOPPINGSONPIZZA = 16;
 const int MAXCHARSINPIZZANAME = 36;
-const int MAXCHARSINPIZZASIZE = 4;
 const int MAXPIZZASINPIZZAFILE = 20;
 const int MAXCHARINORDERCOMMENT = SIZEOFSETWBIG-8;
 const int CHARFORTIME = 13;
 
 const string TABSTRING = "\t\t\t\t\t\t\t\t\t\t\t\t\t";
-const string HALFTABSTRING = "\t\t\t\t\t";
-const string NINETABSTRING = "\t\t\t\t\t\t\t\t\t";
-const string LONGLINE = "---------------------------------------------------------------------------";
 enum status {WAITING, PREPPING, READY, OUTOFSHOP};
 enum orderStatus {UNPAID, PAID, DELIVERED};
 

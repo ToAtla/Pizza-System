@@ -15,12 +15,10 @@
 #include <cstring>
 #include <stdlib.h>
 #include <cstdio>
-#include <ctime>
+
 using namespace std;
 
 int main(){
-    
-    
     
     MainUI mainUI;
     mainUI.startUI();
