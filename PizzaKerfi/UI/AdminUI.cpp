@@ -152,8 +152,8 @@ void AdminUI::displayAllToppings(){
     else{
         for (int i = 0; i < toppings.size(); i++) {
             Topping temp = toppings.at(i);
-            cout << setfill(' ') << setw(14) << " " << setw(19) << left << temp.getName() << setw(24) << setfill(' ') << right << temp.getPrice() << endl;
-            cout << setw(14) << " " << setfill(CHARFORSETFILL) << setw(43) << "-" << endl << endl;
+            cout << setfill(' ') << setw(SIZEFORSETWSPACE-6) << " " << setw(SIZEFORSETWSPACE-1) << left << temp.getName() << setw(SIZEFORSETWSPACE+4) << setfill(' ') << right << temp.getPrice() << endl;
+            cout << setw(SIZEFORSETWSPACE-6) << " " << setfill(CHARFORSETFILL) << setw(43) << "-" << endl << endl;
         }
     }
     
@@ -1324,7 +1324,7 @@ void AdminUI::addMenuItem(){
     
     bizniz.addMenuItem(temp);
     
-    cout << endl << "Menu item added!" << endl << endl;
+    cout << endl << setw(27) << "Menu item added!" << endl << endl;
     
     delete[] toppingsForMenuItem;
 }
