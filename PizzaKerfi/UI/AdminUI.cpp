@@ -370,9 +370,10 @@ void AdminUI::addLocation(){
     getline(cin, name);
     char tempName[MAXCHARINLOCATIONNAME];
     
-    strcpy(tempName, name.c_str());
+    
     
     if(bizniz.isValidNameLength(name, MAXCHARINLOCATIONNAME)){
+        strcpy(tempName, name.c_str());
         Location temp(tempName);
         bizniz.addLocation(temp);
         cout << endl << setw(SIZEOFADDTOPPINGSPACES-10) << "Location added!" << endl << endl;
