@@ -103,12 +103,8 @@ void SalesUI::createOrder(){
             cout << endl << "*MESSEGE* Order was not created because an order needs to contain something" << endl << endl;
             return;
         } else {
-            time_t t = time(0);
-            char* allTimeText = ctime(&t);
-            char* subTimeText = new char[CHARFORTIME];
-            memcpy(subTimeText, &allTimeText[4], 12);
-            subTimeText[12] = '\0';
-            order.setTime(subTimeText);
+            
+            order.setTime(bizniz.getTimeNow());
             bizniz.storeOrder(order);
         }
     }

@@ -99,7 +99,7 @@ public:
     void setOrderStatus(string fileName, int orderNum, orderStatus newOrderStatus);
     bool allPizzasInOrderReady(Order order);
     char* orderStatusToString(orderStatus status);
-    Order getOrderNumber(int orderNumber);
+    Order getOrderByID(int orderNumber);
     int getNumberForNextOrder();
     void storeOrder(Order order);
     void storeOrder(const Order& order, string fileName);
@@ -110,6 +110,7 @@ public:
     Order* getArrayOfOrdersAtLocationWithApplicablePizzas(status status, Location location, bool onlyWith, int& sizeOfReturnOrderList);
     bool thereExistsOrderAtLocationWithApplicablePizza(status status, Location location, bool onlyWith);
     bool orderExist(int orderNum);
+    char* getTimeNow();
     
     
     //Exceptions(Bool functions)

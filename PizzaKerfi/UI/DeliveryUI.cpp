@@ -170,7 +170,7 @@ void DeliveryUI::displayUnpaidOrders(){
             char charInput = 0;
             cin >> charInput;
             input = charInput-48;
-            if(input != 0 && bizniz.orderExist(input) && bizniz.getOrderNumber(input).getStatusOfOrder() == UNPAID){
+            if(input != 0 && bizniz.orderExist(input) && bizniz.getOrderByID(input).getStatusOfOrder() == UNPAID){
                 
                 bizniz.setOrderStatus(ORDERFILE, input, PAID);
                 cout << endl << "Order number " << input << " has been marked as PAID" << endl;
@@ -217,12 +217,14 @@ void DeliveryUI::displayPaidOrders(){
             char charInput = 0;
             cin >> charInput;
             input = charInput-48;
-            if((input != 0) && bizniz.orderExist(input) && bizniz.getOrderNumber(input).getStatusOfOrder() == PAID){
+            if((input != 0) && bizniz.orderExist(input) && bizniz.getOrderByID(input).getStatusOfOrder() == PAID){
                 
-                if(!bizniz.allPizzasInOrderReady(bizniz.getOrderNumber(input))){
+                if(!bizniz.allPizzasInOrderReady(bizniz.getOrderByID(input))){
                     cout << "Not all items in that order are ready" << endl;
                 }else{
-                    
+                    for (int i = 0; i < bizniz.getOrderByID(input).getNumberOfPizzas(); i++) {
+                        bizniz.changeStatusOfPizzaInOrder(orderNum, i, OUTOFSHOP);
+                    }
                     bizniz.setOrderStatus(ORDERFILE, input, DELIVERED);
                     bizniz.moveOrderBetween(ORDERFILE, LEGACYORDERFILE, input);
                     cout << endl << "Order number " << input << " has been marked DELIVERED" << endl;
