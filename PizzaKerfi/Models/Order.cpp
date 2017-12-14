@@ -142,6 +142,15 @@ void Order::setDeliveryAddress(char inAddress[]){
     strcpy(deliveryAddress, inAddress);
 }
 
+char* Order::getTime(){
+    return time;
+}
+///Returns the order timestamp
+
+void Order::setTime(char* inTime){
+    strcpy(time, inTime);
+}
+
 ///Overloads the cout operator so one can use '>>' to input the contents of an Order instance.
 ostream& operator << (ostream& out, const Order& order){
     Bizniz bizniz;
@@ -183,6 +192,8 @@ ostream& operator << (ostream& out, const Order& order){
     string totalPriceString = totalPriceCA;
     
     //cout << LONGLINE << endl;
+    out << "HJÁLP ANDRÉS! SETW ÞARF HÉRNA" << endl;
+    out << order.time << endl;
     out << setw(SIZEOFSETWBIG-8) << right << "TOTAL: " << setw(8) << right << totalPriceString << endl;
     out << setfill(' ') << setw(85) << " " << setfill(CHARFORSETFILL) << setw(15) << "-" << endl;
     out << setfill(' ');

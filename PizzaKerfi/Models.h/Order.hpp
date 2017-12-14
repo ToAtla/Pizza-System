@@ -70,6 +70,10 @@ class Order {
         ///Return a pointer to the private array deliveryAddress.
         void setDeliveryAddress(char inAddress[]);
         ///Takes in an char array as a parameter and gives the private array deliveryAddress the value of it.
+        char* getTime();
+        ///Returns the order timestamp
+        void setTime(char* inTime);
+        ///Sets the order timestamp
         friend ostream& operator << (ostream& out, const Order&);
         ///Overloads the cout operator so one can use '<<' to output the contents of an Order instance.
     private:
@@ -86,6 +90,7 @@ class Order {
         bool delivery;
         char deliveryAddress[MAXCHARINLOCATIONNAME];
         char comment[MAXCHARINORDERCOMMENT];
+        char time[CHARFORTIME];
 };
 
 #endif /* Order_hpp */
