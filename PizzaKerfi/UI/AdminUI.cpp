@@ -972,11 +972,11 @@ void AdminUI::addSize(){
 
     cout << setfill(CHARFORSETFILL) << setw(SIZEOFCENTERHEADING) << "-" <<  "    Adding a size!    " << setfill(CHARFORSETFILL) << setw(SIZEOFCENTERHEADING);
     cout << "-" << endl << endl;
-    cout << setw(SIZEFORSETWSPACE-3) << " " << "Enter size name (Max " << MAXCHARINSIZENAME-2 << " letters): ";
+    cout << setfill(' ') << setw(SIZEFORSETWSPACE-3) << " " << "Enter size name (Max " << MAXCHARINSIZENAME-2 << " letters): ";
     string name;
     cin.ignore();
     getline(cin, name);
-    cout << setw(SIZEFORSETWSPACE) << " " << "Enter price: ";
+    cout << setw(SIZEFORSETWSPACE-3) << " " << "Enter price: ";
     string price;
     cin >> price;
     

@@ -244,6 +244,6 @@ void PrepUI::chooseYourLocation(){
 
 
 void PrepUI::uiItemSeparator () {
-    cout << setw(17) << " " << setfill(CHARFORSETFILL) << setw(SIZEOFSETW-41) << "-" << endl << endl;
+    cout << setw(SIZEFORSETWSPACE) << " " << setfill(CHARFORSETFILL) << setw(SIZEOFSETW-41) << "-" << endl << endl;
     cout << setfill(' ');
 }
