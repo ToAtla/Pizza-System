@@ -308,17 +308,20 @@ MenuItem Bizniz::recognizeMenuItem(Topping* pizzaToppings, int toppingCount, boo
                 }
                 if(menuCounter != pizzaCounter){
                     isMenuitem = false;
+                    delete [] allMenuItems;
                     return returnMenuItem;
                 }
             }
             if(menuCounter == pizzaCounter){
                 isMenuitem = true;
                 returnMenuItem = allMenuItems[i];
+                delete [] allMenuItems;
                 return returnMenuItem;
             }
         }
     }
     isMenuitem = false;
+    delete [] allMenuItems;
     return returnMenuItem;
 }
 
@@ -358,7 +361,11 @@ int Bizniz::calcTotalOrders(){
 }
 
 double Bizniz::calcMeanOrderPrice(){
-    return (double)calcTotalTurnover()/(double)calcTotalOrders();
+    if(calcTotalOrders() != 0){
+        return (double)calcTotalTurnover()/(double)calcTotalOrders();
+    }else{
+        return 0;
+    }
 }
 
 double Bizniz::calcMeanNumberOfPizzasPerOrder(){
@@ -374,7 +381,6 @@ double Bizniz::calcMeanNumberOfPizzasPerOrder(){
     if(numberOfOrders > 0){
         meanOfPizzas = (double)numberOfPizzas/(double)numberOfOrders;
     }
-    
     return meanOfPizzas;
 }
 
