@@ -358,7 +358,7 @@ Pizza SalesUI::pizzaCreationProcess(Location locationOfOrderForPizzaToFollow){
             bool isMenuItem = false;
             MenuItem  tempMenuItem = bizniz.recognizeMenuItem(pizzaToppings, toppingCount, isMenuItem);
             if(isMenuItem){
-                cout << "Your choice is on the menu.  Name of pizza: " << tempMenuItem.getName() << endl;
+                cout << "Your combination of toppings is on the menu under the name: " << tempMenuItem.getName() << endl;
                 string input;
                 cout << endl << "Enter any key to continue: " << endl << endl;
                 cin >> input;
