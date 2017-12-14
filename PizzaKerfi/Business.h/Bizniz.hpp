@@ -78,6 +78,7 @@ public:
     double calcMeanNumberOfPizzasPerOrder();
     double calcMeanNumberOfDrinksPerOrder();
     double calcMeanNumberOfSidesPerOrder();
+    string mostPopularTopping();
     
     //Pizza
     
@@ -121,7 +122,6 @@ public:
     bool isValidNameLength(string name, int lenght);
     bool isValidLocationFile();
     bool isValidBaseSizeFile();
-    
     
 private:
     ToppingRepo toppingRepo;

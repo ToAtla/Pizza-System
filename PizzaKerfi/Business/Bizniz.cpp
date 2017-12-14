@@ -878,6 +878,10 @@ bool Bizniz::isValidToppingInput(int input, unsigned long sizeOflist){
 //it throws an exception otherwise it returns true.
 bool Bizniz::isInputDigit(string input){
     
+    if(input.length() == 0){
+        throw InvalidInputException("*ERROR* Invalid input! (Input does not match any index on the list) Please try again.");
+    }
+    
     for(int i = 0; i < input.length(); i++){
         if(!isdigit(input[i])){
             throw InvalidInputException("*ERROR* Invalid input! (Input does not match any index on the list) Please try again.");
