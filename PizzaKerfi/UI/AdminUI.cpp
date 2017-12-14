@@ -1273,26 +1273,29 @@ void AdminUI::addMenuItem(){
     vector<Topping> allToppings = bizniz.getVectorOfToppings();
     int numberOfToppings = 0;
     
-    cout << endl << setfill(CHARFORSETFILL) << setw(33) << "-" << "       Assemble a menu pizza      " << setfill(CHARFORSETFILL) << setw(33) << "-" << endl << endl;
-    cout << endl << setfill(CHARFORSETFILL) << setw(33) << "-" << "    List of available toppings    " << setfill(CHARFORSETFILL) << setw(33) << "-" << endl << endl;
+    cout << endl << setfill(CHARFORSETFILL) << setw(SIZEOFSETW) << "-" << endl;
+    cout << setfill(' ') << setw(SIZEOFCENTERHEADING) << " " << "Assemble a menu pizza" << endl;
+    cout << setfill(CHARFORSETFILL) << setw(SIZEOFSETW) << "-" << endl << endl;
+    cout << endl << setfill(CHARFORSETFILL) << setw(SIZEOFCENTERHEADING-5) << "-" << "    List of available toppings    " << setfill(CHARFORSETFILL) << setw(SIZEOFCENTERHEADING-5) << "-" << endl << endl;
 
     
     if(allToppings.size() < 1){
         cout << endl << "No toppings available to create a menu item :("  << endl << endl;
     }
     else{
-        cout << setfill(' ') << setw(82) << "Price" << endl;
-        cout << setw(82) << "-----" << endl;
+        cout << setfill(' ') << setw(58) << "Price" << endl;
+        cout << setw(58) << "-----" << endl;
         
         for (int i = 0; i < allToppings.size(); i++) {
-            cout << setfill(' ') << setw(31) << "Topping nr: " << i+1 << endl;
-            cout << setw(22) << allToppings.at(i);
+            Topping temp = allToppings.at(i);
+            cout << setfill(' ') << setw(SIZEFORSETWSPACE-3) << " " << "Topping nr: " << i+1 << endl;
+            cout << setfill(' ') << setw(SIZEFORSETWSPACE) << temp.getName() << setw(38) << temp.getPrice() << endl;
             uiItemSeparator();
         }
         int c = 0;
         while(true){
             if(c <= MAXTOPPINGSONPIZZA){
-                cout << setfill(' ') << setw(19) << " " << "Enter an index of topping to add or 0 to exit (no whitespaces): ";
+                cout << setfill(' ') << setw(SIZEFORSETWSPACE-1) << " " << "Enter an index of topping to add or 0 to exit (no whitespaces): ";
                 string input;
                 cin >> input;
                 
