@@ -394,6 +394,18 @@ void Bizniz::fixNameOfPizza(Pizza& pizza){
     pizza.setName(name);
 }
 
+void Bizniz::fixNameOfPizza(Pizza& pizza, MenuItem menuItem){
+    char tempName[MAXCHARSINPIZZANAME];
+    char* name = new char[MAXCHARSINPIZZANAME];
+    strcpy(tempName, pizza.getSize().getName());
+    strcat(tempName, " ");
+    strcat(tempName, pizza.getBase().getName());
+    strcat(tempName, " ");
+    strcat(tempName, menuItem.getName());
+    strcpy(name, tempName);
+    pizza.setName(name);
+}
+
 Pizza Bizniz::assemblePizza(Size size, Base base, Topping *toppings, int amountOfToppings, Location location){
     //Hingað má setja einhver tékk á það hvort allt sé rétt gert
     int pizzaPrice = size.getPrice() + base.getPrice();
@@ -420,7 +432,7 @@ Pizza Bizniz::assemblePizzaWithMenuItem(Size size, Base base, MenuItem menuItem,
     }
     
     returnPizza.setToppingCount(menuItem.getToppingCount());
-    returnPizza.setName(menuItem.getName());
+    fixNameOfPizza(returnPizza, menuItem);
     returnPizza.setPrice(pizzaPrice);
     return returnPizza;
     
