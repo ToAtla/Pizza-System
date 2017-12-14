@@ -34,7 +34,7 @@ void DeliveryUI::startDeliveryUI(){
         if(cont){
             while(input != 'b'){
                 cout << setfill(CHARFORSETFILL) << setw(SIZEOFSETW) << "-" << setfill(' ') << endl;
-                cout << setfill(' ') << setw(26) << " " << "Delivery for " << locationOfDelivery << endl;
+                cout << setfill(' ') << setw(SIZEOFCENTERHEADING) << " " << "Delivery for " << locationOfDelivery << endl;
                 cout << setfill(CHARFORSETFILL) << setw(SIZEOFSETW) << "-" << setfill(' ') << endl << endl;
                 cout << setw(SIZEFORSETWSPACE) << right << "1: " << "List all orders" << endl;
                 uiItemSeparator();
@@ -76,13 +76,14 @@ void DeliveryUI::chooseYourLocation(){
     LocationRepo lr;
     locations = lr.getVectorOfLocations();
     
-    cout << setfill(CHARFORSUBACTION) << setw(30) << "+" << "    Delivery    " << setfill(CHARFORSUBACTION) << setw(30) << "+" << endl << endl;
-    cout << setfill(CHARFORSETFILL) << setw(24) << "-" << "    Choose your location    " << setfill(CHARFORSETFILL) << setw(24) << "-" << endl << endl;
+    cout << setfill(CHARFORSUBACTION) << setw(SIZEOFCENTERHEADING+4) << "+" << "    Delivery    " << setfill(CHARFORSUBACTION) << setw(30) << "+" << endl << endl;
+    cout << setfill(CHARFORSETFILL) << setw(SIZEOFCENTERHEADING-2) << "-" << "    Choose your location    " << setfill(CHARFORSETFILL) << setw(24) << "-";
+    cout << endl << endl;
     
     
     for(int i = 0; i < locations.size(); i++){
-        cout << setfill(' ') << setw(17) << " " << "Location number: " << i+1 << endl;
-        cout << setfill(' ') << setw(17) << " " << locations[i] << endl;
+        cout << setfill(' ') << setw(SIZEFORSETWSPACE-3) << " " << "Location number: " << i+1 << endl;
+        cout << setfill(' ') << setw(SIZEFORSETWSPACE-3) << " " << locations[i] << endl;
         uiItemSeparator();
     }
     cout << "Choose location (no whitespaces): ";
@@ -116,7 +117,7 @@ void DeliveryUI::displayAllOrders(){
     }
     
     cout << setfill(CHARFORSETFILL) << setw(SIZEOFSETWBIG) << "-" << setfill(CHARFORSPACE) << endl;
-    cout << setfill(CHARFORSPACE) << setw(28) << " " << "Listing All Active Orders in " << locationOfDelivery << endl;
+    cout << setfill(CHARFORSPACE) << setw(SIZEOFCENTERHEADING+2) << " " << "Listing All Active Orders in " << locationOfDelivery << endl;
     cout << setfill(CHARFORSETFILL) << setw(SIZEOFSETWBIG) << "-" << setfill(CHARFORSPACE) << endl << endl;
     
     if(ordRep.fileExists(orderFile) && amountOfUndeliveredOrdersAtThisLocation != 0){
@@ -149,7 +150,7 @@ void DeliveryUI::displayUnpaidOrders(){
     }
     
     cout << setfill(CHARFORSETFILL) << setw(SIZEOFSETWBIG) << "-" << setfill(CHARFORSPACE) << endl;
-    cout << setfill(CHARFORSPACE) << setw(28) << " " << "Listing All UNPAID Orders in " << locationOfDelivery << endl;
+    cout << setfill(CHARFORSPACE) << setw(SIZEOFCENTERHEADING+2) << " " << "Listing All UNPAID Orders in " << locationOfDelivery << endl;
     cout << setfill(CHARFORSETFILL) << setw(SIZEOFSETWBIG) << "-" << setfill(CHARFORSPACE) << endl << endl;
     
     if(ordRep.fileExists(orderFile) && amountOfUnpaidUndeliveredOrdersAtThisLocation != 0){
@@ -196,7 +197,7 @@ void DeliveryUI::displayPaidOrders(){
         }
     }
     cout << setfill(CHARFORSETFILL) << setw(SIZEOFSETWBIG) << "-" << setfill(CHARFORSPACE) << endl;
-    cout << setfill(CHARFORSPACE) << setw(26) << " " << "Listing All PAID Orders in " << locationOfDelivery << endl;
+    cout << setfill(CHARFORSPACE) << setw(SIZEOFCENTERHEADING) << " " << "Listing All PAID Orders in " << locationOfDelivery << endl;
     cout << setfill(CHARFORSETFILL) << setw(SIZEOFSETWBIG) << "-" << setfill(CHARFORSPACE) << endl << endl;
     
     if(ordRep.fileExists(orderFile) && amountOfPaidUndeliveredOrdersAtThisLocation != 0){
@@ -271,6 +272,6 @@ void DeliveryUI::displayLegacyOrders(){
 }
 
 void DeliveryUI::uiItemSeparator () {
-    cout << setw(17) << " " << setfill(CHARFORSETFILL) << setw(SIZEOFSETW-41) << "-" << endl << endl;
+    cout << setw(SIZEFORSETWSPACE-3) << " " << setfill(CHARFORSETFILL) << setw(SIZEOFSETW-41) << "-" << endl << endl;
     cout << setfill(' ');
 }
