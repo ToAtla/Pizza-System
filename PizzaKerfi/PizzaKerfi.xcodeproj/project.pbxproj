@@ -119,7 +119,6 @@
 		E9F00A031FE19A210086412F /* MenuItemRepo.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = MenuItemRepo.cpp; sourceTree = "<group>"; };
 		E9F00A041FE19A210086412F /* MenuItemRepo.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = MenuItemRepo.hpp; sourceTree = "<group>"; };
 		E9F00A061FE2F5B00086412F /* OfferRepo.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = OfferRepo.cpp; sourceTree = "<group>"; };
-		E9F00A071FE2F5B00086412F /* OfferRepo.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = OfferRepo.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -213,7 +212,6 @@
 				7B9F681E1FCF0079006C9167 /* PizzaRepo.hpp */,
 				E974CD2A1FD09A110005D0F9 /* SideRepo.hpp */,
 				E9F00A041FE19A210086412F /* MenuItemRepo.hpp */,
-				E9F00A071FE2F5B00086412F /* OfferRepo.hpp */,
 			);
 			path = Repo.h;
 			sourceTree = "<group>";

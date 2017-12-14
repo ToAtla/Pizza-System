@@ -33,10 +33,6 @@ class Side{
         ///Returns a pointer to the private array name.
         void setName(char inName[]);
         ///Takes in a character array and gives the private array the value of is.
-        void setStatus(status inStatus);
-        ///Takes in a Status a parameter and give the private variable status the value of it.
-        status getStatus();
-        ///Returns the value of the private variable status.
 
         friend istream& operator >> (istream& in, Side& side);
         ///Overloads the istream operator so one can use '>>' to input the contents of a Side instance.
@@ -45,7 +41,6 @@ class Side{
     private:
         char name[MAXCHARINSIDENAME];
         int price;
-        status status;
 };
 
 

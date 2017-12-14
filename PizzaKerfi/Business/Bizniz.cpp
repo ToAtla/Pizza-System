@@ -329,15 +329,6 @@ MenuItem Bizniz::recognizeMenuItem(Topping* pizzaToppings, int toppingCount, boo
     return returnMenuItem;
 }
 
-
-bool Bizniz::getOfferStatus(){
-    return offerRepo.readOfferStatus();
-}
-
-void Bizniz::setOfferStatus(bool o){
-    offerRepo.writeOfferStatus(o);
-}
-
 /**************************************************************************************
  
                                     Analysis
@@ -817,27 +808,6 @@ int Bizniz::getOrderIndexByID(int inputID){
     return -1;
 }
 
-void Bizniz::tvennalyzer(Order& order){
-    Order tempOrder = order;
-    int groups = 0;
-    int pizzaAmount = tempOrder.getNumberOfPizzas();
-    int sideAmount = tempOrder.getNumberOfSides();
-    while(pizzaAmount > 1){
-        if(pizzaAmount > 1 && sideAmount >0){
-            pizzaAmount--;
-            pizzaAmount--;
-            sideAmount--;
-            groups++;
-        }
-    }
-    
-    Pizza* pizzas = order.getPizzasInOrder();
-    Pizza* rePizzas = new Pizza[MAXSTUFFSINORDER];
-    
-    for (int i = 0; i < tempOrder.getNumberOfPizzas(); i++) {
-        
-    }
-}
 
 /**************************************************************************************
  
