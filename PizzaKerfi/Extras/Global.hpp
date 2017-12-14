@@ -57,6 +57,7 @@ const int MAXCHARSINPIZZANAME = 36;
 const int MAXCHARSINPIZZASIZE = 4;
 const int MAXPIZZASINPIZZAFILE = 20;
 const int MAXCHARINORDERCOMMENT = SIZEOFSETWBIG-8;
+const int CHARFORTIME = 13;
 
 const string TABSTRING = "\t\t\t\t\t\t\t\t\t\t\t\t\t";
 const string HALFTABSTRING = "\t\t\t\t\t";
