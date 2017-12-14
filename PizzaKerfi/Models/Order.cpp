@@ -192,8 +192,8 @@ ostream& operator << (ostream& out, const Order& order){
     string totalPriceString = totalPriceCA;
     
     //cout << LONGLINE << endl;
-    out << setw(SIZEFORSETWSPACE) << left << order.time << setw(SIZEOFSETW-1) << right << "TOTAL: " << setw(8) << right << totalPriceString << endl;
-    out << setfill(' ') << setw(SIZEOFSETWBIG-15) << " " << setfill(CHARFORSETFILL) << setw(SIZEOFSETWBIG-85) << "-" << endl;
+    out << setw(SIZEFORSETWSPACE) << left << order.time << setw(SIZEOFSETW-1) << right << "TOTAL: " << setw(SIZEOFPRICECHARACTERS) << right << totalPriceString << endl;
+    out << setfill(' ') << setw(SIZEOFSETWBIG-15) << " " << setfill(CHARFORSETFILL) << setw(SIZEOFSETWBIG-(SIZEOFSETWBIG-15)) << "-" << endl;
     out << setfill(' ');
     out << endl;
     
