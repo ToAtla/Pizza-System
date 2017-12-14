@@ -1334,7 +1334,7 @@ void AdminUI::addMenuItem(){
                 
                 bizniz.addMenuItem(temp);
                 
-                cout << endl << setw(SIZEFORSETWSPACE-3) << " " << "Menu item added!" << endl << endl;
+                cout << endl << setw(SIZEFORSETWSPACE) << " " << "Menu item added!" << endl << endl;
                 
                 delete[] toppingsForMenuItem;
             }
