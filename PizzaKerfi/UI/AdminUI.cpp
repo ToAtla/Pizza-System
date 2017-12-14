@@ -19,7 +19,7 @@ void AdminUI::startAdminUI(){
     while(input != 'b'){
         magic.clearScreen();
         cout << setfill(CHARFORSETFILL) << setw(SIZEOFSETW) << "-" << endl;
-        cout << setfill (' ') << setw(40) << "Admin" << endl;
+        cout << setfill (' ') << setw(SIZEOFBIGCENTERHEADING) << " " << "Admin" << endl;
         cout << setfill(CHARFORSETFILL) << setw(SIZEOFSETW) << "-" << setfill(' ') << endl << endl;
         cout << setfill(' ') << setw(SIZEFORSETWSPACE) << " " << "1: Add/change the topping list" << endl;
         uiItemSeparator();
