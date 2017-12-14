@@ -350,14 +350,14 @@ Pizza SalesUI::pizzaCreationProcess(Location locationOfOrderForPizzaToFollow){
         
         for (unsigned int i = 0; i < tellMeHowMany; i++) {
             MenuItem temp = menuItems[i];
-            cout << setfill(' ') << setw(27) << "Base number: " << i+1 << endl;
+            cout << setfill(' ') << setw(27) << "Menu item number: " << i+1 << endl;
             cout << setfill(' ') << setw(14) << " " << setw(19) << left << temp.getName() << setw(24) << setfill(' ') << right << temp.getPrice() << endl;
             for(int i = 0; i < temp.getToppingCount(); i++){
                 cout << setfill(' ') << setw(14) << " " << setw(19) << left << temp.getCertainTopping(i).getName() << setw(24) << setfill(' ') << right << endl;
             }
             cout << setw(14) << " " << setfill(CHARFORSETFILL) << setw(43) << "-" << endl << endl;
         }
-        cout << "Choose a number corresponding to side (Þetta á eftir að Exeption hjúpa): ";
+        cout << "Choose a number corresponding to menu item (Þetta á eftir að Exeption hjúpa): ";
         string input;
         cin >> input;
         

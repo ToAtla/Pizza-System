@@ -82,6 +82,7 @@ public:
     char* statusToString(status status);
     string getStatusAndPriceCharArr(Pizza pizza);
     void fixNameOfPizza(Pizza& pizza);
+    void fixNameOfPizza(Pizza& pizza, MenuItem menuItem);
     Pizza assemblePizza(Size size, Base base, Topping *toppings, int amountOfToppings, Location location);
     Pizza assemblePizzaWithMenuItem(Size size, Base base, MenuItem menuItem, Location location);
     void appendPizzaToFile(string fileName, Pizza pizza);
