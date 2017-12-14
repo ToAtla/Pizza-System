@@ -616,7 +616,7 @@ char* Bizniz::orderStatusToString(orderStatus status){
     return statusString;
 }
 
-Order Bizniz::getOrderNumber(int orderNumber){
+Order Bizniz::getOrderByID(int orderNumber){
     int size;
     Order* allOrders = orderRepo.retrieveOrderArray(ORDERFILE, size);
     for (int i = 0; i < size; i++) {
@@ -630,15 +630,20 @@ Order Bizniz::getOrderNumber(int orderNumber){
 }
 
 int Bizniz::getNumberForNextOrder(){
-    int orderCnt = 0;
+    int orderCntActive = 0;
     OrderRepo ordRep;
-    Order* tempOrderArray = ordRep.retrieveOrderArray(ORDERFILE, orderCnt);
+    Order* tempOrderArray = ordRep.retrieveOrderArray(ORDERFILE, orderCntActive);
+    
+    int orderCntLegacy = 0;
+    Order* tempLegacyOrderArray = ordRep.retrieveOrderArray(ORDERFILE, orderCntLegacy);
+    int orderCnt = orderCntActive + orderCntLegacy;
     if(orderCnt == 0){
         orderCnt = 1;
         return orderCnt;
     }
     orderCnt++;
     delete [] tempOrderArray;
+    delete [] tempLegacyOrderArray;
     return orderCnt;
 }
 
@@ -711,27 +716,12 @@ void Bizniz::locateFirstOrderWithPizzaWithStatusAtLocation(status status, Locati
 void Bizniz::changeStatusOfPizzaInOrder(int orderNum, int pizzaNumber, status status){
     int ordersInFile = 0;
     Order* allOrders = getArrayOfOrders(ORDERFILE, ordersInFile);
-    
-    
      allOrders[orderNum].getPizzasInOrder()[pizzaNumber].setStatus(status);
-    
-    
-    //Hér á eftir að setja inn að hann visti dæmið í skrána
     orderRepo.clearOrderFile(ORDERFILE);
     for (int i = 0; i < ordersInFile; i++) {
         storeOrder(allOrders[i]);
     }
     delete [] allOrders;
-    
-    
-    
-    
-    
-    //PRUFUVIÐBÓT
-    int newOrdersInFile = 0;
-    Order* newAllOrders = getArrayOfOrders(ORDERFILE, newOrdersInFile);
-    delete [] newAllOrders;
-    
 }
 
 
@@ -802,6 +792,14 @@ bool Bizniz::orderExist(int orderNum){
     return false;
 }
 
+char* Bizniz::getTimeNow(){
+    time_t t = time(0);
+    char* allTimeText = ctime(&t);
+    char* subTimeText = new char[CHARFORTIME];
+    memcpy(subTimeText, &allTimeText[4], 12);
+    subTimeText[12] = '\0';
+    return subTimeText;
+}
 /**************************************************************************************
  
                               Exceptions(Bool functions)
