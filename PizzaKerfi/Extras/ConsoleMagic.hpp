@@ -13,9 +13,9 @@
 #include "Global.hpp"
 
 class ConsoleMagic{
-public:
-    void clearScreen();
-private:
+    public:
+        void clearScreen();
+    private:
 };
 
 
