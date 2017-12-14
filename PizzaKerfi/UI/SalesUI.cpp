@@ -334,58 +334,35 @@ Pizza SalesUI::pizzaCreationProcess(Location locationOfOrderForPizzaToFollow){
     Base pizzaBase = basePickingProcess();
     int tellMeHowMany;
     MenuItem* menuItems = bizniz.getArrayOfMenuItems(MENUITEMFILE, tellMeHowMany);
-<<<<<<< HEAD
-    cout << endl << "Assemble off menu pizza?(y/n) ";
-    char input = '\0';
-    cin >> input;
-    if(input == 'y'){
-        int toppingCount = 0;
-        Topping* pizzaToppings = toppingPickingProcess(toppingCount);
-        bool isMenuItem = false;
-        MenuItem  tempMenuItem = bizniz.recognizeMenuItem(pizzaToppings, toppingCount, isMenuItem);
-        if(isMenuItem){
-            cout << "Your choice is on the menu.  Name of pizza: " << tempMenuItem.getName() << endl;
-            Pizza returnPizza = bizniz.assemblePizzaWithMenuItem(pizzaSize, pizzaBase, tempMenuItem, locationOfOrderForPizzaToFollow);
-            return returnPizza;
-        }else{
-            Pizza  returnPizza = bizniz.assemblePizza(pizzaSize, pizzaBase, pizzaToppings, toppingCount, locationOfOrderForPizzaToFollow);
-            return returnPizza;
-        }
-        delete [] pizzaToppings;
-    }else{
-        cout << setfill(CHARFORSETFILL) << setw(35) << "-" << "    List of menu Items    " << setfill(CHARFORSETFILL) << setw(34) << "-" << endl << endl;
-        cout << setfill(' ') << setw(82) << "Price" << endl;
-        cout << setw(82) << "-----" << endl;
-        
-        for (unsigned int i = 0; i < tellMeHowMany; i++) {
-            MenuItem temp = menuItems[i];
-            cout << setfill(' ') << setw(27) << "Menu item number: " << i+1 << endl;
-            cout << setfill(' ') << setw(14) << " " << setw(19) << left << temp.getName() << setw(24) << setfill(' ') << right << temp.getPrice() << endl;
-            for(int i = 0; i < temp.getToppingCount(); i++){
-                cout << setfill(' ') << setw(14) << " " << setw(19) << left << temp.getCertainTopping(i).getName() << setw(24) << setfill(' ') << right << endl;
-=======
-
+    //
     while(true){
         cout << endl << "Assemble off menu pizza?(y/n) ";
         char input = '\0';
         cin >> input;
         if(input != 'y' && tellMeHowMany < 1){
-            if(tellMeHowMany < 1){
                 cout << endl << endl << "*NOTE* Sorry there are no menu pizzas available you will have assemble the toppings yourself *NOTE*" << endl << endl;
                 int toppingCount = 0;
                 Topping* pizzaToppings = toppingPickingProcess(toppingCount);
                 Pizza returnPizza = bizniz.assemblePizza(pizzaSize, pizzaBase, pizzaToppings, toppingCount, locationOfOrderForPizzaToFollow);
                 delete [] pizzaToppings;
                 return returnPizza;
->>>>>>> 8f190c819bafb26a2c0e19375f6bda8226a18293
-            }
         }
         else if(input == 'y'){
             int toppingCount = 0;
             Topping* pizzaToppings = toppingPickingProcess(toppingCount);
-            Pizza returnPizza = bizniz.assemblePizza(pizzaSize, pizzaBase, pizzaToppings, toppingCount, locationOfOrderForPizzaToFollow);
-            delete [] pizzaToppings;
-            return returnPizza;
+            bool isMenuItem = false;
+            MenuItem  tempMenuItem = bizniz.recognizeMenuItem(pizzaToppings, toppingCount, isMenuItem);
+            if(isMenuItem){
+                cout << "Your choice is on the menu.  Name of pizza: " << tempMenuItem.getName() << endl;
+                Pizza returnPizza = bizniz.assemblePizzaWithMenuItem(pizzaSize, pizzaBase, tempMenuItem, locationOfOrderForPizzaToFollow);
+                delete [] pizzaToppings;
+                return returnPizza;
+            }else{
+                Pizza  returnPizza = bizniz.assemblePizza(pizzaSize, pizzaBase, pizzaToppings, toppingCount, locationOfOrderForPizzaToFollow);
+                delete [] pizzaToppings;
+                return returnPizza;
+            }
+            
         }else{
             cout << setfill(CHARFORSETFILL) << setw(SIZEOFBIGCENTERHEADING) << "-" << "    List of menu Items    " << setfill(CHARFORSETFILL) << setw(SIZEOFBIGCENTERHEADING-1) << "-" << endl << endl;
             cout << setfill(' ') << setw(SIZEOFPRICESPACE) << "Price" << endl;
