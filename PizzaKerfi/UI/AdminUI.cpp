@@ -1228,7 +1228,9 @@ void AdminUI::displayMenuItemMenu(){
             magic.clearScreen();
             try {
                 addMenuItem();
-            } catch (InvalidNameException e) {
+            } catch (InvalidInputException e) {
+                cout << endl << e.getMessage() << endl << endl;
+            } catch (InvalidNameException e){
                 cout << endl << e.getMessage() << endl << endl;
             } catch (InvalidPriceException e) {
                 cout << endl << e.getMessage() << endl << endl;
@@ -1315,18 +1317,25 @@ void AdminUI::addMenuItem(){
         string name;
         cin.ignore();
         getline(cin, name);
-        cout << endl << "Enter the price of the menu item: ";
-        string price;
-        cin >> price;
-        int intPrice = stoi(price);
         
-        MenuItem temp(toppingsForMenuItem, name, numberOfToppings, intPrice);
-        
-        bizniz.addMenuItem(temp);
-        
-        cout << endl << setw(27) << "Menu item added!" << endl << endl;
-        
-        delete[] toppingsForMenuItem;
+        if(bizniz.isValidNameLength(name, MAXCHARSINPIZZANAME)){
+            cout << endl << "Enter the price of the menu item: ";
+            string price;
+            cin >> price;
+            
+            if(bizniz.isPriceDigit(price) && bizniz.isValidPrice(stoi(price))){
+               
+                int intPrice = stoi(price);
+                
+                MenuItem temp(toppingsForMenuItem, name, numberOfToppings, intPrice);
+                
+                bizniz.addMenuItem(temp);
+                
+                cout << endl << setw(27) << "Menu item added!" << endl << endl;
+                
+                delete[] toppingsForMenuItem;
+            }
+        }
     }
 }
 

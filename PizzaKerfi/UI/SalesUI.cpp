@@ -113,7 +113,7 @@ void SalesUI::createOrder(){
 //Then retruns it
 void SalesUI::deliveryCreationProcess(Order& order){
     string input;
-    cout << endl << "Will this order be delivered(y/n)";
+    cout << endl << "Will this order be delivered(y/n) ";
     cin >> input;
     clearScreen();
     string addressString;
@@ -332,41 +332,58 @@ Pizza SalesUI::pizzaCreationProcess(Location locationOfOrderForPizzaToFollow){
     Base pizzaBase = basePickingProcess();
     int tellMeHowMany;
     MenuItem* menuItems = bizniz.getArrayOfMenuItems(MENUITEMFILE, tellMeHowMany);
-    cout << endl << "Assemble off menu pizza?(y/n) ";
-    char input = '\0';
-    cin >> input;
-    if(input == 'y'){
-        int toppingCount = 0;
-        Topping* pizzaToppings = toppingPickingProcess(toppingCount);
-        Pizza returnPizza = bizniz.assemblePizza(pizzaSize, pizzaBase, pizzaToppings, toppingCount, locationOfOrderForPizzaToFollow);
-        delete [] pizzaToppings;
-        return returnPizza;
-    }else{
-       
-        
-        cout << setfill(CHARFORSETFILL) << setw(35) << "-" << "    List of menu Items    " << setfill(CHARFORSETFILL) << setw(34) << "-" << endl << endl;
-        cout << setfill(' ') << setw(82) << "Price" << endl;
-        cout << setw(82) << "-----" << endl;
-        
-        for (unsigned int i = 0; i < tellMeHowMany; i++) {
-            MenuItem temp = menuItems[i];
-            cout << setfill(' ') << setw(27) << "Menu item number: " << i+1 << endl;
-            cout << setfill(' ') << setw(14) << " " << setw(19) << left << temp.getName() << setw(24) << setfill(' ') << right << temp.getPrice() << endl;
-            for(int i = 0; i < temp.getToppingCount(); i++){
-                cout << setfill(' ') << setw(14) << " " << setw(19) << left << temp.getCertainTopping(i).getName() << setw(24) << setfill(' ') << right << endl;
-            }
-            cout << setw(14) << " " << setfill(CHARFORSETFILL) << setw(43) << "-" << endl << endl;
-        }
-        cout << "Choose a number corresponding to menu item (Þetta á eftir að Exeption hjúpa): ";
-        string input;
+
+    while(true){
+        cout << endl << "Assemble off menu pizza?(y/n) ";
+        char input = '\0';
         cin >> input;
-        
-        int intInput = stoi(input);
-        
-        Pizza returnPizza = bizniz.assemblePizzaWithMenuItem(pizzaSize, pizzaBase, menuItems[intInput-1], locationOfOrderForPizzaToFollow);
-        
-        return returnPizza;
-        
+        if(input != 'y' && tellMeHowMany < 1){
+            if(tellMeHowMany < 1){
+                cout << endl << endl << "*NOTE* Sorry there are no menu pizzas available you will have assemble the toppings yourself *NOTE*" << endl << endl;
+                int toppingCount = 0;
+                Topping* pizzaToppings = toppingPickingProcess(toppingCount);
+                Pizza returnPizza = bizniz.assemblePizza(pizzaSize, pizzaBase, pizzaToppings, toppingCount, locationOfOrderForPizzaToFollow);
+                delete [] pizzaToppings;
+                return returnPizza;
+            }
+        }
+        else if(input == 'y'){
+            int toppingCount = 0;
+            Topping* pizzaToppings = toppingPickingProcess(toppingCount);
+            Pizza returnPizza = bizniz.assemblePizza(pizzaSize, pizzaBase, pizzaToppings, toppingCount, locationOfOrderForPizzaToFollow);
+            delete [] pizzaToppings;
+            return returnPizza;
+        }else{
+            cout << setfill(CHARFORSETFILL) << setw(35) << "-" << "    List of menu Items    " << setfill(CHARFORSETFILL) << setw(34) << "-" << endl << endl;
+            cout << setfill(' ') << setw(82) << "Price" << endl;
+            cout << setw(82) << "-----" << endl;
+                
+            for (unsigned int i = 0; i < tellMeHowMany; i++) {
+                MenuItem temp = menuItems[i];
+                cout << setfill(' ') << setw(32) << "Menu item number: " << i+1 << endl;
+                cout << setfill(' ') << setw(14) << " " << setw(19) << left << temp.getName() << setw(24) << setfill(' ') << right << temp.getPrice() << endl;
+                for(int i = 0; i < temp.getToppingCount(); i++){
+                    cout << setfill(' ') << setw(14) << " " << setw(19) << left << temp.getCertainTopping(i).getName() << setw(24) << setfill(' ') << right << endl;
+                }
+                cout << setw(14) << " " << setfill(CHARFORSETFILL) << setw(43) << "-" << endl << endl;
+            }
+            cout << "Choose a number corresponding to menu item (Þetta á eftir að Exeption hjúpa): ";
+            string input;
+            cin.ignore();
+            getline(cin, input);
+                
+            unsigned long longHowMany = tellMeHowMany;
+                
+            if(bizniz.isInputDigit(input) && bizniz.isValidInput(stoi(input), longHowMany)){
+            
+                int intInput = stoi(input);
+                
+                Pizza returnPizza = bizniz.assemblePizzaWithMenuItem(pizzaSize, pizzaBase, menuItems[intInput-1], locationOfOrderForPizzaToFollow);
+                
+                return returnPizza;
+            }
+        }
+        return Pizza();
     }
     
 }
