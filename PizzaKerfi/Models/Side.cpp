@@ -49,16 +49,6 @@ void Side::setName(char inName[]){
     }
 }
 
-///Takes in a Status a parameter and give the private variable status the value of it.
-void Side::setStatus(enum status inStatus){
-    status = inStatus;
-}
-
-///Returns the value of the private variable status.
-status Side::getStatus(){
-    return status;
-}
-
 ///Overloads the ostream operator so one can use the '<<' operator to print the contents of a topping instance.
 ostream& operator << (ostream& out, const Side& side){
     

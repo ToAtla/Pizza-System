@@ -324,15 +324,6 @@ MenuItem Bizniz::recognizeMenuItem(Topping* pizzaToppings, int toppingCount, boo
     return returnMenuItem;
 }
 
-
-bool Bizniz::getOfferStatus(){
-    return offerRepo.readOfferStatus();
-}
-
-void Bizniz::setOfferStatus(bool o){
-    offerRepo.writeOfferStatus(o);
-}
-
 /**************************************************************************************
  
                                     Analysis
@@ -491,9 +482,13 @@ void Bizniz::fixNameOfPizza(Pizza& pizza){
     strcpy(tempName, pizza.getSize().getName());
     strcat(tempName, " ");
     strcat(tempName, pizza.getBase().getName());
-    for (int i = 0; i < pizza.getToppingCount(); i++) {
-        strcat(tempName, " ");
-        strcat(tempName, pizza.getToppings()[i].getName());
+    if(pizza.getToppingCount() != 0){
+        for (int i = 0; i < pizza.getToppingCount(); i++) {
+            strcat(tempName, " ");
+            strcat(tempName, pizza.getToppings()[i].getName());
+        }
+    }else{
+        strcat(tempName, " Margarita");
     }
     strcpy(name, tempName);
     pizza.setName(name);
@@ -512,7 +507,6 @@ void Bizniz::fixNameOfPizza(Pizza& pizza, MenuItem menuItem){
 }
 
 Pizza Bizniz::assemblePizza(Size size, Base base, Topping *toppings, int amountOfToppings, Location location){
-    //Hingað má setja einhver tékk á það hvort allt sé rétt gert
     int pizzaPrice = size.getPrice() + base.getPrice();
     Pizza returnPizza = Pizza(size, base, location);
     for (int i = 0; i < amountOfToppings; i++) {
@@ -611,9 +605,9 @@ bool Bizniz::allPizzasInOrderReady(Order order){
 char* Bizniz::orderStatusToString(orderStatus status){
     char* statusString = new char[MAXCHARINORDERSTATUSSTRING];
     if(status == UNPAID){
-        strcpy(statusString, "UNPAID   ");
+        strcpy(statusString, "UNPAID");
     }if(status == PAID){
-        strcpy(statusString, "PAID     ");
+        strcpy(statusString, "PAID");
     }if(status == DELIVERED){
         strcpy(statusString, "DELIVERED");
     }

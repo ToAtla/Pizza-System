@@ -154,7 +154,8 @@ void Order::setTime(char* inTime){
 ///Overloads the cout operator so one can use '>>' to input the contents of an Order instance.
 ostream& operator << (ostream& out, const Order& order){
     Bizniz bizniz;
-    out << "#" << order.ID << setw(56) << right << order.locationOfOrder << setw(45) << right << bizniz.orderStatusToString(order.statusOfOrder) << endl;
+    out << "#"  << setw(SIZEOFIDCHARACTERS) << left << order.ID << setw(SIZEOFBIGCENTERHEADING+11) << right << order.locationOfOrder << setw(SIZEOFSETWBIG-(SIZEOFBIGCENTERHEADING+18));
+    out << right << bizniz.orderStatusToString(order.statusOfOrder) << endl;
     out << setfill(CHARFORSETFILL) << setw(SIZEOFSETWBIG) << "-" << endl;
     if(order.delivery){
         cout << "DELIVERY: " << order.deliveryAddress << endl;

@@ -17,7 +17,9 @@
 #include <cstdio>
 
 using namespace std;
+void ekkert(){
 
+}
 int main(){
     
     MainUI mainUI;
