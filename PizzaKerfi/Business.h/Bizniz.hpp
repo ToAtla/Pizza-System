@@ -65,6 +65,16 @@ public:
     void storeVectorOfBases(vector<Base> bases);
     void removeBase(vector<Base>, int index);
    
+    //MenuItem
+    MenuItem* getArrayOfMenuItems(string fileName, int& tellMeHowMany);
+    void addMenuItem(MenuItem& menuItem);
+    
+    //Analysis
+    int calcTotalTurnover();
+    int calcTotalPizzas();
+    int calcTotalOrders();
+    double calcMeanOrderPrice();
+    
     //Pizza
     
     void savePizzaArrayInFile(Pizza pizzaArray[], int sizeOfArray);
@@ -105,17 +115,6 @@ public:
     bool isValidNameLength(string name, int lenght);
     bool isValidLocationFile();
     bool isValidBaseSizeFile();
-    
-    
-    //Analysis
-    int calcTotalTurnover();
-    int calcTotalPizzas();
-    int calcTotalOrders();
-    double calcMeanOrderPrice();
-    
-    
-    //MenuItem
-    MenuItem* getArrayOfMenuItems(string fileName, int& tellMeHowMany);
     
     
 private:

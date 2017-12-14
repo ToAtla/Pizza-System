@@ -9,17 +9,31 @@
 #include "MenuItem.hpp"
 
 MenuItem::MenuItem(){
-    name[0] = '\0';
+    nameOfMenuItem[0] = '\0';
     price = 0;
     toppingCount = 0;
 }
 
+MenuItem::MenuItem(Topping toppings[], string name, int numberOfToppings, int price){
+    
+    toppingCount = numberOfToppings;
+    
+    for(int i = 0; i < toppingCount; i++){
+        toppingsInMenuItem[i] = toppings[i];
+    }
+    
+    strcpy(nameOfMenuItem, name.c_str());
+    
+    this->price = price;
+    
+}
+
 string MenuItem::getName(){
-    return name;
+    return nameOfMenuItem;
 }
 
 void MenuItem::setName(char inName[MAXCHARSINPIZZANAME]){
-    strcpy(name, inName);
+    strcpy(nameOfMenuItem, inName);
 }
 
 int MenuItem::getPrice(){
@@ -31,7 +45,7 @@ void MenuItem::setPrice(int inPrice){
 }
 
 Topping* MenuItem::getToppings(){
-    return toppings;
+    return toppingsInMenuItem;
 }
 
 int MenuItem::getToppingCount(){
@@ -40,6 +54,10 @@ int MenuItem::getToppingCount(){
 
 void MenuItem::setToppingCount(int inToppingCount){
     toppingCount = inToppingCount;
+}
+
+Topping MenuItem::getCertainTopping(int index){
+    return toppingsInMenuItem[index];
 }
 
 ostream& operator << (ostream& out, const MenuItem&){

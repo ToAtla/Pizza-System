@@ -257,8 +257,70 @@ void Bizniz::removeBase(vector<Base> bases, int index){
     baseRepo.storeVectorOfBases(bases);
 }
 
+/**************************************************************************************
+ 
+                                    MenuItem
+ 
+ ***************************************************************************************/
 
 
+MenuItem* Bizniz::getArrayOfMenuItems(string fileName, int& tellMeHowMany){
+    
+    MenuItem menuItems[MAXPIZZASINPIZZAFILE];
+    
+    menuItemRepo.getArrayOfMenuItems(tellMeHowMany);
+    
+    for(int i = 0; i < tellMeHowMany; i++){
+        menuItems[i] = menuItemRepo.getArrayOfMenuItems(tellMeHowMany)[i];
+    }
+    
+    return menuItems;
+}
+
+void Bizniz::addMenuItem(MenuItem& menuItem){
+    
+    menuItemRepo.addMenuItem(menuItem);
+    
+}
+
+/**************************************************************************************
+ 
+                                    Analysis
+ 
+ ***************************************************************************************/
+
+int Bizniz::calcTotalTurnover(){
+    int numberOfOrders;
+    int sum = 0;
+    Order* allOrders = getArrayOfOrders(LEGACYORDERFILE, numberOfOrders);
+    for (int i = 0; i < numberOfOrders ; i++) {
+        sum += allOrders[i].getTotalPrice();
+    }
+    delete [] allOrders;
+    return sum;
+}
+
+int Bizniz::calcTotalPizzas(){
+    int numberOfOrders;
+    int pizzaSum = 0;
+    Order* allOrders = getArrayOfOrders(LEGACYORDERFILE, numberOfOrders);
+    for (int i = 0; i < numberOfOrders ; i++) {
+        pizzaSum += allOrders[i].getNumberOfPizzas();
+    }
+    delete [] allOrders;
+    return pizzaSum;
+}
+
+int Bizniz::calcTotalOrders(){
+    int numberOfOrders;
+    Order* allOrders = getArrayOfOrders(LEGACYORDERFILE, numberOfOrders);
+    delete [] allOrders;
+    return numberOfOrders;
+}
+
+double Bizniz::calcMeanOrderPrice(){
+    return (double)calcTotalTurnover()/(double)calcTotalOrders();
+}
 
 /**************************************************************************************
  
@@ -506,8 +568,6 @@ void Bizniz::locateFirstOrderWithPizzaWithStatusAtLocation(status status, Locati
                 if(allOrders[i].getPizzasInOrder()[c].getStatus() == status){
                     orderNum = i;
                     pizzaNum = c;
-                    cout << "first instance of pizza that applies O:" << orderNum << " P:" << pizzaNum << endl;
-                    cout << "printing that pizza:" << endl;
                     cout << allOrders[orderNum].getPizzasInOrder()[pizzaNum] << endl;
                     i = ordersInFile;
                     c = allOrders[i].getNumberOfPizzas();
@@ -741,56 +801,8 @@ bool Bizniz::isValidBaseSizeFile(){
     return true;
 }
 
-/**************************************************************************************
- 
-                                    Analysis
- 
- ***************************************************************************************/
-
-int Bizniz::calcTotalTurnover(){
-    int numberOfOrders;
-    int sum = 0;
-    Order* allOrders = getArrayOfOrders(LEGACYORDERFILE, numberOfOrders);
-    for (int i = 0; i < numberOfOrders ; i++) {
-        sum += allOrders[i].getTotalPrice();
-    }
-    delete [] allOrders;
-    return sum;
-}
-
-int Bizniz::calcTotalPizzas(){
-    int numberOfOrders;
-    int pizzaSum = 0;
-    Order* allOrders = getArrayOfOrders(LEGACYORDERFILE, numberOfOrders);
-    for (int i = 0; i < numberOfOrders ; i++) {
-        pizzaSum += allOrders[i].getNumberOfPizzas();
-    }
-    delete [] allOrders;
-    return pizzaSum;
-}
-
-int Bizniz::calcTotalOrders(){
-    int numberOfOrders;
-    Order* allOrders = getArrayOfOrders(LEGACYORDERFILE, numberOfOrders);
-    delete [] allOrders;
-    return numberOfOrders;
-}
-
-double Bizniz::calcMeanOrderPrice(){
-    return (double)calcTotalTurnover()/(double)calcTotalOrders();
-}
 
 
 
-/**************************************************************************************
- 
-                                    MenuItem
- 
- ***************************************************************************************/
 
 
-MenuItem* Bizniz::getArrayOfMenuItems(string fileName, int& tellMeHowMany){
-//    fileName =
-//    menuItemRepo.getVe();
-
-}

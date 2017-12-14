@@ -230,7 +230,7 @@ Topping* SalesUI::toppingPickingProcess(int& toppingCount){
     vector<Topping> allToppings = bizniz.getVectorOfToppings();
     
     if(allToppings.size() < 1){
-        cout << endl << "No toppings available at this time." << endl;
+        cout << endl << "*NOTE* No toppings available at this time." << endl;
     }
     else{
         cout << setfill(' ') << setw(82) << "Price" << endl;
@@ -330,7 +330,9 @@ Pizza SalesUI::pizzaCreationProcess(Location locationOfOrderForPizzaToFollow){
    
     Size pizzaSize = sizePickingProcess();
     Base pizzaBase = basePickingProcess();
-    cout << "Assemble off menu pizza?(y/n)";
+    int tellMeHowMany;
+    MenuItem* menuItems = bizniz.getArrayOfMenuItems(MENUITEMFILE, tellMeHowMany);
+    cout << endl << "Assemble off menu pizza?(y/n) ";
     char input = '\0';
     cin >> input;
     if(input == 'y'){
@@ -340,22 +342,37 @@ Pizza SalesUI::pizzaCreationProcess(Location locationOfOrderForPizzaToFollow){
         delete [] pizzaToppings;
         return returnPizza;
     }else{
-        int tellMeHowMany;
-        MenuItem* entireMenu = bizniz.getArrayOfMenuItems(MENUITEMFILE, tellMeHowMany);
+       
         
         cout << setfill(CHARFORSETFILL) << setw(35) << "-" << "    List of menu Items    " << setfill(CHARFORSETFILL) << setw(34) << "-" << endl << endl;
         cout << setfill(' ') << setw(82) << "Price" << endl;
         cout << setw(82) << "-----" << endl;
         
-        for(unsigned int i = 0; i < tellMeHowMany; i++){
-            MenuItem temp = entireMenu.[i];
-            cout << setw(31) << "Item number " << i+1 << endl;
-            cout << setfill(' ') << setw(19) << " " << setw(19) << left << temp.getName() << setw(44) << right << temp.getPrice() << endl;
-            uiItemSeparator();
+        for (unsigned int i = 0; i < tellMeHowMany; i++) {
+            MenuItem temp = menuItems[i];
+            cout << setfill(' ') << setw(27) << "Base number: " << i+1 << endl;
+            cout << setfill(' ') << setw(14) << " " << setw(19) << left << temp.getName() << setw(24) << setfill(' ') << right << temp.getPrice() << endl;
+            for(int i = 0; i < temp.getToppingCount(); i++){
+                cout << setfill(' ') << setw(14) << " " << setw(19) << left << temp.getCertainTopping(i).getName() << setw(24) << setfill(' ') << right << endl;
+            }
+            cout << setw(14) << " " << setfill(CHARFORSETFILL) << setw(43) << "-" << endl << endl;
         }
         cout << "Choose a number corresponding to side (Þetta á eftir að Exeption hjúpa): ";
-        int input;
+        string input;
         cin >> input;
+        
+        int intInput = stoi(input);
+        
+        Topping pizzaToppings[menuItems[intInput-1].getToppingCount()];
+        
+        for(int i = 0; i < menuItems[intInput-1].getToppingCount(); i++){
+            pizzaToppings[i] = menuItems[intInput-1].getCertainTopping(i);
+        }
+        
+        int toppingCount = 0;
+        Pizza returnPizza = bizniz.assemblePizza(pizzaSize, pizzaBase, pizzaToppings, toppingCount, locationOfOrderForPizzaToFollow);
+        return returnPizza;
+        
         
     }
     
@@ -366,7 +383,7 @@ void SalesUI::sideListCreationProcess(Order &order){
     vector<Side> sides = bizniz.getVectorOfSides();
     
     if(sides.size() < 1){
-        cout << endl << "There are no sides available at this time." << endl;
+        cout << endl << "*NOTE* There are no sides available at this time." << endl;
     }
     else{
         cout << endl << endl << "Would you like a side with your order? 'y' for yes, anything else for no. ";
@@ -427,7 +444,7 @@ void SalesUI::drinkListCreationProcess(Order &order){
     vector<Drink> drinks = bizniz.getVectorOfDrinks();
     
     if(drinks.size() < 1){
-        cout << endl << "There are no drinks available at this time." << endl;
+        cout << endl << "*NOTE* There are no drinks available at this time." << endl;
     }
     else{
         cout << endl << "Would you like to a drink with your order? 'y' for yes, anything else for no. ";
@@ -473,7 +490,7 @@ void SalesUI::drinkListCreationProcess(Order &order){
 }
 void SalesUI::commentCreationProcess(Order& order){
     string input;
-    cout << endl << "Any special comments?(y/n)";
+    cout << endl << "Any special comments?(y/n) ";
     cin >> input;
     clearScreen();
     string commentString;

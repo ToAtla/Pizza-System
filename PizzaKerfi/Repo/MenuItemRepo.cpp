@@ -26,9 +26,7 @@ MenuItem* MenuItemRepo::getArrayOfMenuItems(int& tellMeHowMany){
     fin.read((char*)(menuItems), sizeof(MenuItem)*tellMeHowMany);
     fin.close();
     
-    
     return menuItems;
-    
 }
 
 void MenuItemRepo::storeArrayOfMenuItems(char menuItems[]){

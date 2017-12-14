@@ -25,6 +25,8 @@ class MenuItem{
 public:
     MenuItem();
     ///Defult constructor that gives all the private variables a value of 0.
+    MenuItem(Topping toppings[], string name, int numberOfToppings, int price);
+    
     string getName();
     ///Return the private variable name of the pizza.
     void setName(char inName[MAXCHARSINPIZZANAME]);
@@ -39,11 +41,12 @@ public:
     ///Return the value of the private variable toppingCount.
     void setToppingCount(int inToppingCount);
     ///Takes in an int as a parameter and gives the private variable toppingCount the value of it.
+    Topping getCertainTopping(int index);
     friend ostream& operator << (ostream& out, const MenuItem&);
     ///Overloads the ostream operator so when one uses the '<<' to print out the contents of an instance of Pizza.
 private:
-    Topping toppings[MAXTOPPINGSONPIZZA];
-    char name[MAXCHARSINPIZZANAME];
+    Topping toppingsInMenuItem[MAXTOPPINGSONPIZZA];
+    char nameOfMenuItem[MAXCHARSINPIZZANAME];
     int price;
     int toppingCount;
 };
