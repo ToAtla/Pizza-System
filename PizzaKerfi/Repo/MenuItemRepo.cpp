@@ -28,15 +28,3 @@ MenuItem* MenuItemRepo::getArrayOfMenuItems(int& tellMeHowMany){
     
     return menuItems;
 }
-
-void MenuItemRepo::storeArrayOfMenuItems(char menuItems[]){
-    
-}
-
-void MenuItemRepo::clearMenuItems(){
-    
-}
-
-void MenuItemRepo::createMenuItem(){
-    
-}

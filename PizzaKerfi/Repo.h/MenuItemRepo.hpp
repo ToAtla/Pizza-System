@@ -19,15 +19,14 @@ using namespace std;
 
 class MenuItemRepo{
     
-public:
-    void addMenuItem(MenuItem& MenuItem);
-    void displayMenuItem();
-    MenuItem* getArrayOfMenuItems(int& tellMeHowMany);
-    void storeArrayOfMenuItems(char menuItems[]);
-private:
-    void clearMenuItems();
-    void createMenuItem();
+    public:
+        void addMenuItem(MenuItem& MenuItem);
+        void displayMenuItem();
+        MenuItem* getArrayOfMenuItems(int& tellMeHowMany);
+        void storeArrayOfMenuItems(char menuItems[]);
+    private:
+        void clearMenuItems();
+        void createMenuItem();
 };
-
 
 #endif /* MenuItemRepo_hpp */

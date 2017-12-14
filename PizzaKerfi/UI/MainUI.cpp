@@ -12,8 +12,6 @@
 
 void MainUI::startUI(){
     
-    
-    
     char input = '\0';
     while(input != 'q'){
         magic.clearScreen();

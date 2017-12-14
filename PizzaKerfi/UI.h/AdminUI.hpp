@@ -113,7 +113,7 @@ class AdminUI{
         void displayAnalysis();
         
         void uiItemSeparator();
-        void locationUIItemSeperator();
+        void longerUISeparator();
 };
 
 #endif /* AdminUI_hpp */
