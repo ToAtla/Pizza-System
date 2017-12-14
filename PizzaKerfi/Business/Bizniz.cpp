@@ -266,7 +266,7 @@ void Bizniz::removeBase(vector<Base> bases, int index){
 
 MenuItem* Bizniz::getArrayOfMenuItems(string fileName, int& tellMeHowMany){
     
-    MenuItem menuItems[MAXPIZZASINPIZZAFILE];
+    MenuItem* menuItems = new MenuItem[MAXPIZZASINPIZZAFILE];
     
     menuItemRepo.getArrayOfMenuItems(tellMeHowMany);
     
@@ -557,7 +557,7 @@ void Bizniz::moveOrderBetween(string sourceFile, string destFile, int orderNum){
     Order* orderList = getArrayOfOrders(sourceFile, sizeOfSourceFile);
     
     
-    int index;
+    int index = 0;
     
     for (int i = 0; i < sizeOfSourceFile; i++) {
         if(orderList[i].getID() == orderNum){
