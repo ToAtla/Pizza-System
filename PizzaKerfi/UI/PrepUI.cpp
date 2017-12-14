@@ -70,7 +70,6 @@ void PrepUI::startPrepUI(){
 
 
 void PrepUI::allActiveOverview(){
-    status currentStatus = OUTOFSHOP;
     //Fylki af öllum
     //ýtra í gegnum það og birta þær
     string input;
@@ -78,7 +77,7 @@ void PrepUI::allActiveOverview(){
     magic.clearScreen();
     while(input != "0"){
         cout << setfill(CHARFORSETFILL) << setw(SIZEOFSETWBIG) << "-" << setfill(' ') << endl;
-        cout <<  setfill(CHARFORSPACE) << setw(27) << " " <<  "Pizzas without status " << bizniz.statusToString(currentStatus);
+        cout <<  setfill(CHARFORSPACE) << setw(27) << " " <<  "All pizzas ";
         cout << " in " << locationOfPrep.getLocation() << endl;
         cout << setfill(CHARFORSETFILL) << setw(SIZEOFSETWBIG) << "-" << setfill(CHARFORSPACE) << endl << endl;
         if (bizniz.thereExistsOrderAtLocationWithApplicablePizza(OUTOFSHOP, locationOfPrep, false)) {
