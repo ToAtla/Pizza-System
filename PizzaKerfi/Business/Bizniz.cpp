@@ -331,11 +331,11 @@ MenuItem Bizniz::recognizeMenuItem(Topping* pizzaToppings, int toppingCount, boo
 
 
 bool Bizniz::getOfferStatus(){
-    return offerRepo.retrieveOrderStatus();
+    return offerRepo.readOfferStatus();
 }
 
 void Bizniz::setOfferStatus(bool o){
-    orderRepo.storeOfferStatus(o);
+    offerRepo.writeOfferStatus(o);
 }
 
 /**************************************************************************************
