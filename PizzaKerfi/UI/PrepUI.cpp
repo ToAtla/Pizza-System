@@ -19,7 +19,9 @@ void PrepUI::startPrepUI(){
         char input = '\0';
         string sInput;
         bool cont = true;
-        cout << setfill(CHARFORSUBACTION) << setw(SIZEOFCENTERHEADING+3) << "+" << "    Preparation    " << setfill(CHARFORSUBACTION) << setw(SIZEOFCENTERHEADING+2) << "+" << endl << endl;
+        cout << setfill(CHARFORSETFILL) << setw(SIZEOFSETW) << "-" << endl;
+        cout << setfill(CHARFORSPACE) << setw(SIZEOFCENTERHEADING+2) << " " << "    Preparation    " << endl;
+        cout << setfill(CHARFORSETFILL) << setw(SIZEOFSETW) << "-" << endl << endl;
         cout << setfill(' ');
         try {
             chooseYourLocation();
@@ -38,15 +40,15 @@ void PrepUI::startPrepUI(){
                 cout << setfill(CHARFORSETFILL) << setw(SIZEOFSETW) << "-" << setfill(' ') << endl;
                 cout << setfill(' ') << setw(SIZEOFCENTERHEADING-3) << " " << "Preparation line in " << locationOfPrep << endl;
                 cout << setfill(CHARFORSETFILL) << setw(SIZEOFSETW) << "-" << setfill(' ') << endl << endl;
-                cout << setw(SIZEFORSETWSPACE) << right << "1: " << "List all pizzas in house" << endl;
+                cout << setfill(' ') << setw(SIZEFORSETWSPACE) << " "  << "1: List all pizzas in house" << endl;
                 uiItemSeparator();
-                cout << setw(SIZEFORSETWSPACE) << right << "2: " << "List waiting pizzas and sides" << endl;
+                cout << setfill(' ') << setw(SIZEFORSETWSPACE) << " " << "2: List waiting pizzas and sides" << endl;
                 uiItemSeparator();
-                cout << setw(SIZEFORSETWSPACE) << right << "3: " << "List pizzas and sides in preparation" << endl;
+                cout << setfill(' ') << setw(SIZEFORSETWSPACE) << " "  << "3: List pizzas and sides in preparation" << endl;
                 uiItemSeparator();
-                cout << setw(SIZEFORSETWSPACE) << right << "4: " << "List ready pizzas and sides" << endl;
+                cout << setfill(' ') << setw(SIZEFORSETWSPACE) << " " << "4: List ready pizzas and sides" << endl;
                 uiItemSeparator();
-                cout << setw(SIZEFORSETWSPACE) << right << "b: " << "back" << endl;
+                cout << setfill(' ') << setw(SIZEFORSETWSPACE) << " "  << "b: back" << endl;
                 uiItemSeparator();
                 cin >> input;
                 cout << endl;
@@ -219,8 +221,8 @@ void PrepUI::chooseYourLocation(){
     cout << setfill(CHARFORSETFILL) << setw(SIZEOFCENTERHEADING-2) << "-" << "    Choose your location    " << setfill(CHARFORSETFILL) << setw(SIZEOFCENTERHEADING-2) << "-";
     cout << setfill(' ') << endl << endl;
     for(int i = 0; i < locations.size(); i++){
-        cout << setfill(' ') << setw(SIZEFORSETWSPACE-3) << " " << "Location number: " << i+1 << endl;
-        cout << setfill(' ') << setw(SIZEFORSETWSPACE-3) << " " << locations[i] << endl;
+        cout << setfill(' ') << setw(SIZEFORSETWSPACE) << " " << "Location number: " << i+1 << endl;
+        cout << setfill(' ') << setw(SIZEFORSETWSPACE) << " " << locations[i] << endl;
         uiItemSeparator();
     }
     cout << "Choose location (no whitespaces): ";

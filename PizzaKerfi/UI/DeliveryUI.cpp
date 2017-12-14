@@ -36,15 +36,15 @@ void DeliveryUI::startDeliveryUI(){
                 cout << setfill(CHARFORSETFILL) << setw(SIZEOFSETW) << "-" << setfill(' ') << endl;
                 cout << setfill(' ') << setw(SIZEOFCENTERHEADING) << " " << "Delivery for " << locationOfDelivery << endl;
                 cout << setfill(CHARFORSETFILL) << setw(SIZEOFSETW) << "-" << setfill(' ') << endl << endl;
-                cout << setw(SIZEFORSETWSPACE) << right << "1: " << "List all orders" << endl;
+                cout << setfill(' ') << setw(SIZEFORSETWSPACE) << " "  << "1: List all orders" << endl;
                 uiItemSeparator();
-                cout << setw(SIZEFORSETWSPACE) << right << "2: " << "List all unpaid orders" << endl;
+                cout << setfill(' ') << setw(SIZEFORSETWSPACE) << " " << "2: List all unpaid orders" << endl;
                 uiItemSeparator();
-                cout << setw(SIZEFORSETWSPACE) << right << "3: " << "List all paid orders" << endl;
+                cout << setfill(' ') << setw(SIZEFORSETWSPACE) << " " << "3: List all paid orders" << endl;
                 uiItemSeparator();
-                cout << setw(SIZEFORSETWSPACE) << right << "4: " << "List all legacy orders" << endl;
+                cout << setfill(' ') << setw(SIZEFORSETWSPACE) << " " << "4: List all legacy orders" << endl;
                 uiItemSeparator();
-                cout << setw(SIZEFORSETWSPACE) << right << "b: " << "back" << endl;
+                cout << setfill(' ') << setw(SIZEFORSETWSPACE) << " " << "b: back" << endl;
                 uiItemSeparator();
                 cin >> input;
                 cout << endl;
@@ -76,14 +76,16 @@ void DeliveryUI::chooseYourLocation(){
     LocationRepo lr;
     locations = lr.getVectorOfLocations();
     
-    cout << setfill(CHARFORSUBACTION) << setw(SIZEOFCENTERHEADING+4) << "+" << "    Delivery    " << setfill(CHARFORSUBACTION) << setw(30) << "+" << endl << endl;
+    cout << setfill(CHARFORSETFILL) << setw(SIZEOFSETW) << "-" << endl;
+    cout << setfill(CHARFORSPACE) << setw(SIZEOFCENTERHEADING+7) << " " << "Delivery" << endl;
+    cout << setfill(CHARFORSETFILL) << setw(SIZEOFSETW) << "-" << endl << endl;
     cout << setfill(CHARFORSETFILL) << setw(SIZEOFCENTERHEADING-2) << "-" << "    Choose your location    " << setfill(CHARFORSETFILL) << setw(24) << "-";
     cout << endl << endl;
     
     
     for(int i = 0; i < locations.size(); i++){
-        cout << setfill(' ') << setw(SIZEFORSETWSPACE-3) << " " << "Location number: " << i+1 << endl;
-        cout << setfill(' ') << setw(SIZEFORSETWSPACE-3) << " " << locations[i] << endl;
+        cout << setfill(' ') << setw(SIZEFORSETWSPACE) << " " << "Location number: " << i+1 << endl;
+        cout << setfill(' ') << setw(SIZEFORSETWSPACE) << " " << locations[i] << endl;
         uiItemSeparator();
     }
     cout << "Choose location (no whitespaces): ";
@@ -272,6 +274,6 @@ void DeliveryUI::displayLegacyOrders(){
 }
 
 void DeliveryUI::uiItemSeparator () {
-    cout << setw(SIZEFORSETWSPACE-3) << " " << setfill(CHARFORSETFILL) << setw(SIZEOFSETW-41) << "-" << endl << endl;
+    cout << setw(SIZEFORSETWSPACE) << " " << setfill(CHARFORSETFILL) << setw(SIZEOFSETW-41) << "-" << endl << endl;
     cout << setfill(' ');
 }

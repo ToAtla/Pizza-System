@@ -21,23 +21,23 @@ void AdminUI::startAdminUI(){
         cout << setfill(CHARFORSETFILL) << setw(SIZEOFSETW) << "-" << endl;
         cout << setfill (' ') << setw(40) << "Admin" << endl;
         cout << setfill(CHARFORSETFILL) << setw(SIZEOFSETW) << "-" << setfill(' ') << endl << endl;
-        cout << setw(SIZEFORSETWSPACE) << "1: " << "Add/change the topping list" << endl;
+        cout << setfill(' ') << setw(SIZEFORSETWSPACE) << " " << "1: Add/change the topping list" << endl;
         uiItemSeparator();
-        cout << setw(SIZEFORSETWSPACE) << "2: " << "Add/change the location list" << endl;
+        cout << setfill(' ') << setw(SIZEFORSETWSPACE) << " " << "2: Add/change the location list" << endl;
         uiItemSeparator();
-        cout << setw(SIZEFORSETWSPACE) << "3: " << "Add/change the side list" << endl;
+        cout << setfill(' ') << setw(SIZEFORSETWSPACE) << " "  << "3: Add/change the side list" << endl;
         uiItemSeparator();
-        cout << setw(SIZEFORSETWSPACE) << "4: " << "Add/change the drink list" << endl;
+        cout << setfill(' ') << setw(SIZEFORSETWSPACE) << " "  << "4: Add/change the drink list" << endl;
         uiItemSeparator();
-        cout << setw(SIZEFORSETWSPACE) << "5: " << "Add/change the size list" << endl;
+        cout << setfill(' ') << setw(SIZEFORSETWSPACE) << " "  << "5: Add/change the size list" << endl;
         uiItemSeparator();
-        cout << setw(SIZEFORSETWSPACE) << "6: " << "Add/change the base list" << endl;
+        cout << setfill(' ') << setw(SIZEFORSETWSPACE) << " " << "6: Add/change the base list" << endl;
         uiItemSeparator();
-        cout << setw(SIZEFORSETWSPACE) << "7: " << "Add/change the menu list" << endl;
+        cout << setfill(' ') << setw(SIZEFORSETWSPACE) << " "  << "7: Add/change the menu list" << endl;
         uiItemSeparator();
-        cout << setw(SIZEFORSETWSPACE) << "8: " << "View sales analysis" << endl;
+        cout << setfill(' ') << setw(SIZEFORSETWSPACE) << " "  << "8: View sales analysis" << endl;
         uiItemSeparator();
-        cout << setw(SIZEFORSETWSPACE) << "b: " << "back" << endl;
+        cout << setfill(' ') << setw(SIZEFORSETWSPACE) << " "  << "b: back" << endl;
         uiItemSeparator();
         cin >> input;
         magic.clearScreen();
@@ -85,15 +85,15 @@ void AdminUI::displayToppingMenu(){
     while(input != 'b'){
         cout << setfill(CHARFORSETFILL) << setw(SIZEOFCENTERHEADING+4) << "-" << "    Toppings    " << setfill(CHARFORSETFILL) << setw(SIZEOFCENTERHEADING+4);
         cout << "-" << endl << endl;
-        cout << setfill(' ') << setw(SIZEFORSETWSPACE) << "1: " << "List toppings" << endl;
+        cout << setfill(' ') << setw(SIZEFORSETWSPACE) <<  " " << "1: List toppings" << endl;
         uiItemSeparator();
-        cout << setw(SIZEFORSETWSPACE) << "2: " << "Change a topping" << endl;
+        cout << setfill(' ') << setw(SIZEFORSETWSPACE) << " "  << "2: Change a topping" << endl;
         uiItemSeparator();
-        cout << setw(SIZEFORSETWSPACE) << "3: " << "Add a topping" << endl;
+        cout << setfill(' ') << setw(SIZEFORSETWSPACE) << " "  << "3: Add a topping" << endl;
         uiItemSeparator();
-        cout << setw(SIZEFORSETWSPACE) << "4: " << "Remove a topping" << endl;
+        cout << setfill(' ') << setw(SIZEFORSETWSPACE) << " "  << "4: Remove a topping" << endl;
         uiItemSeparator();
-        cout << setw(SIZEFORSETWSPACE) << "b: " << "back" << endl;
+        cout << setfill(' ') << setw(SIZEFORSETWSPACE) << " "  << "b: back" << endl;
         uiItemSeparator();
         cin >> input;
         cout << endl;
@@ -152,8 +152,8 @@ void AdminUI::displayAllToppings(){
     else{
         for (int i = 0; i < toppings.size(); i++) {
             Topping temp = toppings.at(i);
-            cout << setfill(' ') << setw(SIZEFORSETWSPACE-6) << " " << setw(SIZEFORSETWSPACE-1) << left << temp.getName() << setw(SIZEFORSETWSPACE+4) << setfill(' ') << right << temp.getPrice() << endl;
-            cout << setw(SIZEFORSETWSPACE-6) << " " << setfill(CHARFORSETFILL) << setw(43) << "-" << endl << endl;
+            cout << setfill(' ') << setw(SIZEFORSETWSPACE-3) << " " << setw(SIZEFORSETWSPACE+2) << left << temp.getName() << setw(SIZEFORSETWSPACE+7) << setfill(' ') << right << temp.getPrice() << endl;
+            cout << setw(SIZEFORSETWSPACE-3) << " " << setfill(CHARFORSETFILL) << setw(43) << "-" << endl << endl;
         }
     }
     
@@ -196,8 +196,8 @@ void AdminUI::changeTopping(){
     
     cout << endl << endl << setfill(CHARFORSETFILL) << setw(SIZEOFCENTERHEADING-2) << "-" << "    List of all toppings    " << setfill(CHARFORSETFILL);
     cout << setw(SIZEOFCENTERHEADING-2) << "-" << endl << endl;
-    cout << setfill(' ') << setw(58) << "Price" << endl;
-    cout << setw(58) << "-----" << endl;
+    cout << setfill(' ') << setw(SIZEOFSMALLPRICESPACE) << "Price" << endl;
+    cout << setw(SIZEOFSMALLPRICESPACE) << "-----" << endl;
     
     if(toppings.size() < 1){
         cout << endl << setfill(' ') << setw(48) << "The file is empty :(" << endl << endl;
@@ -288,15 +288,15 @@ void AdminUI::displayLocationMenu(){
     while(input != 'b'){
         cout << setfill(CHARFORSETFILL) << setw(SIZEOFCENTERHEADING+4) << "-" << "    Locations    " << setfill(CHARFORSETFILL) << setw(SIZEOFCENTERHEADING+3);
         cout << "-" << endl << endl;
-        cout << setfill(' ') << setw(SIZEFORSETWSPACE) << "1: " << "List locations" << endl;
+        cout << setfill(' ') << setw(SIZEFORSETWSPACE) << " " << "1: List locations" << endl;
         uiItemSeparator();
-        cout << setw(SIZEFORSETWSPACE) << "2: " << "Change a location" << endl;
+        cout << setfill(' ') << setw(SIZEFORSETWSPACE) << " " << "2: Change a location" << endl;
         uiItemSeparator();
-        cout << setw(SIZEFORSETWSPACE) << "3: " << "Add a location" << endl;
+        cout << setfill(' ') << setw(SIZEFORSETWSPACE) << " "  << "3: Add a location" << endl;
         uiItemSeparator();
-        cout << setw(SIZEFORSETWSPACE) <<"4: " << "Remove a location" << endl;
+        cout << setfill(' ') << setw(SIZEFORSETWSPACE) << " "  << "4: Remove a location" << endl;
         uiItemSeparator();
-        cout << setw(SIZEFORSETWSPACE) << "b: " << "back" << endl;
+        cout << setfill(' ') << setw(SIZEFORSETWSPACE) << " "  << "b: back" << endl;
         uiItemSeparator();
         cin >> input;
         cout << endl;
@@ -456,15 +456,15 @@ void AdminUI::displaySideMenu(){
     while(input != 'b'){
         cout << setfill(CHARFORSETFILL) << setw(SIZEOFCENTERHEADING+6) << "-" << "    Sides    " << setfill(CHARFORSETFILL) << setw(SIZEOFCENTERHEADING+5);
         cout << "-" << endl << endl;
-        cout << setfill(' ') << setw(SIZEFORSETWSPACE) << "1: " << "List sides" << endl;
+        cout << setfill(' ') << setw(SIZEFORSETWSPACE) << " "  << "1: List sides" << endl;
         uiItemSeparator();
-        cout << setw(SIZEFORSETWSPACE) << "2: " << "Change a side" << endl;
+        cout << setfill(' ') << setw(SIZEFORSETWSPACE) << " " << "2: Change a side" << endl;
         uiItemSeparator();
-        cout << setw(SIZEFORSETWSPACE) << "3: " << "Add a side" << endl;
+        cout << setfill(' ') << setw(SIZEFORSETWSPACE) << " "  << "3: Add a side" << endl;
         uiItemSeparator();
-        cout << setw(SIZEFORSETWSPACE) << "4: " << "Remove a side" << endl;
+        cout << setfill(' ') << setw(SIZEFORSETWSPACE) << " "  << "4: Remove a side" << endl;
         uiItemSeparator();
-        cout << setw(SIZEFORSETWSPACE) << "b: " << "back" << endl;
+        cout << setfill(' ') << setw(SIZEFORSETWSPACE) << " "  << "b: back" << endl;
         uiItemSeparator();
         cin >> input;
         cout << endl;
@@ -650,15 +650,15 @@ void AdminUI::displayDrinkMenu(){
     while(input != 'b'){
         cout << setfill(CHARFORSETFILL) << setw(SIZEOFCENTERHEADING+6) << "-" << "    Drinks    " << setfill(CHARFORSETFILL) << setw(SIZEOFCENTERHEADING+5);
         cout << "-" << endl << endl;
-        cout << setfill(' ') << setw(SIZEFORSETWSPACE) << "1: " << "List drinks" << endl;
+        cout << setfill(' ') << setw(SIZEFORSETWSPACE) << " " << "1: List drinks" << endl;
         uiItemSeparator();
-        cout << setw(SIZEFORSETWSPACE) << "2: " << "Change a drink" << endl;
+        cout << setfill(' ') << setw(SIZEFORSETWSPACE) << " "  << "2: Change a drink" << endl;
         uiItemSeparator();
-        cout << setw(SIZEFORSETWSPACE) << "3: " << "Add a drink" << endl;
+        cout << setfill(' ') << setw(SIZEFORSETWSPACE) << " "  << "3: Add a drink" << endl;
         uiItemSeparator();
-        cout << setw(SIZEFORSETWSPACE) << "4: " << "Remove a drink" << endl;
+        cout << setfill(' ') << setw(SIZEFORSETWSPACE) << " "  << "4: Remove a drink" << endl;
         uiItemSeparator();
-        cout << setw(SIZEFORSETWSPACE) << "b: " << "back" << endl;
+        cout << setfill(' ') << setw(SIZEFORSETWSPACE) << " "  << "b: back" << endl;
         uiItemSeparator();
         cin >> input;
         cout << endl;
@@ -838,15 +838,15 @@ void AdminUI::displaySizeMenu(){
     while(input != 'b'){
         cout << setfill(CHARFORSETFILL) << setw(SIZEOFCENTERHEADING+5) << "-" << "    Sizes    " << setfill(CHARFORSETFILL) << setw(SIZEOFCENTERHEADING+5);
         cout << "-" << endl << endl;
-        cout << setfill(' ') << setw(SIZEFORSETWSPACE) << "1: " << "List sizes" << endl;
+        cout << setfill(' ') << setw(SIZEFORSETWSPACE) << " "  << "1: List sizes" << endl;
         uiItemSeparator();
-        cout << setw(SIZEFORSETWSPACE) << "2: " << "Change a size" << endl;
+        cout << setfill(' ') << setw(SIZEFORSETWSPACE) << " "  << "2: Change a size" << endl;
         uiItemSeparator();
-        cout << setw(SIZEFORSETWSPACE) << "3: " << "Add a size" << endl;
+        cout << setfill(' ') << setw(SIZEFORSETWSPACE) << " " << "3: Add a size" << endl;
         uiItemSeparator();
-        cout << setw(SIZEFORSETWSPACE) << "4: " << "Remove a size" << endl;
+        cout << setfill(' ') << setw(SIZEFORSETWSPACE) << " "  << "4: Remove a size" << endl;
         uiItemSeparator();
-        cout << setw(SIZEFORSETWSPACE) << "b: " << "back" << endl;
+        cout << setfill(' ') << setw(SIZEFORSETWSPACE) << " "  << "b: back" << endl;
         uiItemSeparator();
         cin >> input;
         cout << endl;
@@ -1026,15 +1026,15 @@ void AdminUI::displayBaseMenu(){
     while(input != 'b'){
         cout << setfill(CHARFORSETFILL) << setw(SIZEOFCENTERHEADING+5) << "-" << "    Bases    " << setfill(CHARFORSETFILL) << setw(SIZEOFCENTERHEADING+5);
         cout << "-" << endl << endl;
-        cout << setfill(' ') << setw(SIZEFORSETWSPACE) << "1: " << "List bases" << endl;
+        cout << setfill(' ') << setw(SIZEFORSETWSPACE) << " " << "1: List bases" << endl;
         uiItemSeparator();
-        cout << setw(SIZEFORSETWSPACE) << "2: " << "Change a base" << endl;
+        cout << setfill(' ') << setw(SIZEFORSETWSPACE) << " "  << "2: Change a base" << endl;
         uiItemSeparator();
-        cout << setw(SIZEFORSETWSPACE) << "3: " << "Add a base" << endl;
+        cout << setfill(' ') << setw(SIZEFORSETWSPACE) << " "  << "3: Add a base" << endl;
         uiItemSeparator();
-        cout << setw(SIZEFORSETWSPACE) << "4: " << "Remove a base" << endl;
+        cout << setfill(' ') << setw(SIZEFORSETWSPACE) << " "  << "4: Remove a base" << endl;
         uiItemSeparator();
-        cout << setw(SIZEFORSETWSPACE) << "b: " << "back" << endl;
+        cout << setfill(' ') << setw(SIZEFORSETWSPACE) << " "  << "b: back" << endl;
         uiItemSeparator();
         cin >> input;
         cout << endl;
@@ -1211,11 +1211,11 @@ void AdminUI::displayMenuItemMenu(){
     while(input != 'b'){
         cout << setfill(CHARFORSETFILL) << setw(SIZEOFCENTERHEADING+5) << "-" << "    Menu Items    " << setfill(CHARFORSETFILL) << setw(SIZEOFCENTERHEADING+5);
         cout << "-" << endl << endl;
-        cout << setfill(' ') << setw(SIZEFORSETWSPACE) << "1: " << "List Menu" << endl;
+        cout << setfill(' ') << setw(SIZEFORSETWSPACE) << " " << "1: List Menu" << endl;
         uiItemSeparator();
-        cout << setw(SIZEFORSETWSPACE) << "2: " << "Add a menu item" << endl;
+        cout << setfill(' ') << setw(SIZEFORSETWSPACE) << " "  << "2: Add a menu item" << endl;
         uiItemSeparator();
-        cout << setw(SIZEFORSETWSPACE) << "b: " << "back" << endl;
+        cout << setfill(' ') << setw(SIZEFORSETWSPACE) << " "  << "b: back" << endl;
         uiItemSeparator();
         cin >> input;
         cout << endl;
@@ -1283,19 +1283,19 @@ void AdminUI::addMenuItem(){
         cout << endl << "No toppings available to create a menu item :("  << endl << endl;
     }
     else{
-        cout << setfill(' ') << setw(58) << "Price" << endl;
-        cout << setw(58) << "-----" << endl;
+        cout << setfill(' ') << setw(SIZEOFSMALLPRICESPACE) << "Price" << endl;
+        cout << setw(SIZEOFSMALLPRICESPACE) << "-----" << endl;
         
         for (int i = 0; i < allToppings.size(); i++) {
             Topping temp = allToppings.at(i);
-            cout << setfill(' ') << setw(SIZEFORSETWSPACE-3) << " " << "Topping nr: " << i+1 << endl;
-            cout << setfill(' ') << setw(SIZEFORSETWSPACE) << temp.getName() << setw(38) << temp.getPrice() << endl;
+            cout << setfill(' ') << setw(SIZEFORSETWSPACE) << " " << "Topping nr: " << i+1 << endl;
+            cout << setfill(' ') << setw(SIZEFORSETWSPACE+3) << temp.getName() << setw(38) << temp.getPrice() << endl;
             uiItemSeparator();
         }
         int c = 0;
         while(true){
             if(c <= MAXTOPPINGSONPIZZA){
-                cout << setfill(' ') << setw(SIZEFORSETWSPACE-1) << " " << "Enter an index of topping to add or 0 to exit (no whitespaces): ";
+                cout << setfill(' ') << setw(SIZEFORSETWSPACE) << " " << "Enter an index of topping to add or 0 to exit (no whitespaces): ";
                 string input;
                 cin >> input;
                 
@@ -1346,30 +1346,25 @@ void AdminUI::displayAnalysis(){
     
     cout << setfill(CHARFORSETFILL) << setw(SIZEOFCENTERHEADING+6) << "-" << "    Analysis    " << setfill(CHARFORSETFILL) << setw(SIZEOFCENTERHEADING+6);
     cout << "-" << endl << endl;
-    cout << setfill(CHARFORSPACE) << setw(SIZEFORSETWSPACE-3) << " " << "Total turnover: " << bizniz.calcTotalTurnover() << endl;
+    cout << setfill(CHARFORSPACE) << setw(SIZEFORSETWSPACE) << " " << "Total turnover: " << bizniz.calcTotalTurnover() << endl;
     uiItemSeparator();
-    cout << setfill(CHARFORSPACE) << setw(SIZEFORSETWSPACE-3) << " " <<"Total pizzas sold: " << bizniz.calcTotalPizzas() <<endl;
+    cout << setfill(CHARFORSPACE) << setw(SIZEFORSETWSPACE) << " " <<"Total pizzas sold: " << bizniz.calcTotalPizzas() <<endl;
     uiItemSeparator();
-    cout << setfill(CHARFORSPACE) << setw(SIZEFORSETWSPACE-3) << " " <<"Total orders delivered: " << bizniz.calcTotalOrders() << endl;
+    cout << setfill(CHARFORSPACE) << setw(SIZEFORSETWSPACE) << " " <<"Total orders delivered: " << bizniz.calcTotalOrders() << endl;
     uiItemSeparator();
-    cout << setfill(CHARFORSPACE) << setw(SIZEFORSETWSPACE-3) << " " <<"Average price of order: " << bizniz.calcMeanOrderPrice() << endl;
+    cout << setfill(CHARFORSPACE) << setw(SIZEFORSETWSPACE) << " " <<"Average price of order: " << bizniz.calcMeanOrderPrice() << endl;
     uiItemSeparator();
-    cout << setfill(CHARFORSPACE) << setw(SIZEFORSETWSPACE-3) << " " <<"Average pizzas per order: " << bizniz.calcMeanNumberOfPizzasPerOrder() << endl;
+    cout << setfill(CHARFORSPACE) << setw(SIZEFORSETWSPACE) << " " <<"Average pizzas per order: " << bizniz.calcMeanNumberOfPizzasPerOrder() << endl;
     uiItemSeparator();
-    cout << setfill(CHARFORSPACE) << setw(SIZEFORSETWSPACE-3) << " " <<"Average sides per order: " << bizniz.calcMeanNumberOfSidesPerOrder() << endl;
+    cout << setfill(CHARFORSPACE) << setw(SIZEFORSETWSPACE) << " " <<"Average sides per order: " << bizniz.calcMeanNumberOfSidesPerOrder() << endl;
     uiItemSeparator();
-    cout << setfill(CHARFORSPACE) << setw(SIZEFORSETWSPACE-3) << " " <<"Average drinks per order: " << bizniz.calcMeanNumberOfDrinksPerOrder() << endl;
+    cout << setfill(CHARFORSPACE) << setw(SIZEFORSETWSPACE) << " " <<"Average drinks per order: " << bizniz.calcMeanNumberOfDrinksPerOrder() << endl;
     uiItemSeparator();
-    cout << endl << setfill(CHARFORSPACE) << setw(SIZEFORSETWSPACE-3) << " " <<"Enter anything to continue: ";
+    cout << endl << setfill(CHARFORSPACE) << setw(SIZEFORSETWSPACE) << " " <<"Enter anything to continue: ";
     cin >> ws;
 }
 
 void AdminUI::uiItemSeparator () {
-    cout << setw(17) << " " << setfill(CHARFORSETFILL) << setw(SIZEOFSETW-41) << "-" << endl << endl;
-    cout << setfill(' ');
-}
-
-void AdminUI::locationUIItemSeperator(){
-    cout << setw(14) << " " << setfill(CHARFORSETFILL) << setw(43) << "-" << endl;
+    cout << setw(SIZEFORSETWSPACE) << " " << setfill(CHARFORSETFILL) << setw(SIZEOFSETW-41) << "-" << endl << endl;
     cout << setfill(' ');
 }

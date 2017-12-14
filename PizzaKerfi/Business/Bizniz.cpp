@@ -283,6 +283,45 @@ void Bizniz::addMenuItem(MenuItem& menuItem){
     
 }
 
+MenuItem Bizniz::recognizeMenuItem(Topping* pizzaToppings, int toppingCount, bool& isMenuitem){
+    MenuItem returnMenuItem;
+    int sizeOfMenu;
+    MenuItem* allMenuItems = getArrayOfMenuItems(MENUITEMFILE, sizeOfMenu);
+    vector<Topping> allToppings = getVectorOfToppings();
+    unsigned int sizeOfToppingList = allToppings.size();
+    
+    int menuCounter = 0;
+    int pizzaCounter = 0;
+    for (int i = 0; i < sizeOfMenu; i++) {
+        if(allMenuItems[i].getToppingCount() == toppingCount){
+            menuCounter = 0;
+            pizzaCounter = 0;
+            for (int c = 0; c < sizeOfToppingList; c++) {
+                
+                for (int j = 0; j < toppingCount; j++) {
+                    if(allToppings.at(c).getName() == pizzaToppings[j].getName()){
+                        pizzaCounter++;
+                    }
+                    if(allToppings.at(c).getName() == allMenuItems[i].getToppings()[j].getName()){
+                        menuCounter++;
+                    }
+                }
+                if(menuCounter != pizzaCounter){
+                    isMenuitem = false;
+                    return returnMenuItem;
+                }
+            }
+            if(menuCounter == pizzaCounter){
+                isMenuitem = true;
+                returnMenuItem = allMenuItems[i];
+                return returnMenuItem;
+            }
+        }
+    }
+    isMenuitem = false;
+    return returnMenuItem;
+}
+
 /**************************************************************************************
  
                                     Analysis

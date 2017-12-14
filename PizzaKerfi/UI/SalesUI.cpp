@@ -334,27 +334,35 @@ Pizza SalesUI::pizzaCreationProcess(Location locationOfOrderForPizzaToFollow){
     Base pizzaBase = basePickingProcess();
     int tellMeHowMany;
     MenuItem* menuItems = bizniz.getArrayOfMenuItems(MENUITEMFILE, tellMeHowMany);
-
+    //
     while(true){
         cout << endl << "Assemble off menu pizza?(y/n) ";
         char input = '\0';
         cin >> input;
         if(input != 'y' && tellMeHowMany < 1){
-            if(tellMeHowMany < 1){
                 cout << endl << endl << "*NOTE* Sorry there are no menu pizzas available you will have assemble the toppings yourself *NOTE*" << endl << endl;
                 int toppingCount = 0;
                 Topping* pizzaToppings = toppingPickingProcess(toppingCount);
                 Pizza returnPizza = bizniz.assemblePizza(pizzaSize, pizzaBase, pizzaToppings, toppingCount, locationOfOrderForPizzaToFollow);
                 delete [] pizzaToppings;
                 return returnPizza;
-            }
         }
         else if(input == 'y'){
             int toppingCount = 0;
             Topping* pizzaToppings = toppingPickingProcess(toppingCount);
-            Pizza returnPizza = bizniz.assemblePizza(pizzaSize, pizzaBase, pizzaToppings, toppingCount, locationOfOrderForPizzaToFollow);
-            delete [] pizzaToppings;
-            return returnPizza;
+            bool isMenuItem = false;
+            MenuItem  tempMenuItem = bizniz.recognizeMenuItem(pizzaToppings, toppingCount, isMenuItem);
+            if(isMenuItem){
+                cout << "Your choice is on the menu.  Name of pizza: " << tempMenuItem.getName() << endl;
+                Pizza returnPizza = bizniz.assemblePizzaWithMenuItem(pizzaSize, pizzaBase, tempMenuItem, locationOfOrderForPizzaToFollow);
+                delete [] pizzaToppings;
+                return returnPizza;
+            }else{
+                Pizza  returnPizza = bizniz.assemblePizza(pizzaSize, pizzaBase, pizzaToppings, toppingCount, locationOfOrderForPizzaToFollow);
+                delete [] pizzaToppings;
+                return returnPizza;
+            }
+            
         }else{
             cout << setfill(CHARFORSETFILL) << setw(SIZEOFBIGCENTERHEADING) << "-" << "    List of menu Items    " << setfill(CHARFORSETFILL) << setw(SIZEOFBIGCENTERHEADING-1) << "-" << endl << endl;
             cout << setfill(' ') << setw(SIZEOFPRICESPACE) << "Price" << endl;
