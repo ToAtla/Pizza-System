@@ -316,7 +316,7 @@ int Bizniz::calcTotalPizzas(){
     int numberOfOrders;
     int pizzaSum = 0;
     Order* allOrders = getArrayOfOrders(LEGACYORDERFILE, numberOfOrders);
-    for (int i = 0; i < numberOfOrders ; i++) {
+    for (int i = 0; i < numberOfOrders; i++) {
         pizzaSum += allOrders[i].getNumberOfPizzas();
     }
     delete [] allOrders;
@@ -332,6 +332,58 @@ int Bizniz::calcTotalOrders(){
 
 double Bizniz::calcMeanOrderPrice(){
     return (double)calcTotalTurnover()/(double)calcTotalOrders();
+}
+
+double Bizniz::calcMeanNumberOfPizzasPerOrder(){
+    int numberOfOrders = 0;
+    double meanOfPizzas = 0;
+    int numberOfPizzas = 0;
+    Order* allOrders = getArrayOfOrders(LEGACYORDERFILE, numberOfOrders);
+    for(int i = 0; i < numberOfOrders; i++){
+        numberOfPizzas += allOrders[i].getNumberOfPizzas();
+    }
+    delete[] allOrders;
+    
+    if(numberOfOrders > 0){
+        meanOfPizzas = (double)numberOfPizzas/(double)numberOfOrders;
+    }
+    
+    return meanOfPizzas;
+}
+
+double Bizniz::calcMeanNumberOfSidesPerOrder(){
+    
+    int numberOfOrders = 0;
+    double meanOfSides = 0;
+    int numberOfSides = 0;
+    Order* allOrders = getArrayOfOrders(LEGACYORDERFILE, numberOfOrders);
+    for(int i = 0; i < numberOfOrders; i++){
+        numberOfSides += allOrders[i].getNumberOfSides();
+    }
+    delete[] allOrders;
+    
+    if(numberOfOrders > 0){
+        meanOfSides = (double)numberOfSides/(double)numberOfOrders;
+    }
+    
+    return meanOfSides;
+}
+
+double Bizniz::calcMeanNumberOfDrinksPerOrder(){
+    
+    int numberOfOrders = 0;
+    double meanOfDrinks = 0;
+    int numberOfDrinks = 0;
+    Order* allOrders = getArrayOfOrders(LEGACYORDERFILE, numberOfOrders);
+    for(int i = 0; i < numberOfOrders; i++){
+        numberOfDrinks += allOrders[i].getNumberOfDrinks();
+    }
+    delete[] allOrders;
+    
+    if(numberOfOrders > 0){
+        meanOfDrinks = (double)numberOfDrinks/(double)numberOfOrders;
+    }
+    return meanOfDrinks;
 }
 
 /**************************************************************************************
@@ -569,7 +621,7 @@ void Bizniz::moveOrderBetween(string sourceFile, string destFile, int orderNum){
     Order* orderList = getArrayOfOrders(sourceFile, sizeOfSourceFile);
     
     
-    int index;
+    int index = 0;
     
     for (int i = 0; i < sizeOfSourceFile; i++) {
         if(orderList[i].getID() == orderNum){
@@ -765,7 +817,7 @@ bool Bizniz::isValidInput(int input, unsigned long sizeOfList){
     unsigned long unsignedInput = input;
     
     if(unsignedInput < 1 || unsignedInput > sizeOfList){
-        throw InvalidInputException("*ERROR* Invalid input! (Input does not match any index on the list) Please try again");
+        throw InvalidInputException("*ERROR* Invalid input! (Input does not match any index on the list) Please try again.");
     }
     
     return true;
@@ -778,7 +830,7 @@ bool Bizniz::isValidToppingInput(int input, unsigned long sizeOflist){
     unsigned long unsignedInput = input;
     
     if(unsignedInput > sizeOflist){
-        throw InvalidInputException("*ERROR* Invalid input! (Input does not match any index on the list) Please try again");
+        throw InvalidInputException("*ERROR* Invalid input! (Input does not match any index on the list) Please try again.");
     }
     
     return true;
@@ -791,7 +843,7 @@ bool Bizniz::isInputDigit(string input){
     
     for(int i = 0; i < input.length(); i++){
         if(!isdigit(input[i])){
-            throw InvalidInputException("*ERROR* Invalid input! (Input does not match any index on the list) Please try again");
+            throw InvalidInputException("*ERROR* Invalid input! (Input does not match any index on the list) Please try again.");
         }
     }
     

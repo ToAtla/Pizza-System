@@ -75,6 +75,9 @@ public:
     int calcTotalPizzas();
     int calcTotalOrders();
     double calcMeanOrderPrice();
+    double calcMeanNumberOfPizzasPerOrder();
+    double calcMeanNumberOfDrinksPerOrder();
+    double calcMeanNumberOfSidesPerOrder();
     
     //Pizza
     

@@ -1228,7 +1228,9 @@ void AdminUI::displayMenuItemMenu(){
             magic.clearScreen();
             try {
                 addMenuItem();
-            } catch (InvalidNameException e) {
+            } catch (InvalidInputException e) {
+                cout << endl << e.getMessage() << endl << endl;
+            } catch (InvalidNameException e){
                 cout << endl << e.getMessage() << endl << endl;
             } catch (InvalidPriceException e) {
                 cout << endl << e.getMessage() << endl << endl;
@@ -1271,26 +1273,29 @@ void AdminUI::addMenuItem(){
     vector<Topping> allToppings = bizniz.getVectorOfToppings();
     int numberOfToppings = 0;
     
-    cout << endl << setfill(CHARFORSETFILL) << setw(33) << "-" << "       Assemble a menu pizza      " << setfill(CHARFORSETFILL) << setw(33) << "-" << endl << endl;
-    cout << endl << setfill(CHARFORSETFILL) << setw(33) << "-" << "    List of available toppings    " << setfill(CHARFORSETFILL) << setw(33) << "-" << endl << endl;
+    cout << endl << setfill(CHARFORSETFILL) << setw(SIZEOFSETW) << "-" << endl;
+    cout << setfill(' ') << setw(SIZEOFCENTERHEADING) << " " << "Assemble a menu pizza" << endl;
+    cout << setfill(CHARFORSETFILL) << setw(SIZEOFSETW) << "-" << endl << endl;
+    cout << endl << setfill(CHARFORSETFILL) << setw(SIZEOFCENTERHEADING-5) << "-" << "    List of available toppings    " << setfill(CHARFORSETFILL) << setw(SIZEOFCENTERHEADING-5) << "-" << endl << endl;
 
     
     if(allToppings.size() < 1){
-        cout << endl << "No toppings available at this time." << endl;
+        cout << endl << "No toppings available to create a menu item :("  << endl << endl;
     }
     else{
-        cout << setfill(' ') << setw(82) << "Price" << endl;
-        cout << setw(82) << "-----" << endl;
+        cout << setfill(' ') << setw(58) << "Price" << endl;
+        cout << setw(58) << "-----" << endl;
         
         for (int i = 0; i < allToppings.size(); i++) {
-            cout << setfill(' ') << setw(31) << "Topping nr: " << i+1 << endl;
-            cout << setw(22) << allToppings.at(i);
+            Topping temp = allToppings.at(i);
+            cout << setfill(' ') << setw(SIZEFORSETWSPACE-3) << " " << "Topping nr: " << i+1 << endl;
+            cout << setfill(' ') << setw(SIZEFORSETWSPACE) << temp.getName() << setw(38) << temp.getPrice() << endl;
             uiItemSeparator();
         }
         int c = 0;
         while(true){
             if(c <= MAXTOPPINGSONPIZZA){
-                cout << setfill(' ') << setw(19) << " " << "Enter an index of topping to add or 0 to exit (no whitespaces): ";
+                cout << setfill(' ') << setw(SIZEFORSETWSPACE-1) << " " << "Enter an index of topping to add or 0 to exit (no whitespaces): ";
                 string input;
                 cin >> input;
                 
@@ -1309,24 +1314,32 @@ void AdminUI::addMenuItem(){
             }
         }
         numberOfToppings = c;
+    
+    
+        cout << endl << "Please enter the name of the new menu item (MAX " << MAXCHARSINPIZZANAME-1 << "): ";
+        string name;
+        cin.ignore();
+        getline(cin, name);
+        
+        if(bizniz.isValidNameLength(name, MAXCHARSINPIZZANAME)){
+            cout << endl << "Enter the price of the menu item: ";
+            string price;
+            cin >> price;
+            
+            if(bizniz.isPriceDigit(price) && bizniz.isValidPrice(stoi(price))){
+               
+                int intPrice = stoi(price);
+                
+                MenuItem temp(toppingsForMenuItem, name, numberOfToppings, intPrice);
+                
+                bizniz.addMenuItem(temp);
+                
+                cout << endl << setw(27) << "Menu item added!" << endl << endl;
+                
+                delete[] toppingsForMenuItem;
+            }
+        }
     }
-    
-    cout << endl << "Please enter the name of the new menu item (MAX " << MAXCHARSINPIZZANAME-1 << "): ";
-    string name;
-    cin.ignore();
-    getline(cin, name);
-    cout << endl << "Enter the price of the menu item: ";
-    string price;
-    cin >> price;
-    int intPrice = stoi(price);
-    
-    MenuItem temp(toppingsForMenuItem, name, numberOfToppings, intPrice);
-    
-    bizniz.addMenuItem(temp);
-    
-    cout << endl << setw(27) << "Menu item added!" << endl << endl;
-    
-    delete[] toppingsForMenuItem;
 }
 
 void AdminUI::displayAnalysis(){
@@ -1340,6 +1353,12 @@ void AdminUI::displayAnalysis(){
     cout << setfill(CHARFORSPACE) << setw(SIZEFORSETWSPACE-3) << " " <<"Total orders delivered: " << bizniz.calcTotalOrders() << endl;
     uiItemSeparator();
     cout << setfill(CHARFORSPACE) << setw(SIZEFORSETWSPACE-3) << " " <<"Average price of order: " << bizniz.calcMeanOrderPrice() << endl;
+    uiItemSeparator();
+    cout << setfill(CHARFORSPACE) << setw(SIZEFORSETWSPACE-3) << " " <<"Average pizzas per order: " << bizniz.calcMeanNumberOfPizzasPerOrder() << endl;
+    uiItemSeparator();
+    cout << setfill(CHARFORSPACE) << setw(SIZEFORSETWSPACE-3) << " " <<"Average sides per order: " << bizniz.calcMeanNumberOfSidesPerOrder() << endl;
+    uiItemSeparator();
+    cout << setfill(CHARFORSPACE) << setw(SIZEFORSETWSPACE-3) << " " <<"Average drinks per order: " << bizniz.calcMeanNumberOfDrinksPerOrder() << endl;
     uiItemSeparator();
     cout << endl << setfill(CHARFORSPACE) << setw(SIZEFORSETWSPACE-3) << " " <<"Enter anything to continue: ";
     cin >> ws;
