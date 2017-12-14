@@ -304,7 +304,7 @@ int Bizniz::calcTotalPizzas(){
     int numberOfOrders;
     int pizzaSum = 0;
     Order* allOrders = getArrayOfOrders(LEGACYORDERFILE, numberOfOrders);
-    for (int i = 0; i < numberOfOrders ; i++) {
+    for (int i = 0; i < numberOfOrders; i++) {
         pizzaSum += allOrders[i].getNumberOfPizzas();
     }
     delete [] allOrders;
@@ -320,6 +320,58 @@ int Bizniz::calcTotalOrders(){
 
 double Bizniz::calcMeanOrderPrice(){
     return (double)calcTotalTurnover()/(double)calcTotalOrders();
+}
+
+double Bizniz::calcMeanNumberOfPizzasPerOrder(){
+    int numberOfOrders = 0;
+    double meanOfPizzas = 0;
+    int numberOfPizzas = 0;
+    Order* allOrders = getArrayOfOrders(LEGACYORDERFILE, numberOfOrders);
+    for(int i = 0; i < numberOfOrders; i++){
+        numberOfPizzas += allOrders[i].getNumberOfPizzas();
+    }
+    delete[] allOrders;
+    
+    if(numberOfOrders > 0){
+        meanOfPizzas = (double)numberOfPizzas/(double)numberOfOrders;
+    }
+    
+    return meanOfPizzas;
+}
+
+double Bizniz::calcMeanNumberOfSidesPerOrder(){
+    
+    int numberOfOrders = 0;
+    double meanOfSides = 0;
+    int numberOfSides = 0;
+    Order* allOrders = getArrayOfOrders(LEGACYORDERFILE, numberOfOrders);
+    for(int i = 0; i < numberOfOrders; i++){
+        numberOfSides += allOrders[i].getNumberOfSides();
+    }
+    delete[] allOrders;
+    
+    if(numberOfOrders > 0){
+        meanOfSides = (double)numberOfSides/(double)numberOfOrders;
+    }
+    
+    return meanOfSides;
+}
+
+double Bizniz::calcMeanNumberOfDrinksPerOrder(){
+    
+    int numberOfOrders = 0;
+    double meanOfDrinks = 0;
+    int numberOfDrinks = 0;
+    Order* allOrders = getArrayOfOrders(LEGACYORDERFILE, numberOfOrders);
+    for(int i = 0; i < numberOfOrders; i++){
+        numberOfDrinks += allOrders[i].getNumberOfDrinks();
+    }
+    delete[] allOrders;
+    
+    if(numberOfOrders > 0){
+        meanOfDrinks = (double)numberOfDrinks/(double)numberOfOrders;
+    }
+    return meanOfDrinks;
 }
 
 /**************************************************************************************

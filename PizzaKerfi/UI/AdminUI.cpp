@@ -1351,6 +1351,12 @@ void AdminUI::displayAnalysis(){
     uiItemSeparator();
     cout << setfill(CHARFORSPACE) << setw(SIZEFORSETWSPACE-3) << " " <<"Average price of order: " << bizniz.calcMeanOrderPrice() << endl;
     uiItemSeparator();
+    cout << setfill(CHARFORSPACE) << setw(SIZEFORSETWSPACE-3) << " " <<"Average pizzas per order: " << bizniz.calcMeanNumberOfPizzasPerOrder() << endl;
+    uiItemSeparator();
+    cout << setfill(CHARFORSPACE) << setw(SIZEFORSETWSPACE-3) << " " <<"Average sides per order: " << bizniz.calcMeanNumberOfSidesPerOrder() << endl;
+    uiItemSeparator();
+    cout << setfill(CHARFORSPACE) << setw(SIZEFORSETWSPACE-3) << " " <<"Average drinks per order: " << bizniz.calcMeanNumberOfDrinksPerOrder() << endl;
+    uiItemSeparator();
     cout << endl << setfill(CHARFORSPACE) << setw(SIZEFORSETWSPACE-3) << " " <<"Enter anything to continue: ";
     cin >> ws;
 }
