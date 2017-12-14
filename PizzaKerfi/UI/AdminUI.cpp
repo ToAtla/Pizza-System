@@ -1330,11 +1330,18 @@ void AdminUI::addMenuItem(){
 }
 
 void AdminUI::displayAnalysis(){
-    cout << "Total turnover: " << bizniz.calcTotalTurnover() << endl;
-    cout << "Total pizzas sold: " << bizniz.calcTotalPizzas() <<endl;
-    cout << "Total orders delivered: " << bizniz.calcTotalOrders() << endl;
-    cout << "Average price of order: " << bizniz.calcMeanOrderPrice() << endl;
-    cout << "Enter anything to continue" << endl;
+    
+    cout << setfill(CHARFORSETFILL) << setw(SIZEOFCENTERHEADING+6) << "-" << "    Analysis    " << setfill(CHARFORSETFILL) << setw(SIZEOFCENTERHEADING+6);
+    cout << "-" << endl << endl;
+    cout << setfill(CHARFORSPACE) << setw(SIZEFORSETWSPACE-3) << " " << "Total turnover: " << bizniz.calcTotalTurnover() << endl;
+    uiItemSeparator();
+    cout << setfill(CHARFORSPACE) << setw(SIZEFORSETWSPACE-3) << " " <<"Total pizzas sold: " << bizniz.calcTotalPizzas() <<endl;
+    uiItemSeparator();
+    cout << setfill(CHARFORSPACE) << setw(SIZEFORSETWSPACE-3) << " " <<"Total orders delivered: " << bizniz.calcTotalOrders() << endl;
+    uiItemSeparator();
+    cout << setfill(CHARFORSPACE) << setw(SIZEFORSETWSPACE-3) << " " <<"Average price of order: " << bizniz.calcMeanOrderPrice() << endl;
+    uiItemSeparator();
+    cout << endl << setfill(CHARFORSPACE) << setw(SIZEFORSETWSPACE-3) << " " <<"Enter anything to continue: ";
     cin >> ws;
 }
 
