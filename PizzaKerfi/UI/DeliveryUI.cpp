@@ -222,8 +222,9 @@ void DeliveryUI::displayPaidOrders(){
                 if(!bizniz.allPizzasInOrderReady(bizniz.getOrderByID(input))){
                     cout << "Not all items in that order are ready" << endl;
                 }else{
+                    
                     for (int i = 0; i < bizniz.getOrderByID(input).getNumberOfPizzas(); i++) {
-                        bizniz.changeStatusOfPizzaInOrder(orderNum, i, OUTOFSHOP);
+                        bizniz.changeStatusOfPizzaInOrder(bizniz.getOrderIndexByID(input), i, OUTOFSHOP);
                     }
                     bizniz.setOrderStatus(ORDERFILE, input, DELIVERED);
                     bizniz.moveOrderBetween(ORDERFILE, LEGACYORDERFILE, input);
