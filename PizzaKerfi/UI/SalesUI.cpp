@@ -522,10 +522,8 @@ void SalesUI::commentCreationProcess(Order& order){
         cout << endl << "Write out the comment(max " << MAXCHARINORDERCOMMENT-1 << " characters):";
         cin.ignore();
         getline(cin, commentString);
-        cout << "The comment was " << commentString << endl;
         if(bizniz.isValidNameLength(commentString, MAXCHARINORDERCOMMENT)){
            strcpy(comment, commentString.c_str());
-            cout << "The comment is " << commentString << endl;
         }
     }
     else{

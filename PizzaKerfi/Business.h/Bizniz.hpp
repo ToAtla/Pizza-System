@@ -20,7 +20,6 @@
 #include "PizzaRepo.hpp"
 #include "OrderRepo.hpp"
 #include "MenuItemRepo.hpp"
-#include "OfferRepo.hpp"
 #include "InvalidNameException.hpp"
 #include "InvalidPriceException.hpp"
 #include "InvalidInputException.hpp"
@@ -138,7 +137,6 @@ private:
     PizzaRepo pizzaRepo;
     OrderRepo orderRepo;
     MenuItemRepo menuItemRepo;
-    OfferRepo offerRepo;
 };
 
 #endif /* Bizniz_hpp */
