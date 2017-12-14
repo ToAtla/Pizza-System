@@ -1238,7 +1238,6 @@ void AdminUI::displayMenuItemMenu(){
             
         }
     }
-    
 }
 
 void AdminUI::displayAllMenuItems(){

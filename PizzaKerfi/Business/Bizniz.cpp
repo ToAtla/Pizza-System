@@ -329,6 +329,15 @@ MenuItem Bizniz::recognizeMenuItem(Topping* pizzaToppings, int toppingCount, boo
     return returnMenuItem;
 }
 
+
+bool Bizniz::getOfferStatus(){
+    return offerRepo.retrieveOrderStatus();
+}
+
+void Bizniz::setOfferStatus(bool o){
+    orderRepo.storeOfferStatus(o);
+}
+
 /**************************************************************************************
  
                                     Analysis
@@ -807,6 +816,11 @@ int Bizniz::getOrderIndexByID(int inputID){
     delete [] allOrders;
     return -1;
 }
+
+void Bizniz::tvennalyzer(Order& order){
+    
+}
+
 /**************************************************************************************
  
                               Exceptions(Bool functions)

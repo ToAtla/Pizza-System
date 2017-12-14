@@ -20,6 +20,7 @@
 #include "PizzaRepo.hpp"
 #include "OrderRepo.hpp"
 #include "MenuItemRepo.hpp"
+#include "OfferRepo.hpp"
 #include "InvalidNameException.hpp"
 #include "InvalidPriceException.hpp"
 #include "InvalidInputException.hpp"
@@ -69,6 +70,8 @@ public:
     MenuItem* getArrayOfMenuItems(string fileName, int& tellMeHowMany);
     void addMenuItem(MenuItem& menuItem);
     MenuItem recognizeMenuItem(Topping* pizzaToppings, int toppingCount, bool& isMenuitem);
+    bool getOfferStatus();
+    void setOfferStatus(bool o);
     
     //Analysis
     int calcTotalTurnover();
@@ -112,6 +115,8 @@ public:
     bool orderExist(int orderNum);
     char* getTimeNow();
     int getOrderIndexByID(int inputID);
+    void tvennalyzer(Order& order);
+    
     
     
     
@@ -136,6 +141,7 @@ private:
     PizzaRepo pizzaRepo;
     OrderRepo orderRepo;
     MenuItemRepo menuItemRepo;
+    OfferRepo offerRepo;
 };
 
 #endif /* Bizniz_hpp */
