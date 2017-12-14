@@ -235,6 +235,9 @@ Topping* SalesUI::toppingPickingProcess(int& toppingCount){
     
     if(allToppings.size() < 1){
         cout << endl << "*NOTE* No toppings available at this time." << endl;
+        cout << endl << "Enter any key to continue." << endl;
+        string input;
+        cin >> input;
     }
     else{
         cout << setfill(' ') << setw(SIZEOFPRICESPACE) << "Price" << endl;
@@ -356,6 +359,9 @@ Pizza SalesUI::pizzaCreationProcess(Location locationOfOrderForPizzaToFollow){
             MenuItem  tempMenuItem = bizniz.recognizeMenuItem(pizzaToppings, toppingCount, isMenuItem);
             if(isMenuItem){
                 cout << "Your choice is on the menu.  Name of pizza: " << tempMenuItem.getName() << endl;
+                string input;
+                cout << endl << "Enter any key to continue: " << endl << endl;
+                cin >> input;
                 Pizza returnPizza = bizniz.assemblePizzaWithMenuItem(pizzaSize, pizzaBase, tempMenuItem, locationOfOrderForPizzaToFollow);
                 delete [] pizzaToppings;
                 return returnPizza;
@@ -382,9 +388,8 @@ Pizza SalesUI::pizzaCreationProcess(Location locationOfOrderForPizzaToFollow){
             }
             cout << "Choose a number corresponding to menu item : ";
             string input;
-            cin.ignore();
-            getline(cin, input);
-                
+            cin >> input;
+            
             unsigned long longHowMany = tellMeHowMany;
                 
             if(bizniz.isInputDigit(input) && bizniz.isValidInput(stoi(input), longHowMany)){
@@ -523,10 +528,8 @@ void SalesUI::commentCreationProcess(Order& order){
         cout << endl << "Write out the comment(max " << MAXCHARINORDERCOMMENT-1 << " characters):";
         cin.ignore();
         getline(cin, commentString);
-        cout << "The comment was " << commentString << endl;
         if(bizniz.isValidNameLength(commentString, MAXCHARINORDERCOMMENT)){
            strcpy(comment, commentString.c_str());
-            cout << "The comment is " << commentString << endl;
         }
     }
     else{

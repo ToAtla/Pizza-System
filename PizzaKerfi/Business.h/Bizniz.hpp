@@ -20,7 +20,6 @@
 #include "PizzaRepo.hpp"
 #include "OrderRepo.hpp"
 #include "MenuItemRepo.hpp"
-#include "OfferRepo.hpp"
 #include "InvalidNameException.hpp"
 #include "InvalidPriceException.hpp"
 #include "InvalidInputException.hpp"
@@ -28,6 +27,7 @@
 #include "InvalidFileSizeBaseException.hpp"
 #include <string>
 #include <stdio.h>
+
 class Bizniz {
 public:
     //Toppings
@@ -138,7 +138,6 @@ private:
     PizzaRepo pizzaRepo;
     OrderRepo orderRepo;
     MenuItemRepo menuItemRepo;
-    OfferRepo offerRepo;
 };
 
 #endif /* Bizniz_hpp */

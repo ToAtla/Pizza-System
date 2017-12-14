@@ -38,7 +38,6 @@
 		E9C456D51FCEF6BC00A93407 /* MainUI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E9C456D31FCEF6BC00A93407 /* MainUI.cpp */; };
 		E9F00A021FE1977B0086412F /* MenuItem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E9F00A001FE1977B0086412F /* MenuItem.cpp */; };
 		E9F00A051FE19A210086412F /* MenuItemRepo.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E9F00A031FE19A210086412F /* MenuItemRepo.cpp */; };
-		E9F00A081FE2F5B00086412F /* OfferRepo.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E9F00A061FE2F5B00086412F /* OfferRepo.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -118,7 +117,6 @@
 		E9F00A011FE1977B0086412F /* MenuItem.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = MenuItem.hpp; sourceTree = "<group>"; };
 		E9F00A031FE19A210086412F /* MenuItemRepo.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = MenuItemRepo.cpp; sourceTree = "<group>"; };
 		E9F00A041FE19A210086412F /* MenuItemRepo.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = MenuItemRepo.hpp; sourceTree = "<group>"; };
-		E9F00A061FE2F5B00086412F /* OfferRepo.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = OfferRepo.cpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -268,7 +266,6 @@
 				E974CD291FD09A110005D0F9 /* SideRepo.cpp */,
 				E974CD2F1FD193660005D0F9 /* SizeRepo.cpp */,
 				E9F00A031FE19A210086412F /* MenuItemRepo.cpp */,
-				E9F00A061FE2F5B00086412F /* OfferRepo.cpp */,
 			);
 			path = Repo;
 			sourceTree = "<group>";
@@ -370,7 +367,6 @@
 				E9F00A021FE1977B0086412F /* MenuItem.cpp in Sources */,
 				E974CD061FCF1F0D0005D0F9 /* PrepUI.cpp in Sources */,
 				E9C456D21FCEF1D700A93407 /* AdminUI.cpp in Sources */,
-				E9F00A081FE2F5B00086412F /* OfferRepo.cpp in Sources */,
 				E974CD341FD194110005D0F9 /* Size.cpp in Sources */,
 				7BC4854C1FD4415A00D2390D /* ConsoleMagic.cpp in Sources */,
 				7B9F681C1FCEFC06006C9167 /* ToppingRepo.cpp in Sources */,

@@ -288,21 +288,17 @@ MenuItem Bizniz::recognizeMenuItem(Topping* pizzaToppings, int toppingCount, boo
     int sizeOfMenu;
     MenuItem* allMenuItems = getArrayOfMenuItems(MENUITEMFILE, sizeOfMenu);
     vector<Topping> allToppings = getVectorOfToppings();
-    unsigned int sizeOfToppingList = allToppings.size();
+    unsigned long sizeOfToppingList = allToppings.size();
     
     int menuCounter = 0;
     int pizzaCounter = 0;
     for (int i = 0; i < sizeOfMenu; i++) {
         if(allMenuItems[i].getToppingCount() == toppingCount){
-            for (int c = 0; c < sizeOfToppingList; c++) {
+            for (unsigned long c = 0; c < sizeOfToppingList; c++) {
                 menuCounter = 0;
                 pizzaCounter = 0;
                 for (int j = 0; j < toppingCount; j++) {
-//                    cout << "PizzaTopping: " << pizzaToppings[j].getName() << endl;
-//                    cout << "MenuTopping: " << allMenuItems[i].getToppings()[j].getName() << endl;
-//                    cout << "Alltoppings af c: " << allToppings.at(c).getName() << endl;
                     if((string)allToppings.at(c).getName() == (string)pizzaToppings[j].getName()){
-//                        cout << "sést ég?" << endl;
                         pizzaCounter++;
                     }
                     if((string)allToppings.at(c).getName() == (string)allMenuItems[i].getToppings()[j].getName()){
@@ -310,7 +306,6 @@ MenuItem Bizniz::recognizeMenuItem(Topping* pizzaToppings, int toppingCount, boo
                     }
                     
                 }
-                cout << "Erum i topping: " << allToppings.at(c).getName() << " Nu a pC ad vera 3 og er " <<pizzaCounter << " og mC ad vera 2 og er " << menuCounter << endl;
                 if(menuCounter != pizzaCounter){
                     c = sizeOfToppingList;
                     //Þetta er í raun break
@@ -487,9 +482,13 @@ void Bizniz::fixNameOfPizza(Pizza& pizza){
     strcpy(tempName, pizza.getSize().getName());
     strcat(tempName, " ");
     strcat(tempName, pizza.getBase().getName());
-    for (int i = 0; i < pizza.getToppingCount(); i++) {
-        strcat(tempName, " ");
-        strcat(tempName, pizza.getToppings()[i].getName());
+    if(pizza.getToppingCount() != 0){
+        for (int i = 0; i < pizza.getToppingCount(); i++) {
+            strcat(tempName, " ");
+            strcat(tempName, pizza.getToppings()[i].getName());
+        }
+    }else{
+        strcat(tempName, " Margarita");
     }
     strcpy(name, tempName);
     pizza.setName(name);
@@ -508,7 +507,6 @@ void Bizniz::fixNameOfPizza(Pizza& pizza, MenuItem menuItem){
 }
 
 Pizza Bizniz::assemblePizza(Size size, Base base, Topping *toppings, int amountOfToppings, Location location){
-    //Hingað má setja einhver tékk á það hvort allt sé rétt gert
     int pizzaPrice = size.getPrice() + base.getPrice();
     Pizza returnPizza = Pizza(size, base, location);
     for (int i = 0; i < amountOfToppings; i++) {
@@ -807,8 +805,22 @@ int Bizniz::getOrderIndexByID(int inputID){
     delete [] allOrders;
     return -1;
 }
-
-
+/*
+void Bizniz::tvennalyzer(Order& order){
+    Order tempOrder = order;
+    int groups = 0;
+    int pizzas = tempOrder.getNumberOfPizzas();
+    int sides = tempOrder.getNumberOfSides();
+    do{
+        if(pizzas> 1 && sides >0){
+            pizzas--;
+            pizzas--;
+            sides--;
+            groups++;
+        }
+    }while(pizzaPairs > 0);
+}
+*/
 /**************************************************************************************
  
                               Exceptions(Bool functions)
