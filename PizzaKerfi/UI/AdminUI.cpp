@@ -37,8 +37,6 @@ void AdminUI::startAdminUI(){
         uiItemSeparator();
         cout << setfill(' ') << setw(SIZEFORSETWSPACE) << " "  << "8: View sales analysis" << endl;
         uiItemSeparator();
-        cout << setfill(' ') << setw(SIZEFORSETWSPACE) << " " << "9: Manage offers" << endl;
-        uiItemSeparator();
         cout << setfill(' ') << setw(SIZEFORSETWSPACE) << " "  << "b: back" << endl;
         uiItemSeparator();
         cin >> input;
@@ -76,10 +74,6 @@ void AdminUI::startAdminUI(){
         else if(input == '8'){
             magic.clearScreen();
             displayAnalysis();
-        }
-        else if(input == '9'){
-            magic.clearScreen();
-            manageOffers();
         }
     }
 }
@@ -1369,10 +1363,6 @@ void AdminUI::displayAnalysis(){
     uiItemSeparator();
     cout << endl << setfill(CHARFORSPACE) << setw(SIZEFORSETWSPACE) << " " <<"Enter anything to continue: ";
     cin >> ws;
-}
-
-void AdminUI::manageOffers(){
-    
 }
 
 void AdminUI::uiItemSeparator () {

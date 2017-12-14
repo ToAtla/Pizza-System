@@ -110,8 +110,6 @@ class AdminUI{
         void displayAllMenuItems();
         void addMenuItem();
     
-        void manageOffers();
-    
         void displayAnalysis();
         
         void uiItemSeparator();
