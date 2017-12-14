@@ -75,6 +75,10 @@ void AdminUI::startAdminUI(){
             magic.clearScreen();
             displayAnalysis();
         }
+        else if(input == '9'){
+            magic.clearScreen();
+            manageOffers();
+        }
     }
 }
 
@@ -1361,6 +1365,10 @@ void AdminUI::displayAnalysis(){
     uiItemSeparator();
     cout << endl << setfill(CHARFORSPACE) << setw(SIZEFORSETWSPACE) << " " <<"Enter anything to continue: ";
     cin >> ws;
+}
+
+void AdminUI::manageOffers(){
+    
 }
 
 void AdminUI::uiItemSeparator () {

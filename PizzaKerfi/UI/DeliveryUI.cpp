@@ -258,7 +258,7 @@ void DeliveryUI::displayLegacyOrders(){
         }
     }
     cout << setfill(CHARFORSETFILL) << setw(SIZEOFSETWBIG) << "-" << setfill(CHARFORSPACE) << endl;
-    cout << setfill(CHARFORSPACE) << setw(26) << " " << "Listing All Legacy Orders in " << locationOfDelivery << endl;
+    cout << setfill(CHARFORSPACE) << setw(SIZEOFCENTERHEADING) << " " << "Listing All Legacy Orders in " << locationOfDelivery << endl;
     cout << setfill(CHARFORSETFILL) << setw(SIZEOFSETWBIG) << "-" << setfill(CHARFORSPACE) << endl << endl;
     
     if(ordRep.fileExists(orderFile) && amountOfDeliveredOrdersAtThisLocation != 0){
