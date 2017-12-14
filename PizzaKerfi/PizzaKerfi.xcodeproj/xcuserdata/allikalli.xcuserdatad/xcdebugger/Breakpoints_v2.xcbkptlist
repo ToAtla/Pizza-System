@@ -47,7 +47,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "588"
             endingLineNumber = "588"
-            landmarkName = "Bizniz::moveOrderBetween(string sourceFile, string destFile, int orderNum)"
+            landmarkName = "Bizniz::getArrayOfOrders(string fileName, int&amp; tellMeHowManyOrders)"
             landmarkType = "7">
             <Actions>
                <BreakpointActionProxy
