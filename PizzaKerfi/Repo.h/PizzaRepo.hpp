@@ -22,7 +22,6 @@ class PizzaRepo {
         void moveBetween(string sourceFile, string destFile, int index);
         void clearPizzaFile(string fileName);
         bool fileExists(string fileName);
-    private:
 };
 
 #endif /* PizzaRepo_hpp */
