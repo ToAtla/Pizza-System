@@ -805,22 +805,8 @@ int Bizniz::getOrderIndexByID(int inputID){
     delete [] allOrders;
     return -1;
 }
-/*
-void Bizniz::tvennalyzer(Order& order){
-    Order tempOrder = order;
-    int groups = 0;
-    int pizzas = tempOrder.getNumberOfPizzas();
-    int sides = tempOrder.getNumberOfSides();
-    do{
-        if(pizzas> 1 && sides >0){
-            pizzas--;
-            pizzas--;
-            sides--;
-            groups++;
-        }
-    }while(pizzaPairs > 0);
-}
-*/
+
+
 /**************************************************************************************
  
                               Exceptions(Bool functions)
