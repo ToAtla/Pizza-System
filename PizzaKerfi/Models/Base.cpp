@@ -21,7 +21,6 @@ Base::Base(char inName[MAXCHARINBASENAME], int inPrice){
     price = inPrice;
     
     strcpy(name, inName);
-    
 }
 
 ///Returns the value of the private variable price.

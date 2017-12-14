@@ -235,6 +235,9 @@ Topping* SalesUI::toppingPickingProcess(int& toppingCount){
     
     if(allToppings.size() < 1){
         cout << endl << "*NOTE* No toppings available at this time." << endl;
+        cout << endl << "Enter any key to continue." << endl;
+        string input;
+        cin >> input;
     }
     else{
         cout << setfill(' ') << setw(SIZEOFPRICESPACE) << "Price" << endl;
@@ -356,6 +359,9 @@ Pizza SalesUI::pizzaCreationProcess(Location locationOfOrderForPizzaToFollow){
             MenuItem  tempMenuItem = bizniz.recognizeMenuItem(pizzaToppings, toppingCount, isMenuItem);
             if(isMenuItem){
                 cout << "Your choice is on the menu.  Name of pizza: " << tempMenuItem.getName() << endl;
+                string input;
+                cout << endl << "Enter any key to continue: " << endl << endl;
+                cin >> input;
                 Pizza returnPizza = bizniz.assemblePizzaWithMenuItem(pizzaSize, pizzaBase, tempMenuItem, locationOfOrderForPizzaToFollow);
                 delete [] pizzaToppings;
                 return returnPizza;
@@ -379,10 +385,9 @@ Pizza SalesUI::pizzaCreationProcess(Location locationOfOrderForPizzaToFollow){
                 }
                 cout << setw(14) << " " << setfill(CHARFORSETFILL) << setw(43) << "-" << endl << endl;
             }
-            cout << "Choose a number corresponding to menu item (Þetta á eftir að Exeption hjúpa): ";
+            cout << "Choose a number corresponding to menu item (no whitespaces): ";
             string input;
-            cin.ignore();
-            getline(cin, input);
+            cin >> input;
                 
             unsigned long longHowMany = tellMeHowMany;
                 
